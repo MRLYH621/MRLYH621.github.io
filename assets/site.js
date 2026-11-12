@@ -26,7 +26,7 @@ const SITE = {
       short: "从多人共处小游戏，到省时间的工具。",
       intro: "用 AI 做的小东西：能多人一起待着的空间、省时间的工具，还有一些没做完的想法。做完的先放上来。",
       items: [
-        { t: "静室 · DJ 馆", d: "一次点击、四个动作、不许说话的多人共处空间；three.js + WebSocket，20 人同房。", tag: "游戏", views: 2340, u: "https://quiet-dj-room.app.workbuddy.host/?sharecode=XL4KMY6ASH" },
+        { t: "静室 · 一起发呆", d: "一次点击、四个动作、不许说话的多人共处空间；three.js + WebSocket，20 人同房。", tag: "游戏", views: 2340, u: "https://quiet-dj-room.app.workbuddy.host/?sharecode=XL4KMY6ASH" },
         { t: "AI 写作助手", d: "把零散素材整理成可发布的长文。", tag: "工具", views: 1180 },
         { t: "数据小工具", d: "把重复的手工整理自动化，重点是省时间。", tag: "工具", views: 860 },
         { t: "还在实验的", d: "没做完也先放上来，记录想法有时比展示成果更有意思。", tag: "实验", views: 320 }

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>信息传播那些事儿 · 目录</title>
+<meta name="description" content="《信息传播那些事儿》12 卷 211 篇写作计划，已完成 36 篇，按卷分章在线阅读。">
+<meta name="theme-color" content="#fffaf3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23d1001f'/%3E%3Ctext x='32' y='46' font-size='34' font-family='Arial,sans-serif' font-weight='bold' text-anchor='middle' fill='%23ffffff'%3E书%3C/text%3E%3C/svg%3E">
+<style>
+:root{--red:#d1001f;--yellow:#fee101;--mint:#57cf95;
+  --bg:#fffaf3;--paper:#fff;--ink:#2b2320;--muted:#9a8c82;
+  --line:#f0e4d8;--soft:#fdf1e4;
+  --shadow:0 8px 26px rgba(150,90,60,.08);--shadow-hi:0 16px 36px rgba(150,90,60,.16);
+  --grid:rgba(190,160,140,.10);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+body[data-theme="dark"]{--bg:#1b1618;--paper:#282124;--ink:#fdf4ee;--muted:#b6a49d;
+  --line:#3d3033;--soft:#33292c;--shadow:0 8px 26px rgba(0,0,0,.3);--shadow-hi:0 16px 36px rgba(0,0,0,.45);
+  --grid:rgba(255,255,255,.035)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:56px 56px}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--yellow);color:#2b2320}
+:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+header{display:flex;align-items:center;gap:18px;padding:30px 0 0}
+.back{font-family:var(--mono);font-size:11px;border:1.5px solid var(--line);border-radius:999px;
+  padding:7px 14px;transition:border-color .2s,color .2s,transform .2s}
+.back:hover{border-color:var(--red);color:var(--red);transform:translateX(-3px)}
+.brand{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--muted)}
+.theme{margin-left:auto;font-family:var(--mono);font-size:10px;font-weight:800;letter-spacing:.1em;
+  background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:999px;
+  padding:7px 15px;cursor:pointer}
+.theme:hover{border-color:var(--red);color:var(--red)}
+main{padding:clamp(46px,8vh,84px) 0 60px}
+h1{font-size:clamp(42px,7vw,76px);font-weight:800;letter-spacing:-.04em;line-height:1.1;
+  display:flex;align-items:flex-end;gap:.04em;margin-bottom:16px}
+.cursor{display:inline-block;flex:none;width:.42em;height:.085em;border-radius:999px;background:var(--mint);
+  margin-bottom:.1em;box-shadow:0 0 18px rgba(87,207,149,.4);animation:blink 1.15s step-end infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:.12}}
+.sub{font-size:16px;color:var(--muted);max-width:660px;line-height:1.9}
+.progress{display:flex;align-items:center;gap:14px;margin:26px 0 42px;flex-wrap:wrap}
+.bar{flex:1;min-width:200px;height:9px;border-radius:999px;background:var(--soft);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--red),var(--yellow))}
+.pnum{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--muted);white-space:nowrap}
+h2{font-size:20px;font-weight:800;letter-spacing:-.01em;margin:0 0 6px}
+.sechead{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.sechead span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted)}
+.vols{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin-bottom:46px}
+.vol{padding:16px 18px;background:var(--paper);border:1.5px solid var(--line);border-radius:20px;
+  box-shadow:var(--shadow);position:relative;overflow:hidden}
+.vol::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c)}
+.vol .vn{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.vol .vname{font-size:16px;font-weight:800;margin:5px 0 4px}
+.vol .vline{font-size:12px;color:var(--muted);line-height:1.65}
+.vol .vstat{display:inline-block;margin-top:10px;font-size:10.5px;font-weight:800;padding:3px 10px;
+  border-radius:999px;background:var(--soft);color:var(--muted)}
+.vol.done{border-color:var(--c)}
+.vol.done .vstat{background:var(--c);color:var(--on)}
+.vol.plan{opacity:.62}
+.volgrp{margin-bottom:38px}
+.grphead{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;padding-bottom:12px;
+  border-bottom:1.5px solid var(--line)}
+.grphead b{font-size:22px;font-weight:800}
+.grphead span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{display:flex;flex-direction:column;min-height:178px;padding:20px;background:var(--paper);
+  border:1.5px solid var(--line);border-radius:24px;box-shadow:var(--shadow);
+  position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:var(--c);
+  transform:scaleX(0);transform-origin:left;transition:transform .32s}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-hi);border-color:var(--c)}
+.card:hover::before{transform:scaleX(1)}
+.card:active{transform:translateY(-1px) scale(.995)}
+.ctop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.cno{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted)}
+.cover{width:56px;height:44px;object-fit:cover;border-radius:9px;background:var(--soft)}
+.ctitle{font-size:17px;font-weight:800;line-height:1.45;margin-bottom:7px;overflow-wrap:anywhere}
+.clead{font-size:12.5px;color:var(--muted);line-height:1.75;overflow-wrap:anywhere;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cfoot{margin-top:auto;padding-top:14px;display:flex;align-items:center;justify-content:space-between}
+.ctag{font-size:10.5px;font-weight:800;padding:3px 10px;border-radius:999px;background:var(--soft);color:var(--muted)}
+.go{width:27px;height:27px;border-radius:50%;background:var(--soft);color:var(--muted);
+  display:grid;place-items:center;font-size:14px;transition:background .25s,color .25s,transform .25s}
+.card:hover .go{background:var(--c);color:var(--on);transform:translateX(3px)}
+footer{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:22px 0 30px;border-top:1.5px solid var(--line);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted)}
+footer a:hover{color:var(--red)}
+@media(max-width:640px){
+  .wrap{padding:0 18px} header{gap:10px;padding-top:22px} .brand{font-size:9px}
+  .theme,.back{font-size:9px;padding:6px 11px} main{padding:36px 0 40px}
+  h1{font-size:clamp(36px,10vw,56px)} .cards{grid-template-columns:1fr}
+  .vols{grid-template-columns:1fr} .card{min-height:0;border-radius:20px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.cursor{opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="../index.html">← 返回 LYH</a>
+    <span class="brand">LYH / BOOK</span>
+    <button class="theme" id="themeBtn" aria-label="切换深浅主题">DARK</button>
+  </header>
+  <main>
+    <h1><span id="bookTitle"></span><span class="cursor" aria-hidden="true"></span></h1>
+    <p class="sub" id="bookSub"></p>
+    <div class="progress"><div class="bar"><i id="barFill"></i></div><span class="pnum" id="pnum"></span></div>
+    <div class="sechead"><h2>全书地图</h2><span>12 VOLUMES / 211 CHAPTERS</span></div>
+    <div class="vols" id="vols"></div>
+    <div id="groups"></div>
+  </main>
+  <footer>
+    <span>© <span id="year"></span> LYH · 信息传播那些事儿</span>
+    <span><a href="../index.html">返回主页 ↗</a></span>
+  </footer>
+</div>
+<script>
+const BOOK = {"title":"信息传播那些事儿","sub":"从十万年前的八卦，到算法与 AI 的信息传播史","planned":211,"volumes":[{"n":1,"name":"信息的黎明","span":"史前—文字","line":"在没有文字的年代，人靠嘴、靠火、靠腿传信息，也靠谣言和保密活命"},{"n":2,"name":"竹简与封泥","span":"文字—印刷术","line":"信息第一次「可复制可留存」，但被官家和抄手死死捏着"},{"n":3,"name":"印刷术的背叛","span":"1450—1600","line":"古登堡让信息能批量生产，权力与宗教当场傻眼"},{"n":4,"name":"报纸的诞生","span":"1600—1830","line":"「报纸」这个物种定型，生产 / 生存 / 约束三角第一次凑齐"},{"n":5,"name":"便士报革命","span":"1830—1900","line":"一分钱让报纸变成快消品，广告养内容的结构从此锁死"},{"n":6,"name":"第四权与战火","span":"1900—1945","line":"媒体权力登顶成「第四权」，也第一次被国家整套征用去打仗"},{"n":7,"name":"电波接管客厅","span":"1920—1980","line":"广播电视把注意力拧成一股绳，家庭客厅变成「国家级直播间」"},{"n":8,"name":"广告帝国","span":"专题回望","line":"单独拆「靠什么活」：从报头小广告到程序化投放的千年生意"},{"n":9,"name":"报纸之死","span":"1980—2010","line":"电视鼎盛到互联网冲击波，报纸的「生意」先死、报纸后死"},{"n":10,"name":"互联网降维","span":"1990s—2010s","line":"门户 → 搜索 → 社交，注意力被重新分配三次"},{"n":11,"name":"算法与平台","span":"2010s—2020s","line":"平台吃掉七成广告，做内容的没赚到，做管道的全赚了"},{"n":12,"name":"AI 与未来","span":"2020s—","line":"智能体即新媒体，语料成核心资产"}],"chapters":[{"no":1,"vol":1,"title":"人类为什么是「八卦动物」","lead":"你今天早上刷手机看到的东西——谁跟谁分手了、哪个同事跳槽了、隔壁小区房价又跌了——十万年前的人类，也在干一模一样的事。只不过他们的\"手机\"，是彼此的耳朵。","cover":"i056809c5.jpg"},{"no":2,"vol":1,"title":"山顶洞人的壁画：最早的「朋友圈」","lead":"你今天发的朋友圈，热度大概能活三天。而三万年前发在石壁上的\"朋友圈\"，到今天还在原地挂着——没有账号，不能删除，全人类都是它的访客。","cover":"if3317553.jpg"},{"no":3,"vol":1,"title":"结绳记事：上古的 Excel 表","lead":"上篇说完，壁画最大的毛病是搬不走——牛画在这面墙上，就归这面墙，明天部落搬家，你总不能把山背走。人类想出的第一个办法朴素得可爱：拿根绳子，打个结。一个结记一头羊，羊死了解开一个结。这就是人类最早的「Excel 表」。","cover":"ie3fe6311.jpg"},{"no":4,"vol":1,"title":"烽火戏诸侯：世界上第一份\"假新闻\"","lead":"公元前 771 年，一个王朝的倒闭清算报告里，死因一栏写着：信用破产。他把国家最贵的一套\"紧急广播系统\"，当成哄女朋友的玩具，按了一次开关，诸侯白跑一趟，美人笑了。他以为这是零成本的玩笑。几年后敌军真来了，他再次按下开关——这一次，全世界都装没听见。","cover":"i73fc0b0d.jpg"},{"no":5,"vol":1,"title":"击鼓传令与马拉松","lead":"上一篇烽火台告诉我们：广播很快，但只能说一个字——\"打\"。想说清楚\"来多少人、什么兵种、求什么援\"，烽火就无能为力了。于是人类发明了另一种传输方式：把信息装进一个人的两条腿里。代价是——那两条腿会跑断。","cover":"i5f7cbf07.jpg"},{"no":6,"vol":1,"title":"非洲鼓语","lead":"18 世纪的欧洲人刚到西非时，夜里经常被吓到：两个隔着森林的村子，正在用鼓\"聊天\"。消息一村传一村，比骑马的人还快。他们研究了将近两百年才搞明白：这不是音乐，是一套完整的通信协议。","cover":"i454cb593.jpg"},{"no":7,"vol":1,"title":"巫师：上古\"意见领袖\"","lead":"前面几篇讲的都是\"人跟人怎么传消息\"。这一篇讲一条更古老的频道：人跟神。这条频道曾经人人都能上，后来被收归\"国营\"。人类历史上第一次信息准入管制，就发生在这里——比焚书早了两千年，比报纸税早了三千年。","cover":"ieff6c99c.jpg"},{"no":8,"vol":1,"title":"甲骨文","lead":"1899 年，一位清朝大学者抓中药，在药包里发现一味\"龙骨\"上刻着谁也不认识的字——中国已知最早的成熟文字系统，就这样在一堆药材里重见天日。更妙的是它写的是什么：商王和神的三千通\"通话记录\"。","cover":"i06b56e85.jpg"},{"no":9,"vol":1,"title":"荷马与游吟诗人：没文字，史诗怎么传千年？","lead":"上一回我们说，商王把话刻在乌龟壳和牛骨头上，发给老天爷，还求回复。甲骨文干了一件大事：第一次把\"会飘走的话\"钉死在硬物上。可问题来了——在另一个文明里，压根还没发明这套\"钉死术\"，他们靠什么，把一部几十万字的史诗，传了上千年？","cover":"ie24e9d0c.jpg"},{"no":10,"vol":1,"title":"口述史的可怕误差：曾祖父怎么变成大英雄","lead":"上回我们说，在没有文字的年代，人类靠\"人肉硬盘\"——游吟诗人、讲故事的老人——把信息一代代传下来。听起来挺浪漫。但浪漫背后有个扎心的事实：这套系统每传一遍，都偷偷改一点。今天这篇，我们就来算算这笔\"失真账\"到底有多大。","cover":"ie4c2d373.jpg"},{"no":11,"vol":1,"title":"谣言的诞生：为什么坏事传得比好事快？","lead":"上回说到，口述传统里那点\"失真\"，一旦跑出家族、跑进公共领域，就不再叫家史，叫谣言——而且是最难治的那种：大家都信。可这里头有个怪现象你一定体会过：坏消息，好像永远比好消息跑得快、传得广。今天这篇，就把谣言的\"传播系数\"拆开给你看。","cover":"ie90567a9.jpg"},{"no":12,"vol":1,"title":"信使的生死：带消息的人，就是消息本身","lead":"上回我们说，谣言靠嘴传，正经消息靠人跑。可那个跑腿送信的人，常常死得比消息还快。古人有句老话叫\"别迁怒送信的\"——因为历史上，送信的真的会被杀。今天这篇，就聊聊信使这个高危职业，以及它背后那句冷冰冰的道理：带消息的人，等于消息本身。","cover":"iacf5b0c5.jpg"},{"no":13,"vol":1,"title":"狼烟与灯塔：人类最早的\"广播\"","lead":"上回说到，带消息的人就是消息本身，跑腿的信使随时可能把命搭进去。于是古人琢磨出一件狠事：能不能不让人跑？能不能让火光替你跑？这一篇，看人类最早的\"广播系统\"——烽火台，以及地中海边上那座不睡觉的巨塔。","cover":"ibc71e543.jpg"},{"no":14,"vol":1,"title":"波斯御道：人类第一条\"信息高速公路\"","lead":"烽火再快，也只能喊一嗓子\"狼来了\"，装不下一份完整的公文。要统治一个横跨三大洲的帝国，波斯人给出的答案是笨办法也是最狠的办法：修路。一条路，111 个驿站，让国王的消息比风还快——快到两千年后的电报才追上它。","cover":"idd04bb6e.jpg"},{"no":15,"vol":1,"title":"罗马广场喊话：广场就是电视台","lead":"波斯的御道再快，消息也是国王的独享品。希腊人和罗马人偏要反着来：不加密、不专线，把信息摆在城中心的广场上，让每一个路过的人自己看、自己听、自己吵。这一篇看古代世界最热闹的\"媒体终端\"——广场，以及世界上第一份官方日报。","cover":"ibf0ec975.jpg"},{"no":16,"vol":1,"title":"犹太口传律法：偏不写下来，反而记得更牢","lead":"广场白板留不住信息，羊皮卷又容易被烧、被改、被垄断。有一个民族给出了第三种方案：把律法直接写进人的大脑，用一代代人接力背诵来保存。更离奇的是，这个\"偏不写下来\"的执念，反而造出了古代保真度最高的信息系统。","cover":"i26480dc5.jpg"},{"no":17,"vol":1,"title":"古代加密术：蜡板、隐写与倒着写的字","lead":"前面几站都在解决\"怎么传得快、传得广\"，这一站解决一个更古老的需求：有些话，只许两个人懂。战报、密约、篡位计划——古代宫廷和战场的秘密战，催生了人类第一批加密技术。看完你会发现：今天密码学的全部思想，祖先们已经把雏形都玩过了。","cover":"ibf5bd20d.jpg"},{"no":18,"vol":1,"title":"卷一小结：文字出现前夜，信息在谁手里？","lead":"十八站走完，篝火烧到天亮。这一站不赶路，坐下来烤个火，把整段旅程串成一张地图：文字出现之前，人类是怎么把信息玩出整个行业的？权柄在谁手里？以及——为什么文字一登场，这一切立刻全乱了。","cover":"ia6b62338.jpg"},{"no":19,"vol":2,"title":"竹简的麻烦：写本书要扛一车","lead":"上一卷结尾说：文字一出现，靠嗓门吃饭的巫师、信使、演说家们全乱了套。可文字自己刚一上场，就碰上了它的第一桩麻烦——它太重了。在没有纸的年代，写一本书约等于扛一袋水泥，读一部史书约等于搬半台冰箱。这一卷，咱们就从这份\"甜蜜的负担\"讲起。","cover":"i5a5fb624.jpg"},{"no":20,"vol":2,"title":"焚书坑儒：第一次大规模“内容删除”","lead":"上一篇我们算过账：竹简时代写书搬书都是体力活，能落在简上的每个字都来之不易。可正因为文字有了复制和留存的能力，它也第一次成了权力的眼中钉。公元前 213 年，帝国对这些沉重的竹简，做出了人类历史上第一次大规模的\"全量删除\"。","cover":"ib31262aa.jpg"},{"no":21,"vol":2,"title":"汉代驿置：公文为什么比私信快","lead":"秦帝国十五年就垮了，但它留下的信息系统，被汉朝全盘接收，还扩建成了超级工程。一个两千年前的\"国营快递+招待所\"网络，如何做到公文日行四百里、延误要追责？这一篇，去戈壁滩上的一座驿站遗址里找答案。","cover":"i5470c3be.jpg"},{"no":22,"vol":2,"title":"汉唐布告与露布：胜利要挂在城墙上","lead":"驿站解决的是\"递得快\"，但它有个盲区：公文是写给某个人看的，路过的一万个老百姓，什么也看不见。可帝国的统治恰恰需要被围观——打了大胜仗，如果只有皇帝和兵部知道，那这仗等于白打。于是古人发明了一种写给一万个人看的信息载体。","cover":"ic5fc31e7.jpg"},{"no":23,"vol":2,"title":"罗马每日纪闻：刻在白板上的“日报”","lead":"上一篇我们站在城门口看汉朝人挂捷报。现在把地球仪转到另一边——罗马广场上，立着一块涂了石膏的白色木板，天天更新，人人可看，一看就是好几百年。它被称为世界上最早的官方公报，报纸的老祖宗。这一篇，我们把它的\"版面\"打开看看。","cover":"i1fa0fa16.jpg"},{"no":24,"vol":2,"title":"丝路信使","lead":"罗马人每天挤在广场，盯着石头上的公报看天下；可那石头上的消息，出不了罗马城。就在同一个千年，另一群人正赶着骆驼，把消息连同丝绸、香料一起，搬过整片欧亚大陆。他们不拿官饷，却比任何邮差都跑得远。","cover":"i313bc3ab.jpg"},{"no":25,"vol":2,"title":"魏晋清谈","lead":"上回说商队把消息搬过欧亚大陆；可有一群人，连货都不搬，光凭一张嘴「聊」，就搅动了半个中国的风气。他们不写檄文、不办报纸，却在竹林里、酒席上，用清谈把一代人的价值观给定了。","cover":"i1d82b8c5.jpg"},{"no":26,"vol":2,"title":"唐代进奏院状","lead":"你早上睁眼先刷手机看热搜；一千年前的唐朝官员，早上起来也先「刷」一份东西。只不过他们的版本是手抄的，没有评论区，而且一刷就是一千二百年没停过。","cover":"i80c24aa3.jpg"},{"no":27,"vol":2,"title":"宋朝「小报」","lead":"上一回说，邸报是朝廷自己办的「内部刊物」，谁准看、报什么，全由上面定。可人这种动物，你越不让他看什么，他越想看。宋朝就冒出一群人，自己偷偷印、偷偷卖——这便是中国最早的「自媒体」。","cover":"i85b87051.jpg"},{"no":28,"vol":2,"title":"毕昇的憋屈","lead":"宋朝人连「小报」都能做成地下生意，按说活字印刷该让他们印书印到手软。可偏偏，活字被发明出来四百年，主流还是雕版。这中间的落差，值得今天每一个做技术的人细品。","cover":"i4757c071.jpg"},{"no":29,"vol":2,"title":"修道院抄本","lead":"中国这边，书籍靠雕版和活字批量印；欧洲中世纪的前几百年，没有印刷术，一本书就是一个人用几年时间，一笔一划「写」出来的。干这活的，是修道院里的修士。","cover":"iac044656.jpg"},{"no":30,"vol":2,"title":"拜占庭情报网","lead":"上一章我们说到，中世纪的修道院修士把人类文明小心翼翼抄进羊皮卷。可就在同一片星空下，拜占庭的皇帝们在干另一件事——他们建起了人类历史上第一套\"国家级情报网\"。报纸是用来让人知道的，情报网是用来让人\"只我知、你不知\"的。它是媒体的影子，长着同一张脸，却走向相反的方向。","cover":"i6a2770f5.jpg"},{"no":31,"vol":2,"title":"蒙古驿站","lead":"上一段我们看了拜占庭——皇帝用密使盯人、用密码锁话。蒙古人听到这种玩法大概会笑：你们那叫情报？我们直接把驿站修到你们家门口。成吉思汗和他子孙干的事，本质上是给十三世纪的欧亚大陆，铺了一张\"官方实时信息网络\"。","cover":"i41c910b9.jpg"},{"no":32,"vol":2,"title":"明代塘报与捷报","lead":"上一段蒙古人用驿站把欧亚连成网，那是\"通达派\"。明朝接过这套思路，却把它用在了最要命的地方——打仗。前线今天打了胜还是败，皇帝明天早朝就要知道。于是明朝长出了一套独特的军事快报系统：塘报管\"报忧也报喜\"，捷报管\"专门报喜\"。它像一根电话线，把前线和大本营焊在一起。","cover":"i6b208682.jpg"},{"no":33,"vol":2,"title":"官员怎么读邸报","lead":"上一段我们讲了塘报怎么把军情送进京城。可东西送到了，得有人看、有人读、有人从中琢磨出门道。明清两朝，读邸报的不是老百姓，是一群戴乌纱的官员。对他们来说，邸报不是\"新闻\"，是每天的\"官场晴雨表\"——谁升了、谁贬了、哪道新政下来了，全在里面。今天我们就钻进衙门，看官员怎么读这份\"古代的人民日报\"。","cover":"i721844bb.jpg"},{"no":34,"vol":2,"title":"童谣与民歌","lead":"上一段官员在邸报里读朝堂，可老百姓读不到邸报。那普通人靠什么了解天下、又靠什么开口说话？答案在街头巷尾——童谣和民歌。没有印刷机，也没有报社，但一首顺口溜能从村口传到京城，比邸报跑得还快。更妙的是，皇帝居然专门派人去\"采\"这些歌，当成治理的情报。今天说这套有点传奇的\"民间广播系统\"。","cover":"iefdaa9ba.jpg"},{"no":35,"vol":2,"title":"图书审查起源","lead":"上一段民歌能进宫被\"采\"，可一旦唱错调、碰了逆鳞，麻烦就来了。古代对言论的管控，不是一天长成的。它从一把\"事先审查\"的闸开始——宋人给邸报设了\"定本\"，清人借着修书把禁书烧成了山。今天顺着这条线，看\"图书审查\"是怎么一步步起源、又一步步收紧的。","cover":"ia51c76e3.jpg"},{"no":36,"vol":2,"title":"卷二小结","lead":"卷二从唐代进奏院状一路走到清代文字狱，十篇连成一条线：信息怎么被机构化采集、被快马送达、被官员阅读、被百姓用童谣回应，又被统治者用审查和禁书收束。这一篇我们不讲新故事，只把这条线拎出来，看看它到底在说什么。","cover":"iffe502a5.jpg"}]};
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad = n => String(n).padStart(2,"0");
+const TONES = [{c:'var(--red)',on:'#fff'},{c:'var(--yellow)',on:'#2b2320'},{c:'var(--mint)',on:'#12301f'}];
+$('#bookTitle').textContent = BOOK.title;
+$('#bookSub').textContent = BOOK.sub;
+$('#year').textContent = new Date().getFullYear();
+const done = BOOK.chapters.length;
+$('#barFill').style.width = (done / BOOK.planned * 100).toFixed(1) + '%';
+$('#pnum').textContent = '已写 ' + done + ' / 计划 ' + BOOK.planned + ' 篇';
+$('#vols').innerHTML = BOOK.volumes.map(v => {
+  const n = BOOK.chapters.filter(c => c.vol === v.n).length;
+  const t = TONES[(v.n - 1) % 3];
+  return '<div class="vol ' + (n ? 'done' : 'plan') + '" style="--c:' + t.c + ';--on:' + t.on + '">' +
+    '<div class="vn">VOL.' + pad(v.n) + ' · ' + esc(v.span) + '</div>' +
+    '<div class="vname">' + esc(v.name) + '</div>' +
+    '<div class="vline">' + esc(v.line) + '</div>' +
+    '<div class="vstat">' + (n ? '已成稿 ' + n + ' 篇' : '待写') + '</div></div>';
+}).join('');
+$('#groups').innerHTML = [1,2].map(vn => {
+  const v = BOOK.volumes[vn - 1];
+  const list = BOOK.chapters.filter(c => c.vol === vn);
+  if (!list.length) return '';
+  return '<section class="volgrp" id="vol' + vn + '">' +
+    '<div class="grphead"><b>卷' + vn + ' · ' + esc(v.name) + '</b><span>' + pad(list.length) + ' CHAPTERS</span></div>' +
+    '<div class="cards">' + list.map((c, i) => {
+      const t = TONES[i % 3];
+      const cover = c.cover ? '<img class="cover" src="img/' + esc(c.cover) + '" alt="" loading="lazy">' : '';
+      return '<a class="card" href="ch/' + pad(c.no) + '.html" style="--c:' + t.c + ';--on:' + t.on + '">' +
+        '<span class="ctop"><span class="cno">CH.' + pad(c.no) + '</span>' + cover + '</span>' +
+        '<span class="ctitle">' + esc(c.title) + '</span>' +
+        '<span class="clead">' + esc(c.lead || '点击阅读本章') + '</span>' +
+        '<span class="cfoot"><span class="ctag">已完稿</span><span class="go" aria-hidden="true">→</span></span></a>';
+    }).join('') + '</div></section>';
+}).join('');
+const btn = $('#themeBtn'), KEY = 'lyh-v4-theme';
+function applyTheme(dark){
+  document.body.dataset.theme = dark ? 'dark' : '';
+  btn.textContent = dark ? 'LIGHT' : 'DARK';
+  $('meta[name="theme-color"]').content = dark ? '#1b1618' : '#fffaf3';
+}
+let dark = localStorage.getItem(KEY) === 'dark';
+applyTheme(dark);
+btn.addEventListener('click', () => {
+  dark = !dark; localStorage.setItem(KEY, dark ? 'dark' : 'light'); applyTheme(dark);
+});
+</script>
+</body>
+</html>

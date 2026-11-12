@@ -37,10 +37,7 @@ const SITE = {
       short: "《信息传播那些事儿》· 12 卷 211 篇，已成稿 36 篇。",
       intro: "一本还没写完的书。用讲故事的口吻，把信息传播这行从十万年前的八卦讲到算法与 AI；计划 12 卷 211 篇，目前成稿 36 篇，可在线阅读。",
       items: [
-        { t: "信息传播那些事儿", d: "12 卷 211 篇写作计划，已成稿 36 篇；从十万年前讲到算法与 AI。", tag: "连载中", views: 3280, u: "book/" },
-        { t: "卷一 · 信息的黎明", d: "史前—文字：靠嘴、靠火、靠腿传信息的年代，18 篇已完稿。", tag: "已完结", views: 1420, u: "book/index.html#vol1" },
-        { t: "卷二 · 竹简与封泥", d: "文字—印刷术：信息第一次可复制可留存，18 篇已完稿。", tag: "已完结", views: 1180, u: "book/index.html#vol2" },
-        { t: "卷三 — 卷十二", d: "印刷术、报纸、电波、广告、互联网、算法到 AI，写作中。", tag: "待写", views: 260 }
+        { t: "信息传播那些事儿", d: "12 卷 211 篇写作计划，已成稿 36 篇；从十万年前讲到算法与 AI。", tag: "连载中", views: 3280, u: "book/" }
       ]
     }
   ]
@@ -141,7 +138,9 @@ function renderDetail(key) {
 
   const sorted = s.items.slice().sort((a, b) => (b.views || 0) - (a.views || 0));
   const top = Math.min(SITE.topN, sorted.length);
-  $('#meta').textContent = `共 ${pad(sorted.length)} 条 · 按访问量排序 · 默认显示前 ${top}`;
+  $('#meta').textContent = sorted.length === 1
+    ? `共 ${pad(sorted.length)} 本 · 点击卡片进入阅读`
+    : `共 ${pad(sorted.length)} 条 · 按访问量排序 · 默认显示前 ${top}`;
   $('#cards').innerHTML = sorted.map((it, i) => cardHTML(it, i, i >= top)).join('');
 
   const rest = sorted.length - top;

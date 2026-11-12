@@ -3,356 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>LYH · AI / 投资 / 写作</title>
-<meta name="description" content="LYH 的个人主页 — 用 AI 做项目，记录投资心得，慢慢写一本书。">
-<meta name="theme-color" content="#d1001f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23d1001f'/%3E%3Ctext x='32' y='46' font-size='38' font-family='Arial,sans-serif' font-weight='bold' text-anchor='middle' fill='%23ffffff'%3EL%3C/text%3E%3C/svg%3E">
+<title>LYH · 投资 / 项目 / 书籍</title>
+<meta name="description" content="LYH 的索引页 — 投资、项目、书籍。">
+<meta name="theme-color" content="#0b0d0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0d0f'/%3E%3Ctext x='31' y='45' font-size='38' font-family='Georgia,serif' text-anchor='middle' fill='%23f2f0ea'%3EL%3C/text%3E%3Ccircle cx='52' cy='14' r='5' fill='%23a6c2b6'/%3E%3C/svg%3E">
 <style>
 :root{
-  --red:#d1001f; --yellow:#fee101;
-  --bg:#fffaf3; --paper:#ffffff; --ink:#241d1b; --muted:#8b7d75;
-  --line:#f1e5da; --soft:#fdf0e2;
-  --shadow:0 8px 28px rgba(180,80,50,.08);
-  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --bg:#0b0d0f; --ink:#f2f0ea; --muted:#7d838b; --line:#24272c;
+  --accent:#a6c2b6; --hover:rgba(255,255,255,.035); --panel:#101316;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --serif:Georgia,"Times New Roman",serif;
 }
-body[data-theme="dark"]{
-  --bg:#1a1516; --paper:#262022; --ink:#fdf4ee; --muted:#b6a49d;
-  --line:#3b2f31; --soft:#332729; --shadow:0 8px 28px rgba(0,0,0,.35);
+body[data-theme="light"]{
+  --bg:#f5f4f0; --ink:#17191c; --muted:#74787f; --line:#dcdad3;
+  --accent:#3f6d5d; --hover:rgba(0,0,0,.03); --panel:#eceae4;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;
-  line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .3s,color .3s}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--yellow);color:#241d1b}
-.stripe{display:flex;height:9px}
-.stripe i{display:block}
-.stripe i:nth-child(1){flex:8;background:var(--red)}
-.stripe i:nth-child(2){flex:2;background:var(--yellow)}
-.wrap{max-width:900px;margin:0 auto;padding:0 24px;position:relative}
-.deco{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
-.d1{width:190px;height:190px;background:var(--yellow);opacity:.2;top:96px;right:-56px}
-.d2{width:92px;height:92px;border:15px solid var(--red);opacity:.12;top:270px;right:76px}
-.d3{width:24px;height:24px;background:var(--red);opacity:.35;top:186px;right:26px}
-.d4{width:14px;height:14px;background:var(--yellow);opacity:.75;top:330px;right:22px}
-header,section,.hero,footer{position:relative;z-index:1}
+::selection{background:var(--accent);color:var(--bg)}
 
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:22px 0;border-bottom:1.5px solid var(--line)}
-.brand{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;letter-spacing:.02em}
-.seal{width:34px;height:34px;border-radius:11px;background:var(--red);color:#fff;
-  display:grid;place-items:center;font-size:19px;font-weight:800;letter-spacing:-.04em}
-.nav{display:flex;align-items:center;gap:20px}
-.nav a{font-size:13.5px;font-weight:700;color:var(--muted);transition:color .15s}
-.nav a:hover{color:var(--red)}
-.theme-btn{font-family:var(--mono);font-size:11px;font-weight:700;background:var(--paper);
-  color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;white-space:nowrap}
-.theme-btn:hover{border-color:var(--red)}
+.wrap{max-width:940px;margin:0 auto;padding:0 40px;min-height:100vh;
+  display:flex;flex-direction:column}
 
-.hero{padding:76px 0 56px;border-bottom:1.5px solid var(--line)}
-.kicker{display:inline-block;background:var(--yellow);color:#241d1b;font-size:12px;font-weight:800;
-  padding:5px 14px;border-radius:999px;letter-spacing:.08em;margin-bottom:22px}
-h1{font-size:clamp(64px,14vw,116px);line-height:.95;font-weight:800;letter-spacing:-.065em;margin-bottom:24px}
-h1 .period{color:var(--red)}
-.tagline{font-size:clamp(18px,2.8vw,23px);font-weight:800;max-width:620px;line-height:1.6}
-.intro{color:var(--muted);max-width:580px;margin-top:14px;font-size:14.5px;line-height:1.85}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.chip{font-size:13px;font-weight:800;padding:8px 17px;border-radius:999px;transition:transform .18s}
-.chip:hover{transform:translateY(-3px)}
-.c-red{background:var(--red);color:#fff}
-.c-yellow{background:var(--yellow);color:#241d1b}
-.c-outline{background:var(--paper);color:var(--red);border:1.5px solid var(--red)}
-body[data-theme="dark"] .c-outline{background:transparent;color:#ff8a97;border-color:#ff8a97}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.btn{border-radius:999px;padding:12px 24px;font-size:14px;font-weight:800;
-  display:inline-flex;align-items:center;gap:8px;transition:.2s}
-.btn-primary{background:var(--red);color:#fff}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(209,0,31,.22)}
-.btn-ghost{border:1.5px solid var(--line);background:var(--paper)}
-.btn-ghost:hover{border-color:var(--red);transform:translateY(-3px)}
+header{display:flex;align-items:center;justify-content:space-between;
+  padding:32px 0 0;flex:none}
+.brand{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--muted)}
+.theme{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);
+  background:linear-gradient(90deg,var(--ink) 50%,transparent 50%);
+  cursor:pointer;padding:0;transition:border-color .2s,transform .3s}
+.theme:hover{border-color:var(--accent);transform:rotate(30deg)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 
-section{padding:54px 0 8px}
-.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:24px;flex-wrap:wrap}
-.num{width:36px;height:36px;border-radius:12px;background:var(--red);color:#fff;
-  display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:700;flex:none}
-h2{font-size:24px;font-weight:800;letter-spacing:-.01em}
-.sec-sub{color:var(--muted);font-size:12.5px;margin-left:auto}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
-.card{background:var(--paper);border:1.5px solid var(--line);border-radius:22px;
-  padding:24px 22px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden;
-  display:block;transition:transform .2s,box-shadow .2s}
-.card:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(180,80,50,.15)}
-.card::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:var(--accent)}
-.icon{width:42px;height:42px;border-radius:14px;background:var(--accent);
-  display:grid;place-items:center;margin-bottom:16px}
-.icon span{width:14px;height:14px;border-radius:50%;background:var(--on,#fff);display:block;
-  box-shadow:11px 7px 0 -4px var(--on,#fff)}
-.card h3{font-size:16px;font-weight:800;line-height:1.4}
-.card .meta{font-family:var(--mono);font-size:11px;color:var(--muted);display:block;margin-top:4px}
-.card p{color:var(--muted);font-size:13.5px;line-height:1.75;margin-top:10px}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-.tag{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;
-  background:var(--soft);color:var(--muted)}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(56px,11vh,120px) 0 clamp(40px,8vh,80px)}
+h1{font-size:clamp(76px,15vw,150px);line-height:.9;font-weight:600;
+  letter-spacing:-.07em;margin-bottom:clamp(40px,7vh,72px)}
+h1 .dot{color:var(--accent)}
 
-.notes{display:grid;gap:12px}
-.note{display:flex;align-items:center;gap:18px;background:var(--paper);
-  border:1.5px solid var(--line);border-radius:18px;padding:18px 22px;
-  box-shadow:var(--shadow);transition:transform .2s,border-color .2s}
-.note:hover{transform:translateX(4px);border-color:var(--yellow)}
-.note .date{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap;min-width:92px}
-.note .body{flex:1;min-width:0}
-.note h3{font-size:15px;font-weight:800}
-.note p{font-size:13px;color:var(--muted);margin-top:3px}
-.badge{font-size:11px;font-weight:800;padding:5px 11px;border-radius:999px;
-  background:var(--soft);color:var(--muted);white-space:nowrap}
+.list{border-top:1px solid var(--line)}
+.entry-wrap{border-bottom:1px solid var(--line);
+  animation:rise .6s cubic-bezier(.2,.8,.3,1) both}
+.entry-wrap:nth-child(1){animation-delay:.08s}
+.entry-wrap:nth-child(2){animation-delay:.16s}
+.entry-wrap:nth-child(3){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-.books{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
-.book{display:flex;background:var(--paper);border:1.5px solid var(--line);
-  border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
-.spine{width:14px;background:var(--accent);flex:none}
-.book-body{padding:24px;flex:1}
-.book .state{display:inline-block;font-size:11px;font-weight:800;padding:4px 11px;
-  border-radius:999px;background:var(--yellow);color:#241d1b;margin-bottom:12px}
-.book h3{font-size:17px;font-weight:800;line-height:1.4}
-.book p{font-size:13.5px;color:var(--muted);line-height:1.75;margin-top:8px}
-.chapters{margin-top:16px;display:grid;gap:8px}
-.chapters li{list-style:none;font-size:13px;padding-left:18px;position:relative;color:var(--ink)}
-.chapters li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;
-  border-radius:50%;background:var(--accent)}
+.entry{width:100%;display:grid;align-items:center;gap:20px;
+  grid-template-columns:52px 1fr auto 28px;
+  padding:26px 12px 26px 8px;background:transparent;border:0;color:inherit;
+  font:inherit;text-align:left;cursor:pointer;position:relative;
+  transition:background .25s,padding-left .3s}
+.entry::before{content:"";position:absolute;left:0;top:16%;bottom:16%;width:2px;
+  background:var(--accent);transform:scaleY(0);transform-origin:center;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.entry:hover{background:var(--hover);padding-left:16px}
+.entry:hover::before,.entry[aria-expanded="true"]::before{transform:scaleY(1)}
+.entry[aria-expanded="true"]{background:var(--hover)}
+.entry[aria-expanded="true"]:hover{background:var(--panel)}
 
-.about{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:start}
-.about-card{background:var(--soft);border-radius:22px;padding:26px}
-.about-card p{font-size:14px;line-height:1.9;margin-bottom:12px;opacity:.9}
-.about-card p:last-of-type{margin-bottom:0}
-.about-card strong{font-weight:800}
-.facts{background:var(--paper);border:1.5px solid var(--line);border-radius:22px;padding:6px 22px}
-.fact{display:flex;justify-content:space-between;gap:14px;padding:12px 0;
-  border-bottom:1px dashed var(--line);font-size:13px}
-.fact:last-child{border:0}
-.fact dt{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
-.fact dd{font-weight:800;text-align:right}
-.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.stack .tag{background:var(--paper);border:1.5px solid var(--line)}
+.idx{font-family:var(--serif);font-size:15px;color:var(--muted);
+  transition:color .25s;letter-spacing:.02em}
+.label{display:flex;align-items:baseline;gap:16px;min-width:0}
+.zh{font-size:clamp(28px,4.4vw,40px);font-weight:600;letter-spacing:-.03em;
+  transition:color .25s,transform .3s;white-space:nowrap}
+.en{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);
+  white-space:nowrap}
+.count{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em}
+.arrow{font-size:20px;color:var(--muted);justify-self:end;
+  transition:transform .3s,color .25s}
+.entry:hover .zh{transform:translateX(6px)}
+.entry:hover .arrow{transform:translateX(6px);color:var(--accent)}
+.entry:hover .idx,.entry:hover .count{color:var(--ink)}
+.entry[aria-expanded="true"] .zh,
+.entry[aria-expanded="true"] .idx{color:var(--accent)}
+.entry[aria-expanded="true"] .arrow{transform:rotate(90deg);color:var(--accent)}
+.entry[aria-expanded="true"]:hover .arrow{transform:rotate(90deg) translateX(4px)}
 
-.link-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.link{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:15px 20px;background:var(--paper);border:1.5px solid var(--line);
-  border-radius:18px;font-weight:800;transition:transform .2s,border-color .2s}
-.link:hover{border-color:var(--red);transform:translateY(-3px)}
-.link small{display:block;font-size:11.5px;color:var(--muted);font-weight:400;
-  font-family:var(--mono);margin-top:2px}
-.link .arrow{color:var(--red);font-size:18px}
-footer{margin-top:62px;padding:26px 0 40px;border-top:1.5px solid var(--line);
-  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
-  font-size:12px;color:var(--muted)}
-.foot-dots{display:flex;gap:6px;align-items:center}
-.foot-dots i{width:9px;height:9px;border-radius:50%;display:block}
-.rise{animation:rise .55s cubic-bezier(.2,.8,.3,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.panel{display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .42s cubic-bezier(.2,.8,.2,1)}
+.entry-wrap.open .panel{grid-template-rows:1fr}
+.clip{overflow:hidden;min-height:0}
+.panel-body{padding:4px 0 34px 72px;opacity:0;transform:translateY(-8px);
+  transition:opacity .32s .06s,transform .32s .06s}
+.entry-wrap.open .panel-body{opacity:1;transform:none}
 
-@media(max-width:760px){
-  .grid,.books,.link-row,.about{grid-template-columns:1fr}
-  .nav a{display:none}
-  .hero{padding:54px 0 42px}
-  .sec-sub{display:none}
-  .note{flex-wrap:wrap;gap:10px}
-  .note .date{min-width:auto;width:100%}
-  .wrap{padding:0 18px}
-  .deco{display:none}
-  section{padding:44px 0 4px}
+.item{display:grid;grid-template-columns:170px 1fr auto;gap:2px 18px;
+  align-items:baseline;padding:13px 0;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item .t{font-size:15px;font-weight:600}
+.item .d{font-size:13px;color:var(--muted);line-height:1.7}
+.item .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+  color:var(--accent);white-space:nowrap;justify-self:end;grid-row:1}
+.item a:hover .t{color:var(--accent)}
+.chapters{grid-column:2;display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:6px}
+.chapters span{font-size:12px;color:var(--muted)}
+.chapters span+span::before{content:"· ";color:var(--accent)}
+
+footer{flex:none;display:flex;align-items:center;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;padding:22px 0 30px;
+  border-top:1px solid var(--line);font-family:var(--mono);
+  font-size:10.5px;letter-spacing:.1em;color:var(--muted)}
+.foot{display:flex;gap:22px}
+.foot a{transition:color .2s}
+.foot a:hover{color:var(--accent)}
+
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  main{padding:48px 0 40px}
+  h1{margin-bottom:44px}
+  .entry{grid-template-columns:34px 1fr 22px;gap:12px;padding:22px 4px}
+  .entry:hover{padding-left:8px}
+  .count{display:none}
+  .label{flex-direction:column;gap:2px;align-items:flex-start}
+  .zh{font-size:30px}
+  .en{font-size:9px}
+  .panel-body{padding:2px 0 26px 34px}
+  .item{grid-template-columns:1fr auto;gap:4px 12px}
+  .item .d,.chapters{grid-column:1 / -1}
+  .item .tag{grid-column:2;grid-row:1}
+  footer{font-size:9.5px}
+  .foot{gap:14px}
 }
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
-<div class="stripe"><i></i><i></i></div>
 <div class="wrap">
-  <i class="deco d1"></i><i class="deco d2"></i><i class="deco d3"></i><i class="deco d4"></i>
-
-  <header class="topbar rise">
-    <div class="brand"><span class="seal">L</span><span data-bind="name">LYH</span></div>
-    <nav class="nav">
-      <a href="#ai">AI 项目</a>
-      <a href="#notes">投资心得</a>
-      <a href="#books">在写的书</a>
-      <a href="#about">关于</a>
-      <button class="theme-btn" id="themeBtn" aria-label="切换深浅主题">DARK</button>
-    </nav>
+  <header>
+    <span class="brand">LYH / INDEX</span>
+    <button class="theme" id="themeBtn" aria-label="切换深浅主题" title="切换深浅主题"></button>
   </header>
 
-  <div class="hero">
-    <div class="kicker rise" style="animation-delay:.04s">HI, I'M</div>
-    <h1 class="rise" style="animation-delay:.08s"><span data-bind="name">LYH</span><span class="period">.</span></h1>
-    <div class="tagline rise" style="animation-delay:.12s" data-bind="tagline">用 AI 做项目，记投资心得，慢慢写一本书。</div>
-    <p class="intro rise" style="animation-delay:.16s" data-bind="intro">这里放一小段自我介绍。</p>
-    <div class="chips rise" style="animation-delay:.2s">
-      <a class="chip c-red" href="#ai">AI 项目</a>
-      <a class="chip c-yellow" href="#notes">投资心得</a>
-      <a class="chip c-outline" href="#books">在写的书</a>
-    </div>
-    <div class="cta rise" style="animation-delay:.24s" id="cta"></div>
-  </div>
-
-  <section id="ai">
-    <div class="sec-head"><span class="num">01</span><h2>AI 项目</h2><span class="sec-sub">用 AI 写出来的东西</span></div>
-    <div class="grid" id="aiProjects"></div>
-  </section>
-
-  <section id="notes">
-    <div class="sec-head"><span class="num">02</span><h2>投资心得</h2><span class="sec-sub">想明白了就写下来</span></div>
-    <div class="notes" id="notesList"></div>
-  </section>
-
-  <section id="books">
-    <div class="sec-head"><span class="num">03</span><h2>在写的书</h2><span class="sec-sub">慢慢编，不着急</span></div>
-    <div class="books" id="booksList"></div>
-  </section>
-
-  <section id="about">
-    <div class="sec-head"><span class="num">04</span><h2>关于</h2></div>
-    <div class="about">
-      <div class="about-card">
-        <div data-bind="aboutHtml"></div>
-        <div class="stack" id="stack"></div>
-      </div>
-      <dl class="facts" id="facts"></dl>
-    </div>
-  </section>
-
-  <section id="links">
-    <div class="sec-head"><span class="num">05</span><h2>找到我</h2></div>
-    <div class="link-row" id="linkList"></div>
-  </section>
+  <main>
+    <h1>LYH<span class="dot">.</span></h1>
+    <div class="list" id="list"></div>
+  </main>
 
   <footer>
-    <span>© <span id="year"></span> <span data-bind="name">LYH</span> · 单文件静态页</span>
-    <span class="foot-dots"><i style="background:var(--red)"></i><i style="background:var(--yellow)"></i><i style="background:var(--red)"></i></span>
-    <span data-bind="footer">慢慢来，比较快。</span>
+    <span>© <span id="year"></span> LYH</span>
+    <span class="foot" id="foot"></span>
   </footer>
 </div>
 
 <script>
 /* ========== 只改这里 ==========
-   githubUser 决定全站 GitHub 链接；aiProjects / notes / books 是示例占位，发布前换成真实内容。
+   sections 顺序即页面顺序；items 是点击展开后的条目。
+   给条目加 u: "https://..." 或 u: "github" 即可整行变成链接。
    ================================ */
 const SITE = {
   name: "LYH",
   githubUser: "MRLYH621",
-  tagline: "用 AI 做项目，记投资心得，慢慢写一本书。",
-  intro: "三件事长期做：把想法做成能跑的东西、把投资里想明白的写下来、把文章慢慢收成一本书。这个页面是它们的入口。",
-  aboutHtml: `
-    <p><strong>一句话版本：</strong>喜欢把复杂的事拆成能用的步骤，再慢慢做出来的人。</p>
-    <p>白天写代码，晚上写字。对工具、长期主义和不那么热闹的表达比较有耐心。</p>
-    <p>这个页面是纯静态单文件，没有框架、没有追踪、没有第三方脚本。</p>
-  `,
-  facts: [
-    ["LOCATION", "北京"],
-    ["FOCUS", "AI / 投资 / 写作"],
-    ["NOW", "写一本书"],
-    ["SINCE", "2026"]
-  ],
-  aiProjects: [
-    { title: "AI 写作助手", meta: "WEB · 2026", desc: "用大模型把零散素材整理成可发布的长文，自己每天在用。", tags: ["Vue 3", "LLM"], url: "" },
-    { title: "数据小工具", meta: "TOOL", desc: "把重复的手工整理自动化，重点是省时间，不是炫技。", tags: ["Python", "自动化"], url: "" },
-    { title: "还在实验的", meta: "LAB · 进行中", desc: "没做完也先放上来，记录想法有时比展示成果更有意思。", tags: ["实验"], url: "" }
-  ],
-  notes: [
-    { date: "2026 · 随笔", title: "长期主义不是不动", desc: "关于持有、耐心，以及什么时候该承认自己想错了。", tag: "方法论", url: "" },
-    { date: "2026 · 复盘", title: "记录一次判断失误", desc: "把错误写下来，比记住赚钱的时刻更有用。", tag: "复盘", url: "" },
-    { date: "2026 · 笔记", title: "复利真正难的地方", desc: "不是收益率，是时间和不中断。", tag: "复利", url: "" }
-  ],
-  books: [
-    { title: "暂定名 · 关于经验与时间", state: "写作中", desc: "把这几年写过的想法收成一本书，讲经验、时间感知和普通人的选择。", chapters: ["经验不等于收入", "时间的对数感", "慢慢来，比较快"] },
-    { title: "第二本 · 待定", state: "构思中", desc: "还在攒素材，先留个位置。", chapters: ["主题待定", "素材收集中"] }
-  ],
-  stack: ["JavaScript", "TypeScript", "Vue 3", "Vite", "Node.js", "Python", "LLM / Prompt", "Git"],
-  links: [
-    { label: "GitHub", hint: "代码", url: "github" },
-    { label: "公众号", hint: "长文", url: "" },
-    { label: "B 站", hint: "视频", url: "" },
-    { label: "邮箱", hint: "307169825@qq.com", url: "mailto:307169825@qq.com" }
-  ],
-  footer: "慢慢来，比较快。"
+  email: "307169825@qq.com",
+  sections: [
+    {
+      key: "invest", zh: "投资", en: "INVESTING",
+      items: [
+        { t: "长期主义不是不动", d: "关于持有、耐心，以及什么时候该承认自己想错了。", tag: "方法论" },
+        { t: "记录一次判断失误", d: "把错误写下来，比记住赚钱的时刻更有用。", tag: "复盘" },
+        { t: "复利真正难的地方", d: "不是收益率，是时间和不中断。", tag: "复利" }
+      ]
+    },
+    {
+      key: "projects", zh: "项目", en: "PROJECTS",
+      items: [
+        { t: "AI 写作助手", d: "把零散素材整理成可发布的长文。", tag: "WEB / 2026" },
+        { t: "数据小工具", d: "把重复的手工整理自动化，重点是省时间。", tag: "TOOL" },
+        { t: "还在实验的", d: "没做完也先放上来，记录想法有时比展示成果更有意思。", tag: "LAB" }
+      ]
+    },
+    {
+      key: "books", zh: "书籍", en: "WRITING",
+      items: [
+        { t: "关于经验与时间", d: "写作中 · 把这几年写过的想法收成一本书。", chapters: ["经验不等于收入", "时间的对数感", "慢慢来，比较快"] },
+        { t: "第二本 · 待定", d: "构思中 · 还在攒素材，先留个位置。", chapters: ["主题待定", "素材收集中"] }
+      ]
+    }
+  ]
 };
 
 const $ = (s) => document.querySelector(s);
-const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const resolve = (u) => u === "github" ? `https://github.com/${encodeURIComponent(SITE.githubUser)}` : u;
-const TONES = [
-  { bg: 'var(--red)', on: '#fff' },
-  { bg: 'var(--yellow)', on: '#241d1b' },
-  { bg: 'var(--red)', on: '#fff' }
-];
+const pad = (n) => String(n).padStart(2, "0");
 
-document.querySelectorAll('[data-bind="name"]').forEach(el => el.textContent = SITE.name);
-$('[data-bind="tagline"]').textContent = SITE.tagline;
-$('[data-bind="intro"]').textContent = SITE.intro;
-$('[data-bind="aboutHtml"]').innerHTML = SITE.aboutHtml;
-$('[data-bind="footer"]').textContent = SITE.footer;
-document.title = `${SITE.name} · AI / 投资 / 写作`;
 $('#year').textContent = new Date().getFullYear();
+document.title = `${SITE.name} · ${SITE.sections.map(s => s.zh).join(" / ")}`;
 
-$('#cta').innerHTML = `
-  <a class="btn btn-primary" href="#ai">看看在做的 <span>→</span></a>
-  <a class="btn btn-ghost" href="${esc(resolve('github'))}" target="_blank" rel="noopener">GitHub <span>↗</span></a>`;
-
-$('#aiProjects').innerHTML = SITE.aiProjects.map((p, i) => {
-  const t = TONES[i % TONES.length];
-  const tone = `--accent:${t.bg};--on:${t.on}`;
-  const tags = (p.tags || []).map(t2 => `<span class="tag">${esc(t2)}</span>`).join('');
-  const inner = `<div class="icon"><span></span></div>
-    <h3>${esc(p.title)}</h3><span class="meta">${esc(p.meta || '')}</span>
-    <p>${esc(p.desc)}</p><div class="tags">${tags}</div>`;
-  return p.url
-    ? `<a class="card" style="${tone}" href="${esc(resolve(p.url))}" target="_blank" rel="noopener">${inner}</a>`
-    : `<div class="card" style="${tone}">${inner}</div>`;
+$('#list').innerHTML = SITE.sections.map((s, i) => {
+  const rows = s.items.map(it => {
+    const chapters = (it.chapters || []).length
+      ? `<div class="chapters">${it.chapters.map(c => `<span>${esc(c)}</span>`).join("")}</div>` : "";
+    const inner = `<span class="t">${esc(it.t)}</span>
+      <span class="d">${esc(it.d)}</span>
+      ${chapters}
+      ${it.tag ? `<span class="tag">${esc(it.tag)}</span>` : ""}`;
+    return it.u
+      ? `<a class="item" href="${esc(resolve(it.u))}" target="_blank" rel="noopener">${inner}</a>`
+      : `<div class="item">${inner}</div>`;
+  }).join("");
+  return `<div class="entry-wrap" data-key="${esc(s.key)}">
+    <button class="entry" type="button" aria-expanded="false"
+      aria-controls="panel-${esc(s.key)}" id="tab-${esc(s.key)}">
+      <span class="idx">${pad(i + 1)}</span>
+      <span class="label"><span class="zh">${esc(s.zh)}</span><span class="en">${esc(s.en)}</span></span>
+      <span class="count">${pad(s.items.length)}</span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </button>
+    <div class="panel" id="panel-${esc(s.key)}" role="region" aria-labelledby="tab-${esc(s.key)}">
+      <div class="clip"><div class="panel-body">${rows}</div></div>
+    </div>
+  </div>`;
 }).join('');
 
-$('#notesList').innerHTML = SITE.notes.map(n => {
-  const inner = `<span class="date">${esc(n.date)}</span>
-    <div class="body"><h3>${esc(n.title)}</h3><p>${esc(n.desc)}</p></div>
-    <span class="badge">${esc(n.tag)}</span>`;
-  return n.url
-    ? `<a class="note" href="${esc(resolve(n.url))}" target="_blank" rel="noopener">${inner}</a>`
-    : `<div class="note">${inner}</div>`;
-}).join('');
+$('#foot').innerHTML =
+  `<a href="${esc(resolve('github'))}" target="_blank" rel="noopener">GITHUB ↗</a>` +
+  `<a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`;
 
-$('#booksList').innerHTML = SITE.books.map((b, i) => {
-  const tone = `style="--accent:${TONES[(i + 1) % TONES.length].bg}"`;
-  const chapters = (b.chapters || []).map(ch => `<li>${esc(ch)}</li>`).join('');
-  return `<div class="book" ${tone}>
-    <div class="spine"></div>
-    <div class="book-body">
-      <span class="state">${esc(b.state)}</span>
-      <h3>${esc(b.title)}</h3><p>${esc(b.desc)}</p>
-      <ul class="chapters">${chapters}</ul>
-    </div></div>`;
-}).join('');
-
-$('#facts').innerHTML = SITE.facts.map(([k, v]) =>
-  `<div class="fact"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
-
-$('#stack').innerHTML = SITE.stack.map(t => `<span class="tag">${esc(t)}</span>`).join('');
-
-$('#linkList').innerHTML = SITE.links.filter(l => l.url).map(l =>
-  `<a class="link" href="${esc(resolve(l.url))}" ${resolve(l.url).startsWith('mailto:') ? '' : 'target="_blank" rel="noopener"'}>
-    <span>${esc(l.label)}<small>${esc(l.hint)}</small></span><span class="arrow">↗</span>
-  </a>`).join('');
-
-const btn = $('#themeBtn');
-const KEY = 'lyh-v2-theme';
-function applyTheme(dark) {
-  document.body.dataset.theme = dark ? 'dark' : '';
-  btn.textContent = dark ? 'LIGHT' : 'DARK';
-  document.querySelector('meta[name="theme-color"]').content = dark ? '#1a1516' : '#d1001f';
+/* 手风琴：同时只展开一个；Esc 收起 */
+const wraps = Array.from(document.querySelectorAll('.entry-wrap'));
+function setOpen(wrap, open) {
+  wrap.classList.toggle('open', open);
+  wrap.querySelector('.entry').setAttribute('aria-expanded', String(open));
 }
-let dark = localStorage.getItem(KEY) === 'dark';
-applyTheme(dark);
+wraps.forEach(wrap => {
+  wrap.querySelector('.entry').addEventListener('click', () => {
+    const willOpen = !wrap.classList.contains('open');
+    wraps.forEach(w => setOpen(w, false));
+    if (willOpen) setOpen(wrap, true);
+  });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    const open = wraps.find(w => w.classList.contains('open'));
+    if (open) { setOpen(open, false); open.querySelector('.entry').focus(); }
+  }
+});
+
+/* 主题 */
+const btn = $('#themeBtn');
+const KEY = 'lyh-v3-theme';
+function applyTheme(light) {
+  document.body.dataset.theme = light ? 'light' : '';
+  $('meta[name="theme-color"]').content = light ? '#f5f4f0' : '#0b0d0f';
+  btn.setAttribute('aria-label', light ? '切换到深色主题' : '切换到浅色主题');
+}
+let light = localStorage.getItem(KEY) === 'light';
+applyTheme(light);
 btn.addEventListener('click', () => {
-  dark = !dark;
-  localStorage.setItem(KEY, dark ? 'dark' : 'light');
-  applyTheme(dark);
+  light = !light;
+  localStorage.setItem(KEY, light ? 'light' : 'dark');
+  applyTheme(light);
 });
 </script>
 </body>

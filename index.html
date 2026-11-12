@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LYH · 个人主页</title>
+<meta name="description" content="LYH 的个人主页 — 写写代码，写写字，做点有意思的东西。">
+<meta name="theme-color" content="#0d1117">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1117'/%3E%3Ctext x='32' y='44' font-size='34' font-family='monospace' text-anchor='middle' fill='%233fb950'%3EL%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0d1117; --surface:#161b22; --surface2:#1c2128;
+  --border:#30363d; --text:#e6edf3; --muted:#8b949e;
+  --accent:#3fb950; --accent2:#58a6ff;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+body[data-theme="light"]{
+  --bg:#ffffff; --surface:#f6f8fa; --surface2:#eaeef2;
+  --border:#d8dee4; --text:#1f2328; --muted:#656d76;
+  --accent:#1a7f37; --accent2:#0969da;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:var(--sans); font-size:15px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(color-mix(in srgb,var(--border) 42%,transparent) 1px,transparent 1px),
+                   linear-gradient(90deg,color-mix(in srgb,var(--border) 42%,transparent) 1px,transparent 1px);
+  background-size:56px 56px; background-position:center top;
+}
+body::before{content:"";position:absolute;inset:0 0 auto 0;height:520px;pointer-events:none;
+  background:linear-gradient(to bottom,var(--bg) 25%,transparent);z-index:0}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:var(--bg)}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:20px 0;border-bottom:1px solid var(--border)}
+.brand{font-family:var(--mono);font-size:14px;letter-spacing:.06em;display:flex;align-items:center;gap:9px}
+.dot{width:9px;height:9px;border-radius:2px;background:var(--accent);display:inline-block}
+.nav{display:flex;align-items:center;gap:22px}
+.nav a{font-size:13px;color:var(--muted);transition:color .15s}
+.nav a:hover{color:var(--text)}
+.theme-btn{font-family:var(--mono);font-size:11px;color:var(--muted);background:transparent;
+  border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;transition:all .15s;white-space:nowrap}
+.theme-btn:hover{color:var(--text);border-color:var(--accent2)}
+
+.hero{padding:82px 0 64px;border-bottom:1px solid var(--border)}
+.kicker{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.14em;margin-bottom:22px}
+h1{font-family:var(--mono);font-size:clamp(56px,13vw,104px);line-height:1;
+  letter-spacing:-.055em;font-weight:500;margin-bottom:26px}
+.caret{color:var(--accent);animation:blink 1.1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.tagline{font-size:clamp(17px,2.6vw,21px);color:var(--text);max-width:560px;line-height:1.7}
+.intro{color:var(--muted);max-width:600px;margin-top:16px;font-size:14.5px}
+.status{display:inline-flex;align-items:center;gap:9px;margin-top:30px;padding:7px 14px;
+  border:1px solid var(--border);border-radius:999px;background:var(--surface);
+  font-family:var(--mono);font-size:12px;color:var(--muted)}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{font-family:var(--mono);font-size:13px;padding:11px 20px;border-radius:8px;
+  border:1px solid var(--border);transition:all .18s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:500}
+.btn-primary:hover{transform:translateY(-2px);opacity:.9}
+.btn-ghost:hover{border-color:var(--accent2);color:var(--accent2);transform:translateY(-2px)}
+
+section{padding:56px 0 8px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:26px}
+.sec-no{font-family:var(--mono);font-size:12px;color:var(--accent)}
+h2{font-size:19px;font-weight:500;letter-spacing:.01em}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:22px;transition:border-color .18s,transform .18s}
+.card:hover{border-color:var(--accent2);transform:translateY(-2px)}
+.card-title{font-size:15px;font-weight:500;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.card-title span{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:400}
+.card p{color:var(--muted);font-size:13.5px;margin-top:10px;line-height:1.7}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{font-family:var(--mono);font-size:11.5px;color:var(--muted);
+  border:1px solid var(--border);border-radius:6px;padding:4px 9px;background:var(--surface2)}
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start}
+.about p{color:var(--muted);font-size:14.5px;margin-bottom:14px}
+.about strong{color:var(--text);font-weight:500}
+.facts{border:1px solid var(--border);border-radius:12px;background:var(--surface);overflow:hidden}
+.fact{display:flex;justify-content:space-between;gap:16px;padding:13px 18px;
+  border-bottom:1px solid var(--border);font-size:13px}
+.fact:last-child{border-bottom:0}
+.fact dt{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.fact dd{text-align:right;color:var(--text)}
+.link-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.link{display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;border:1px solid var(--border);border-radius:10px;
+  background:var(--surface);font-size:14px;transition:all .18s}
+.link:hover{border-color:var(--accent2);transform:translateY(-2px)}
+.link small{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:10px}
+.link .arrow{color:var(--muted);font-size:14px}
+.link:hover .arrow{color:var(--accent2)}
+footer{margin-top:64px;padding:26px 0 40px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.rise{animation:rise .55s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+@media(max-width:720px){
+  .g3,.g2,.link-row{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr;gap:20px}
+  .hero{padding:60px 0 48px}
+  .nav a{display:none}
+  section{padding:44px 0 4px}
+  .wrap{padding:0 18px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar rise">
+    <div class="brand"><i class="dot"></i><span data-bind="name">LYH</span></div>
+    <nav class="nav">
+      <a href="#about">关于</a>
+      <a href="#work">在做</a>
+      <a href="#stack">工具</a>
+      <a href="#links">联系</a>
+      <button class="theme-btn" id="themeBtn" aria-label="切换主题">LIGHT</button>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="kicker rise" style="animation-delay:.04s">// hello, world</div>
+    <h1 class="rise" style="animation-delay:.08s"><span data-bind="name">LYH</span><span class="caret">_</span></h1>
+    <div class="tagline rise" style="animation-delay:.12s" data-bind="tagline">写代码，也写点别的。</div>
+    <p class="intro rise" style="animation-delay:.16s" data-bind="intro">这里放一小段自我介绍。不用太正式，说清楚你在做什么、关心什么就够了。</p>
+    <div class="status rise" style="animation-delay:.2s"><i class="pulse"></i><span data-bind="status">正在做点有意思的东西</span></div>
+    <div class="cta rise" style="animation-delay:.24s" id="cta"></div>
+  </div>
+
+  <section id="about">
+    <div class="sec-head"><span class="sec-no">01 /</span><h2>关于</h2></div>
+    <div class="about">
+      <div data-bind="aboutHtml"></div>
+      <dl class="facts" id="facts"></dl>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-head"><span class="sec-no">02 /</span><h2>在做的东西</h2></div>
+    <div class="grid g3" id="projects"></div>
+  </section>
+
+  <section id="stack">
+    <div class="sec-head"><span class="sec-no">03 /</span><h2>常用工具</h2></div>
+    <div class="tag-row" id="stack"></div>
+  </section>
+
+  <section id="links">
+    <div class="sec-head"><span class="sec-no">04 /</span><h2>找到我</h2></div>
+    <div class="link-row" id="links"></div>
+  </section>
+
+  <footer>
+    <span>© <span id="year"></span> <span data-bind="name">LYH</span> — built with plain HTML</span>
+    <span data-bind="footer">少说，多做。</span>
+  </footer>
+</div>
+
+<script>
+/* ========== 只改这里 ==========
+   githubUser 换成你的 GitHub 用户名，全站链接会自动指向你的账号。
+   不需要的链接从 links 里删掉即可；projects 换成你自己的内容。
+   ================================ */
+const SITE = {
+  name: "LYH",
+  githubUser: "MRLYH621",
+  tagline: "写代码，也写点别的。",
+  intro: "这里放一小段自我介绍。不用太正式，说清楚你在做什么、关心什么就够了。",
+  status: "正在做点有意思的东西",
+  aboutHtml: `
+    <p><strong>一句话版本：</strong>一个喜欢把事情拆清楚、再慢慢做出来的人。</p>
+    <p>白天写代码，晚上写字。对工具、表达和长期主义的东西比较有耐心，不太喜欢热闹的场面。</p>
+    <p>这个页面是纯静态的，没有框架、没有追踪、没有第三方脚本。想改就改，改完推上去就生效。</p>
+  `,
+  facts: [
+    ["LOCATION", "北京"],
+    ["FOCUS", "前端 / 内容"],
+    ["NOW", "整理作品集"],
+    ["SINCE", "2026"]
+  ],
+  projects: [
+    { title: "作品一", meta: "WEB", desc: "一个自己用得上的小工具。写清楚解决什么问题、用了什么。", tags: ["Vue", "Vite"], url: "" },
+    { title: "作品二", meta: "WRITING", desc: "长期写的东西，放几篇自己满意的进去就够了。", tags: ["写作"], url: "" },
+    { title: "作品三", meta: "LAB", desc: "还没做完也没关系，标注「进行中」反而更真实。", tags: ["实验"], url: "" }
+  ],
+  stack: ["JavaScript", "TypeScript", "Vue 3", "Vite", "Node.js", "HTML / CSS", "Git", "Figma"],
+  links: [
+    // label / hint / url。url 留空则不显示。
+    { label: "GitHub", hint: "代码", url: "github" },
+    { label: "公众号", hint: "长文", url: "" },
+    { label: "B 站", hint: "视频", url: "" },
+    { label: "邮箱", hint: "hello@example.com", url: "mailto:hello@example.com" }
+  ],
+  footer: "少说，多做。"
+};
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const resolve = (u) => u === "github" ? `https://github.com/${encodeURIComponent(SITE.githubUser)}` : u;
+
+document.querySelectorAll('[data-bind="name"]').forEach(el => el.textContent = SITE.name);
+$('[data-bind="tagline"]').textContent = SITE.tagline;
+$('[data-bind="intro"]').textContent = SITE.intro;
+$('[data-bind="status"]').textContent = SITE.status;
+$('[data-bind="aboutHtml"]').innerHTML = SITE.aboutHtml;
+$('[data-bind="footer"]').textContent = SITE.footer;
+document.title = `${SITE.name} · 个人主页`;
+$('#year').textContent = new Date().getFullYear();
+
+$('#cta').innerHTML = `
+  <a class="btn btn-primary" href="#work">看看在做的 <span>→</span></a>
+  <a class="btn btn-ghost" href="${esc(resolve('github'))}" target="_blank" rel="noopener">GitHub <span>↗</span></a>`;
+
+$('#facts').innerHTML = SITE.facts.map(([k,v]) =>
+  `<div class="fact"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+
+$('#projects').innerHTML = SITE.projects.map(p => {
+  const tags = (p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('');
+  const inner = `<div class="card-title">${esc(p.title)}<span>${esc(p.meta || '')}</span></div>
+                 <p>${esc(p.desc)}</p><div class="tag-row">${tags}</div>`;
+  return p.url
+    ? `<a class="card" href="${esc(resolve(p.url))}" target="_blank" rel="noopener">${inner}</a>`
+    : `<div class="card">${inner}</div>`;
+}).join('');
+
+$('#stack').innerHTML = SITE.stack.map(t => `<span class="tag">${esc(t)}</span>`).join('');
+
+$('#links').innerHTML = SITE.links.filter(l => l.url).map(l =>
+  `<a class="link" href="${esc(resolve(l.url))}" ${resolve(l.url).startsWith('mailto:') ? '' : 'target="_blank" rel="noopener"'}>
+     <span>${esc(l.label)} <small>${esc(l.hint)}</small></span><span class="arrow">↗</span>
+   </a>`).join('');
+
+/* 主题切换，记忆到 localStorage */
+const btn = $('#themeBtn');
+const saved = localStorage.getItem('lyh-theme');
+if (saved === 'light') { document.body.dataset.theme = 'light'; btn.textContent = 'DARK'; }
+btn.addEventListener('click', () => {
+  const light = document.body.dataset.theme !== 'light';
+  document.body.dataset.theme = light ? 'light' : 'dark';
+  btn.textContent = light ? 'DARK' : 'LIGHT';
+  localStorage.setItem('lyh-theme', light ? 'light' : 'dark');
+  document.querySelector('meta[name="theme-color"]').content = light ? '#ffffff' : '#0d1117';
+});
+</script>
+</body>
+</html>

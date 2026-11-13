@@ -169,6 +169,19 @@ function renderDetail(key) {
   }
 }
 
+/* ---------- 百度统计：全站 PV + 外链点击 ---------- */
+(function initAnalytics() {
+  window._hmt = window._hmt || [];
+  const hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?3ee657b76b1ff03579621986c92753d5';
+  document.head.appendChild(hm);
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[target="_blank"]');
+    if (!a) return;
+    window._hmt.push(['_trackEvent', 'outbound', 'click', a.getAttribute('href')]);
+  });
+})();
+
 /* ---------- 启动 ---------- */
 initCommon();
 const page = document.body.dataset.page;

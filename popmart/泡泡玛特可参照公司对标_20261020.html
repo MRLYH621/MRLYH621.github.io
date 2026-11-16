@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 · 可参照公司对标</title>
+<style>
+  :root{
+    --bg:#0e1116; --card:#161b22; --card2:#1c232d; --line:#2a323d;
+    --txt:#e6edf3; --sub:#9aa7b4; --acc:#ff5a5f; --acc2:#4cc9f0; --good:#3fb950; --warn:#e3b341;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:24px;max-width:1100px;margin:0 auto}
+  h1{font-size:24px;margin-bottom:4px}
+  .meta{color:var(--sub);font-size:13px;margin-bottom:24px}
+  h2{font-size:18px;margin:28px 0 12px;border-left:3px solid var(--acc);padding-left:10px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card .k{color:var(--sub);font-size:12px;margin-bottom:6px}
+  .card .v{font-size:24px;font-weight:700}
+  .card .d{font-size:12px;margin-top:6px}
+  .up{color:var(--good)} .down{color:var(--acc)} .flat{color:var(--warn)}
+  table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+  th{color:var(--sub);font-weight:600;background:var(--card2)}
+  td.num{font-variant-numeric:tabular-nums;text-align:right}
+  .tag{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-size:12px;color:var(--sub)}
+  .note{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:14px;font-size:13px;color:var(--sub);margin:12px 0}
+  .src{font-size:12px;color:#6b7785;margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
+  .hl{color:var(--acc2);font-weight:600}
+  .hl2{color:var(--warn);font-weight:600}
+  .mat td{font-variant-numeric:tabular-nums;text-align:right}
+  .mat td:first-child{text-align:left}
+  .hot{background:rgba(255,90,95,.12)}
+  .pill{display:inline-block;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600}
+  .pill.b{background:rgba(227,179,65,.18);color:var(--warn)}
+  .pill.s{background:rgba(76,201,240,.18);color:var(--acc2)}
+  .pill.g{background:rgba(63,185,80,.18);color:var(--good)}
+  .pill.r{background:rgba(255,90,95,.18);color:var(--acc)}
+  .me{background:rgba(76,201,240,.10);border:1px solid rgba(76,201,240,.4)}
+</style>
+</head>
+<body>
+<h1>泡泡玛特 · 可参照公司对标</h1>
+<div class="meta">目的：用真身公司给「成熟期市占 / 估值」打标尺｜ 对标口径统一折算为人民币（汇率 1 HKD=0.85628 CNY，1 USD=7.2 CNY，1 JPY=0.0456 CNY）｜ 数据截至 2026-10-20 各交易所公开披露 / 券商</div>
+
+<h2>一、为什么需要参照系</h2>
+<div class="note">之前两份推演（10年利润情景、全球市占成熟期）都是<b>自下而上</b>的内生模型——用 CAGR 和门店密度算。但"成熟期该给多少倍 PE、市占 20% 是不是天花板"这种问题，光靠内生逻辑答不准，必须找几个被市场定过价的真身公司对标。这里选了<b>四类各取所长</b>的样本。</div>
+
+<h2>二、四类可参照公司（各取所长）</h2>
+<div class="grid">
+  <div class="card me"><div class="k">① 模式最像 · 风险镜鉴</div><div class="v">名创优品 MINISO</div><div class="d">9896.HK｜中国品牌出海+轻资产+港股+IP化转型。和它比，看"出海股若增速放缓会被压到几倍 PE"</div></div>
+  <div class="card"><div class="k">② 单一IP长青 · 出海验证</div><div class="v">三丽鸥 Sanrio</div><div class="d">8136.T｜Hello Kitty 50年不老+全球授权+亚洲爆发。和它比，看"IP长青+出海"能否拿平台溢价</div></div>
+  <div class="card"><div class="k">③ 多IP矩阵 · 玩具平台</div><div class="v">万代南梦宫</div><div class="d">7832.T｜高达/龙珠/海贼+400 IP+40年。和它比，看"从单核 LABUBU 转向矩阵"是否可持续</div></div>
+  <div class="card"><div class="k">④ 终极天花板 · 综合IP平台</div><div class="v">迪士尼 Disney</div><div class="d">DIS｜IP平台终极形态，但业务混杂（乐园+流媒体）。仅作市值/估值上限参照</div></div>
+</div>
+<div class="note">不选 Funko（NASDAQ:FNKO）：虽是潮玩最直接上市标的，但体量为泡泡玛特 1/40、美国单一市场、近年业绩恶化，已失去可比锚点意义，仅作"反面教材"（单一市场潮玩波动大）。</div>
+
+<h2>三、关键指标对比（统一折算人民币）</h2>
+<table class="mat">
+  <tr><th>公司</th><th>市值</th><th>营收(近12m)</th><th>净利</th><th>毛利率</th><th>净利率</th><th>PE(TTM)</th><th>全球门店/布局</th></tr>
+  <tr class="me"><td><b>泡泡玛特</b></td><td class="num">1598亿</td><td class="num">371亿</td><td class="num">131亿</td><td class="num">72.1%</td><td class="num hot">35.2%</td><td class="num">≈12x</td><td class="num">676店+2827机器人/21国</td></tr>
+  <tr><td>名创优品</td><td class="num">≈200亿</td><td class="num">≈230亿</td><td class="num">≈22亿</td><td class="num">44.3%</td><td class="num">10.6%</td><td class="num">7–8x</td><td class="num">8674店/全球多国</td></tr>
+  <tr><td>三丽鸥</td><td class="num">≈700亿</td><td class="num">≈88亿</td><td class="num">≈25亿</td><td class="num">76.8%</td><td class="num">27.6%</td><td class="num">26x</td><td class="num">授权+零售+乐园/全球</td></tr>
+  <tr><td>万代南梦宫</td><td class="num">≈1777亿</td><td class="num">≈652亿</td><td class="num">≈68亿</td><td class="num">≈40%</td><td class="num">10.4%</td><td class="num">25x</td><td class="num">400+IP/全球</td></tr>
+  <tr><td>迪士尼</td><td class="num">≈13600亿</td><td class="num">≈7120亿</td><td class="num">≈619亿</td><td class="num">37.6%</td><td class="num">8.7%</td><td class="num">22.9x</td><td class="num">乐园+流媒体+影视/全球</td></tr>
+</table>
+<div class="note">折算说明：泡泡玛特 1867亿HKD×0.85628=1598亿RMB；三丽鸥取 1.44–1.67万亿日元中值≈1.55万亿×0.0456≈705亿RMB；万代 3.9万亿日元×0.0456≈1777亿RMB；迪士尼 1890亿美元×7.2≈1.36万亿RMB。名创优品市值按券商 2026E PE 7–8x 与净利≈25亿倒推≈200亿RMB（9896.HK 当前交易区间）。</div>
+
+<h2>四、三组核心对照结论</h2>
+<div class="grid">
+  <div class="card"><div class="k">① 盈利能力（泡泡玛特最强）</div><div class="v">净利率 35.2%</div><div class="d">全场最高：三丽鸥27.6%＜名创10.6%≈万代10.4%＜迪士尼8.7%；毛利72.1%仅次于三丽鸥76.8%</div></div>
+  <div class="card"><div class="k">② 估值（泡泡玛特几乎垫底）</div><div class="v">PE ≈12x</div><div class="d">仅高于名创(7–8x)；远低于三丽鸥26x/万代25x/迪士尼23x。市场给"出海可持续性"最大折价</div></div>
+  <div class="card"><div class="k">③ 规模 vs 市值错位</div><div class="v">营收 371亿</div><div class="d">是三丽鸥(88亿)的 4.2×，但市值只其 2.3×；与万代(652亿营收)比，营收仅57%却净利1.9×</div></div>
+</div>
+<div class="note"><b>最值得玩味的一组数字</b>：泡泡玛特净利率 35.2%，远强于名创(10.6%)，更接近三丽鸥(27.6%)；但 PE(12x) 却紧贴名创(7–8x)、远离三丽鸥(26x)。这说明市场当前把泡泡玛特<b>按"名创级出海折价"定价，而非"三丽鸥级平台溢价"定价</b>。中间的差，就是你的超额收益来源——前提是它能用业绩证明自己更像三丽鸥而不是名创。</div>
+
+<h2>五、对成熟期市占 / 估值的校准</h2>
+<div class="note">把之前「全球市占推演」的中性成熟净利 333亿，套进可比公司的 PE 区间，反算成熟期合理市值与股价（股本 13.32亿股）：</div>
+<table class="mat">
+  <tr><th>定价参照</th><th>PE</th><th>成熟净利333亿 → 市值</th><th>对应股价(HKD)</th><th>含义</th></tr>
+  <tr><td><span class="pill b">名创级（折价）</span></td><td class="num">8x</td><td class="num">2664亿RMB</td><td class="num down">233</td><td>出海失速、港股消费出海股被压到个位数PE</td></tr>
+  <tr><td><span class="pill s">当前</span></td><td class="num">12x</td><td class="num">3996亿RMB</td><td class="num">349</td><td>已隐含"全年零增长+出海放缓"</td></tr>
+  <tr><td><span class="pill s">中性修复</span></td><td class="num">15–20x</td><td class="num">5000–6660亿RMB</td><td class="num hot">438–584</td><td>介于名创与三丽鸥：增速高于名创、确定性弱于三丽鸥</td></tr>
+  <tr><td><span class="pill g">平台溢价（三丽鸥/万代级）</span></td><td class="num">25x</td><td class="num">8325亿RMB</td><td class="num up">730</td><td>证明多IP矩阵+长青出海可持续</td></tr>
+</table>
+<div class="note">这组数字和之前「10年利润情景模型」的 PE 10/20/30/40 目标价矩阵（中性20x→540 HKD）完全咬合。<b>核心上行逻辑不是利润涨多少，而是 12x→20x 的估值修复</b>——即从"名创级折价"回归到"三丽鸥/万代级平台溢价"。即便利润原地不动（333亿），光这一修复就值 438–584 HKD。</div>
+
+<h2>六、风险镜鉴：名创优品路径</h2>
+<div class="grid">
+  <div class="card"><div class="k">名创当前状态</div><div class="v">PE 7–8x</div><div class="d">海外代理主动降速、北美IP上新节奏拖累、关税运费扰动；券商把2026E净利从27.7亿下修到18.6亿</div></div>
+  <div class="card"><div class="k">对泡泡玛特的警示</div><div class="v">出海放缓=估值腰斩</div><div class="d">模式最像：一旦海外增速从爆发转平庸，港股消费出海股可被压到个位数PE。泡泡玛特2026H1海外−11.6%正是同一类阵痛</div></div>
+  <div class="card"><div class="k">但差异在盈利质量</div><div class="v">净利率差 3.3×</div><div class="d">泡泡玛特净利率35% vs 名创10.6%——同样的"出海放缓"，泡泡玛特的利润垫厚得多，抗跌能力强</div></div>
+</div>
+<div class="note">正向对标同样成立：三丽鸥 2026 亚洲收入 +62.6%、授权业务爆发，证明"可爱/IP 文化"能跨文化输出且高毛利；万代 400+ IP 活了 40 年，证明"多IP矩阵"比"单核爆款"更抗周期。这正是你"海外大有可为 + 多IP接力"判断的海外证据。</div>
+
+<h2>七、一句话总结</h2>
+<div class="note">泡泡玛特现在的 <span class="hl">12x PE</span>，是市场拿 <span class="hl2">名创优品</span> 的尺子在量它——但论盈利能力（净利率35%）它更接近 <span class="hl2">三丽鸥</span>（27.6%、26x PE）。如果 2027 它能用"海外反超国内 + 多IP矩阵接力"证明自己走的是万代/三丽鸥路径而非名创路径，估值从 12x 修复到 20x+ 是比利润增长更大的上行弹性；反之若出海继续失速，8x 也挡不住（233 HKD）。<b>可参照公司给了我们一张"可能性地图"，但最终落在哪个格子，取决于你最看重的那条出海曲线能否兑现。</b></div>
+
+<div class="src">数据来源：泡泡玛特 2025 年报 / 2026 中报（港交所）；名创优品 2026 中报及国泰海通/财通/国盛研报；三丽鸥 2026年3月期财报（TYO:8136）；万代南梦宫 2026 财报（TYO:7832）；迪士尼 FY2026 披露（NYSE:DIS）；汇率中间价 2026-10-20。折算汇率：1 HKD=0.85628 CNY、1 USD=7.2 CNY、1 JPY=0.0456 CNY。市值/PE 为各交易所 2026-10-20 前后公开数据，实时价以交易时段为准。</div>
+</body>
+</html>

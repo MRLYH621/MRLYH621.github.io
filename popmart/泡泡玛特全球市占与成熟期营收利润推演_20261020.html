@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 全球市占与成熟期营收/利润推演</title>
+<style>
+  :root{
+    --bg:#0e1116; --card:#161b22; --card2:#1c232d; --line:#2a323d;
+    --txt:#e6edf3; --sub:#9aa7b4; --acc:#ff5a5f; --acc2:#4cc9f0; --good:#3fb950; --warn:#e3b341;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:24px;max-width:1100px;margin:0 auto}
+  h1{font-size:24px;margin-bottom:4px}
+  .meta{color:var(--sub);font-size:13px;margin-bottom:24px}
+  h2{font-size:18px;margin:28px 0 12px;border-left:3px solid var(--acc);padding-left:10px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card .k{color:var(--sub);font-size:12px;margin-bottom:6px}
+  .card .v{font-size:24px;font-weight:700}
+  .card .d{font-size:12px;margin-top:6px}
+  .up{color:var(--good)} .down{color:var(--acc)} .flat{color:var(--warn)}
+  table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+  th{color:var(--sub);font-weight:600;background:var(--card2)}
+  td.num{font-variant-numeric:tabular-nums;text-align:right}
+  .tag{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-size:12px;color:var(--sub)}
+  .note{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:14px;font-size:13px;color:var(--sub);margin:12px 0}
+  .src{font-size:12px;color:#6b7785;margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
+  .hl{color:var(--acc2);font-weight:600}
+  .hl2{color:var(--warn);font-weight:600}
+  .mat td{font-variant-numeric:tabular-nums;text-align:right}
+  .mat td:first-child{text-align:left}
+  .hot{background:rgba(255,90,95,.12)}
+  .pill{display:inline-block;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600}
+  .pill.b{background:rgba(227,179,65,.18);color:var(--warn)}
+  .pill.s{background:rgba(76,201,240,.18);color:var(--acc2)}
+  .pill.g{background:rgba(63,185,80,.18);color:var(--good)}
+  .pill.r{background:rgba(255,90,95,.18);color:var(--acc)}
+</style>
+</head>
+<body>
+<h1>泡泡玛特 · 全球市占与成熟期营收/利润推演</h1>
+<div class="meta">方法：从「全球潮玩 TAM」自下而上（区域门店密度 + 未开拓市场满血）推到成熟期，再按当前毛利率/净利率反算利润｜ 基准 2025年报 + 2026中报 ｜ 汇率 1 HKD=0.85628 CNY（2026-10-20）｜ 股本 13.32亿股 ｜ 价锚 142.2 HKD</div>
+
+<h2>一、起点：当前全球市占（2025 实际）</h2>
+<div class="grid">
+  <div class="card"><div class="k">全球潮玩 TAM（设计/艺术玩具+收藏）</div><div class="v">≈3600亿</div><div class="d">CNY；含海外 3500–3700亿区间中值</div></div>
+  <div class="card"><div class="k">泡泡玛特全球营收 2025</div><div class="v">371.2亿</div><div class="d">同比 +184.7%</div></div>
+  <div class="card"><div class="k">全球市占（总）</div><div class="v">≈10.3%</div><div class="d">371.2 ÷ 3600</div></div>
+  <div class="card"><div class="k">海外市占（仅海外收入）</div><div class="v">&lt;5%</div><div class="d">162.7 ÷ 3600 ≈ 4.5%</div></div>
+</div>
+<div class="note">口径说明：此处 TAM = 「设计师玩具 / 艺术玩具 / 潮玩收藏」赛道（泡泡玛特的真实竞争集），<b>不是</b>广义玩具市场（全球约 8600亿+，那里面乐高/孩之宝占大头，和泡泡玛特不在一个细分）。把 20% 的潮玩市占误解成 20% 的全玩具市占会高估 2 倍以上，务必区分。</div>
+
+<h2>二、成熟期区域营收推演（自下而上，亿元）</h2>
+<div class="note">逻辑：每个区域按「成熟门店密度对标京沪 + 已验证的海外单店产出 + 未开拓国家满血」给成熟期收入。中国最成熟、增速最低；欧洲/中东/其他从近零起步、倍数最高。</div>
+<table class="mat">
+  <tr><th>区域</th><th>2025 实际</th><th>保守成熟</th><th>中性成熟</th><th>乐观成熟</th><th>中性倍数</th></tr>
+  <tr><td>中国（内地）</td><td class="num">208.5</td><td class="num">250</td><td class="num">280</td><td class="num">320</td><td class="num">1.34×</td></tr>
+  <tr><td>亚太（含港澳台）</td><td class="num">80.1</td><td class="num">220</td><td class="num">280</td><td class="num">340</td><td class="num">3.50×</td></tr>
+  <tr><td>美洲</td><td class="num">68.1</td><td class="num">240</td><td class="num">300</td><td class="num">360</td><td class="num">4.40×</td></tr>
+  <tr><td>欧洲/中东/其他</td><td class="num">14.5</td><td class="num">110</td><td class="num">150</td><td class="num">220</td><td class="num">10.3×</td></tr>
+  <tr style="font-weight:700"><td>全球合计</td><td class="num">371.2</td><td class="num">820</td><td class="num">1010</td><td class="num">1240</td><td class="num">2.72×</td></tr>
+</table>
+<div class="note">增长来源一目了然：海外三区贡献了成熟期增量的 <span class="hl">≈96%</span>（371→1010 的 639亿里，海外占 615亿）。其中<b>欧洲/中东/其他（近零→150亿）</b>和<b>美洲（68→300亿）</b>是主引擎；中国只是温和爬坡。这正是"国外反超国内"的微观基础。</div>
+
+<h2>三、成熟期全球市占</h2>
+<div class="note">假设全球潮玩 TAM 以 ~3%/年 自然增长（品类扩张 + 新受众），10 年后 ≈ 4800亿（乐观情景放宽到 5200亿）。</div>
+<table class="mat">
+  <tr><th>情景</th><th>成熟期营收</th><th>成熟期 TAM</th><th>全球市占</th><th>较当前 10.3%</th></tr>
+  <tr><td><span class="pill b">保守</span></td><td class="num">820亿</td><td class="num">4800亿</td><td class="num">17.1%</td><td class="num up">+6.8ppt</td></tr>
+  <tr><td><span class="pill s">中性</span></td><td class="num">1010亿</td><td class="num">4800亿</td><td class="num hot">21.0%</td><td class="num up">+10.7ppt</td></tr>
+  <tr><td><span class="pill g">乐观</span></td><td class="num">1240亿</td><td class="num">5200亿</td><td class="num">23.8%</td><td class="num up">+13.5ppt</td></tr>
+</table>
+<div class="note">结论：当前全球市占 ~10%，成熟期大概率落在 <span class="hl2">17%–24%</span>，即<b>翻一倍左右</b>。这不是"挤牙膏式抢份额"，而是<b>品类本身在 Pop Mart 带动下扩张</b>——它既是份额赢家、也是 TAM 创造者（盲盒/搪胶大娃重新定义了"可收藏玩具"）。保守情景下 17% 也已隐含海外全面铺开；乐观 24% 接近"全球性垄断级单一 IP 平台"，需要 LABUBU 级新爆款持续接力。</div>
+
+<h2>四、按当前毛利率 / 净利率算成熟利润</h2>
+<div class="note">毛利率取 2025 实际 <b>72.1%</b>、2026H1 <b>69.7%</b> → 成熟期常态化用 <b>71%</b>（区间 70–72%，假设规模效应抵消轻微稀释）。经调整净利率 2025 为 <b>35.3%</b>、2026H1 为 <b>30.0%</b> → 成熟期用 <b>33%</b>（区间 30–35%，调整年偏低、常态回落）。</div>
+<table class="mat">
+  <tr><th>情景</th><th>成熟期营收</th><th>毛利率 71%</th><th>毛利额</th><th>净利率 33%</th><th class="hot">成熟净利</th><th>vs 2025 净利 130.8亿</th></tr>
+  <tr><td><span class="pill b">保守</span></td><td class="num">820亿</td><td class="num">71%</td><td class="num">582亿</td><td class="num">31%</td><td class="num">254亿</td><td class="num">1.94×</td></tr>
+  <tr><td><span class="pill s">中性</span></td><td class="num">1010亿</td><td class="num">71%</td><td class="num">717亿</td><td class="num">33%</td><td class="num hot">333亿</td><td class="num">2.55×</td></tr>
+  <tr><td><span class="pill g">乐观</span></td><td class="num">1240亿</td><td class="num">72%</td><td class="num">893亿</td><td class="num">35%</td><td class="num">434亿</td><td class="num">3.32×</td></tr>
+</table>
+<div class="note">成熟期净利区间 <span class="hl">254–434亿</span>，中枢 333亿。注意：这是"利润率不变、纯靠规模扩张"的静态推演——若成熟期因竞争/品类成熟导致净利率从 33% 滑到 28%，中性净利即降到 283亿（仍 2.16×）。反过来若规模效应让净利率回到 35%（2025 水平），中枢可达 354亿。</div>
+
+<h2>五、未开拓市场到底有多大</h2>
+<div class="grid">
+  <div class="card"><div class="k">当前 0→1 空白市场</div><div class="v">≈14亿人口级</div><div class="d">印度、非洲、沙特、中东其余、中/东欧、南美其余、东南亚剩余</div></div>
+  <div class="card"><div class="k">0→1 市场贡献的成熟期增量</div><div class="v">≈135亿</div><div class="d">欧洲/中东/其他 14.5→150 的几乎全部</div></div>
+  <div class="card"><div class="k">海外总增量（中性）</div><div class="v">≈615亿</div><div class="d">162.7→730；其中约一半来自 0→1</div></div>
+  <div class="card"><div class="k">对比：京沪单城密度</div><div class="v">50+家/城</div><div class="d">美国 86 家 vs 此密度，北美空间仍 3–4×</div></div>
+</div>
+<div class="note">你"潜力大"的判断成立——但节奏要校准：2026 是公认的<b>调整年</b>（H1 海外 −11.6% 是渠道换挡+高基数阵痛，不是需求消失），0→1 市场的真正放量要等到 <span class="hl2">2027–2029</span> 供应链本地化 + 门店密度到位之后。换句话说，潜力是真实的，但它是"慢变量"，不是明年就兑现。</div>
+
+<h2>六、交叉验证（与之前 CAGR 模型 + 估值桥）</h2>
+<table class="mat">
+  <tr><th>口径</th><th>成熟期净利</th><th>×20× PE</th><th>市值(CNY)</th><th>股价(HKD)</th><th>对应当前 142</th></tr>
+  <tr><td>CAGR 中性（旧模型 2036）</td><td class="num">308亿</td><td class="num">20×</td><td class="num">6160亿</td><td class="num">540</td><td class="num up">3.8×</td></tr>
+  <tr class="hot"><td>市占中性（本模型）</td><td class="num">333亿</td><td class="num">20×</td><td class="num">6660亿</td><td class="num">584</td><td class="num up">4.1×</td></tr>
+  <tr><td>市占乐观</td><td class="num">434亿</td><td class="num">20×</td><td class="num">8680亿</td><td class="num">761</td><td class="num up">5.4×</td></tr>
+</table>
+<div class="note">两种独立方法（CAGR 外推 vs 市占自下而上）给出的成熟期净利 <b>308 亿 vs 333 亿高度吻合</b>，互相佐证，不是拍脑袋。关键启示：<span class="hl">当前 142 HKD ≈ 12× 2025 实际利润，已把"增长消失"定价进去；而成熟期哪怕估值原地不动（维持 12×），中性净利 333亿对应股价也该 ≈ 351（≈2.5×）</span>——也就是说，光靠利润翻 2.5 倍就能撑住数倍回报，估值修复只是额外红利。</div>
+
+<h2>七、关键假设与风险（决定上限是否兑现）</h2>
+<div class="note">
+<b>① 单一品牌市占 20%+ 的可持续性</b>：潮玩是 youth-culture 品类，一个品牌长期占 20% 全球份额需要持续出 LABUBU 级爆款。IP 接班失败（无第三/第四个十亿级 IP）是最大下行。<br>
+<b>② 品类扩张 vs 份额抢夺的区分</b>：本模型假设 TAM 随 Pop Mart 扩张而增长（它确实是品类定义者）。若市场认为潮玩是零和（被乐高/万代/本地品牌分食），上限要打折。<br>
+<b>③ 地缘/汇率磨损</b>：海外收入多留存当地多币种，人民币走强（0.85628）会吞噬折算利润——已在 PE 中扣减约 2 个 turn，但长期汇率方向不可控。<br>
+<b>④ 宏观与监管</b>：盲盒在部分市场面临"gambling-like"监管（国内已有限制）；海外若跟进会压制渗透率。<br>
+<b>⑤ 净利率回落</b>：成熟期竞争加剧、线下租金/人工上升，净利率从 35% 滑向 28–30% 是常态，已在敏感性中体现。
+</div>
+
+<div class="note" style="border-style:solid;border-color:var(--acc2)">
+<b>一句话结论</b>：按全球市占推演，泡泡玛特成熟期（约 2035）全球份额从当前 ~10% 提升到 <span class="hl2">17%–24%</span>，营收到 <span class="hl">820–1240亿</span>（中枢 1010亿，2.7×），按当前毛利率/净利率算净利 <span class="hl">254–434亿</span>（中枢 333亿，2.5×）。潜力真实且被管理层背书，但它是 2027 后才放量的"慢变量"——你"越跌越买"的方向对，前提是长期看多这条出海曲线而非抄短期底。
+</div>
+
+<div class="src">数据锚点：2025年报（2026-03-25）、2026中报（2026-08-20）、港交所实时行情（2026-10-20）；全球潮玩 TAM 取券商与行业报告 3500–3700亿区间中值；区域门店密度参考京沪单城 50+ 家、美国 86 家（2026H1）公开报道。本页为分析推演，非公司指引，所有情景均为假设而非承诺。</div>
+</body>
+</html>

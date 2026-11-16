@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 vs 迪士尼·三丽鸥 | IP 数量与授权费对比</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0e1116; --card:#161b22; --card2:#1c2330; --line:#2a3140;
+    --txt:#e6e9ef; --sub:#9aa4b2; --acc:#7c5cff; --acc2:#36d1b7;
+    --warn:#ffb454; --red:#ff6b6b; --grn:#36d1b7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:18px}
+  .wrap{max-width:680px;margin:0 auto}
+  h1{font-size:22px;font-weight:800;letter-spacing:.5px;margin-bottom:4px}
+  .meta{color:var(--sub);font-size:12px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+  .card h2{font-size:16px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .tag{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--acc);color:#fff;font-weight:600}
+  .concl{background:linear-gradient(135deg,#1c2330,#161b22);border-left:4px solid var(--acc)}
+  .concl p{font-size:14px;margin:6px 0}
+  .hl{color:var(--acc2);font-weight:700}
+  .hlr{color:var(--warn);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+  th,td{border:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top}
+  th{background:var(--card2);color:var(--sub);font-weight:600}
+  td b{color:var(--txt)}
+  .num{font-variant-numeric:tabular-nums;font-weight:700;color:var(--acc2)}
+  .small{font-size:11px;color:var(--sub);margin-top:8px;line-height:1.6}
+  .chart-box{background:var(--card2);border-radius:10px;padding:12px;margin-top:8px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:8px}
+  .mini{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+  .mini .v{font-size:20px;font-weight:800;color:var(--acc2)}
+  .mini .k{font-size:11px;color:var(--sub);margin-top:3px}
+  .note{font-size:12px;color:var(--sub);border-top:1px dashed var(--line);padding-top:10px;margin-top:10px}
+  .up{color:var(--grn);font-weight:700}
+  .down{color:var(--red);font-weight:700}
+  ul{margin:6px 0 0 18px;font-size:13px}
+  li{margin:4px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>泡泡玛特 vs 迪士尼·三丽鸥</h1>
+  <div class="meta">IP 数量与授权费（royalty）对比 · 数据截至 2026-11-10 · 汇率 USD/CNY≈7.3，JPY/CNY≈20.9</div>
+
+  <!-- 结论 -->
+  <div class="card concl">
+    <h2>结论先行 <span class="tag">TL;DR</span></h2>
+    <p>① <b>IP 数量</b>：迪士尼 15+ 主流 franchise + 数千角色；三丽鸥 <span class="hl">450+ 原创角色</span>；泡泡玛特 <span class="hl">17 个艺术家 IP（年收破亿）+ 授权 IP 若干</span>。</p>
+    <p>② <b>授权费收入（royalty，实收）</b>：迪士尼约 <span class="hl">276 亿 RMB</span>（FY24 商品 IP 授权）、三丽鸥约 <span class="hl">34 亿 RMB</span>（FY25 版权收入）、泡泡玛特仅 <span class="hlr">0.706 亿 RMB</span>（2025）。</p>
+    <p>③ <b>本质差异</b>：迪士尼/三丽鸥是"别人生产、我收租"的纯授权商；泡泡玛特是"自己造、自己卖"的 DTC 产品公司。授权费少 ≠ 弱，反而是被低估的<b>期权</b>。</p>
+    <p>④ <b>潜力</b>：若把头部 IP 像三丽鸥那样开放第三方授权， royalty 线有 <span class="hl">约 48 倍（对标三丽鸥）</span> 的空间；但更现实的近景驱动是"集团化"（乐园/影视/甜品/饰品/家电）的多品类延伸。</p>
+  </div>
+
+  <!-- IP 数量 -->
+  <div class="card">
+    <h2>一、IP 数量对比</h2>
+    <table>
+      <tr><th>公司</th><th>IP 数量口径</th><th>代表 IP</th></tr>
+      <tr>
+        <td><b>迪士尼</b></td>
+        <td>15+ 主流 franchise（米老鼠、迪士尼公主、Marvel、星球大战、皮克斯、冰雪奇缘…），旗下角色数千个；影视+乐园+消费品三位一体</td>
+        <td>Mickey、Princess、Marvel、Star Wars、Frozen、Pixar 全家桶</td>
+      </tr>
+      <tr>
+        <td><b>三丽鸥</b></td>
+        <td><span class="num">450+</span> 个原创角色，已形成"多角色组合对冲"的资产矩阵</td>
+        <td>Hello Kitty、My Melody、Kuromi、Cinnamoroll、Pompompurin、玉桂狗</td>
+      </tr>
+      <tr>
+        <td><b>泡泡玛特</b></td>
+        <td><span class="num">17</span> 个艺术家 IP 年收入破亿（2025），其中 <span class="num">6</span> 个破 20 亿；另有"授权 IP"（外采/联名）若干</td>
+        <td>THE MONSTERS(Labubu)、MOLLY、SKULLPANDA、DIMOO、CRYBABY、星星人、HIRONO、Zsiga</td>
+      </tr>
+    </table>
+    <div class="small">注：泡泡玛特 2026H1 艺术家 IP 中 11 个破亿、6 个破 10 亿（THE MONSTERS 44.5 亿、星星人 26.5 亿、CRYBABY 16.3 亿、DIMOO 16.2 亿、SKULLPANDA 15.5 亿、HIRONO 10.1 亿）。"授权 IP"为外采联名（如哈利波特等），2025 收入 33.82 亿、2026H1 17.71 亿。</div>
+  </div>
+
+  <!-- 授权费对比 -->
+  <div class="card">
+    <h2>二、授权费收入对比（核心）</h2>
+    <p class="small" style="margin-bottom:8px">"授权费"取<strong>特许权使用费（royalty，IP 方实收）</strong>口径。另列"授权商品零售额 GMV"作为行业授权力指标（消费者买单的总盘子，非 IP 方实收）。</p>
+    <table>
+      <tr><th>公司</th><th>授权商品零售额 GMV</th><th>实际授权费收入（royalty）</th><th>年份/口径</th></tr>
+      <tr>
+        <td><b>迪士尼</b></td>
+        <td>约 $63B（≈¥460 亿）<br><span class="small">全球授权商第 1</span></td>
+        <td><span class="num">≈ $37.8 亿（≈¥276 亿）</span><br><span class="small">消费品·商品 IP 授权收入</span></td>
+        <td>FY2024；另有影视内容授权未在列</td>
+      </tr>
+      <tr>
+        <td><b>三丽鸥</b></td>
+        <td>约 $11.7B（≈¥85 亿）</td>
+        <td><span class="num">707 亿日元（≈¥34 亿）</span><br><span class="small">版权事业收入，占收入 49%</span></td>
+        <td>FY2025（截至 2026-03）；同比 +78%</td>
+      </tr>
+      <tr>
+        <td><b>泡泡玛特</b></td>
+        <td>—（直营 DTC 为主，无第三方授权 GMV）</td>
+        <td><span class="num" style="color:var(--warn)">0.706 亿 RMB</span><br><span class="small">授权费及其他服务收入，计入"其他收入"</span></td>
+        <td>2025 全年；2026H1 已 0.606 亿（+135%）</td>
+      </tr>
+    </table>
+    <div class="chart-box"><canvas id="royaltyChart" height="200"></canvas></div>
+    <div class="small">倍数关系（royalty，RMB）：迪士尼 ≈ 泡泡玛特的 <b>390 倍</b>；三丽鸥 ≈ 泡泡玛特的 <b>48 倍</b>。柱状图采用对数轴以同时显示量级差。</div>
+  </div>
+
+  <!-- 迷你卡：当前 royalty 规模 -->
+  <div class="grid3">
+    <div class="mini"><div class="v">276亿</div><div class="k">迪士尼 royalty<br>(¥, FY24)</div></div>
+    <div class="mini"><div class="v">34亿</div><div class="k">三丽鸥 royalty<br>(¥, FY25)</div></div>
+    <div class="mini"><div class="v" style="color:var(--warn)">0.7亿</div><div class="k">泡泡玛特 royalty<br>(¥, 2025)</div></div>
+  </div>
+
+  <!-- 商业模式差异 -->
+  <div class="card">
+    <h2>三、为什么泡泡玛特"授权费"这么少？</h2>
+    <p>不是能力问题，是<b>商业模式根本不同</b>：</p>
+    <ul>
+      <li><b>迪士尼 / 三丽鸥</b>：纯 IP 授权平台。自己很少生产，把 IP 租给 H&M、乐高、万代等第三方制造销售，靠抽成（royalty）赚钱。三丽鸥版权收入占营收近一半。</li>
+      <li><b>泡泡玛特</b>：DTC 产品公司。自己设计、自己生产、自己开店卖（盲盒、毛绒）。2025 年艺术家 IP <b>产品销售收入 334 亿</b>——它把 IP 价值通过"卖货"而非"收租"吃掉了。</li>
+      <li><b>双向授权</b>：泡泡玛特既"收"也"付"。收：对外授权 IP 得 0.7 亿；付：为外采联名 IP（如哈利波特）付授权费，2026H1 <span class="down">支出 3.762 亿</span>。当前是净付出方。</li>
+    </ul>
+    <div class="note">一句话：迪士尼/三丽鸥的"授权费"是主营业务；泡泡玛特的"授权费"目前只是主营业务（卖货）之外的一小块补充。</div>
+  </div>
+
+  <!-- 潜力 -->
+  <div class="card">
+    <h2>四、潜力有多大</h2>
+    <p><b>1）纯 royalty 线的上行期权（10–50 倍）</b></p>
+    <ul>
+      <li>若泡泡玛特把 Labubu / Molly / 星星人 像三丽鸥那样开放给服装、食品、家居、3C 等第三方授权，royalty 从 0.7 亿 → 对标三丽鸥 <span class="hl">≈ 34 亿（约 48 倍）</span> 是理论天花板。</li>
+      <li>支撑：IP 已具全球心智（Labubu 破圈）、会员破 1 亿、复购 51.6%，第三方授权的基础已具备。2026H1 royalty 已 <span class="up">+135%</span>，起步快。</li>
+    </ul>
+    <p><b>2）更现实的近景驱动：集团化（多品类自有延伸）</b></p>
+    <ul>
+      <li>泡泡玛特选的"集团化"是<strong>自己下场做</strong>乐园、影视、游戏、甜品、饰品、小家电，而非纯收租。这块是"卖服务/体验"而非"收授权费"，价值更大但更重。</li>
+      <li>2026H1 中国区"批发及其他"含乐园/甜品/饰品已快速放量（同比 +111.7%），是可验证的增量。</li>
+    </ul>
+    <p><b>3）结构性护城河：多 IP 组合对冲</b></p>
+    <ul>
+      <li>2026H1 LABUBU 收入 <span class="down">-7.5%</span>、MOLLY <span class="down">-33.6%</span>，但星星人 <span class="up">+580.6%</span>、CRYBABY/DIMOO/SKULLPANDA 均双位数增长——多 IP 矩阵把单 IP 波动熨平，这是三丽鸥验证过、泡泡玛特正在复刻的逻辑。</li>
+    </ul>
+    <div class="note">估值含义：泡泡玛特今天的价值不在 royalty（占比 &lt;0.2%），而在"IP 组合 + DTC + 集团化延伸"的复合体。royalty 线是 5–10 年维度的<b>看涨期权</b>；若市场开始按"中国版三丽鸥/迪士尼平台"重估，上行不封顶，但前提是 IP 寿命被长期验证、且授权/延伸真正规模化。</div>
+  </div>
+
+  <!-- 数据来源 -->
+  <div class="card">
+    <h2>数据来源与口径说明</h2>
+    <ul>
+      <li>迪士尼 GMV：$63B 来自 License Global《2026 全球顶级授权商》（2025 日历年零售额，全球第 1）；royalty $37.8 亿来自迪士尼 FY2024 消费品·商品 IP 授权收入（开源证券援引）。</li>
+      <li>三丽鸥：450+ 角色、版权收入 707 亿日元（FY2025，占收入 49%）来自三丽鸥财报及中国玩具协会/开源证券；GMV $11.7B 来自 License Global 2026。</li>
+      <li>泡泡玛特：IP 数量与收入来自 2025 年报及 2026 中报；royalty 0.706 亿（2025）/ 0.606 亿（2026H1，+135%）来自损益表"其他收入·授权费及其他服务收入"；授权费支出 3.762 亿（2026H1）来自中报。</li>
+      <li>汇率：USD/CNY≈7.3，JPY/CNY≈20.9（三丽鸥财报参考汇率）。GMV 与 royalty 不可直接相加，前者是零售总盘子、后者是 IP 方抽成。</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+const ctx=document.getElementById('royaltyChart').getContext('2d');
+new Chart(ctx,{
+  type:'bar',
+  data:{
+    labels:['迪士尼','三丽鸥','泡泡玛特'],
+    datasets:[{
+      label:'授权费收入 royalty（亿 RMB，对数轴）',
+      data:[276,34,0.706],
+      backgroundColor:['#7c5cff','#36d1b7','#ffb454'],
+      borderRadius:6
+    }]
+  },
+  options:{
+    plugins:{
+      legend:{labels:{color:'#e6e9ef',font:{size:11}}},
+      tooltip:{callbacks:{label:c=>' '+c.parsed.y+' 亿 RMB'}}
+    },
+    scales:{
+      y:{type:'logarithmic',min:0.1,max:1000,
+         ticks:{color:'#9aa4b2',callback:v=>v+'亿'},
+         grid:{color:'#2a3140'}},
+      x:{ticks:{color:'#e6e9ef'},grid:{display:false}}
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -131,6 +131,15 @@ ul{margin:6px 0 0 18px;font-size:12.5px}li{margin-bottom:6px;line-height:1.65}
 .toc a .n{font-size:16px;font-weight:820;color:var(--blue);min-width:24px}
 .toc a .tt{font-size:12.5px;font-weight:650}
 .toc a .dd{font-size:10.5px;color:var(--sub);margin-top:1px}
+/* 章节分组 */
+.topbar nav .navsep{width:1px;height:13px;background:var(--line);align-self:center;margin:0 3px}
+.toc-group{margin-bottom:15px}
+.toc-group:last-child{margin-bottom:2px}
+.toc-group-hd{display:flex;align-items:center;gap:8px;margin:0 0 8px 1px;line-height:1.4}
+.toc-group-hd .g-n{font-size:10px;font-weight:800;color:#fff;border-radius:5px;padding:2px 8px;letter-spacing:.5px;white-space:nowrap}
+.toc-group-hd .g-t{font-size:12.5px;font-weight:750;color:var(--txt)}
+.toc-group-hd .g-d{font-size:10.5px;color:var(--sub);font-weight:400}
+.g-b1{background:var(--blue)}.g-b2{background:var(--purple)}.g-b3{background:var(--amber)}.g-b4{background:var(--gray)}
 /* 章节索引表 */
 .idx{font-size:11.5px}
 .idx td{padding:6px 8px}
@@ -147,8 +156,13 @@ ul{margin:6px 0 0 18px;font-size:12.5px}li{margin-bottom:6px;line-height:1.65}
 <div class="topbar"><div class="topbar-in">
   <div class="logo">腾讯控股 · 投资研究<small>体系化总报告 / 2026.11</small></div>
   <nav>
-    <a href="#c0">结论</a><a href="#c1">财务全景</a><a href="#c2">游戏</a><a href="#c3">微信</a>
-    <a href="#c4">新引擎</a><a href="#c5">AI投入</a><a href="#c6">估值</a><a href="#c7">前瞻</a><a href="#c8">体系索引</a>
+    <a href="#c0">结论</a><a href="#c1">财务全景</a>
+    <span class="navsep"></span>
+    <a href="#c2">游戏</a><a href="#c3">微信</a><a href="#c4">新引擎</a>
+    <span class="navsep"></span>
+    <a href="#c5">AI投入</a><a href="#c6">估值</a><a href="#c7">前瞻</a>
+    <span class="navsep"></span>
+    <a href="#c8">体系索引</a>
   </nav>
 </div></div>
 
@@ -177,17 +191,39 @@ ul{margin:6px 0 0 18px;font-size:12.5px}li{margin-bottom:6px;line-height:1.65}
   <!-- 目录 -->
   <div class="card">
     <h2>阅读目录 <span class="en">CONTENTS</span></h2>
-    <div class="sub" style="margin-left:16px">建议顺序阅读；也可点击顶部导航跳转。每章末尾标注了对应的原始专题报告。</div>
-    <div class="toc">
-      <a href="#c0"><span class="n">00</span><span><span class="tt">结论先行</span><div class="dd">一张图看懂腾讯的利润从哪来</div></span></a>
-      <a href="#c1"><span class="n">01</span><span><span class="tt">财务全景</span><div class="dd">4 大分部 × 微信占比 × 2596 亿拆解</div></span></a>
-      <a href="#c2"><span class="n">02</span><span><span class="tt">游戏板块</span><div class="dd">利润来源、长青经济学、独立估值</div></span></a>
-      <a href="#c3"><span class="n">03</span><span><span class="tt">微信生态</span><div class="dd">社交网络、视频号广告、微信小店</div></span></a>
-      <a href="#c4"><span class="n">04</span><span><span class="tt">新增长引擎</span><div class="dd">云、WorkBuddy 与利润成熟度</div></span></a>
-      <a href="#c5"><span class="n">05</span><span><span class="tt">AI 投入真相</span><div class="dd">"6000 亿"纠错与真实回本路径</div></span></a>
-      <a href="#c6"><span class="n">06</span><span><span class="tt">估值总表</span><div class="dd">SOTP、可比公司、隐含市值</div></span></a>
-      <a href="#c7"><span class="n">07</span><span><span class="tt">前瞻与验证</span><div class="dd">2026 点预测 + Q3 验证清单</div></span></a>
-      <a href="#c8"><span class="n">08</span><span><span class="tt">研究体系索引</span><div class="dd">35 份报告如何取舍与归类</div></span></a>
+    <div class="sub" style="margin-left:16px;">9 个章节按调研类型归为 4 组；建议顺序阅读，也可点顶部导航跳转。每章末尾标注了对应的原始专题报告。</div>
+
+    <div class="toc-group">
+      <div class="toc-group-hd"><span class="g-n g-b1">总览</span><span class="g-t">结论与财务底盘</span><span class="g-d">先看清全貌与数据来源</span></div>
+      <div class="toc">
+        <a href="#c0"><span class="n">00</span><span><span class="tt">结论先行</span><div class="dd">一张图看懂腾讯的利润从哪来</div></span></a>
+        <a href="#c1"><span class="n">01</span><span><span class="tt">财务全景</span><div class="dd">4 大分部 × 微信占比 × 2596 亿拆解</div></span></a>
+      </div>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-group-hd"><span class="g-n g-b2">业务</span><span class="g-t">三大业务引擎拆解</span><span class="g-d">钱从哪来 · 增长到哪去</span></div>
+      <div class="toc">
+        <a href="#c2"><span class="n">02</span><span><span class="tt">游戏板块</span><div class="dd">利润来源、长青经济学、独立估值</div></span></a>
+        <a href="#c3"><span class="n">03</span><span><span class="tt">微信生态</span><div class="dd">社交网络、视频号广告、微信小店</div></span></a>
+        <a href="#c4"><span class="n">04</span><span><span class="tt">新增长引擎</span><div class="dd">云、WorkBuddy 与利润成熟度</div></span></a>
+      </div>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-group-hd"><span class="g-n g-b3">前瞻</span><span class="g-t">投入、估值与验证</span><span class="g-d">未来值多少 · 风险在哪</span></div>
+      <div class="toc">
+        <a href="#c5"><span class="n">05</span><span><span class="tt">AI 投入真相</span><div class="dd">"6000 亿"纠错与真实回本路径</div></span></a>
+        <a href="#c6"><span class="n">06</span><span><span class="tt">估值总表</span><div class="dd">SOTP、可比公司、隐含市值</div></span></a>
+        <a href="#c7"><span class="n">07</span><span><span class="tt">前瞻与验证</span><div class="dd">2026 点预测 + Q3 验证清单</div></span></a>
+      </div>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-group-hd"><span class="g-n g-b4">附录</span><span class="g-t">研究体系索引</span><span class="g-d">方法论与文件归档</span></div>
+      <div class="toc" style="grid-template-columns:1fr">
+        <a href="#c8"><span class="n">08</span><span><span class="tt">研究体系索引</span><div class="dd">35 份报告如何取舍与归类</div></span></a>
+      </div>
     </div>
   </div>
 

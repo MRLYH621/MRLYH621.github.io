@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 · 以 IP 为核心的集团化全景拆解</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --pink:#FF3D7F; --purple:#7C4DFF; --amber:#FFB400; --teal:#00B8A9; --red:#E5484D;
+  --bg:#FFF9FB; --card:#FFFFFF; --line:#F0E4EA;
+  --txt:#23262E; --txt-sub:#7A7F8C; --txt-mute:#A6ABB6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 60px}
+header{background:linear-gradient(120deg,#FF3D7F 0%,#7C4DFF 55%,#4ECDC4 100%);color:#fff;padding:30px 0 26px;margin-bottom:22px}
+header .wrap{padding-bottom:0}
+.brand-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo-dot{width:38px;height:38px;border-radius:12px;background:#fff;color:var(--pink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:19px;flex:none}
+h1{font-size:23px;font-weight:800;letter-spacing:.5px}
+.sub{opacity:.92;font-size:13px;margin-top:5px}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:4px 11px;border-radius:20px;font-size:12px}
+section{margin-bottom:30px}
+.sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:13px;flex-wrap:wrap}
+.sec-head h2{font-size:17px;font-weight:800;position:relative;padding-left:12px}
+.sec-head h2::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:4px;border-radius:2px;background:linear-gradient(180deg,var(--pink),var(--purple))}
+.sec-head span{font-size:12px;color:var(--txt-mute)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px 12px;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(35,38,46,.04)}
+.kpi::after{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--pink)}
+.kpi.p::after{background:var(--purple)} .kpi.a::after{background:var(--amber)} .kpi.t::after{background:var(--teal)}
+.kpi .label{font-size:12px;color:var(--txt-sub)}
+.kpi .val{font-size:26px;font-weight:800;margin-top:3px;letter-spacing:-.5px}
+.kpi .val small{font-size:13px;font-weight:600;color:var(--txt-sub);margin-left:2px}
+.kpi .foot{font-size:11.5px;color:var(--txt-mute);margin-top:4px}
+.insight{background:linear-gradient(100deg,#FFF3F7,#F6F1FF);border:1px solid #F3E2EE;border-left:4px solid var(--pink);border-radius:12px;padding:13px 16px;margin-bottom:10px}
+.insight h4{font-size:13.5px;font-weight:800;margin-bottom:5px}
+.insight p{font-size:12.8px;color:var(--txt-sub)}
+.insight p+p{margin-top:5px}
+.insight b{color:var(--pink)}
+.insight.alt{background:linear-gradient(100deg,#F3FFFC,#F4F1FF);border-left-color:var(--teal)}
+.insight.alt b{color:#00857A}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.duo{grid-template-columns:1fr}.trio{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.pane h3{font-size:14.5px;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pane p,.pane li{font-size:12.8px;color:var(--txt-sub)}
+.pane ul,.pane ol{padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.pane li b{color:var(--txt)}
+.chip{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:12px;flex:none}
+.chip.inv{background:#FFE6EF;color:var(--pink)} .chip.ceo{background:#EDE7FF;color:var(--purple)}
+.chip.ok{background:#DDF7F4;color:#00857A} .chip.risk{background:#FFE9EC;color:#D6336C}
+.chip.est{background:#FFF3D6;color:#B07A00}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;overflow-x:auto;margin-bottom:12px}
+.tbl-card h3{font-size:14px;font-weight:800;margin-bottom:9px}
+th{background:#F9F4F7;color:var(--txt-sub);font-weight:700;text-align:left;padding:8px 10px;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px dashed #F1E9ED;vertical-align:top}
+td.nowrap{white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+.up{color:#1FA971;font-weight:700} .dn{color:#E5484D;font-weight:700}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;background:#EDE7FF;color:var(--purple);white-space:nowrap}
+.tag.ok{background:#DDF7F4;color:#00857A} .tag.risk{background:#FFE9EC;color:#D6336C}
+.tag.est{background:#FFF3D6;color:#B07A00} .tag.gray{background:#F2EDEF;color:var(--txt-sub)}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+@media(max-width:900px){.chart-grid{grid-template-columns:1fr}}
+.chart-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px}
+.chart-card h3{font-size:14px;font-weight:800;margin-bottom:2px}
+.chart-card .cs{font-size:11.5px;color:var(--txt-mute);margin-bottom:8px}
+.chart{height:250px;position:relative}
+.chart-fallback{display:none;font-size:12px;color:var(--txt-sub);padding:18px 4px}
+.layer{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:10px;position:relative}
+.layer:not(:last-child)::after{content:"↓";position:absolute;left:50%;bottom:-19px;transform:translateX(-50%);color:var(--purple);font-weight:800;font-size:15px;z-index:2}
+.layer h4{font-size:13.5px;font-weight:800;margin-bottom:6px}
+.layer .lg{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.layer .lg span{font-size:11.5px;background:#FBF5F8;border:1px solid var(--line);padding:4px 9px;border-radius:7px;color:var(--txt-sub)}
+.layer.a{border-left:4px solid var(--pink)} .layer.b{border-left:4px solid var(--purple)} .layer.c{border-left:4px solid var(--teal)}
+.tl{list-style:none;position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--pink),var(--purple),var(--teal))}
+.tl li{position:relative;margin-bottom:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px}
+.tl li::before{content:"";position:absolute;left:-20px;top:17px;width:9px;height:9px;border-radius:50%;background:var(--pink);border:2px solid #fff;box-shadow:0 0 0 1px var(--pink)}
+.tl .yr{font-size:12px;font-weight:800;color:var(--purple);margin-bottom:3px}
+.tl .bd{font-size:12.5px;color:var(--txt-sub)}
+.fs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px;border-left:3px solid var(--pink)}
+.fs.ok{border-left-color:var(--teal)} .fs.bad{border-left-color:var(--red)} .fs.wait{border-left-color:var(--amber)}
+.fs h4{font-size:13.5px;font-weight:800;margin-bottom:6px}
+.fs ul{padding-left:16px;display:flex;flex-direction:column;gap:5px}
+.fs li{font-size:12px;color:var(--txt-sub)}
+.fs li b{color:var(--txt)}
+.notes{background:#FDFAFB;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.notes h3{font-size:14px;font-weight:800;margin-bottom:10px}
+.notes ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.notes li{font-size:12.5px;color:var(--txt-sub);padding-left:15px;position:relative}
+.notes li::before{content:"▸";position:absolute;left:0;color:var(--pink)}
+.notes li b{color:var(--txt);font-weight:700}
+.src{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.src span{font-size:11px;background:#fff;border:1px solid var(--line);padding:3px 9px;border-radius:6px;color:var(--txt-sub)}
+.mini{font-size:11.5px;color:var(--txt-mute);margin-top:8px;line-height:1.6}
+footer{text-align:center;font-size:11.5px;color:var(--txt-mute);padding-top:8px}
+@media(max-width:680px){
+  h1{font-size:19px} .wrap{padding:0 12px 44px} header{padding:24px 0 20px}
+  .kpi .val{font-size:22px} table{font-size:11.5px} th,td{padding:7px 8px}
+  .chart{height:220px} .pane,.tbl-card,.layer{padding:13px 12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand-row">
+      <div class="logo-dot">P</div>
+      <div>
+        <h1>泡泡玛特 · 以 IP 为核心的「集团化」全景拆解</h1>
+        <div class="sub">POP MART (9992.HK) — 定义 / 版图 / 进度 / 未来 / 对利润与布局的影响</div>
+      </div>
+    </div>
+    <div class="meta-row">
+      <span class="pill">信息截至 2026-11-09</span>
+      <span class="pill">2024/2025 年报 + 2026 中报 + Q3 电话会</span>
+      <span class="pill">全部数据经公开来源核验</span>
+      <span class="pill">情景测算与推演已单独标注</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- 〇 结论先行 -->
+<section>
+  <div class="sec-head"><h2>〇、结论先行</h2><span>五句话回答用户的问题</span></div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">2026H1 自主产品收入占比</div><div class="val">99.3<small>%</small></div><div class="foot">集团化业务在损益表上仍近乎不可见</div></div>
+    <div class="kpi p"><div class="label">2025 授权费及其他服务收入</div><div class="val">0.706<small>亿</small></div><div class="foot">计入「其他收入」，不进营收；约相当于营收 0.19%</div></div>
+    <div class="kpi a"><div class="label">官方划分的业务板块</div><div class="val">3<small>个</small></div><div class="foot">消费品 / 服务与体验 / 数字娱乐</div></div>
+    <div class="kpi t"><div class="label">乐园二期计划启动</div><div class="val">2027<small>年</small></div><div class="foot">重资产化拐点，尚未落地</div></div>
+  </div>
+
+  <div class="insight">
+    <h4>1｜是什么：不是「多元化」，是同一份 IP 资产的多次变现</h4>
+    <p>王宁定义：<b>全球化 = 已验证商业模式的扩张（空间维度）</b>；<b>集团化 = 以 IP 为核心的产业化（变现维度）</b>。IPO 时即定下这两大战略。2024 年报把集团业务重组为「消费品、服务与体验、数字娱乐」三大板块；2026 Q3 电话会进一步收窄成两大方向：<b>① 用电影/乐园增厚 IP 厚度与情感连接；② 拓展适配 IP 的更多品类</b>。</p>
+  </div>
+  <div class="insight">
+    <h4>2｜现状：报表上是「费用项 + 期权」，还不是「利润项」</h4>
+    <p>2025 年自主产品收入 367.88 亿（99.1%），2026H1 为 170.61 亿（99.3%）；IP 授权及其他服务收入 2025 仅 0.71 亿。乐园收入从未单列，被合并在中国区「批发及其他」9.08 亿里（该项还含批发）。<b>已跑通的是「品类扩张」（毛绒占比 21.7%→50.4%），未跑通的是「业态扩张」</b>：游戏《梦想家园》停运，王宁自评电影与游戏「不太成功」。</p>
+  </div>
+  <div class="insight alt">
+    <h4>3｜对利润：短期不该让集团化背锅，中期看引流，长期才决定估值范式</h4>
+    <p>2026H1 经营利润率 39.2%（同比 −4.4pct）主要来自 <b>汇兑等「其他亏损净额」6.89 亿</b>；剔除其他收入/损益后的核心经营利润率为 <b>41.4% vs 上年同期 41.8%</b>，基本持平，销售费用率 22.9% vs 23.0% 也没上升。集团化当前的真实成本在<b>资本开支、租赁与组织复杂度</b>（H1 使用权资产 +8.1 亿），不在当期费用率。真正的利润弹性要等体验/授权收入占比突破 5%。</p>
+  </div>
+  <div class="insight">
+    <h4>4｜对布局：从「一维铺店」变成「IP × 品类 × 业态」三维，但风险尚未真正分散</h4>
+    <p>单 IP 集中度已从 38.1% 降到 26.0%，但毛绒品类占比反而升到约 57%；Q3 整体收益同比 −45%~−50%，<b>新业态规模太小，完全无法对冲主业波动</b>。集团化目前的作用是把「一次性交易」变成「日常触点」，而不是造第二个收入支柱。</p>
+  </div>
+  <div class="insight alt">
+    <h4>5｜判断：2028 年前集团化难以贡献 >10% 经营利润；估值重估需要两个硬信号</h4>
+    <p>① 财报<b>单列体验/授权收入且占比 &gt;5%</b>；② <b>内容或乐园能验证 IP 寿命延长</b>（老 IP 复购、非爆款 IP 稳定变现）。在此之前，市场仍会按「爆款周期股」而非「IP 平台」定价。管理层明确「短期内不会大幅增加内容预算」，说明公司自己也选择了低成本试错、不押注重资产内容。</p>
+  </div>
+</section>
+
+<!-- 一 定义 -->
+<section>
+  <div class="sec-head"><h2>一、什么是「围绕 IP 的集团化」</h2><span>定义、结构、与全球化的分工</span></div>
+
+  <div class="layer a">
+    <h4>资产层｜IP 是唯一的「母资产」</h4>
+    <p style="font-size:12.8px;color:var(--txt-sub)">签约艺术家 → 孵化/运营 IP → 商标与著作权沉淀 → 会员与情感资产。官网早期表述为「艺术家挖掘、IP 孵化运营、消费者触达、潮玩文化推广、关联产业投资整合」五个领域的全产业链平台；集团化是这套平台的升级版。</p>
+    <div class="lg"><span>艺术家签约（保底+分成）</span><span>IP 矩阵：17 个 IP 年收入过亿（2025）</span><span>1 亿+ 会员 / 复购约 51.6%</span><span>著作权 1955 项（工商口径）</span></div>
+  </div>
+  <div class="layer b">
+    <h4>变现层｜同一个 IP，卖 N 次：三大板块</h4>
+    <p style="font-size:12.8px;color:var(--txt-sub)">2024 年报原文：「重新梳理了集团业务板块：消费品、服务与体验、数字娱乐……用 IP 连接起全球数亿不同文化背景的消费人群」；并称「集团以 IP 为核心的商业生态系统正在逐渐成熟」。</p>
+    <div class="lg"><span>消费品：手办/毛绒/MEGA/衍生品 + 饰品/家电/卡牌/积木</span><span>服务与体验：城市乐园/甜品/主题展/旗舰店</span><span>数字娱乐：电影/动画/游戏/绘本/授权</span></div>
+  </div>
+  <div class="layer c">
+    <h4>支撑层｜让多业态能共用一套底座</h4>
+    <p style="font-size:12.8px;color:var(--txt-sub)">自有供应链工厂（2026H1 逐步投用）+ 海外合作基地；四大区域总部；2026 年 3 月设 CGO（文德一）专管「以 IP 为核心的集团化业务创新」，司德任唯一 COO 统管全球运营；IPO 募资用途变更，把「主题乐园、主题展览等 IP 商业化平台」纳入潜在投资范围。</p>
+    <div class="lg"><span>组织双线：全球化（COO）× 集团化（CGO）</span><span>未动用募资约 19.34 亿港元调整用途</span><span>无银行借款，2026H1 现金 124.4 亿</span></div>
+  </div>
+
+  <div class="tbl-card" style="margin-top:16px">
+    <h3>官方表述沿革（可直接引用的口径）</h3>
+    <table>
+      <thead><tr><th>时间</th><th>场合</th><th>关键表述</th><th>意义</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">2020</td><td>IPO</td><td>定下「全球化 + 集团化」两大战略</td><td>集团化不是 2025 年热度后的临时动作</td></tr>
+        <tr><td class="nowrap">2023.09</td><td>北京朝阳公园</td><td>城市乐园 POP LAND 开园</td><td>第一个实体业态落地</td></tr>
+        <tr><td class="nowrap">2024 年报</td><td>主席报告</td><td>重组为消费品 / 服务与体验 / 数字娱乐三大板块；「乐园、积木等创新业务体量尚小，但未来会长成参天大树」</td><td>正式给出集团化骨架，并承认体量小</td></tr>
+        <tr><td class="nowrap">2025 年报</td><td>业绩公告</td><td>「继续为 IP 探索多元发展路径……更丰富的内容与更具沉浸感的娱乐体验」；募资用途扩容至 IP 商业化平台</td><td>资本配置开始向体验/内容倾斜</td></tr>
+        <tr><td class="nowrap">2026.03</td><td>组织调整</td><td>文德一转任 CGO，专职集团化业务创新</td><td>集团化有了独立负责人与预算口</td></tr>
+        <tr><td class="nowrap">2026.10</td><td>Q3 电话会</td><td>集团化两大方向：① 电影内容/主题乐园提升 IP 厚度；② 挖掘 IP 价值、拓展适配品类</td><td>从「铺业务」收敛为「增厚 + 拓品类」</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="duo">
+    <div class="pane">
+      <h3><span class="chip inv">对比</span>全球化 vs 集团化</h3>
+      <table>
+        <thead><tr><th>维度</th><th>全球化</th><th>集团化</th></tr></thead>
+        <tbody>
+          <tr><td>本质</td><td>同一模式复制到更多地区</td><td>同一 IP 扩展到更多业态</td></tr>
+          <tr><td>核心能力</td><td>选址、供应链、本地化、渠道</td><td>品类开发、内容、体验运营、授权</td></tr>
+          <tr><td>可验证性</td><td>已验证（2025 海外占比 43.8%）</td><td>未验证（收入占比 &lt;1%）</td></tr>
+          <tr><td>负责人</td><td>COO 司德 / 四大区域总部</td><td>CGO 文德一</td></tr>
+          <tr><td>风险</td><td>汇率、单店效率、热度退潮</td><td>组织复杂、重资产、能力不适配</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pane">
+      <h3><span class="chip ceo">王宁的比喻与筛选标准</span></h3>
+      <ul>
+        <li><b>陆军</b>＝线下门店；<b>海军</b>＝甜品、家电；<b>空军</b>＝电影、游戏（辐射更远）。原话：「理想状态陆海空军都强，但现在其实只有陆军比较强。」</li>
+        <li><b>选品类标准</b>：优先技术已成熟、不需底层技术迭代的品类，用 IP 赋能增值（小家电、饰品）；优先市场体量足够大的赛道；甜品是为配套线下乐园、做极致体验而布局。</li>
+        <li><b>不做的事</b>：沿袭别人的路。「迪士尼对 IP 的尊重与运营、LVMH 对品牌的打造值得学习，但必须走自己的路」；IP 更像「体育明星（梅西）」而非「电影明星（小李子）」——靠持续曝光而非叙事。</li>
+        <li><b>对标 IP 平台</b>：司德称长期研究迪士尼，希望通过产品、联名、内容、乐园、门店延长 IP 生命周期，最终拥有 5–10 个具备 LABUBU 长期潜力的 IP。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 二 包括什么 -->
+<section>
+  <div class="sec-head"><h2>二、包括什么：三大板块业务清单</h2><span>状态判定截至 2026-11-09</span></div>
+  <div class="tbl-card">
+    <h3>2.1 业务版图全表</h3>
+    <table>
+      <thead><tr><th>板块</th><th>业务</th><th>载体 / 品牌</th><th>状态</th><th>已核验的关键数据</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="7" class="nowrap"><b>消费品</b><br><span class="tag gray">现金牛</span></td><td>手办 / 毛绒 / MEGA / 衍生品</td><td>四大品类</td><td><span class="tag ok">已验证</span></td><td>2025：毛绒 187.1 亿（50.4%）、手办 120.2 亿（32.4%）、MEGA 19.2 亿、衍生品 44.7 亿</td></tr>
+        <tr><td>饰品 / 珠宝</td><td>popop</td><td><span class="tag est">扩张中</span></td><td>截至 2026-06 约 8 家门店 / 6 城；成都 IFS 店 1 月开业</td></tr>
+        <tr><td>IP 小家电</td><td>THE MONSTERS 生活家系列</td><td><span class="tag est">试水</span></td><td>2026-04 冷藏箱 5999 元、限量 999×2 台售罄；10 月咖啡机/磨豆机首发，999 元起；代工万宝、拓璞</td></tr>
+        <tr><td>积木 / 拼插</td><td>自研积木、CLOT 联名麻将等</td><td><span class="tag est">试水</span></td><td>2024 年报即点名「积木体量尚小」；2026-11 CLOT 联名 1999 元麻将售罄</td></tr>
+        <tr><td>卡牌 / 集换</td><td>星星人卡牌</td><td><span class="tag est">试水</span></td><td>2026-01 抖音拆卡直播间开播</td></tr>
+        <tr><td>电子潮玩</td><td>趣拍机</td><td><span class="tag est">试水</span></td><td>2026-10 发售 299 元，支持像素游戏/拍照/联机打卡</td></tr>
+        <tr><td>服饰 / 家居 / 生活方式</td><td>Hirono 小野主题店</td><td><span class="tag est">扩张中</span></td><td>上海、曼谷、伦敦、首尔四店；含潮玩、服饰、家居、雕塑、茶饮</td></tr>
+
+        <tr><td rowspan="6" class="nowrap"><b>服务与体验</b><br><span class="tag gray">战略支点</span></td><td>城市乐园</td><td>POP LAND（北京朝阳公园）</td><td><span class="tag ok">已验证</span></td><td>2023-09 开园，约 4 万㎡；2024 首年盈利；2025 客流 +70%；非亲子 59%、非本地 58%；二次消费占比 &gt;72%，园内衍生品销售约普通门店 6 倍</td></tr>
+        <tr><td>乐园 1.5 期升级</td><td>THE MONSTERS / DIMOO 新区域</td><td><span class="tag ok">已开放</span></td><td>2026-04 起分区开放，新增六大游乐设施与夜游；票价 88→148→178 元（高峰 238 元）；新区域开放后客流环比超一倍，夜游占比 &gt;25%</td></tr>
+        <tr><td>甜品</td><td>POP BAKERY</td><td><span class="tag ok">扩张中</span></td><td>2026-06-19 阿那亚常驻首店（首月客流 &gt;6 万人次）；07 新加坡圣淘沙（客单价 &gt;50 新币）；10-31 北京合生汇购物中心首店；国内 40+ 快闪 / 25+ 城市</td></tr>
+        <tr><td>主题展 / 快闪 / 巡展</td><td>MOLLY 20 周年全球巡展等</td><td><span class="tag ok">常态</span></td><td>被 2025 年报募资用途变更明确列为「IP 商业化平台」</td></tr>
+        <tr><td>旗舰店 / 场景店</td><td>纽约、米兰、伦敦、时代广场等</td><td><span class="tag est">在建</span></td><td>纽约首店 2026 年底、第二家 2027H1；米兰 2027Q1；伦敦试营业</td></tr>
+        <tr><td>演艺 / 人偶 / 大型活动</td><td>明星朋友、世界杯开幕式</td><td><span class="tag ok">已落地</span></td><td>2025 年「明星朋友」外出活动 40 场；2026-06 LABUBU 亮相美加墨世界杯开幕式</td></tr>
+
+        <tr><td rowspan="5" class="nowrap"><b>数字娱乐</b><br><span class="tag gray">最弱一环</span></td><td>真人动画电影</td><td>索尼影业 × THE MONSTERS</td><td><span class="tag est">剧本阶段</span></td><td>2026-03-19 官宣，《帕丁顿熊》导演保罗·金执导，龙家升参与；2026-10 仍在剧本开发</td></tr>
+        <tr><td>动画短片 / 动画项目</td><td>《MOLLY 的怪兽大学》等</td><td><span class="tag est">探索中</span></td><td>Q3 电话会：正与海外知名公司探索 LABUBU 动画可能性，其他 IP 接触不同创作团队</td></tr>
+        <tr><td>游戏</td><td>自研手游《梦想家园》</td><td><span class="tag risk">已收缩</span></td><td>2024-06-27 上线，2026-06 停运公告、8 月停服；王宁自评电影与游戏「不太成功，学费必须交」</td></tr>
+        <tr><td>绘本 / 出版 / 音乐</td><td>LABUBU 中长期内容规划</td><td><span class="tag gray">筹备</span></td><td>2025 业绩会提及 LABUBU 绘本、电影「均在筹备」；Q3 电话会指出电影素材可复用于产品、授权、乐园</td></tr>
+        <tr><td>IP 授权 / 联名</td><td>品牌联名、对外授权</td><td><span class="tag est">低基数</span></td><td>2025 IP 授权费及其他服务收入仅 0.71 亿元（0.19%）；联名频繁（CLOT、世界杯等）</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">注：状态为本文依据公开信息判定；「已验证」指有官方披露的经营数据或管理层明确肯定，非指已实现规模盈利。同一业务可能跨板块（如甜品既属消费品也属服务与体验）。</div>
+  </div>
+
+  <div class="tbl-card">
+    <h3>2.2 财务可见度：这些业务在报表里藏在哪</h3>
+    <table>
+      <thead><tr><th>口径</th><th>2025</th><th>2026H1</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>自主产品收入</td><td class="num">367.88 亿 / 99.1%</td><td class="num">170.61 亿 / 99.3%</td><td>几乎所有新业态的商品销售仍计入此处</td></tr>
+        <tr><td>IP 授权费及其他服务收入</td><td class="num">0.706 亿</td><td class="num">0.606 亿</td><td><b>计入「其他收入」，不进营收</b>；0.19% 只是营收量级类比。轻资产授权几乎没做起来，与迪士尼/三丽鸥路径差别最大</td></tr>
+        <tr><td>中国区「批发及其他」</td><td class="num">9.08 亿 / +19.0%</td><td class="nowrap">未单列</td><td>财报注明增长主要来自<b>乐园商品、票务、餐饮</b>；该项还含批发，不能等同乐园收入</td></tr>
+        <tr><td>乐园收入 / 利润</td><td class="nowrap">未单列</td><td class="nowrap">未单列</td><td>管理层称 2024 年首年盈利；第三方估算 2025 约 6.5 亿（<b>非官方，仅作量级参考</b>）</td></tr>
+        <tr><td>其他收入（损益表）</td><td class="num">1.499 亿</td><td class="num">3.028 亿</td><td>含政府补贴（2026H1 2.395 亿）、授权费及其他服务收入（0.606 亿）等；整体不计入营业收入</td></tr>
+      </tbody>
+    </table>
+    <div class="mini"><b>关键含义：</b>集团化目前几乎没有独立财务口径，投资者无法直接验证其 ROI。这也意味着「集团化贡献利润」在 2026 年报之前仍属于叙事，而非可审计的事实。</div>
+  </div>
+</section>
+
+<!-- 三 已做了什么 -->
+<section>
+  <div class="sec-head"><h2>三、现在都已经做了什么</h2><span>时间轴 + 三类结果分层</span></div>
+  <ul class="tl">
+    <li><div class="yr">2020–2022｜定战略、试内容</div><div class="bd">IPO 定下全球化 + 集团化；内部把出海、游戏、乐园、内容与 IP 产品列为同等重要，并判断「游戏优先级高于动画」，当时明确「做大游戏，不指望它赚钱」。</div></li>
+    <li><div class="yr">2023｜第一个实体业态</div><div class="bd">9 月北京朝阳公园城市乐园开园，约 4 万㎡ 轻量化改造（约为北京环球影城 1%），开园首月游客破 10 万人次。</div></li>
+    <li><div class="yr">2024｜重组板块 + 品类爆发</div><div class="bd">年报正式划分三大板块；零售首次拆成手办/毛绒/MEGA/衍生品四品类，毛绒同比 +1289%、占比 21.7%；乐园运营首年实现盈利；6 月自研手游《梦想家园》上线。</div></li>
+    <li><div class="yr">2025｜主业爆发、种子发芽</div><div class="bd">营收 371.2 亿（+184.7%）、经调整净利 130.8 亿、毛利率 72.1%；海外占比 43.8%、全球 630 店；毛绒占比升至 50.4%，THE MONSTERS 141.6 亿占 38.1%；乐园客流 +70%；孵化 POP BAKERY、popop；LABUBU 登陆梅西百货花车。</div></li>
+    <li><div class="yr">2026 H1｜主动降速、集团化提速</div><div class="bd">3 月组织调整（CGO 专管集团化）+ 索尼影业 LABUBU 电影官宣；4 月乐园 1.5 期分区开放、IP 小家电首发；6 月 POP BAKERY 阿那亚首店、《梦想家园》停运公告；H1 营收 171.7 亿（+23.8%），经调整净利 51.6 亿（+9.5%），王宁定调「调整年」，宣布 20–50 亿回购。</div></li>
+    <li><div class="yr">2026 H2｜场景矩阵收敛</div><div class="bd">7 月乐园 1.5 期全面开放并二次提价、新加坡甜品店；8 月中期业绩会明确乐园二期概念设计、2027 启动建设；10/27 Q3 收益同比 −45%~−50%，电话会明确「短期不大幅增加内容预算」；10/31 北京合生汇 POP BAKERY 首店，与零售店、popop 组成「潮玩+饰品+甜品」矩阵；11/05 CLOT 联名麻将售罄。</div></li>
+  </ul>
+
+  <div class="trio" style="margin-top:14px">
+    <div class="fs ok"><h4>✅ 已跑通 / 有数据支撑</h4><ul>
+      <li><b>品类扩张</b>：毛绒 21.7%→50.4%，是最成功的「集团化第一阶段」。</li>
+      <li><b>城市乐园</b>：首年盈利、客流 +70%、二次消费 &gt;72%、园内衍生品约 6 倍店效，票价一年两涨仍有客流。</li>
+      <li><b>甜品单店模型</b>：阿那亚首月 &gt;6 万人次、新加坡客单价 &gt;50 新币（约 250 元）。</li>
+      <li><b>IP 小家电</b>：5999 元限量冷藏箱开售即罄，验证 IP 溢价可平移到耐用品。</li>
+    </ul></div>
+    <div class="fs bad"><h4>❌ 已收缩 / 明确失败</h4><ul>
+      <li><b>游戏</b>：《梦想家园》运营约两年停服。王宁：「电影和游戏都不够成功，我们也在反思……学费必须交。」</li>
+      <li><b>内容自制能力</b>：电影至今仍在剧本阶段，尚无任何上映时间表。</li>
+      <li><b>外部 IP 收购</b>：2025 年报以「优质 IP 收购机会有限」为由，把原定 IP 收购募资改投海外拓展，等于放弃买 IP、改为自己孵化 + 多业态变现。</li>
+    </ul></div>
+    <div class="fs wait"><h4>⏳ 待验证 / 早期</h4><ul>
+      <li><b>popop 饰品</b>、<b>卡牌</b>、<b>积木</b>、<b>趣拍机</b>：仅见门店/产品，无收入与复购数据。</li>
+      <li><b>甜品可复制性</b>：合生汇店被媒体指出产品与快闪/乐园高度重叠、动线窄、溢价偏高，复购机制未建立。</li>
+      <li><b>家电耐用属性</b>：功能、材质、售后、比价逻辑与潮玩完全不同，999–5999 元价格带能否持续存疑。</li>
+      <li><b>第二座乐园 / 二期</b>：仍在选址与概念设计，2027 才可能开工。</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 四 未来 -->
+<section>
+  <div class="sec-head"><h2>四、未来还会做什么</h2><span>官宣 / 规划 / 推演，三档严格区分</span></div>
+  <div class="tbl-card">
+    <h3>4.1 已明确的动作（官方口径）</h3>
+    <table>
+      <thead><tr><th>档位</th><th>事项</th><th>时间 / 状态</th><th>对报表的潜在影响</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag ok">官宣</span></td><td>乐园二期扩建</td><td>概念设计中，预计 2027 启动建设；新增 SKULLPANDA、星星人等主题场景</td><td>资本开支与折旧明显上行，是集团化最重的一笔</td></tr>
+        <tr><td><span class="tag ok">官宣</span></td><td>泡泡街整体改造</td><td>2027 启动</td><td>存量园区改造，中等投入</td></tr>
+        <tr><td><span class="tag ok">官宣</span></td><td>第二座城市乐园</td><td>选址阶段；王宁称「上海一定是国内首选」，但明确不以数量为目标</td><td>未落地，暂不影响</td></tr>
+        <tr><td><span class="tag ok">官宣</span></td><td>LABUBU 电影 + 动画探索</td><td>剧本阶段；与海外知名公司谈动画；其他 IP 接触创作团队</td><td><b>短期不大幅增加内容预算</b>；素材可反哺商品/授权/乐园</td></tr>
+        <tr><td><span class="tag ok">官宣</span></td><td>甜品独立门店</td><td>2026-10-31 北京合生汇已开；管理层强调「不追求开店数量，先打磨产品运营、培训、供应链」</td><td>轻量投入，主要贡献客流与停留时长</td></tr>
+        <tr><td><span class="tag ok">官宣</span></td><td>海外旗舰店</td><td>纽约 2026 年底 / 第二家 2027H1、米兰 2027Q1、伦敦试营业；「旗舰店不再是核心目标」</td><td>属全球化，与集团化共用场景预算</td></tr>
+        <tr><td><span class="tag est">规划</span></td><td>LABUBU 绘本、更多 IP 内容形式</td><td>2025 业绩会称「均在筹备」</td><td>低成本，主要服务 IP 厚度</td></tr>
+        <tr><td><span class="tag est">规划</span></td><td>新品类持续试探（甜品、积木、饰品、咖啡机等）</td><td>通过产品设计、供应链优化、门店场景小步测试消费偏好</td><td>试错成本可控；失败即关停（参照游戏）</td></tr>
+        <tr><td><span class="tag gray">推演</span></td><td>IP 对外授权 / 联名轻资产化提速</td><td>本文推演：主业增速换挡 + 现金充裕 + 授权基数仅 0.19%，是最可能补的一环</td><td>高毛利、近乎零资本开支，利润率弹性最大</td></tr>
+        <tr><td><span class="tag gray">推演</span></td><td>分部披露细化 / 独立子公司化</td><td>本文推演：当体验+授权收入占比 &gt;5%，有动机单列以争取估值</td><td>不改变利润，但改变市场定价方式</td></tr>
+        <tr><td><span class="tag gray">推演</span></td><td>战略联盟 / 并购 IP 商业化平台</td><td>本文推演：募资用途已把主题乐园、主题展览纳入潜在投资范围</td><td>一次性支出，可能带来商誉与整合风险</td></tr>
+        <tr><td><span class="tag gray">推演</span></td><td>会员体系跨业态打通</td><td>本文推演：1 亿+ 会员、复购 51.6%，甜品/乐园/零售/家电积分互通是低成本协同</td><td>提升复购与客单，间接抬升主业</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">标注「推演」的行为为本文基于公开信息的合理外推，<b>非公司指引、非既成事实</b>。</div>
+  </div>
+
+  <div class="insight alt">
+    <h4>4.2 四个「克制」信号：集团化不会变成大跃进</h4>
+    <p>① <b>内容预算</b>：Q3 电话会明确短期不大幅增加，视项目进展再定；② <b>甜品</b>：不追求开店数量，先打磨供应链与培训；③ <b>乐园</b>：王宁称「不会以数量为目标」，先做好一个成熟样板再复制；④ <b>主业</b>：不做大规模促销，库存从 7 月起掉头向下。叠加 2026 被定义为「经营调整年」、20–50 亿回购，可以判断：<b>2026–2027 集团化的主基调是「低成本试错 + 能力补齐」，而不是「重资本押注」</b>。</p>
+  </div>
+
+  <div class="duo">
+    <div class="pane"><h3><span class="chip inv">加速条件</span>什么情况下会加大投入</h3><ul>
+      <li>主业增速持续回落，需要新增长叙事（Q3 −45%~−50% 已构成压力）。</li>
+      <li>某单店模型被验证可复制（乐园二期、甜品商场店、popop）。</li>
+      <li>电影进入制作/上映周期，需要配套商品与乐园内容。</li>
+      <li>账面现金 124.4 亿 + 无银行借款，试错弹药充足。</li>
+    </ul></div>
+    <div class="pane"><h3><span class="chip ceo">刹车条件</span>什么情况下会收缩</h3><ul>
+      <li>新业态复购不足、体验口碑反噬 IP（餐饮食安、家电售后）。</li>
+      <li>库存周转继续恶化（123→约 201 天）、经营现金流转化下降。</li>
+      <li>组织管理半径超负荷：王宁给 2025 年组织打 70 分、业绩 95 分。</li>
+      <li>参考先例：游戏业务验证失败后直接停运，说明公司愿意止损。</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 五 利润影响 -->
+<section>
+  <div class="sec-head"><h2>五、对整体利润的影响</h2><span>先看事实，再做归因，最后给情景</span></div>
+
+  <div class="chart-grid">
+    <div class="chart-card"><h3>消费品板块内部的品类扩张（2025）</h3><div class="cs">集团化第一阶段其实发生在商品内部：毛绒从 21.7% 冲到 50.4%</div><div class="chart"><canvas id="c1"></canvas><div class="chart-fallback">毛绒 50.4% / 手办 32.4% / 衍生品及其他 12.0% / MEGA 5.2%</div></div></div>
+    <div class="chart-card"><h3>利润率轨迹：2026H1 明显回落</h3><div class="cs">单位 %；2026H1 为半年度口径，与全年可比性有限</div><div class="chart"><canvas id="c2"></canvas><div class="chart-fallback">毛利率 66.8 / 72.1 / 69.7；经营利润率 31.9 / 45.5 / 39.2；净利率 25.4 / 35.1 / 29.7</div></div></div>
+  </div>
+
+  <div class="tbl-card">
+    <h3>5.1 归因：2026H1 利润率下滑，主因不是集团化</h3>
+    <table>
+      <thead><tr><th>项目（亿元）</th><th class="num">2025H1</th><th class="num">2026H1</th><th>解读</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入</td><td class="num">138.76</td><td class="num">171.73</td><td>+23.8%</td></tr>
+        <tr><td>毛利率</td><td class="num">70.3%</td><td class="num">69.7%</td><td>−0.6pct：海外高毛利占比下降 + 原材料涨价</td></tr>
+        <tr><td>经销及销售开支 / 收入</td><td class="num">23.0%</td><td class="num">22.9%</td><td><b>持平</b>：集团化尚未显著抬升销售费用率</td></tr>
+        <tr><td>一般及行政开支 / 收入</td><td class="num">5.6%</td><td class="num">5.4%</td><td><b>略降</b>：组织投入被规模摊薄</td></tr>
+        <tr><td>其他收入</td><td class="num">0.67</td><td class="num">3.03</td><td>非集团化收入</td></tr>
+        <tr><td>其他（亏损）/收益净额</td><td class="num up">+1.79</td><td class="num dn">−6.89</td><td><b>主因：汇兑等损失，约拖累经营利润率 4pct</b></td></tr>
+        <tr><td>经营利润率（报表）</td><td class="num">43.6%</td><td class="num dn">39.2%</td><td>−4.4pct</td></tr>
+        <tr><td><b>核心经营利润率</b>（剔除其他收入/损益）</td><td class="num"><b>41.8%</b></td><td class="num"><b>41.4%</b></td><td><b>仅 −0.4pct，主营盈利能力基本稳定</b></td></tr>
+        <tr><td>净利率</td><td class="num">33.7%</td><td class="num dn">29.7%</td><td>经调整净利 51.6 亿（+9.5%），利润增速低于收入</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">核心经营利润率＝（经营溢利 − 其他收入 − 其他收益/亏损净额）÷ 收入。2026H1：(67.25 − 3.03 + 6.89) / 171.73 = 41.4%；2025H1：(60.44 − 0.67 − 1.79) / 138.76 = 41.8%。<b>结论：把 H1 利润率下滑归因于「集团化烧钱」是错误的</b>，真正拖累项是汇兑；集团化的成本更多沉淀在资产负债表（使用权资产 27.91→36.03 亿，物业厂房设备 14.18→17.70 亿）与未来折旧里。</div>
+  </div>
+
+  <div class="tbl-card">
+    <h3>5.2 集团化影响利润的四条传导路径</h3>
+    <table>
+      <thead><tr><th>路径</th><th>方向</th><th>当前证据</th><th>时间尺度</th></tr></thead>
+      <tbody>
+        <tr><td><b>① 直接增收</b>：门票、甜品、饰品、家电、授权费</td><td class="up">＋</td><td>体量 &lt;1%（授权 0.19%），几乎不影响当期利润</td><td>2027 年后</td></tr>
+        <tr><td><b>② 引流反哺主业</b>：延长停留、提高复购与连带率</td><td class="up">＋＋</td><td>乐园二次消费 &gt;72%、园内衍生品约 6 倍店效；甜品高频、不可转卖，把 IP 拉进日常</td><td>已在发生，但未量化披露</td></tr>
+        <tr><td><b>③ 毛利率结构</b>：体验/餐饮毛利率低于潮玩</td><td class="dn">−</td><td>潮玩毛利率 69.7–72.1%；乐园/餐饮天然更低；规模上来会稀释综合毛利率</td><td>占比 &gt;5% 后显现</td></tr>
+        <tr><td><b>④ 资本与组织成本</b>：乐园二期、租赁、SKU、食安/售后体系</td><td class="dn">−−</td><td>H1 使用权资产 +8.1 亿、固定资产 +3.5 亿；2026 资本开支据二手整理同比 +93.3%</td><td>立即发生，折旧滞后</td></tr>
+        <tr><td><b>⑤ IP 寿命 / 估值倍数</b>：降低爆款周期波动</td><td class="up">＋＋＋</td><td>唯一可能改变估值范式的路径，但需内容或乐园验证，目前无证据</td><td>3–5 年</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">净效应判断：<b>未来 1–2 年路径 ③④ 先于 ①②兑现，集团化对报表是轻微负贡献或中性</b>；若体验+授权收入占比突破 5% 且保持 20%+ 经营利润率，才转为正贡献。</div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card"><h3>三情景：2028E 非商品业务利润贡献</h3><div class="cs">本文敏感性演示，非盈利预测；假设主业核心经营利润率 41%</div><div class="chart"><canvas id="c3"></canvas><div class="chart-fallback">保守 2.4 亿 / 基准 8.0 亿 / 乐观 25.2 亿</div></div></div>
+    <div class="chart-card"><h3>对标：迪士尼 FY2025 收入 vs 运营利润结构</h3><div class="cs">体验板块 38% 收入贡献 57% 运营利润，但资本开支极重</div><div class="chart"><canvas id="c4"></canvas><div class="chart-fallback">收入：娱乐 45% 体育 19% 体验 38%；运营利润：娱乐 27% 体育 16% 体验 57%</div></div></div>
+  </div>
+
+  <div class="tbl-card">
+    <h3>5.3 情景测算（演示敏感性，非预测）</h3>
+    <table>
+      <thead><tr><th>情景</th><th class="num">2028E 总营收</th><th class="num">体验+授权占比</th><th class="num">该板块经营利润率</th><th class="num">板块收入</th><th class="num">板块经营利润</th><th class="num">占集团经营利润</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag gray">保守</span> 只做轻资产试探</td><td class="num">400 亿</td><td class="num">3%</td><td class="num">20%</td><td class="num">12 亿</td><td class="num">2.4 亿</td><td class="num">≈1.5%</td></tr>
+        <tr><td><span class="tag est">基准</span> 乐园二期+甜品复制+授权起步</td><td class="num">500 亿</td><td class="num">8%</td><td class="num">20%</td><td class="num">40 亿</td><td class="num">8.0 亿</td><td class="num">≈4.2%</td></tr>
+        <tr><td><span class="tag ok">乐观</span> 内容跑通 + 多乐园 + 授权放量</td><td class="num">600 亿</td><td class="num">15%</td><td class="num">28%</td><td class="num">90 亿</td><td class="num">25.2 亿</td><td class="num">≈10.8%</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">说明：主业经营利润按「(总营收 − 板块收入) × 41%」估算；未计入引流对主业的间接增益、也未扣除集团层面的增量管理费用与内容摊销。<b>该表的价值在于说明「即使乐观情景，2028 年前集团化也难以贡献超过 10% 经营利润」</b>，而非给出具体数字。</div>
+  </div>
+
+  <div class="insight">
+    <h4>5.4 对标迪士尼：利润池在体验，但代价是重资本</h4>
+    <p>迪士尼 FY2025 收入 944.25 亿美元：娱乐 424.66 亿（45%）、体育 176.72 亿（19%）、体验 361.56 亿（38%）；分部运营利润分别为 46.74 / 28.82 / <b>99.95 亿美元</b>，体验独占约 57%。代价是 2026 财年计划资本开支 90 亿美元，主要投向乐园扩建。</p>
+    <p>泡泡玛特当前是<b>反向结构</b>：99% 收入来自高毛利商品，几乎无体验收入，因而净利率（2025 约 35%）远高于迪士尼（约 13%）。<b>集团化越成功，报表越像迪士尼 → 收入更稳、利润池更厚，但净利率与 ROE 会结构性下移</b>。这是估值重估时必须同时计入的一体两面。</p>
+  </div>
+</section>
+
+<!-- 六 布局影响 -->
+<section>
+  <div class="sec-head"><h2>六、对整体布局的影响</h2><span>结构、组织、风险分散、估值范式</span></div>
+  <div class="trio">
+    <div class="pane"><h3>结构：一维 → 三维</h3><p>过去是「IP × 门店数」的一维扩张；现在变成 <b>地域（20 国 / 630 店）× 品类（手办/毛绒/饰品/家电/食品）× 业态（零售/乐园/餐饮/内容/授权）</b>。同一 IP 的变现次数增加，理论上抬升单 IP LTV。</p></div>
+    <div class="pane"><h3>组织：双线分立</h3><p>COO 司德管全球运营与四大区域，CGO 文德一管集团化创新；2026 年重点补产品运营、供应链、物流、库存等「基本功」。代价是管理半径变长——王宁自评 2025 组织 70 分、业绩 95 分。</p></div>
+    <div class="pane"><h3>资本：从买 IP 到建平台</h3><p>2025 年报把原定「收购受欢迎 IP」的募资改投海外拓展与营运资金，并把「主题乐园、主题展览等 IP 商业化平台」纳入潜在投资范围（未动用募资约 19.34 亿港元调整用途）。战略重心从「买资产」转向「自建变现场景」。</p></div>
+  </div>
+
+  <div class="tbl-card" style="margin-top:12px">
+    <h3>6.1 风险分散检验：分散了 IP，却集中了品类</h3>
+    <table>
+      <thead><tr><th>指标</th><th class="num">2025</th><th class="num">2026H1 / Q3</th><th>判定</th></tr></thead>
+      <tbody>
+        <tr><td>THE MONSTERS 收入占比</td><td class="num">38.1%</td><td class="num">26.0%</td><td class="up">分散改善</td></tr>
+        <tr><td>毛绒品类占比</td><td class="num">50.4%</td><td class="num">约 57%</td><td class="dn">集中度反而上升</td></tr>
+        <tr><td>亿元级 IP 数量</td><td class="num">17 个</td><td class="num">H1 至少 5 个 IP 超 10 亿</td><td class="up">矩阵变厚</td></tr>
+        <tr><td>海外收入占比</td><td class="num">43.8%</td><td class="num">约 29%（H1 49.7 亿）</td><td class="dn">全球化退潮</td></tr>
+        <tr><td>Q3 整体收益同比</td><td class="num">高基数爆发</td><td class="num dn">−45% ~ −50%</td><td class="dn">新业态无法对冲</td></tr>
+        <tr><td>存货周转天数</td><td class="num">123 天</td><td class="num dn">约 201 天</td><td class="dn">SKU 变多的副作用</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">结论：<b>集团化的分散效应目前主要体现在 IP 维度，且部分被品类集中抵消</b>。真正能对冲周期的是「高频、低价、不可转卖」的体验消费与「近乎零边际成本」的授权收入，而这两块恰好是当前最弱的两块。</div>
+  </div>
+
+  <div class="duo">
+    <div class="pane"><h3><span class="chip inv">正面</span>布局价值</h3><ul>
+      <li><b>把「一次性交易」变「日常触点」</b>：办公桌上的 1 亿只 LABUBU + 甜品/乐园/家电，持续加深 IP 认知。</li>
+      <li><b>线下场景矩阵</b>：合生汇「潮玩 + 饰品 + 甜品」同场联动，提升商场议价力与客单。</li>
+      <li><b>轻量化乐园可复制</b>：4 万㎡ 改造城市公园，投入远低于迪士尼级重资产，模型若跑通可复制到上海及海外。</li>
+      <li><b>财务安全垫</b>：2026H1 现金及等价物 124.4 亿、2025 年末资产负债率 29.4%、无银行借款，足以承担多年试错。</li>
+    </ul></div>
+    <div class="pane"><h3><span class="chip ceo">负面</span>布局代价</h3><ul>
+      <li><b>SKU 与供应链复杂度</b>：从玩具扩到食品、家电、饰品，冷链短保、食安、售后、比价都是新功课。</li>
+      <li><b>品牌稀释</b>：高频低价品类可能消耗稀缺感与溢价；媒体已指出甜品与快闪产品重叠、新鲜感易耗尽。</li>
+      <li><b>IP 权属风险</b>：艺术家授权为「保底 + 分成」，合约到期谈判筹码在对方，多业态变现反而放大这一敞口（第三方观点）。</li>
+      <li><b>能力错配</b>：内容、餐饮、耐用品都不在原能力圈内，游戏停运已是先例。</li>
+    </ul></div>
+  </div>
+
+  <div class="insight alt">
+    <h4>6.2 估值范式：集团化真正想买的是「倍数」</h4>
+    <p>市场当前按「爆款周期股」定价：2025 净利 127.8 亿，2026 年 8 月市值约 1984 亿港元，静态约 15x；Q3 后股价一度触及 123.8 港元。<b>集团化的目标是把估值锚从「下一个爆款」换成「IP 组合的长久期现金流」</b>——即迪士尼/三丽鸥式的平台倍数。但要拿到这个倍数，必须先交出可审计的证据：非商品收入单列且成规模、老 IP 跨周期稳定变现、授权费率可验证。在此之前，集团化更像是<b>用主业现金流买入的一组实物期权</b>。</p>
+  </div>
+</section>
+
+<!-- 七 跟踪清单 -->
+<section>
+  <div class="sec-head"><h2>七、投资者跟踪清单与风险</h2><span>下次验证：2026 年报（约 2027-03）、2027 中报</span></div>
+  <div class="tbl-card">
+    <h3>7.1 八个可验证指标</h3>
+    <table>
+      <thead><tr><th>指标</th><th>当前值</th><th>关键阈值</th><th>含义</th></tr></thead>
+      <tbody>
+        <tr><td>非自主产品收入占比</td><td>0.7%（2026H1）</td><td><b>&gt;5%</b></td><td>集团化从叙事变为财务事实</td></tr>
+        <tr><td>体验/乐园收入是否单列</td><td>否</td><td>单列</td><td>管理层愿意让市场验证 ROI</td></tr>
+        <tr><td>IP 授权及其他服务收入</td><td>0.71 亿（2025）</td><td>&gt;10 亿</td><td>轻资产高毛利路径是否启动</td></tr>
+        <tr><td>内容预算 / 电影进度</td><td>剧本阶段、承诺不大幅加码</td><td>进入制作或定档</td><td>空军是否真正起飞</td></tr>
+        <tr><td>资本开支 / 使用权资产</td><td>H1 使用权 +8.1 亿</td><td>二期开工后明显跳升</td><td>重资产拐点与后续折旧</td></tr>
+        <tr><td>单 IP / 单品类集中度</td><td>26.0% / 毛绒约 57%</td><td>两者同步下降</td><td>风险是否真被分散</td></tr>
+        <tr><td>存货周转天数</td><td>约 201 天</td><td>回落至 150 天内</td><td>多业态 SKU 是否失控</td></tr>
+        <tr><td>新业态关停并转</td><td>游戏已停运</td><td>甜品/饰品/家电是否收缩</td><td>公司是否维持止损纪律</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tbl-card">
+    <h3>7.2 风险清单</h3>
+    <table>
+      <thead><tr><th>风险</th><th>触发机制</th><th>观察信号</th></tr></thead>
+      <tbody>
+        <tr><td>重资产拖累 ROE</td><td>乐园二期 + 第二座乐园 + 旗舰店同时投入</td><td>固定资产/使用权资产增速、折旧摊销、经营现金流转化</td></tr>
+        <tr><td>内容能力长期缺位</td><td>电影剧本久拖不决、动画无落地</td><td>无定档、无预算、团队变动</td></tr>
+        <tr><td>体验反噬 IP</td><td>餐饮食安、动线、溢价争议</td><td>社交平台复购评价、门店排队转化、关店</td></tr>
+        <tr><td>主业退潮挤占资源</td><td>Q3 −45%~−50%，主业需要促销/去库存</td><td>是否大规模促销、库存拐点是否延续</td></tr>
+        <tr><td>IP 权属与分成</td><td>艺术家合约到期、爆款分成上行</td><td>授权费成本、头部艺术家续约公告</td></tr>
+        <tr><td>估值继续按周期股定价</td><td>非商品收入始终 &lt;5%</td><td>PE 持续在 12–16x 区间、无分部估值溢价</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="notes">
+    <h3>数据来源与口径说明</h3>
+    <ul>
+      <li><b>一手财报</b>：港交所《2024 年年度报告》《2025 年度业绩公告》（2026-03-25）《2026 年中期业绩公告》（2026-08-20）；官网 2024/2025 年报主席报告；公司官网新闻页。</li>
+      <li><b>管理层口径</b>：2025 年度业绩会、2026 中期业绩会（8/20）、2026 Q3 业绩电话会（10/27）、2026 股东周年大会（5/13）、李翔 × 王宁访谈（2026-05）。</li>
+      <li><b>媒体核验</b>：中国经济网、证券时报、每日经济新闻、新京报/新浪财经、华夏时报、南方+、澎湃新闻、科创板日报、读特新闻、明报财经、钛媒体、封面新闻、北京青年报、人民日报客户端。</li>
+      <li><b>对标数据</b>：The Walt Disney Company FY2025 Q4/FY 财报（investors.thewaltdisneycompany.com）。</li>
+      <li><b>口径提醒</b>：① 乐园收入未在财报单列，第三方估算已明确标注；② 2026H1 为半年度未经审核数据；③ 汇率、汇兑与「其他亏损净额」对利润率影响巨大，比较时须剔除；④ 情景测算、未来推演、状态判定均为本文分析，非公司指引；⑤ 全文不构成投资建议。</li>
+    </ul>
+    <div class="src">
+      <span>整理 2026-11-09</span><span>泡泡玛特投资研究系列</span><span>单文件 HTML · 图表需联网加载 Chart.js</span><span>表格数据在离线时仍完整可读</span>
+    </div>
+  </div>
+</section>
+
+<footer>泡泡玛特 · 以 IP 为核心的集团化全景拆解 ｜ 结论先行 · 数据可核验 · 推演已标注</footer>
+</div>
+
+<script>
+(function(){
+  var ready = typeof Chart !== "undefined";
+  if(!ready){
+    document.querySelectorAll(".chart-fallback").forEach(function(el){el.style.display="block";});
+    document.querySelectorAll(".chart canvas").forEach(function(el){el.style.display="none";});
+    return;
+  }
+  Chart.defaults.color = "#7A7F8C";
+  Chart.defaults.font.family = '"PingFang SC","Microsoft YaHei",Arial,sans-serif';
+  Chart.defaults.font.size = 11;
+  var PINK="#FF3D7F", PURPLE="#7C4DFF", AMBER="#FFB400", TEAL="#00B8A9", RED="#E5484D", GRAY="#C9CFD8";
+  var grid={color:"#F2EAEF"};
+
+  new Chart(document.getElementById("c1"),{
+    type:"doughnut",
+    data:{labels:["毛绒 50.4%","手办 32.4%","衍生品及其他 12.0%","MEGA 5.2%"],
+      datasets:[{data:[50.4,32.4,12.0,5.2],backgroundColor:[PINK,PURPLE,AMBER,TEAL],borderWidth:2,borderColor:"#fff"}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:"58%",
+      plugins:{legend:{position:"right",labels:{boxWidth:11,padding:10}},
+        tooltip:{callbacks:{label:function(c){return c.label;}}}}}
+  });
+
+  new Chart(document.getElementById("c2"),{
+    type:"line",
+    data:{labels:["2024","2025","2026H1"],datasets:[
+      {label:"毛利率",data:[66.8,72.1,69.7],borderColor:PINK,backgroundColor:PINK,tension:.3,borderWidth:2.5,pointRadius:4},
+      {label:"经营利润率",data:[31.9,45.5,39.2],borderColor:PURPLE,backgroundColor:PURPLE,tension:.3,borderWidth:2.5,pointRadius:4},
+      {label:"净利率",data:[25.4,35.1,29.7],borderColor:TEAL,backgroundColor:TEAL,tension:.3,borderWidth:2.5,pointRadius:4}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{min:20,max:80,grid:grid,ticks:{callback:function(v){return v+"%";}}},x:{grid:{display:false}}},
+      plugins:{legend:{position:"bottom",labels:{boxWidth:11,padding:12}}}}
+  });
+
+  new Chart(document.getElementById("c3"),{
+    type:"bar",
+    data:{labels:["保守 3%","基准 8%","乐观 15%"],datasets:[
+      {label:"板块收入（亿）",data:[12,40,90],backgroundColor:"#F6C7DA",borderColor:PINK,borderWidth:1},
+      {label:"板块经营利润（亿）",data:[2.4,8.0,25.2],backgroundColor:PURPLE}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{beginAtZero:true,grid:grid,title:{display:true,text:"亿元"}},x:{grid:{display:false}}},
+      plugins:{legend:{position:"bottom",labels:{boxWidth:11,padding:10}},
+        tooltip:{callbacks:{afterBody:function(items){var i=items[0].dataIndex;return ["占集团经营利润 ≈"+["1.5%","4.2%","10.8%"][i]];}}}}}
+  });
+
+  new Chart(document.getElementById("c4"),{
+    type:"bar",
+    data:{labels:["娱乐","体育","体验"],datasets:[
+      {label:"收入占比",data:[45,19,38],backgroundColor:"#F6C7DA",borderColor:PINK,borderWidth:1},
+      {label:"运营利润占比",data:[27,16,57],backgroundColor:PURPLE}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{beginAtZero:true,max:65,grid:grid,ticks:{callback:function(v){return v+"%";}}},x:{grid:{display:false}}},
+      plugins:{legend:{position:"bottom",labels:{boxWidth:11,padding:10}}}}
+  });
+})();
+</script>
+</body>
+</html>

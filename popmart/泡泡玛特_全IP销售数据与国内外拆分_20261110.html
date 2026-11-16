@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 · 全 IP 销售数据与国内外拆分（2023–2026E）</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --pink:#FF3D7F; --purple:#7C4DFF; --amber:#FFB400; --teal:#00B8A9; --red:#E5484D;
+  --bg:#FFF9FB; --card:#FFFFFF; --line:#F0E4EA;
+  --txt:#23262E; --txt-sub:#7A7F8C; --txt-mute:#A6ABB6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 60px}
+header{background:linear-gradient(120deg,#FF3D7F 0%,#7C4DFF 55%,#4ECDC4 100%);color:#fff;padding:30px 0 26px;margin-bottom:22px}
+header .wrap{padding-bottom:0}
+.brand-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo-dot{width:38px;height:38px;border-radius:12px;background:#fff;color:var(--pink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:19px;flex:none}
+h1{font-size:23px;font-weight:800;letter-spacing:.5px}
+.sub{opacity:.92;font-size:13px;margin-top:5px}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:4px 11px;border-radius:20px;font-size:12px}
+section{margin-bottom:30px}
+.sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:13px;flex-wrap:wrap}
+.sec-head h2{font-size:17px;font-weight:800;position:relative;padding-left:12px}
+.sec-head h2::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:4px;border-radius:2px;background:linear-gradient(180deg,var(--pink),var(--purple))}
+.sec-head span{font-size:12px;color:var(--txt-mute)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px 12px;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(35,38,46,.04)}
+.kpi::after{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--pink)}
+.kpi.p::after{background:var(--purple)} .kpi.a::after{background:var(--amber)} .kpi.t::after{background:var(--teal)}
+.kpi .label{font-size:12px;color:var(--txt-sub)}
+.kpi .val{font-size:26px;font-weight:800;margin-top:3px;letter-spacing:-.5px}
+.kpi .val small{font-size:13px;font-weight:600;color:var(--txt-sub);margin-left:2px}
+.kpi .foot{font-size:11.5px;color:var(--txt-mute);margin-top:4px}
+.insight{background:linear-gradient(100deg,#FFF3F7,#F6F1FF);border:1px solid #F3E2EE;border-left:4px solid var(--pink);border-radius:12px;padding:13px 16px;margin-bottom:10px}
+.insight h4{font-size:13.5px;font-weight:800;margin-bottom:5px}
+.insight p{font-size:12.8px;color:var(--txt-sub)}
+.insight p+p{margin-top:5px}
+.insight b{color:var(--pink)}
+.insight.alt{background:linear-gradient(100deg,#F3FFFC,#F4F1FF);border-left-color:var(--teal)}
+.insight.alt b{color:#00857A}
+.insight.warn{background:linear-gradient(100deg,#FFF8E8,#FFF3F7);border-left-color:var(--amber)}
+.insight.warn b{color:#B07A00}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:900px){.duo{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.pane h3{font-size:14.5px;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pane p,.pane li{font-size:12.8px;color:var(--txt-sub)}
+.pane ul,.pane ol{padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.pane li b{color:var(--txt)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;overflow-x:auto;margin-bottom:12px}
+.tbl-card h3{font-size:14px;font-weight:800;margin-bottom:3px}
+.tbl-card .cs{font-size:11.5px;color:var(--txt-mute);margin-bottom:9px}
+th{background:#F9F4F7;color:var(--txt-sub);font-weight:700;text-align:left;padding:8px 10px;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px dashed #F1E9ED;vertical-align:top}
+td.nowrap{white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tr.sum{background:#FBF5F8;font-weight:700}
+tr.grp td{background:#F7F4FA;color:var(--purple);font-weight:700}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.up{color:#1FA971;font-weight:700} .dn{color:#E5484D;font-weight:700}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;background:#EDE7FF;color:var(--purple);white-space:nowrap}
+.tag.ok{background:#DDF7F4;color:#00857A} .tag.risk{background:#FFE9EC;color:#D6336C}
+.tag.est{background:#FFF3D6;color:#B07A00} .tag.gray{background:#F2EDEF;color:var(--txt-sub)}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+@media(max-width:900px){.chart-grid{grid-template-columns:1fr}}
+.chart-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px}
+.chart-card h3{font-size:14px;font-weight:800;margin-bottom:2px}
+.chart-card .cs{font-size:11.5px;color:var(--txt-mute);margin-bottom:8px}
+.chart{height:300px;position:relative}
+.chart.tall{height:340px}
+.fs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px;border-left:3px solid var(--pink)}
+.fs.ok{border-left-color:var(--teal)} .fs.bad{border-left-color:var(--red)} .fs.wait{border-left-color:var(--amber)}
+.fs h4{font-size:13.5px;font-weight:800;margin-bottom:6px}
+.fs ul{padding-left:16px;display:flex;flex-direction:column;gap:5px}
+.fs li{font-size:12px;color:var(--txt-sub)}
+.fs li b{color:var(--txt)}
+.notes{background:#FDFAFB;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.notes h3{font-size:14px;font-weight:800;margin-bottom:10px}
+.notes ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.notes li{font-size:12.5px;color:var(--txt-sub);padding-left:15px;position:relative}
+.notes li::before{content:"▸";position:absolute;left:0;color:var(--pink)}
+.notes li b{color:var(--txt);font-weight:700}
+.src{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.src span{font-size:11px;background:#fff;border:1px solid var(--line);padding:3px 9px;border-radius:6px;color:var(--txt-sub)}
+.mini{font-size:11.5px;color:var(--txt-mute);margin-top:8px;line-height:1.6}
+.iplist{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.iplist span{font-size:11.5px;background:#FBF5F8;border:1px solid var(--line);padding:4px 9px;border-radius:7px;color:var(--txt-sub)}
+.iplist span.hot{background:#FFE6EF;color:var(--pink);font-weight:700}
+.trend-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px;border-top:3px solid var(--purple)}
+.trend-box > h3{font-size:15px;font-weight:800;margin-bottom:3px}
+.trend-ctrl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:11px 0 12px}
+.yr-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.yr-tabs button{font:inherit;font-size:12px;padding:6px 13px;border-radius:20px;border:1px solid var(--line);background:#FBF5F8;color:var(--txt-sub);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.yr-tabs button:hover{background:#FFE6EF;color:var(--pink);border-color:#FFC2D6}
+.yr-tabs button.active,.yr-tabs button.active:hover{background:var(--pink);color:#fff;border-color:var(--pink);font-weight:700}
+.sort-sw{font:inherit;font-size:12px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--txt-sub);cursor:pointer;margin-left:auto;transition:background .15s,color .15s,border-color .15s}
+.sort-sw:hover{background:#F3EFFF;color:var(--purple);border-color:#D8C9FF}
+.yr-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.yr-stat{background:#FBF8FC;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.yr-stat .l{font-size:11px;color:var(--txt-sub)}
+.yr-stat .v{font-size:20px;font-weight:800;letter-spacing:-.4px;margin-top:2px}
+.yr-stat .v small{font-size:12px;font-weight:600;color:var(--txt-sub);margin-left:2px}
+.yr-stat .d{font-size:11px;color:var(--txt-mute);margin-top:2px}
+.yr-tabs button.est{background:#FFF8E6;border:1px dashed #E3B24B;color:#96690A}
+.yr-tabs button.est:hover{background:#FFEFC7;border-color:#D89B20;color:#7A5400}
+.yr-tabs button.est.active,.yr-tabs button.est.active:hover{background:var(--amber);color:#3A2600;border:1px solid var(--amber);font-weight:800}
+.est-badge{display:inline-block;font-size:10px;background:#FFF3D6;color:#B07A00;border:1px solid #F0D69B;border-radius:5px;padding:1px 5px;margin-left:6px;vertical-align:1px;font-weight:700}
+.est-ctrl{display:none;background:#FFFCF3;border:1px dashed #E9C46A;border-radius:12px;padding:12px 14px;margin:0 0 13px}
+.est-ctrl.on{display:block}
+.est-ctrl h4{font-size:12.5px;font-weight:800;color:#8A5E00;margin-bottom:3px}
+.est-ctrl .hint{font-size:11.5px;color:var(--txt-mute);margin-bottom:10px;line-height:1.6}
+.est-sliders{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:900px){.est-sliders{grid-template-columns:repeat(2,1fr)}}
+.est-s{background:#fff;border:1px solid #F2E3BD;border-radius:9px;padding:8px 10px}
+.est-s .lab{font-size:11px;color:var(--txt-sub);display:flex;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.est-s .lab b{color:#B07A00;font-variant-numeric:tabular-nums}
+.est-s input[type=range]{width:100%;margin:7px 0 2px;accent-color:var(--amber);cursor:pointer}
+.est-s .rg{font-size:10.5px;color:var(--txt-mute)}
+.est-presets{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.est-presets button{font:inherit;font-size:11.5px;padding:5px 11px;border-radius:7px;border:1px solid #E9C46A;background:#fff;color:#8A5E00;cursor:pointer}
+.est-presets button:hover{background:#FFF1CC}
+.est-presets button.on{background:var(--amber);color:#3A2600;border-color:var(--amber);font-weight:700}
+.est-presets .sp{margin-left:auto;font-size:11px;color:var(--txt-mute)}
+.est-panel{display:none;margin-top:15px}
+.est-panel.on{display:block}
+.warnbox{background:#FFF8E8;border:1px solid #F0D69B;border-left:4px solid var(--amber);border-radius:10px;padding:11px 14px;margin-bottom:12px;font-size:12px;color:#7A5A12;line-height:1.7}
+.warnbox b{color:#A66E00}
+.est-tbl td.ev{background:#FFFCF0;font-weight:700;color:#8A5E00;font-variant-numeric:tabular-nums}
+.est-tbl td.ev2{background:#FFF6DC;font-weight:800;color:#7A5400;font-variant-numeric:tabular-nums}
+.est-method{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:900px){.est-method{grid-template-columns:1fr}}
+footer{text-align:center;font-size:11.5px;color:var(--txt-mute);padding-top:8px}
+@media(max-width:680px){
+  h1{font-size:19px} .wrap{padding:0 12px 44px} header{padding:24px 0 20px}
+  .yr-stats{grid-template-columns:repeat(2,1fr)} .sort-sw{margin-left:0} .trend-box{padding:13px 12px}
+  .kpi .val{font-size:22px} table{font-size:11.5px} th,td{padding:7px 8px}
+  .chart{height:260px} .chart.tall{height:300px} .pane,.tbl-card{padding:13px 12px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand-row"><div class="logo-dot">PM</div><div><h1>泡泡玛特 · 全 IP 销售数据与国内外拆分</h1><div class="sub">2023–2026H1 官方原表 ＋ 2026Q3 / 2026 全年 IP 营收推演</div></div></div>
+    <div class="meta-row"><span class="pill">单位：人民币亿元</span><span class="pill">官方数据截止 2026-06-30</span><span class="pill">Q3 公告 2026-10-27</span><span class="pill">核验日 2026-11-10</span><span class="pill">官方值／推演值分色标注</span></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">2025 全年营收</div><div class="val">371.20<small>亿</small></div><div class="foot">同比 +184.7%</div></div>
+    <div class="kpi p"><div class="label">财报单列收入的 IP</div><div class="val">8<small>个</small></div><div class="foot">其余合并为「其他艺术家IP」</div></div>
+    <div class="kpi a"><div class="label">2025 过亿艺术家 IP</div><div class="val">17<small>个</small></div><div class="foot">2026H1 半年口径 11 个</div></div>
+    <div class="kpi t"><div class="label">2025 海外收入占比</div><div class="val">43.8<small>%</small></div><div class="foot">2026H1 回落至 29.0%</div></div>
+  </div>
+
+  <div class="insight">
+    <h4>先说结论：三层数据，一层能拿、一层能拿、一层拿不到</h4>
+    <p><b>① 按 IP 的收入：有，但只有 8–9 个头部 IP。</b>财报把 90+ 个运营 IP 里的前 8 个单列，其余全部合并为「其他艺术家 IP」，无法逐个拆。</p>
+    <p><b>② 按国内外的收入：有，且细到「区域 × 渠道」。</b>中国 / 亚太 / 美洲 / 欧洲及其他四区，另有线下门店、机器人商店、线上、批发的分区数据。</p>
+    <p><b>③ IP × 国内外的交叉数据：官方从未披露。</b>没有任何一份财报或电话会给出「某 IP 在中国卖了多少、海外卖了多少」。市面上流传的分 IP 海外数字均为第三方推测，本表不收录。</p>
+  </div>
+
+  <div class="insight warn">
+    <h4>最容易混淆的一个口径：「授权 IP」不是「IP 授权收入」</h4>
+    <p>财报里的 <b>授权 IP 33.82 亿（2025，占营收 9.1%）</b>是<b>把别人的 IP 授权进来做商品</b>（迪士尼、皮克斯等联名产品）产生的商品销售收入；而<b>把自有 IP 授权出去收的费</b>叫「<b>授权费及其他服务收入</b>」，2025 仅 0.706 亿。它<b>不在「按 IP 划分的收入」表里</b>——那张表 100% 是商品销售收益；这笔钱计入损益表的<a href="#tblA" style="color:var(--pink);font-weight:700">「其他收入」附注（见附表 A）</a>，会计上<b>不属于营业收入</b>。两者方向相反，不可混用。这也是判断「集团化是否落地」的关键：泡泡玛特 99% 以上的收入仍来自自己卖货。</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>一、按 IP 划分的收入（官方原表 + 2026 推演）</h2><span>单位：人民币亿元 · 琥珀标签与半透明柱子为推演值</span></div>
+
+  <div class="trend-box">
+    <h3>按年份看 IP 占比趋势 · 交互视图</h3>
+    <div style="font-size:11.5px;color:var(--txt-mute)">占比 = 各 IP 收入 ÷ 当期总收入。半年与全年的<b>占比可直接比较</b>，绝对值不可比</div>
+    <div class="trend-ctrl">
+      <div class="yr-tabs" id="yrTabs">
+        <button type="button" data-k="y2023">2023 全年</button>
+        <button type="button" data-k="y2024">2024 全年</button>
+        <button type="button" data-k="y2025">2025 全年</button>
+        <button type="button" data-k="h2025">2025H1</button>
+        <button type="button" data-k="h2026">2026H1</button>
+        <button type="button" data-k="q3e" class="est active">2026Q3E 推演</button>
+        <button type="button" data-k="fye" class="est">2026 全年E 推演</button>
+      </div>
+      <button type="button" class="sort-sw" id="sortSw">按占比排序 ↓</button>
+    </div>
+
+    <div class="est-ctrl on" id="estCtrl">
+      <h4>推演参数 · 拖动实时重算各 IP 营收</h4>
+      <div class="hint">官方 Q3 公告只给出同比区间（−45%~−50%），<b>没有绝对金额、也没有按 IP 拆分</b>。下面的总盘由「券商测算的 2025Q3 基数 × 官方同比区间」得到，再按份额法分摊到各 IP。改任一参数，上方图表与下方明细表同步更新。</div>
+      <div class="est-sliders">
+        <div class="est-s"><div class="lab"><span>2025Q3 基数</span><b id="vBase">120 亿</b></div><input type="range" id="sBase" min="110" max="135" step="1" value="120"><div class="rg">110–135 亿 · 券商估算 120–130 亿</div></div>
+        <div class="est-s"><div class="lab"><span>Q3 同比降幅</span><b id="vDrop">−47.5%</b></div><input type="range" id="sDrop" min="45" max="50" step="0.5" value="47.5"><div class="rg">官方区间 −45% ~ −50%</div></div>
+        <div class="est-s"><div class="lab"><span>THE MONSTERS 占比</span><b id="vTm">21%</b></div><input type="range" id="sTm" min="14" max="28" step="1" value="21"><div class="rg">2026H1 实际 26.0% · Q3 假设继续退坡</div></div>
+        <div class="est-s"><div class="lab"><span>2026Q4 收入</span><b id="vQ4">78 亿</b></div><input type="range" id="sQ4" min="60" max="100" step="1" value="78"><div class="rg">旺季情景 · 仅影响「全年E」列</div></div>
+      </div>
+      <div class="est-presets">
+        <span style="font-size:11.5px;color:var(--txt-sub)">快速情景：</span>
+        <button type="button" data-s="low">保守</button>
+        <button type="button" data-s="mid" class="on">中性</button>
+        <button type="button" data-s="high">乐观</button>
+        <span class="sp" id="estHead"></span>
+      </div>
+    </div>
+
+    <div class="yr-stats" id="yrStats"></div>
+    <div class="chart-grid">
+      <div class="chart-card"><h3 id="yrBarTitle">2025 全年 · 各 IP 占比</h3><div class="cs">悬停可看绝对金额；聚合项含未单列 IP</div><div class="chart tall"><canvas id="cYear"></canvas></div></div>
+      <div class="chart-card"><h3>7 个核心 IP · 占比走势</h3><div class="cs">粉色虚线为当前选中期间；末两期为推演，连接线改琥珀虚线；2023/2024 星星人未单列，按 0 处理</div><div class="chart tall"><canvas id="cTrend"></canvas></div></div>
+    </div>
+    <div class="chart-card" style="margin-bottom:12px"><h3>IP 结构迁移（100% 堆叠）</h3><div class="cs">每列 = 一个期间，色块 = 占当期总收入比例；末两列半透明 + 琥珀描边为推演值</div><div class="chart"><canvas id="cStack"></canvas></div></div>
+    <div class="insight alt" id="yrInsight"></div>
+    <div class="mini"><b>口径统一说明：</b>财报每年单列哪些 IP 会变（2024 单列 Zsiga / HACIPUPU，2025 改单列星星人 / HACIPUPU，半年报又不同）。为避免「单列名单变化」污染趋势，本视图把 <b>Zsiga、HACIPUPU 一律并入「其他艺术家 IP」</b>，只保留 7 个各期可比的核心 IP；因此「其他艺术家 IP」占比与财报原表略有差异。2024 采用 2024 年报原始口径（合计 130.38 亿），未采用 2025 年报的重述版。所有占比由金额实时计算，未沿用财报已四舍五入的百分比。末两列（琥珀虚线）为推演，占比口径与官方期一致，但金额来源不同。</div>
+
+    <div class="est-panel on" id="estPanel">
+      <div class="warnbox">
+        <b>⚠️ 以下全部为模型推演，不是公司披露。</b>泡泡玛特 2026-10-27 的 Q3 业务状况公告只有<b>同比变动区间</b>：整体 −45%~−50%、中国 −25%~−30%、亚太 −65%~−70%、美洲 −70%~−75%、欧洲及其他 −50%~−55%，中国线下 −5%~−10%、线上 −45%~−50%。公告<b>未披露 Q3 绝对金额、未披露利润、更未披露任何按 IP 的拆分</b>；公司也明确说明数据未经审核、可能调整。因此下表每个 IP 的数字都是推算，<b>不可与表 1–3 的官方原表混用，也不能当作财报数字引用</b>。
+      </div>
+
+      <div class="tbl-card" style="margin-bottom:12px">
+        <h3>推演明细｜各 IP 营收（人民币亿元）<span class="tag est">非官方</span></h3>
+        <div class="cs" id="estCs"></div>
+        <table class="est-tbl">
+          <thead><tr>
+            <th>IP / 项目</th><th class="num">2025 全年<br><small>官方</small></th><th class="num">2026H1<br><small>官方</small></th>
+            <th class="num">2026Q3E<br><small>单季·当前参数</small></th><th class="num">Q3E 三档区间<br><small>保守 ~ 乐观</small></th><th class="num">Q3E 占比</th>
+            <th class="num">2026 全年E<br><small>H1+Q3E+Q4E</small></th><th class="num">全年占比</th><th class="num">全年同比<br><small>vs 2025</small></th>
+          </tr></thead>
+          <tbody id="estBody"></tbody>
+        </table>
+        <div class="mini">「三档区间」是固定的悲观 / 中性 / 乐观情景（见下方参数），不随滑块变化；「当前参数」列随滑块实时更新。全年E = 2026H1 官方 171.73 + Q3E + Q4E，Q4 沿用与 Q3 相同的 IP 份额，未假设 Q4 出现新爆款。逐项金额均为两位小数显示，加总与合计行可能差 0.01–0.02 亿（四舍五入，官方 H1 原表本身也有此量级差异）。</div>
+      </div>
+
+      <div class="est-method">
+        <div class="pane">
+          <h3>① 总盘怎么来的 <span class="tag est">可校验</span></h3>
+          <ul>
+            <li><b>官方硬约束：</b>2025H1 138.76 + 2025 全年 371.20 → <b>2025H2 = 232.44 亿</b>（可精确相减）。2025Q3 是史上最高单季，券商（浦银等）估算 <b>120–130 亿</b>，按 2026Q1 公告 +75%~80% 与 H1 171.73 亿倒推的季度序列给出约 116 亿，两者接近。</li>
+            <li><b>Q3 总盘：</b>基数 × (1 − 官方降幅)。中性 120 × 52.5% = <b>63.0 亿</b>，与华福证券「测算 26Q3 单季约 63 亿」独立吻合；区间 58–71.5 亿。</li>
+            <li><b>区域自洽校验：</b>要让四个分区降幅的中值加权后落在官方整体 −45%~−50% 内，2025Q3 的区域结构需大致为<b>中国约 48%、海外约 52%</b>（亚太 22% / 美洲 24% / 欧洲 6%），加权结果 −48.6%。海外占比高于 2025 全年的 43.8%，与「峰值季由美洲、亚太线上爆发拉动」的叙事方向一致。这是一致性检验，<b>不是官方区域数据</b>。</li>
+            <li><b>全年交叉验证：</b>中性全年 <b>312.7 亿（−15.8%）</b>，对照华福预估 310 亿 / −16.5%、另一研报「至少 300 亿」，量级一致。</li>
+          </ul>
+        </div>
+        <div class="pane">
+          <h3>② 各 IP 怎么分 · 误差在哪 <span class="tag risk">务必读</span></h3>
+          <ul>
+            <li><b>份额法：</b>以 <b>2026H1 官方各 IP 金额</b>为结构基准；只调整 THE MONSTERS 的占比（默认 26.0% → 21%，理由是 Q3 跌幅主要来自海外线上、而该 IP 在海外线上权重最高），<b>其余 9 项按 H1 相对权重等比填满剩余份额</b>。</li>
+            <li><b>这是中性假设，不是预测：</b>它等价于「第二梯队既没有单独爆发、也没有单独失速」。若星星人在 Q3 承接超预期，实际值会高于表中数字；若毛绒品类整体退潮快于手办，则低于。</li>
+            <li><b>方向性线索：</b>证券时报引述「Q3 亚太前六大 IP 贡献超六成业绩」；高盛渠道跟踪称 9 月新品亮点转向 Zsiga 等手办、小 IP 毛绒偏疲态；管理层称星星人是海外营销重点。均支持「TM 占比继续降、第二梯队相对承接」，但都不给金额。</li>
+            <li><b>误差量级：</b>总盘误差约 ±10%（基数与降幅区间），单 IP 结构误差可达 <b>±30% 以上</b>。这张表的用途是看<b>结构迁移的方向与相对量级</b>，不是给出可引用的季度财报数字。真正验证要等 2027-03 的 2026 年报。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card"><h3>2025 全年 · 各 IP 收入</h3><div class="cs">含聚合项「其他艺术家 IP」与外部授权 IP</div><div class="chart tall"><canvas id="c1"></canvas></div></div>
+    <div class="chart-card"><h3>2025 全年 vs 2026H1 · 头部 IP 结构</h3><div class="cs">半年与全年绝对值不可比，仅看名次与集中度变化</div><div class="chart tall"><canvas id="c2"></canvas></div></div>
+  </div>
+
+  <div class="tbl-card">
+    <h3>表 1｜2025 全年 vs 2024 全年 · 按 IP 划分收入</h3>
+    <div class="cs">来源：2025 年度业绩公告（港交所 2026-03-25）「根據 IP 劃分的收入」原表。原始单位为人民币千元，此处换算为亿元并保留两位小数。</div>
+    <table>
+      <thead><tr><th>项目 / IP</th><th class="num">2025 收入</th><th class="num">占比</th><th class="num">2024 收入</th><th class="num">占比</th><th class="num">同比</th><th>归属</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="7">自主产品合计</td></tr>
+        <tr class="sum"><td>自主产品</td><td class="num">367.88</td><td class="num">99.1%</td><td class="num">127.22</td><td class="num">97.6%</td><td class="num up">+189.2%</td><td>—</td></tr>
+        <tr><td>　艺术家 IP 小计</td><td class="num">334.06</td><td class="num">90.0%</td><td class="num">111.21</td><td class="num">85.3%</td><td class="num up">+200.4%</td><td>自有 / 独家</td></tr>
+        <tr><td>　授权 IP 小计</td><td class="num">33.82</td><td class="num">9.1%</td><td class="num">16.01</td><td class="num">12.3%</td><td class="num up">+111.3%</td><td>外部授权进来</td></tr>
+        <tr class="grp"><td colspan="7">单列的艺术家 IP（按 2025 收入排序）</td></tr>
+        <tr><td><b>THE MONSTERS</b>（LABUBU）</td><td class="num">141.61</td><td class="num">38.1%</td><td class="num">30.41</td><td class="num">23.3%</td><td class="num up">+365.7%</td><td>永久自有</td></tr>
+        <tr><td>SKULLPANDA</td><td class="num">35.40</td><td class="num">9.5%</td><td class="num">13.08</td><td class="num">10.0%</td><td class="num up">+170.6%</td><td>买断自有</td></tr>
+        <tr><td>CRYBABY</td><td class="num">29.29</td><td class="num">7.9%</td><td class="num">11.65</td><td class="num">8.9%</td><td class="num up">+151.5%</td><td>新锐签约</td></tr>
+        <tr><td>MOLLY</td><td class="num">28.97</td><td class="num">7.8%</td><td class="num">20.93</td><td class="num">16.1%</td><td class="num up">+38.4%</td><td>买断自有（2006 生）</td></tr>
+        <tr><td>DIMOO</td><td class="num">27.77</td><td class="num">7.5%</td><td class="num">9.10</td><td class="num">7.0%</td><td class="num up">+205.3%</td><td>买断自有</td></tr>
+        <tr><td>星星人 / Twinkle Twinkle</td><td class="num">20.56</td><td class="num">5.5%</td><td class="num">1.21</td><td class="num">0.9%</td><td class="num up">+1601.8%</td><td>外部独家（大欣）</td></tr>
+        <tr><td>HIRONO 小野</td><td class="num">17.35</td><td class="num">4.7%</td><td class="num">7.27</td><td class="num">5.6%</td><td class="num up">+138.8%</td><td>内部 PDC</td></tr>
+        <tr><td>HACIPUPU</td><td class="num">8.48</td><td class="num">2.3%</td><td class="num">2.24</td><td class="num">1.7%</td><td class="num up">+278.1%</td><td>签约 / 独家</td></tr>
+        <tr><td>其他艺术家 IP（聚合）</td><td class="num">24.64</td><td class="num">6.7%</td><td class="num">15.33</td><td class="num">11.8%</td><td class="num up">+60.8%</td><td>含 Zsiga、PUCKY 等</td></tr>
+        <tr class="grp"><td colspan="7">非艺术家 IP</td></tr>
+        <tr><td>授权 IP（联名商品）</td><td class="num">33.82</td><td class="num">9.1%</td><td class="num">16.01</td><td class="num">12.3%</td><td class="num up">+111.3%</td><td>迪士尼等外部 IP</td></tr>
+        <tr><td>外采及其他</td><td class="num">3.32</td><td class="num">0.9%</td><td class="num">3.16</td><td class="num">2.4%</td><td class="num up">+4.9%</td><td>非自有商品</td></tr>
+        <tr class="sum"><td>合计</td><td class="num">371.20</td><td class="num">100%</td><td class="num">130.38</td><td class="num">100%</td><td class="num up">+184.7%</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">注：2025 年报对 2024 做了重分类——单列新增「星星人 1.21 亿」，把原「Zsiga 2.45 亿」并入「其他艺术家 IP」。因此本表 2024 的「其他艺术家 IP = 15.33 亿」，与 2024 年报原文的 14.09 亿不同，非数据错误。2025 年 17 个 IP 过亿，其中 6 个破 20 亿；单列 8 个之外还有约 9 个过亿 IP 藏在聚合项里。</div>
+  </div>
+
+  <div class="tbl-card">
+    <h3>表 2｜2026H1 vs 2025H1 · 按 IP 划分收入</h3>
+    <div class="cs">来源：2026 中期业绩公告（港交所 2026-08-20）「根據 IP 劃分的收入」原表。半年口径，勿与全年直接比较。</div>
+    <table>
+      <thead><tr><th>项目 / IP</th><th class="num">2026H1</th><th class="num">占比</th><th class="num">2025H1</th><th class="num">占比</th><th class="num">同比</th></tr></thead>
+      <tbody>
+        <tr class="sum"><td>自主产品</td><td class="num">170.61</td><td class="num">99.3%</td><td class="num">137.53</td><td class="num">99.1%</td><td class="num up">+24.0%</td></tr>
+        <tr><td>　艺术家 IP 小计</td><td class="num">152.89</td><td class="num">89.0%</td><td class="num">122.29</td><td class="num">88.1%</td><td class="num up">+25.0%</td></tr>
+        <tr><td>　授权 IP 小计</td><td class="num">17.71</td><td class="num">10.3%</td><td class="num">15.25</td><td class="num">11.0%</td><td class="num up">+16.2%</td></tr>
+        <tr><td><b>THE MONSTERS</b>（LABUBU）</td><td class="num">44.54</td><td class="num">26.0%</td><td class="num">48.14</td><td class="num">34.7%</td><td class="num dn">−7.5%</td></tr>
+        <tr><td>星星人</td><td class="num">26.50</td><td class="num">15.4%</td><td class="num">3.89</td><td class="num">2.8%</td><td class="num up">+580.6%</td></tr>
+        <tr><td>CRYBABY</td><td class="num">16.33</td><td class="num">9.5%</td><td class="num">12.18</td><td class="num">8.8%</td><td class="num up">+34.0%</td></tr>
+        <tr><td>DIMOO</td><td class="num">16.19</td><td class="num">9.4%</td><td class="num">11.05</td><td class="num">8.0%</td><td class="num up">+46.5%</td></tr>
+        <tr><td>SKULLPANDA</td><td class="num">15.51</td><td class="num">9.0%</td><td class="num">12.21</td><td class="num">8.8%</td><td class="num up">+27.1%</td></tr>
+        <tr><td>HIRONO 小野</td><td class="num">10.09</td><td class="num">5.9%</td><td class="num">7.28</td><td class="num">5.2%</td><td class="num up">+38.5%</td></tr>
+        <tr><td>MOLLY</td><td class="num">9.01</td><td class="num">5.3%</td><td class="num">13.57</td><td class="num">9.8%</td><td class="num dn">−33.6%</td></tr>
+        <tr><td>Zsiga</td><td class="num">2.98</td><td class="num">1.7%</td><td class="num">2.11</td><td class="num">1.5%</td><td class="num up">+41.2%</td></tr>
+        <tr><td>其他艺术家 IP（聚合）</td><td class="num">11.74</td><td class="num">6.8%</td><td class="num">11.84</td><td class="num">8.5%</td><td class="num dn">−0.9%</td></tr>
+        <tr><td>授权 IP（联名商品）</td><td class="num">17.71</td><td class="num">10.3%</td><td class="num">15.25</td><td class="num">11.0%</td><td class="num up">+16.2%</td></tr>
+        <tr><td>外采及其他</td><td class="num">1.12</td><td class="num">0.7%</td><td class="num">1.23</td><td class="num">0.9%</td><td class="num dn">−8.6%</td></tr>
+        <tr class="sum"><td>合计</td><td class="num">171.73</td><td class="num">100%</td><td class="num">138.76</td><td class="num">100%</td><td class="num up">+23.8%</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">注：2026H1 共 11 个艺术家 IP 收入过亿、6 个破 10 亿。MOLLY 二十周年但收入跌出十亿级（9.01 亿），是本期唯一明显负增长的老 IP；星星人从 2.8% 冲到 15.4%。</div>
+  </div>
+
+  <div class="tbl-card">
+    <h3>表 3｜2024 全年 vs 2023 全年 · 按 IP 划分收入（历史序列）</h3>
+    <div class="cs">来源：2024 年度业绩公告（港交所 2025-03-26）原表。此表为 2024 年报当时的原始口径，单列 8 个 IP（含 Zsiga、HACIPUPU，无星星人）。</div>
+    <table>
+      <thead><tr><th>项目 / IP</th><th class="num">2024</th><th class="num">占比</th><th class="num">2023</th><th class="num">占比</th><th class="num">同比</th></tr></thead>
+      <tbody>
+        <tr class="sum"><td>自主产品</td><td class="num">127.22</td><td class="num">97.6%</td><td class="num">58.58</td><td class="num">93.0%</td><td class="num up">+117.2%</td></tr>
+        <tr><td>　艺术家 IP 小计</td><td class="num">111.21</td><td class="num">85.3%</td><td class="num">48.22</td><td class="num">76.5%</td><td class="num up">+130.6%</td></tr>
+        <tr><td>THE MONSTERS</td><td class="num">30.41</td><td class="num">23.3%</td><td class="num">3.68</td><td class="num">5.8%</td><td class="num up">+726.6%</td></tr>
+        <tr><td>MOLLY</td><td class="num">20.93</td><td class="num">16.1%</td><td class="num">10.20</td><td class="num">16.2%</td><td class="num up">+105.2%</td></tr>
+        <tr><td>SKULLPANDA</td><td class="num">13.08</td><td class="num">10.0%</td><td class="num">10.25</td><td class="num">16.3%</td><td class="num up">+27.7%</td></tr>
+        <tr><td>CRYBABY</td><td class="num">11.65</td><td class="num">8.9%</td><td class="num">0.71</td><td class="num">1.1%</td><td class="num up">+1537.3%</td></tr>
+        <tr><td>DIMOO</td><td class="num">9.10</td><td class="num">7.0%</td><td class="num">7.38</td><td class="num">11.7%</td><td class="num up">+23.3%</td></tr>
+        <tr><td>HIRONO</td><td class="num">7.27</td><td class="num">5.6%</td><td class="num">3.51</td><td class="num">5.6%</td><td class="num up">+106.9%</td></tr>
+        <tr><td>Zsiga</td><td class="num">2.45</td><td class="num">1.9%</td><td class="num">1.00</td><td class="num">1.6%</td><td class="num up">+145.1%</td></tr>
+        <tr><td>HACIPUPU</td><td class="num">2.24</td><td class="num">1.7%</td><td class="num">1.52</td><td class="num">2.4%</td><td class="num up">+47.8%</td></tr>
+        <tr><td>其他艺术家 IP（聚合）</td><td class="num">14.09</td><td class="num">10.8%</td><td class="num">9.98</td><td class="num">15.8%</td><td class="num up">+41.2%</td></tr>
+        <tr><td>授权 IP</td><td class="num">16.01</td><td class="num">12.3%</td><td class="num">10.36</td><td class="num">16.5%</td><td class="num up">+54.5%</td></tr>
+        <tr><td>外采及其他</td><td class="num">3.16</td><td class="num">2.4%</td><td class="num">4.43</td><td class="num">7.0%</td><td class="num dn">−28.6%</td></tr>
+        <tr class="sum"><td>合计</td><td class="num">130.38</td><td class="num">100%</td><td class="num">63.01</td><td class="num">100%</td><td class="num up">+106.9%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tbl-card" id="tblA">
+    <h3>附表 A｜表外科目：授权费及其他服务收入（把自有 IP 授权出去收的钱）</h3>
+    <div class="cs">来源：2025 年度业绩公告附注 6「其他收入」、2026 中期业绩公告附注 5「其他收入」、2024 年度业绩公告附注 6（OTHER INCOME）；授权费支出见各期「按性质划分的开支」附注。原始单位人民币千元，此处换算为亿元。</div>
+    <table>
+      <thead><tr><th>项目</th><th class="num">2023 全年</th><th class="num">2024 全年</th><th class="num">2025 全年</th><th class="num">2025H1</th><th class="num">2026H1</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="6">损益表「其他收入」附注 —— 会计上不属于营业收入，故表 1–3 看不到</td></tr>
+        <tr><td><b>授权费及其他服务收入</b><br><span style="font-size:11px;color:var(--txt-mute)">对外授权自有 IP 收取的授权费与服务费</span></td><td class="num">0.430</td><td class="num">0.567</td><td class="num">0.706</td><td class="num">0.258</td><td class="num">0.606</td></tr>
+        <tr><td>　同比</td><td class="num">—</td><td class="num up">+31.7%</td><td class="num up">+24.6%</td><td class="num">—</td><td class="num up">+135.2%</td></tr>
+        <tr><td>　相当于当期营收（仅量级类比）</td><td class="num">0.68%</td><td class="num">0.43%</td><td class="num">0.19%</td><td class="num">0.19%</td><td class="num">0.35%</td></tr>
+        <tr><td>政府补贴</td><td class="num">0.309</td><td class="num">0.249</td><td class="num">0.653</td><td class="num">0.378</td><td class="num">2.395</td></tr>
+        <tr><td>其他</td><td class="num">0.010</td><td class="num">0.027</td><td class="num">0.140</td><td class="num">0.037</td><td class="num">0.028</td></tr>
+        <tr class="sum"><td>其他收入合计</td><td class="num">0.749</td><td class="num">0.843</td><td class="num">1.499</td><td class="num">0.672</td><td class="num">3.028</td></tr>
+        <tr class="grp"><td colspan="6">对照：「按性质划分的开支」里的授权费支出（付给迪士尼等外部 IP 方）</td></tr>
+        <tr><td>授权费<b>支出</b></td><td class="num">1.569</td><td class="num">3.935</td><td class="num">8.335</td><td class="num">4.512</td><td class="num">3.762</td></tr>
+        <tr><td>　收支比（收 ÷ 支）</td><td class="num">27.4%</td><td class="num">14.4%</td><td class="num dn">8.5%</td><td class="num dn">5.7%</td><td class="num up">16.1%</td></tr>
+        <tr class="sum"><td>净流出（支出 − 收入）</td><td class="num">1.139</td><td class="num">3.368</td><td class="num">7.629</td><td class="num">4.254</td><td class="num">3.156</td></tr>
+      </tbody>
+    </table>
+    <div class="mini"><b>为什么表 1–3 里找不到：</b>「按 IP 划分的收入」拆的是<b>收益（revenue）</b>，2025 年 371.20 亿已被 100% 拆成自主产品 367.88 亿 + 外采及其他 3.32 亿，没有余量；授权费及其他服务收入与政府补贴在损益表里是毛利之下、经营溢利之上的单列<b>「其他收入」</b>行。所以本文原先把 0.71 亿写成「占营收 0.19%」只是量级类比，会计占比并不成立。另注：2026H1 其他收入 3.028 亿中有 2.395 亿是政府补贴，看经营利润率时应与汇兑损失一并剔除。</div>
+  </div>
+
+  <div class="insight warn">
+    <h4>这张附表才是「集团化是否跑通」的真指标</h4>
+    <p>2025 全年付给外部 IP 方的授权费 <b>8.335 亿</b>，靠自有 IP 收回的授权费及其他服务收入只有 <b>0.706 亿</b>，净流出 7.63 亿，收支比跌到 <b>8.5%</b>——LABUBU 最火的一年，轻资产授权反而相对最弱。</p>
+    <p>2026H1 出现第一个改善信号：授权费支出降到 3.762 亿（同比 −16.6%），对外授权收入升到 0.606 亿（<b>+135.2%</b>），收支比回到 16.1%；对应公开报道的 19 次对外授权（荣耀、优衣库、麦当劳、瑞幸等）。但绝对额仍只相当于营收的 0.35% 量级，且不在营收内，离「非商品收入单列且 &gt;5%」的估值重估门槛仍然很远。</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>二、国内 vs 海外：按区域划分的收入</h2><span>官方四区口径</span></div>
+
+  <div class="chart-card" style="margin-bottom:12px"><h3>收入结构变化（各区域占比，100% 堆叠）</h3><div class="cs">全年与半年混排，仅用于看结构，不代表绝对规模</div><div class="chart"><canvas id="c3"></canvas></div></div>
+
+  <div class="tbl-card">
+    <h3>表 4｜分区域收入（人民币亿元）</h3>
+    <div class="cs">2025 / 2026H1 为官方直接披露；2024 / 2025H1 的分区数字由官方同比增速反推，标注为约数。<span class="tag est">反推值</span></div>
+    <table>
+      <thead><tr><th>区域</th><th class="num">2024 全年<br><span style="font-weight:400">（反推）</span></th><th class="num">2025 全年</th><th class="num">同比</th><th class="num">2025H1<br><span style="font-weight:400">（反推）</span></th><th class="num">2026H1</th><th class="num">同比</th></tr></thead>
+      <tbody>
+        <tr><td><b>中国</b></td><td class="num">88.92<br><small>68.2%</small></td><td class="num">208.52<br><small>56.2%</small></td><td class="num up">+134.6%</td><td class="num">82.83<br><small>59.7%</small></td><td class="num">122.01<br><small>71.0%</small></td><td class="num up">+47.3%</td></tr>
+        <tr><td>亚太（不含中国）</td><td class="num">31.10<br><small>23.9%</small></td><td class="num">80.11<br><small>21.6%</small></td><td class="num up">+157.6%</td><td class="num">28.52<br><small>20.6%</small></td><td class="num">25.75<br><small>15.0%</small></td><td class="num dn">−9.7%</td></tr>
+        <tr><td>美洲</td><td class="num">8.02<br><small>6.2%</small></td><td class="num">68.06<br><small>18.3%</small></td><td class="num up">+748.4%</td><td class="num">22.66<br><small>16.3%</small></td><td class="num">18.92<br><small>11.0%</small></td><td class="num dn">−16.5%</td></tr>
+        <tr><td>欧洲及其他</td><td class="num">2.39<br><small>1.8%</small></td><td class="num">14.51<br><small>3.9%</small></td><td class="num up">+506.3%</td><td class="num">4.78<br><small>3.4%</small></td><td class="num">5.06<br><small>2.9%</small></td><td class="num up">+5.9%</td></tr>
+        <tr class="sum"><td>合计</td><td class="num">130.38</td><td class="num">371.20</td><td class="num up">+184.7%</td><td class="num">138.76</td><td class="num">171.73</td><td class="num up">+23.8%</td></tr>
+        <tr class="sum"><td>海外合计</td><td class="num">41.46<br><small>31.8%</small></td><td class="num">162.68<br><small>43.8%</small></td><td class="num up">+291.9%</td><td class="num">55.93<br><small>40.3%</small></td><td class="num">49.72<br><small>29.0%</small></td><td class="num dn">−11.1%</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">口径提醒：2024 年报旧口径为「中国内地 / 港澳台及海外」，其中港澳台及海外 50.66 亿再分东南亚 24.03、东亚及港澳台 13.87、北美 7.23、欧澳及其他 5.54；2025 年报改用「中国 / 亚太 / 美洲 / 欧洲及其他」四区并重述了 2024 对比数。两套口径不可直接拼接。另：公司披露 2026H1 海外收入同比 −11.6%，按四区加总反推为 −11.1%，0.5pct 差异来自四舍五入与口径，本表统一采用四区加总值。</div>
+  </div>
+
+  <div class="tbl-card">
+    <h3>表 5｜区域 × 渠道：能拿到的最细一层</h3>
+    <div class="cs">这是官方对「国内外」披露的极限颗粒度；再往下到「某 IP 在某区域」就没有了。</div>
+    <table>
+      <thead><tr><th>期间 / 区域</th><th>渠道</th><th class="num">收入（亿元）</th><th class="num">同比</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">2025 · 中国</td><td>线下渠道</td><td class="num">114.21</td><td class="num up">+113.4%</td><td>占中国收入 54.8%；445 家门店 + 2396 台机器人商店</td></tr>
+        <tr><td>线上渠道</td><td class="num">85.22</td><td class="num up">+207.4%</td><td>占中国收入 40.9%</td></tr>
+        <tr><td>批发及其他</td><td class="num">9.08</td><td class="num up">+19.0%</td><td>含城市乐园、POP BAKERY、POPOP 等</td></tr>
+        <tr><td rowspan="3">2025 · 线上分平台</td><td>中国线上</td><td class="num">85.22</td><td class="num up">+207.4%</td><td>—</td></tr>
+        <tr><td>亚太线上</td><td class="num">30.53</td><td class="num up">+214.2%</td><td>—</td></tr>
+        <tr><td>美洲线上</td><td class="num">43.54</td><td class="num up">+1094.9%</td><td>—</td></tr>
+        <tr><td rowspan="2">2025 · 全球平台</td><td>自研 APP 及官网</td><td class="num">28.70</td><td class="num up">+1395.4%</td><td>—</td></tr>
+        <tr><td>TikTok</td><td class="num">10.40</td><td class="num up">+865.9%</td><td>—</td></tr>
+        <tr><td rowspan="4">2026H1 · 中国</td><td>线上合计</td><td class="num">47.78</td><td class="num up">+62.7%</td><td>抽盒机 20.63（+83.3%）、抖音 9.76（+74.0%）、天猫 +37.1%</td></tr>
+        <tr><td>线下零售店</td><td class="num">—</td><td class="num up">+38.2%</td><td>门店 443 → 455 家</td></tr>
+        <tr><td>机器人商店</td><td class="num">—</td><td class="num up">+14.8%</td><td>—</td></tr>
+        <tr><td>批发及其他</td><td class="num">5.53</td><td class="num up">+111.7%</td><td>乐园 / 甜品 / 饰品业务拉动</td></tr>
+        <tr><td rowspan="3">2026H1 · 海外线下</td><td>亚太门店</td><td class="num">—</td><td class="num up">+14.9%</td><td>门店 90 家</td></tr>
+        <tr><td>美洲门店</td><td class="num">—</td><td class="num up">+22.5%</td><td>门店 86 家</td></tr>
+        <tr><td>欧洲及其他门店</td><td class="num">—</td><td class="num up">+48.1%</td><td>门店 45 家</td></tr>
+        <tr><td rowspan="3">2026H1 · 海外线上</td><td>亚太线上</td><td class="num">—</td><td class="num dn">−39.8%</td><td>Shopee −62.1%</td></tr>
+        <tr><td>美洲线上</td><td class="num">—</td><td class="num dn">−45.6%</td><td>—</td></tr>
+        <tr><td>欧洲及其他线上</td><td class="num">—</td><td class="num dn">−59.0%</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="mini">「—」表示官方只披露增速、未披露绝对额。2026H1 海外下滑几乎全部来自线上（去年线下门店不足、需求挤到线上形成高基数），线下三个区域全部正增长——这是渠道结构问题，不是 IP 结构问题。</div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>三、IP × 国内外：官方没有，只有这些定性线索</h2><span>不可作为定量依据</span></div>
+  <div class="tbl-card">
+    <h3>表 6｜分 IP 的海外线索（全部来自业绩会 / 公告措辞，无金额）</h3>
+    <table>
+      <thead><tr><th>IP</th><th>公开线索</th><th>来源</th><th>可用程度</th></tr></thead>
+      <tbody>
+        <tr><td>THE MONSTERS / LABUBU</td><td>王宁：2026H1「LABUBU 在海外市场的增长有所放缓」；2026-04 与 FIFA 世界杯联名全球发售；2025 美洲收入 +748.4% 主要由该 IP 拉动（<b>推断，非拆分</b>）</td><td>2026 中期业绩会 / 公告</td><td><span class="tag est">定性 + 推断</span></td></tr>
+        <tr><td>星星人</td><td>司德：「未来一段时间内星星人将是海外市场的营销重点」；偶装从新加坡进入马来西亚做快闪与签售</td><td>2026 中期业绩会 / 界面新闻</td><td><span class="tag est">定性</span></td></tr>
+        <tr><td>DIMOO</td><td>2026-07 与皮克斯联名在欧美上线，搪胶毛绒挂件与手办同步铺渠道</td><td>界面新闻 2026-11-01</td><td><span class="tag est">定性</span></td></tr>
+        <tr><td>SKULLPANDA / HIRONO</td><td>在欧美市场持续推进；艺术家阿烟在美国完成首场签售</td><td>界面新闻 2026-11-01</td><td><span class="tag est">定性</span></td></tr>
+        <tr><td>CRYBABY / 其他</td><td>未找到任何分区域收入或销量披露</td><td>—</td><td><span class="tag gray">无</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight alt">
+    <h4>为什么拿不到，以及可以退而求其次怎么做</h4>
+    <p>财报按「IP」「区域」「品类」「渠道」四张表分别披露，彼此不交叉。管理层也从未在电话会给出分 IP 的区域数字。若要近似，只能用<b>第三方电商/社媒数据</b>（各站点销量、Google Trends、二手溢价）做代理指标，但这类数据无法覆盖占大头的线下门店，误差不可控，本报告不采用。</p>
+    <p>可用的替代观察：<b>区域毛利率差异</b>（2025 海外商品单价更高，推动整体毛利率 +3.5pct）、<b>分区域线上线下增速差</b>（表 5），以及<b>头部 IP 占比变化与区域增速的时序对照</b>——2025 美洲爆发与 THE MONSTERS 占比 38.1% 同期，2026H1 美洲 −16.5% 与 THE MONSTERS −7.5% 同期，方向一致但无法证明因果。</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>四、「所有 IP」名单：有名字，但没有逐个收入</h2><span>财报只单列 8–9 个，其余合并</span></div>
+  <div class="duo">
+    <div class="pane">
+      <h3>财报单列过收入的 IP <span class="tag ok">共 10 个</span></h3>
+      <div class="iplist">
+        <span class="hot">THE MONSTERS</span><span class="hot">SKULLPANDA</span><span class="hot">CRYBABY</span><span class="hot">MOLLY</span><span class="hot">DIMOO</span><span class="hot">星星人</span><span class="hot">HIRONO</span><span class="hot">HACIPUPU</span><span>Zsiga</span><span>授权 IP（聚合）</span>
+      </div>
+      <p style="margin-top:12px">其中 Zsiga 只在 2024 年报与 2026 中报单列；星星人从 2025 年报起单列；各期单列名单不完全一致。</p>
+    </div>
+    <div class="pane">
+      <h3>官网 / 授权材料中出现、但收入未单列的 IP <span class="tag gray">并入「其他艺术家 IP」</span></h3>
+      <div class="iplist">
+        <span>PUCKY 毕奇</span><span>小甜豆 SWEET BEAN</span><span>BUNNY</span><span>PINO JELLY</span><span>KUBO</span><span>PEACH RIOT</span><span>Nyota</span><span>CHAKA</span><span>LiLiOS</span><span>Merodi</span><span>MIGO</span><span>TINYTINY</span><span>AZURA</span><span>INOSOUL</span><span>OIPIPPI</span><span>VITA</span><span>NINEGO</span><span>Silent Trick</span><span>春春 mspring</span><span>POLAR</span><span>Z.S.</span>
+      </div>
+      <p style="margin-top:12px">这些 IP 的合计收入：2025 全年 24.64 亿（含 Zsiga 等）、2026H1 11.74 亿。公司披露运营 IP 超 90 个、合作艺术家 350+，绝大部分不在公开名单里。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>五、口径与来源</h2><span>用数前必读</span></div>
+  <div class="notes">
+    <h3>七条防踩坑提示</h3>
+    <ul>
+      <li><b>币种：</b>本表全部为人民币。部分第三方数据库（港股财务指标）用港元列示，数字约大 10%（如 THE MONSTERS 2025 显示 156.78「港元」而非 141.61 人民币），切勿混用。</li>
+      <li><b>期间：</b>2026H1「11 个 IP 过亿」是半年口径，与 2025 全年「17 个过亿」不可直接比较；2025H1 为 13 个。</li>
+      <li><b>重分类：</b>2025 年报重述 2024——新增单列星星人 1.21 亿、把 Zsiga 2.45 亿并入「其他艺术家 IP」，导致该聚合项 2024 数从 14.09 亿变为 15.33 亿。</li>
+      <li><b>区域口径变更：</b>2024 年报用「中国内地 / 港澳台及海外」旧口径，2025 年报改四区口径并重述对比数；表 4 的 2024 与 2025H1 分区值为按官方增速反推的约数。</li>
+      <li><b>「过亿」指收入过 1 亿元人民币的艺术家 IP</b>，不含授权 IP 与外采；财报只披露数量、不披露这 17 个分别是谁。</li>
+      <li><b>表外科目：</b>「授权费及其他服务收入」与「政府补贴」计入损益表<b>「其他收入」</b>，<b>不属于营业收入</b>；表 1–3 只拆收益，故不含这两项。原先把 0.71 亿写作「占营收 0.19%」只是量级类比，会计占比不成立，详见<a href="#tblA" style="color:var(--pink);font-weight:700">附表 A</a>。</li>
+      <li><b>2026Q3 不是财报：</b>10-27 的「最新业务状况」是自愿性季度更新，<b>只有同比区间、无绝对额、无利润、无按 IP 拆分</b>，且未经审核。第一节琥珀标签里的 2026Q3E / 2026 全年E 全部是本报告的模型推演（份额法 + 券商基数估算），<b>与表 1–3 的官方原表性质不同，禁止混用或当作公司披露引用</b>。公司历来不披露单季按 IP 拆分，2027-03 的 2026 年报也只会给<b>全年口径</b>；因此推演里 Q3 单季的分 IP 数字<b>永远无法被直接验证</b>，能被验证的只有全年各 IP 合计。</li>
+    </ul>
+    <div class="src">
+      <span>港交所 2025 年度业绩公告 · 2026032500286_c.pdf</span>
+      <span>港交所 2026 中期业绩公告 · 2026082000354_c.pdf</span>
+      <span>巨潮 2026 中期业绩公告 · 1225484841.PDF</span>
+      <span>港交所 2024 年度业绩公告 · 2025032600228_c.pdf</span>
+      <span>公司 2024 ANNUAL REPORT（prod-out-res.popmart.com）</span>
+      <span>泡泡玛特官网 IP 授权合作案例</span>
+      <span>2025 / 2026 业绩会公开报道（中新经纬、南都、界面、钛媒体、中国经济网）</span>
+      <span>2026 Q3 最新业务状况公告 · 2026-10-27（仅同比区间）</span>
+      <span>2026 Q1 最新业务状况公告 · 2026-05-12（+75%~80%）</span>
+      <span>2025 Q3 最新业务状况公告 · 2025-10-21（+245%~250%）</span>
+      <span>券商测算：华福商社 26Q3 约 63 亿 / 2026E 310 亿；浦银等估 25Q3 120–130 亿</span>
+    </div>
+    <div class="mini">表 1–3 与附表 A 的所有绝对额均可在上述公告「根據 IP 劃分的收入」「按地區劃分的收入」「其他收入」附注中逐项核对；同比为本报告按原表计算，与公司披露一致。附表 A 的「其他收入」见 2025 年报附注 6 / 2026 中期附注 5 / 2024 年报附注 6（OTHER INCOME），授权费支出见各期「按性質劃分的開支」附注。<b>第一节交互视图中的 2026Q3E / 2026 全年E 为推演，无原表可核对</b>，其唯二外部校验是「26Q3 约 63 亿」与「2026E 约 310 亿」的券商测算。</div>
+  </div>
+</section>
+
+<footer>数据整理 · 2026-11-10 · 官方原表 / 模型推演已分色标注 · 仅为投资研究底稿，不构成投资建议</footer>
+</div>
+
+<script>
+var C = {pink:'#FF3D7F',purple:'#7C4DFF',amber:'#FFB400',teal:'#00B8A9',gray:'#B9AEBB',blue:'#5B8DEF'};
+var grid = 'rgba(35,38,46,.07)', tick = '#7A7F8C';
+Chart.defaults.font.family = '"PingFang SC","Microsoft YaHei",Arial,sans-serif';
+Chart.defaults.font.size = 11;
+Chart.defaults.color = tick;
+
+var OFFICIAL = [
+  {k:'y2023',label:'2023 全年',total:63.01,  v:[3.68,10.20,10.25,0.71,7.38,3.51,0,12.50,10.36,4.43]},
+  {k:'y2024',label:'2024 全年',total:130.38, v:[30.41,20.93,13.08,11.65,9.10,7.27,0,18.78,16.01,3.16]},
+  {k:'y2025',label:'2025 全年',total:371.20, v:[141.61,28.97,35.40,29.29,27.77,17.35,20.56,33.12,33.82,3.32]},
+  {k:'h2025',label:'2025H1',  total:138.76, v:[48.14,13.57,12.21,12.18,11.05,7.28,3.89,13.95,15.25,1.23]},
+  {k:'h2026',label:'2026H1',  total:171.73, v:[44.54,9.01,15.51,16.33,16.19,10.09,26.50,14.72,17.71,1.12]}
+];
+/* ===== 2026 推演模型：官方只有同比区间，以下均为推算 ===== */
+var H1 = [44.54,9.01,15.51,16.33,16.19,10.09,26.50,14.72,17.71,1.12]; // 2026H1 官方
+var H1T = 171.73;
+var Y25 = [141.61,28.97,35.40,29.29,27.77,17.35,20.56,33.12,33.82,3.32]; // 2025 全年官方
+var Y25T = 371.20;
+var SCEN = {
+  low: {base:116,drop:50,  tm:18,q4:70},
+  mid: {base:120,drop:47.5,tm:21,q4:78},
+  high:{base:130,drop:45,  tm:24,q4:88}
+};
+var EST = {base:120,drop:47.5,tm:21,q4:78};
+var CACL = {}; // 三档情景缓存
+function spread(total,tmPct){
+  var tm = total*tmPct/100, rest = total-tm, base = H1T-H1[0];
+  return H1.map(function(x,i){return i===0?tm:x/base*rest});
+}
+function calc(s){
+  var q3t=s.base*(1-s.drop/100), q4t=s.q4;
+  var q3=spread(q3t,s.tm), q4=spread(q4t,s.tm);
+  var fy=H1.map(function(x,i){return x+q3[i]+q4[i]});
+  return {q3t:q3t,q4t:q4t,fyt:H1T+q3t+q4t,q3:q3,q4:q4,fy:fy};
+}
+function estPeriods(){
+  var c=calc(EST);
+  return [
+    {k:'q3e',label:'2026Q3E',   total:c.q3t,v:c.q3,est:true},
+    {k:'fye',label:'2026全年E', total:c.fyt,v:c.fy,est:true}
+  ];
+}
+var PY = OFFICIAL.concat(estPeriods());
+function refreshEst(){
+  var e=estPeriods(); PY[5]=e[0]; PY[6]=e[1];
+  CACL.low=calc(SCEN.low); CACL.mid=calc(SCEN.mid); CACL.high=calc(SCEN.high);
+}
+function rgba(hex,a){
+  var n=parseInt(hex.slice(1),16);
+  return 'rgba('+(n>>16)+','+((n>>8)&255)+','+(n&255)+','+a+')';
+}
+var IPS = [
+  {n:'THE MONSTERS',c:C.pink},{n:'MOLLY',c:'#8E6BFF'},{n:'SKULLPANDA',c:C.purple},
+  {n:'CRYBABY',c:'#5B8DEF'},{n:'DIMOO',c:C.teal},{n:'HIRONO',c:'#00A0C6'},
+  {n:'星星人',c:C.amber},{n:'其他艺术家 IP',c:'#C9B8CC'},{n:'授权 IP',c:'#9AA1B1'},{n:'外采及其他',c:'#E0D7DF'}
+];
+var INS = {
+  y2023:'<b>2023：MOLLY 与 SKULLPANDA 双头并立（各约 16%），THE MONSTERS 仅 5.8%。</b>这是 LABUBU 爆发前夜，结构最分散；授权 IP + 外采仍占 23.5%，说明当时「别人的 IP」和第三方商品权重不低。',
+  y2024:'<b>2024：THE MONSTERS 从 5.8% 冲到 23.3%，CRYBABY 从 1.1% 到 8.9%。</b>单 IP 集中度开始抬升，MOLLY 占比守住 16.1% 但已被反超，SKULLPANDA 从 16.3% 滑到 10.0%。',
+  y2025:'<b>2025：THE MONSTERS 单 IP 占 38.1%，为五年峰值。</b>前 7 大 IP 合计约 81%，集中度最高的一年；星星人从 0 到 5.5%，是唯一新晋的大单品。所有 IP 都在涨，但涨得极不均匀。',
+  h2025:'<b>2025H1：THE MONSTERS 34.7%，仍是一家独大。</b>星星人 2.8% 刚起量，MOLLY 9.8% 尚未明显下滑；注意这是半年口径，与全年占比可比、金额不可比。',
+  h2026:'<b>2026H1：CR1 从 38.1% 回落到 25.9%，星星人补位到 15.4%。</b>四年来第一次出现「占比实质分散」——但 THE MONSTERS 绝对额同时在降（−7.5%），分散里含老 IP 退坡，不全是新 IP 增厚，别直接读成矩阵变厚。'
+};
+function estIns(p){
+  var c=calc(EST), q3=(p.k==='q3e');
+  var cr1=(p.v[0]/p.total*100).toFixed(1), xr=(p.v[6]/p.total*100).toFixed(1);
+  var head=q3
+    ? '<b>2026Q3E 单季推演 '+c.q3t.toFixed(1)+' 亿</b>（同比 −'+EST.drop.toFixed(1)+'%）'
+    : '<b>2026 全年E 推演 '+c.fyt.toFixed(1)+' 亿</b>（同比 '+(c.fyt/Y25T*100-100).toFixed(1)+'%，H1 官方 171.73 + Q3E '+c.q3t.toFixed(1)+' + Q4E '+c.q4t.toFixed(1)+'）';
+  return head+'。结构读数：THE MONSTERS 占比从 2025 全年 38.1%、2026H1 26.0% 进一步降到 <b>'+cr1+'%</b>，星星人约 '+xr+'%，其余 9 项按 H1 相对权重等比承接。<b>注意这是份额假设的数学结果，不是公司披露的结构</b>：Q3 的降幅主要来自海外线上，而 LABUBU 正是那部分的主体，所以推演里 CR1 下降得比 H1 更快。反过来，如果 Q4 旺季新品拉动 LABUBU 回升，全年 CR1 会比图中更高。';
+}
+function pct(p,i){return p.v[i]/p.total*100}
+function period(k){return PY.filter(function(x){return x.k===k})[0]}
+var curK='q3e', sortDesc=true, yearChart, trendChart, stackChart;
+
+function buildYear(p){
+  var idx=IPS.map(function(_,i){return i});
+  if(sortDesc) idx.sort(function(a,b){return pct(p,b)-pct(p,a)});
+  var amts=idx.map(function(i){return p.v[i]});
+  if(yearChart) yearChart.destroy();
+  yearChart=new Chart(document.getElementById('cYear'),{
+    type:'bar',
+    data:{labels:idx.map(function(i){return IPS[i].n}),datasets:[{
+      data:idx.map(function(i){return +pct(p,i).toFixed(2)}),
+      backgroundColor:idx.map(function(i){return p.est?rgba(IPS[i].c,.55):IPS[i].c}),
+      borderColor:idx.map(function(){return p.est?C.amber:'transparent'}),
+      borderWidth:p.est?1.5:0,borderRadius:4,maxBarThickness:20}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){
+        return c.parsed.x.toFixed(1)+'%　·　'+amts[c.dataIndex].toFixed(2)+' 亿元';}}}},
+      scales:{x:{grid:{color:grid},ticks:{callback:function(v){return v+'%'}},title:{display:true,text:'占当期总收入'}},
+        y:{grid:{display:false}}}}
+  });
+}
+var vline={
+  id:'vline',
+  afterDatasetsDraw:function(ch){
+    var i=PY.map(function(p){return p.k}).indexOf(curK);
+    var x=ch.scales.x.getPixelForTick(i),a=ch.chartArea,ctx=ch.ctx;
+    ctx.save();ctx.setLineDash([4,4]);ctx.strokeStyle=period(curK).est?C.amber:C.pink;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(x,a.top);ctx.lineTo(x,a.bottom);ctx.stroke();ctx.restore();
+  }
+};
+function buildTrend(){
+  if(trendChart) trendChart.destroy();
+  trendChart=new Chart(document.getElementById('cTrend'),{
+    type:'line',
+    data:{labels:PY.map(function(p){return p.label}),datasets:IPS.slice(0,7).map(function(ip,i){
+      return {label:ip.n,data:PY.map(function(p){return +pct(p,i).toFixed(2)}),
+        borderColor:ip.c,backgroundColor:PY.map(function(p){return p.est?'#FFFFFF':ip.c}),
+        borderWidth:2,tension:.25,fill:false,
+        segment:{borderDash:function(ctx){return ctx.p0DataIndex>=5?[6,4]:undefined}},
+        pointBorderColor:PY.map(function(p){return p.est?C.amber:ip.c}),
+        pointBorderWidth:PY.map(function(p){return p.est?2:1}),
+        pointRadius:PY.map(function(p){return p.k===curK?6:2.5}),pointHoverRadius:7};
+    })},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{boxWidth:10,padding:8}},
+        tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toFixed(1)+'%'}}}},
+      scales:{y:{grid:{color:grid},ticks:{callback:function(v){return v+'%'}},title:{display:true,text:'占总收入比例'}},
+        x:{grid:{display:false},ticks:{maxRotation:30,minRotation:0}}}},
+    plugins:[vline]
+  });
+}
+function buildStack(){
+  if(stackChart) stackChart.destroy();
+  stackChart=new Chart(document.getElementById('cStack'),{
+    type:'bar',
+    data:{labels:PY.map(function(p){return p.label}),datasets:IPS.map(function(ip,i){
+      return {label:ip.n,data:PY.map(function(p){return +pct(p,i).toFixed(2)}),
+        backgroundColor:PY.map(function(p){return p.est?rgba(ip.c,.55):ip.c}),
+        borderColor:PY.map(function(p){return p.est?C.amber:'transparent'}),
+        borderWidth:PY.map(function(p){return p.est?1:0})};
+    })},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{boxWidth:11,padding:8}},
+        tooltip:{callbacks:{label:function(c){
+          return c.dataset.label+'：'+c.parsed.y.toFixed(1)+'%　·　'+PY[c.dataIndex].v[c.datasetIndex].toFixed(2)+' 亿元';}}}},
+      scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,max:100,grid:{color:grid},ticks:{callback:function(v){return v+'%'}}}}}
+  });
+}
+function renderStats(p){
+  var core=p.v.slice(0,7).map(function(x){return x/p.total*100}).sort(function(a,b){return b-a});
+  var cr1=core[0],cr3=core[0]+core[1]+core[2],artist=100-pct(p,8)-pct(p,9);
+  var dtxt=p.est?(p.k==='q3e'?'单季推演 · 非官方':'全年累计推演 · 非官方'):(p.label.indexOf('H1')>=0?'半年口径 · 官方':'全年口径 · 官方');
+  var items=[
+    {l:'当期总收入',v:p.total.toFixed(2),u:'亿',d:dtxt},
+    {l:'第一大 IP 占比 CR1',v:cr1.toFixed(1),u:'%',d:'单 IP 依赖度'},
+    {l:'前三 IP 合计 CR3',v:cr3.toFixed(1),u:'%',d:'头部集中度'},
+    {l:'艺术家 IP 合计',v:artist.toFixed(1),u:'%',d:'自主 IP 化程度'}
+  ];
+  document.getElementById('yrStats').innerHTML=items.map(function(o){
+    return '<div class="yr-stat"><div class="l">'+o.l+'</div><div class="v">'+o.v+'<small>'+o.u+'</small></div><div class="d">'+o.d+'</div></div>';
+  }).join('');
+  document.getElementById('yrBarTitle').innerHTML=p.label+' · 各 IP 占比'+(p.est?'<span class="est-badge">推演</span>':'');
+  var box=document.getElementById('yrInsight');
+  box.className=p.est?'insight warn':'insight alt';
+  box.innerHTML='<h4>'+p.label+' 的结构读数'+(p.est?'（模型推演）':'')+'</h4><p>'+(p.est?estIns(p):INS[p.k])+'</p>';
+}
+function renderEstTable(){
+  var c=calc(EST),lo=CACL.low,hi=CACL.high;
+  var rows=IPS.map(function(ip,i){
+    var yoy=(c.fy[i]/Y25[i]-1)*100;
+    return '<tr><td class="nowrap">'+ip.n+'</td>'
+      +'<td class="num">'+Y25[i].toFixed(2)+'</td>'
+      +'<td class="num">'+H1[i].toFixed(2)+'</td>'
+      +'<td class="num ev2">'+c.q3[i].toFixed(2)+'</td>'
+      +'<td class="num" style="white-space:nowrap">'+lo.q3[i].toFixed(1)+' ~ '+hi.q3[i].toFixed(1)+'</td>'
+      +'<td class="num ev">'+(c.q3[i]/c.q3t*100).toFixed(1)+'%</td>'
+      +'<td class="num ev2">'+c.fy[i].toFixed(2)+'</td>'
+      +'<td class="num ev">'+(c.fy[i]/c.fyt*100).toFixed(1)+'%</td>'
+      +'<td class="num '+(yoy>=0?'up':'dn')+'">'+(yoy>=0?'+':'')+yoy.toFixed(1)+'%</td></tr>';
+  }).join('');
+  var tyoy=(c.fyt/Y25T-1)*100;
+  rows+='<tr class="sum"><td>合计</td><td class="num">'+Y25T.toFixed(2)+'</td><td class="num">'+H1T.toFixed(2)+'</td>'
+    +'<td class="num ev2">'+c.q3t.toFixed(2)+'</td><td class="num" style="white-space:nowrap">'+lo.q3t.toFixed(1)+' ~ '+hi.q3t.toFixed(1)+'</td>'
+    +'<td class="num ev">100%</td><td class="num ev2">'+c.fyt.toFixed(2)+'</td><td class="num ev">100%</td>'
+    +'<td class="num dn">'+tyoy.toFixed(1)+'%</td></tr>';
+  document.getElementById('estBody').innerHTML=rows;
+  document.getElementById('estCs').innerHTML='当前参数：2025Q3 基数 '+EST.base+' 亿 ×（1 − '+EST.drop.toFixed(1)+'%）= <b>Q3E '+c.q3t.toFixed(1)+' 亿</b>；Q4E '+EST.q4+' 亿；THE MONSTERS 份额 '+EST.tm+'%。全年E '+c.fyt.toFixed(1)+' 亿，同比 '+tyoy.toFixed(1)+'%。';
+  document.getElementById('estHead').textContent='Q3E '+c.q3t.toFixed(1)+' 亿 · 全年E '+c.fyt.toFixed(1)+' 亿（同比 '+tyoy.toFixed(1)+'%）';
+}
+function syncSliders(){
+  ['sBase','sDrop','sTm','sQ4'].forEach(function(id,i){
+    document.getElementById(id).value=[EST.base,EST.drop,EST.tm,EST.q4][i];
+  });
+  document.getElementById('vBase').textContent=EST.base+' 亿';
+  document.getElementById('vDrop').textContent='−'+EST.drop.toFixed(1)+'%';
+  document.getElementById('vTm').textContent=EST.tm+'%';
+  document.getElementById('vQ4').textContent=EST.q4+' 亿';
+}
+function redrawAll(){
+  refreshEst();
+  buildYear(period(curK));buildTrend();buildStack();renderStats(period(curK));renderEstTable();
+}
+function setPeriod(k){
+  curK=k;
+  Array.prototype.forEach.call(document.querySelectorAll('#yrTabs button'),function(b){
+    b.classList.toggle('active',b.getAttribute('data-k')===k);
+  });
+  var isEst=period(k).est;
+  document.getElementById('estCtrl').classList.toggle('on',isEst);
+  document.getElementById('estPanel').classList.toggle('on',isEst);
+  buildYear(period(k));renderStats(period(k));
+  trendChart.data.datasets.forEach(function(ds){ds.pointRadius=PY.map(function(q){return q.k===k?6:2.5})});
+  trendChart.update();
+}
+document.getElementById('yrTabs').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(b) setPeriod(b.getAttribute('data-k'));
+});
+document.getElementById('sortSw').addEventListener('click',function(){
+  sortDesc=!sortDesc;
+  this.textContent=sortDesc?'按占比排序 ↓':'按固定顺序 ↕';
+  buildYear(period(curK));
+});
+(function(){
+  var map={sBase:'base',sDrop:'drop',sTm:'tm',sQ4:'q4'};
+  Object.keys(map).forEach(function(id){
+    document.getElementById(id).addEventListener('input',function(e){
+      EST[map[id]]=parseFloat(e.target.value);
+      syncSliders();
+      Array.prototype.forEach.call(document.querySelectorAll('.est-presets button'),function(b){b.classList.remove('on')});
+      redrawAll();
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.est-presets button'),function(b){
+    b.addEventListener('click',function(){
+      var s=SCEN[b.getAttribute('data-s')];
+      EST={base:s.base,drop:s.drop,tm:s.tm,q4:s.q4};
+      syncSliders();
+      Array.prototype.forEach.call(document.querySelectorAll('.est-presets button'),function(x){x.classList.remove('on')});
+      b.classList.add('on');
+      redrawAll();
+    });
+  });
+})();
+refreshEst();syncSliders();buildYear(period(curK));buildTrend();buildStack();renderStats(period(curK));renderEstTable();
+
+new Chart(document.getElementById('c1'), {
+  type:'bar',
+  data:{
+    labels:['THE MONSTERS','SKULLPANDA','授权 IP','CRYBABY','MOLLY','DIMOO','其他艺术家IP','星星人','HIRONO','HACIPUPU'],
+    datasets:[{data:[141.61,35.40,33.82,29.29,28.97,27.77,24.64,20.56,17.35,8.48],
+      backgroundColor:[C.pink,C.purple,C.gray,C.purple,C.purple,C.purple,C.gray,C.amber,C.purple,C.purple],borderRadius:4}]
+  },
+  options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.x.toFixed(2)+' 亿元'}}}},
+    scales:{x:{grid:{color:grid},ticks:{callback:function(v){return v+'亿'}}},y:{grid:{display:false}}}}
+});
+
+new Chart(document.getElementById('c2'), {
+  type:'bar',
+  data:{
+    labels:['THE MONSTERS','星星人','CRYBABY','DIMOO','SKULLPANDA','HIRONO','MOLLY'],
+    datasets:[
+      {label:'2025 全年',data:[141.61,20.56,29.29,27.77,35.40,17.35,28.97],backgroundColor:C.purple,borderRadius:4},
+      {label:'2026H1',data:[44.54,26.50,16.33,16.19,15.51,10.09,9.01],backgroundColor:C.pink,borderRadius:4}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{boxWidth:12}},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toFixed(2)+' 亿元'}}}},
+    scales:{y:{grid:{color:grid},ticks:{callback:function(v){return v+'亿'}}},x:{grid:{display:false},ticks:{maxRotation:35,minRotation:0}}}}
+});
+
+new Chart(document.getElementById('c3'), {
+  type:'bar',
+  data:{
+    labels:['2024 全年（反推）','2025 全年','2025H1（反推）','2026H1'],
+    datasets:[
+      {label:'中国',data:[68.2,56.2,59.7,71.0],backgroundColor:C.pink},
+      {label:'亚太',data:[23.9,21.6,20.6,15.0],backgroundColor:C.purple},
+      {label:'美洲',data:[6.2,18.3,16.3,11.0],backgroundColor:C.amber},
+      {label:'欧洲及其他',data:[1.8,3.9,3.4,2.9],backgroundColor:C.teal}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{boxWidth:12}},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toFixed(1)+'%'}}}},
+    scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,max:100,grid:{color:grid},ticks:{callback:function(v){return v+'%'}}}}}
+});
+</script>
+</body>
+</html>

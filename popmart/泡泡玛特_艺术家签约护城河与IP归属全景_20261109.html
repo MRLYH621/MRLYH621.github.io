@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 · 艺术家签约护城河与 IP 归属全景</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --pink:#FF3D7F; --purple:#7C4DFF; --amber:#FFB400; --teal:#00B8A9; --red:#E5484D;
+  --bg:#FFF9FB; --card:#FFFFFF; --line:#F0E4EA;
+  --txt:#23262E; --txt-sub:#7A7F8C; --txt-mute:#A6ABB6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 60px}
+header{background:linear-gradient(120deg,#FF3D7F 0%,#7C4DFF 55%,#4ECDC4 100%);color:#fff;padding:30px 0 26px;margin-bottom:22px}
+header .wrap{padding-bottom:0}
+.brand-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo-dot{width:38px;height:38px;border-radius:12px;background:#fff;color:var(--pink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:19px;flex:none}
+h1{font-size:23px;font-weight:800;letter-spacing:.5px}
+.sub{opacity:.92;font-size:13px;margin-top:5px}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:4px 11px;border-radius:20px;font-size:12px}
+section{margin-bottom:30px}
+.sec-head{display:flex;align-items:baseline;gap:10px;margin-bottom:13px;flex-wrap:wrap}
+.sec-head h2{font-size:17px;font-weight:800;position:relative;padding-left:12px}
+.sec-head h2::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:4px;border-radius:2px;background:linear-gradient(180deg,var(--pink),var(--purple))}
+.sec-head span{font-size:12px;color:var(--txt-mute)}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px 12px;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(35,38,46,.04)}
+.kpi::after{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--pink)}
+.kpi.p::after{background:var(--purple)} .kpi.a::after{background:var(--amber)} .kpi.t::after{background:var(--teal)}
+.kpi .label{font-size:12px;color:var(--txt-sub)}
+.kpi .val{font-size:26px;font-weight:800;margin-top:3px;letter-spacing:-.5px}
+.kpi .val small{font-size:13px;font-weight:600;color:var(--txt-sub);margin-left:2px}
+.kpi .foot{font-size:11.5px;color:var(--txt-mute);margin-top:4px}
+.insight{background:linear-gradient(100deg,#FFF3F7,#F6F1FF);border:1px solid #F3E2EE;border-left:4px solid var(--pink);border-radius:12px;padding:13px 16px;margin-bottom:10px}
+.insight h4{font-size:13.5px;font-weight:800;margin-bottom:5px}
+.insight p{font-size:12.8px;color:var(--txt-sub)}
+.insight p+p{margin-top:5px}
+.insight b{color:var(--pink)}
+.insight.alt{background:linear-gradient(100deg,#F3FFFC,#F4F1FF);border-left-color:var(--teal)}
+.insight.alt b{color:#00857A}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.duo{grid-template-columns:1fr}.trio{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.pane h3{font-size:14.5px;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pane p,.pane li{font-size:12.8px;color:var(--txt-sub)}
+.pane ul,.pane ol{padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.pane li b{color:var(--txt)}
+.chip{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:12px;flex:none}
+.chip.inv{background:#FFE6EF;color:var(--pink)} .chip.ceo{background:#EDE7FF;color:var(--purple)}
+.chip.ok{background:#DDF7F4;color:#00857A} .chip.risk{background:#FFE9EC;color:#D6336C}
+.chip.est{background:#FFF3D6;color:#B07A00}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;overflow-x:auto;margin-bottom:12px}
+.tbl-card h3{font-size:14px;font-weight:800;margin-bottom:9px}
+th{background:#F9F4F7;color:var(--txt-sub);font-weight:700;text-align:left;padding:8px 10px;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px dashed #F1E9ED;vertical-align:top}
+td.nowrap{white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+.up{color:#1FA971;font-weight:700} .dn{color:#E5484D;font-weight:700}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;background:#EDE7FF;color:var(--purple);white-space:nowrap}
+.tag.ok{background:#DDF7F4;color:#00857A} .tag.risk{background:#FFE9EC;color:#D6336C}
+.tag.est{background:#FFF3D6;color:#B07A00} .tag.gray{background:#F2EDEF;color:var(--txt-sub)}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+@media(max-width:900px){.chart-grid{grid-template-columns:1fr}}
+.chart-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px}
+.chart-card h3{font-size:14px;font-weight:800;margin-bottom:2px}
+.chart-card .cs{font-size:11.5px;color:var(--txt-mute);margin-bottom:8px}
+.chart{height:250px;position:relative}
+.chart-fallback{display:none;font-size:12px;color:var(--txt-sub);padding:18px 4px}
+.layer{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:10px;position:relative}
+.layer:not(:last-child)::after{content:"↓";position:absolute;left:50%;bottom:-19px;transform:translateX(-50%);color:var(--purple);font-weight:800;font-size:15px;z-index:2}
+.layer h4{font-size:13.5px;font-weight:800;margin-bottom:6px}
+.layer .lg{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.layer .lg span{font-size:11.5px;background:#FBF5F8;border:1px solid var(--line);padding:4px 9px;border-radius:7px;color:var(--txt-sub)}
+.layer.a{border-left:4px solid var(--pink)} .layer.b{border-left:4px solid var(--purple)} .layer.c{border-left:4px solid var(--teal)} .layer.d{border-left:4px solid var(--amber)}
+.tl{list-style:none;position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--pink),var(--purple),var(--teal))}
+.tl li{position:relative;margin-bottom:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px}
+.tl li::before{content:"";position:absolute;left:-20px;top:17px;width:9px;height:9px;border-radius:50%;background:var(--pink);border:2px solid #fff;box-shadow:0 0 0 1px var(--pink)}
+.tl .yr{font-size:12px;font-weight:800;color:var(--purple);margin-bottom:3px}
+.tl .bd{font-size:12.5px;color:var(--txt-sub)}
+.fs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px;border-left:3px solid var(--pink)}
+.fs.ok{border-left-color:var(--teal)} .fs.bad{border-left-color:var(--red)} .fs.wait{border-left-color:var(--amber)}
+.fs h4{font-size:13.5px;font-weight:800;margin-bottom:6px}
+.fs ul{padding-left:16px;display:flex;flex-direction:column;gap:5px}
+.fs li{font-size:12px;color:var(--txt-sub)}
+.fs li b{color:var(--txt)}
+.notes{background:#FDFAFB;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.notes h3{font-size:14px;font-weight:800;margin-bottom:10px}
+.notes ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.notes li{font-size:12.5px;color:var(--txt-sub);padding-left:15px;position:relative}
+.notes li::before{content:"▸";position:absolute;left:0;color:var(--pink)}
+.notes li b{color:var(--txt);font-weight:700}
+.src{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.src span{font-size:11px;background:#fff;border:1px solid var(--line);padding:3px 9px;border-radius:6px;color:var(--txt-sub)}
+.mini{font-size:11.5px;color:var(--txt-mute);margin-top:8px;line-height:1.6}
+footer{text-align:center;font-size:11.5px;color:var(--txt-mute);padding-top:8px}
+@media(max-width:680px){
+  h1{font-size:19px} .wrap{padding:0 12px 44px} header{padding:24px 0 20px}
+  .kpi .val{font-size:22px} table{font-size:11.5px} th,td{padding:7px 8px}
+  .chart{height:220px} .pane,.tbl-card,.layer{padding:13px 12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand-row">
+      <div class="logo-dot">P</div>
+      <div>
+        <h1>泡泡玛特 · 艺术家签约护城河与 IP 归属全景</h1>
+        <div class="sub">POP MART (9992.HK) — 合作模式 / 护城河机制 / 跳槽应对 / 授权 vs 自有（直击"IP 到底归谁"）</div>
+        <div class="meta-row">
+          <span class="pill">调研日 2026-11-09</span>
+          <span class="pill">数据锚点 2025 年报 / 2026 中报 / 股东会</span>
+          <span class="pill">结论先行 · 表格图表支撑</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- KPI -->
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="label">艺术家 IP 收入占比</div>
+    <div class="val">90.0<small>%</small></div>
+    <div class="foot">2025（2024 为 85.3%），自主IP主导</div>
+  </div>
+  <div class="kpi p">
+    <div class="label">紧密合作艺术家</div>
+    <div class="val">350<small>+ 名</small></div>
+    <div class="foot">发掘团队 20+ 人，全球扫货</div>
+  </div>
+  <div class="kpi a">
+    <div class="label">内部 PDC 设计团队</div>
+    <div class="val">100<small>+ 人</small></div>
+    <div class="foot">一说近 300 人，员工制孵化</div>
+  </div>
+  <div class="kpi t">
+    <div class="label">最赚钱 IP 归属</div>
+    <div class="val" style="font-size:18px;line-height:1.3;margin-top:6px">已收购（永久自有）</div>
+    <div class="foot">Labubu＝THE MONSTERS，版权已归公司</div>
+  </div>
+</div>
+
+<!-- 重要更正 -->
+<section>
+  <div style="border-left:4px solid #ffb020;background:rgba(255,176,32,.08);padding:16px 18px;border-radius:10px;margin:4px 0 6px">
+    <div style="font-weight:700;color:#ffb020;font-size:15px;margin-bottom:8px">⚠️ 重要更正 · 2026-11-09 修订（原报告误差）</div>
+    <p style="margin:0 0 8px">原报告将 <b>Labubu（THE MONSTERS）</b> 归类为"长期独占授权、著作权仍属龙家升、经营权锁至 2030"——此表述<b>已过时/有误</b>，现更正如下：</p>
+    <ul style="margin:0;padding-left:20px;line-height:1.75">
+      <li>王宁在 2025 年 5 月股东会现场明确：<b>"the monsters 我们现在已经完全收购了"</b>（多位在场股东记录）；另在证券时报访谈称："不管是 Molly、Labubu，还是 Dimoo……这些版权是永久的属于泡泡玛特的"。</li>
+      <li><b>段永平 2026-08-27 在雪球亲自核验</b>："我查了一下，labubu 版权已经属于泡泡玛特了，根本不存在续签问题……作者还保留分成权，后期他们不参与创作了分成比例也会降低"，并对"豆包显示 2030 到期"回应"ai 也会有不靠谱的时候"。</li>
+      <li><b>更正结论</b>：THE MONSTERS / Labubu 的<b>著作权现已归属泡泡玛特（永久自有）</b>，原 2019 年"签至 2030 的独占授权"框架已被收购取代；龙家升仍保留<b>署名权</b>与<b>随创作参与度递减的销售分成权</b>，但<b>不再存在"2030 续约"的归属风险</b>。</li>
+      <li><b>投资含义</b>：原报告列为"估值最需打折的变量"的 2030 Labubu 续约风险<b>应移除</b>，这是对长期叙事的<b>净正面</b>修正。原四类合作模式框架仍成立，但 Labubu 实际已从重分类意义上从"① 外部独占授权"滑入"② 买断永久自有"区间。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 结论先行 -->
+<section>
+  <div class="sec-head"><h2>一、结论先行：护城河不在某个 IP，在这套"操作系统"</h2><span>先给答案，再拆解</span></div>
+  <div class="insight">
+    <h4>① 怎么解决"艺术家签约"这道护城河？</h4>
+    <p>泡泡玛特用<b>四类分层合作</b>把散落全球的创作者聚成"可复制的 IP 供给池"：<b>外部独占授权</b>（早期形态，如星星人/CRYBABY 成长期）、<b>买断永久自有</b>（如 Molly/DIMOO/SKULLPANDA，且 <b>Labubu/THE MONSTERS 经收购后也已落入此档</b>）、<b>内部 PDC 孵化</b>（如小野/Zsiga）、<b>新锐阶梯合作</b>（如 PEACH RIOT）。底层是"创作归艺术家、商业运营归泡泡玛特"的权利切割 + 利益绑定 + 矩阵分散。</p>
+  </div>
+  <div class="insight alt">
+    <h4>② 跳槽咋办？—— 分两类，都已"锁死"</h4>
+    <p><b>买断 / PDC 类</b>：IP 著作权 100% 归公司，人走 IP 不走，可换设计师续作（Molly 即例；<b>Labubu 经收购后同属此类，无续约风险</b>）。<b>外部授权类</b>（如星星人/CRYBABY 成长期、龙家升早期 2019–收购前）：公司仍握<b>商标、全球渠道、产品库存、用户基础</b>，即便极端不续约也可继续卖、继续做、继续授权；原作者也因商标/外观专利在手，无法在中国及全球大部分地区卖原始形象。<b>头部更被股权深度绑定</b>（王信明持约 1.49%≈46 亿港元，离场=放弃巨额增值）。</p>
+  </div>
+  <div class="insight">
+    <h4>③ 这些 IP 现在"是授权的，还是已经属于泡泡玛特了"？—— 混合</h4>
+    <p>早期头部（<b>Molly/DIMOO/SKULLPANDA</b>）已买断，著作权 100% 归公司；最火的 <b>Labubu（THE MONSTERS）也已"完全收购"</b>，著作权永久归公司（王宁 2025 股东会原话；龙家升保留署名权与递减分成权，无续约风险）；内部 <b>PDC（小野等）</b>从出生就是公司的。即"<b>头部 IP 绝大部分本来就是泡泡玛特的</b>"——原报告所谓"最赚钱的是长租 + 商标锁定"经核验为过时表述，已更正。</p>
+  </div>
+</section>
+
+<!-- 四种合作模式 -->
+<section>
+  <div class="sec-head"><h2>二、四种合作模式：把"签约"做成可复制的流水线</h2><span>来源 / 机制 / 版权 / 代表 IP</span></div>
+  <div class="layer a">
+    <h4>① 外部独占授权 · 锁住经营权（Labubu 已被收购，见更正）</h4>
+    <p>艺术家保留<b>著作权、署名权、创作自由</b>；泡泡玛特拿到<b>全球独家生产/销售/联名/二次授权/商标注册/维权</b>全链条权利，长约锁定。最特别之处：锁定的是"经营权"，不是"著作权"。</p>
+    <div class="lg"><span>代表：星星人 / CRYBABY（成长期）</span><span>长约锁定经营权</span><span>销售分成（估 8%–15% 阶梯）</span><span>后续可买断收编</span></div>
+    <p style="margin-top:8px;color:#ffd27a"><b>⚠️ 更正：</b>原以此档举例的 <b>Labubu（THE MONSTERS）</b> 经王宁 2025 股东会"完全收购"表态 + 段永平 2026-08 核验，<b>著作权现已归属泡泡玛特（永久自有）</b>，已从本档滑入"② 买断永久自有"；原"签至 2030-04-30"为 2019 年初始框架，已被收购取代，非续约风险。</p>
+  </div>
+  <div class="layer b">
+    <h4>② 买断永久自有 · 一次性把 IP 收归公司</h4>
+    <p>外部艺术家签约 → <b>版权一次性买断</b> → 作者拿永久销售分成，个别叠加股权。IP 100% 归公司，<b>零续约风险、永久可控</b>。</p>
+    <div class="lg"><span>代表：MOLLY（王信明）</span><span>DIMOO（Ayan 邓瑞雪）</span><span>SKULLPANDA（熊喵）</span><span>Molly 2019 买断 + 授 2% 股权</span></div>
+  </div>
+  <div class="layer c">
+    <h4>③ 内部 PDC 孵化 · 把个人变成公司能力</h4>
+    <p>2021 年成立设计师中心 PDC，<b>员工制</b>：公司出选题/资源/流量/全球运营，设计师拿薪资+奖金+爆款分成，IP 著作权、商标按劳动合同 <b>100% 归属公司</b>。没有解约/续约风险，IP 不因个人走掉而断档。</p>
+    <div class="lg"><span>代表：HIRONO 小野（Lang）</span><span>Zsiga（吾丹丹）</span><span>小甜豆 / PINO JELLY / Yuki</span><span>近年顶部 IP 接力靠此引擎</span></div>
+  </div>
+  <div class="layer d">
+    <h4>④ 新锐阶梯合作 · 随成熟度加深的滑动频谱</h4>
+    <p>不是固定模板，而是随 IP 成熟度变化的路径：测试期 1–3 年短约试水 → 成长期 3–5 年买断式授权 → 成熟期永久买断或收编进 PDC。"创意到货架"业内测最快约半年，跨国别同样适用。</p>
+    <div class="lg"><span>代表：CRYBABY（泰国 Molly）</span><span>PEACH RIOT（首个美国原创 IP）</span><span>收编与签约边界模糊化</span><span>试错成本最低</span></div>
+  </div>
+  <div class="mini">注：四类边界并非铁板——PDC 内部同样吸纳外部人才，买断与自有之间无硬界线；"筛人"和"建墙"其实是同一件事。外部独占授权与买断两类路径，招股书与华创/浙商证券复盘可印证；阶梯合作与最新案例为公开报道梳理。</div>
+</section>
+
+<!-- 核心 IP 归属全景 -->
+<section>
+  <div class="sec-head"><h2>三、核心 IP 归属全景：谁拿着著作权，谁拿着经营权</h2><span>直击"是授权的还是已经属于泡泡玛特的"</span></div>
+  <div class="tbl-card">
+    <h3>头部 IP 权利结构一览（2025 收入口径）</h3>
+    <table>
+      <thead><tr><th>IP</th><th>创作者</th><th>合作模式</th><th>著作权归属</th><th>泡泡玛特核心权利</th><th>2025 收入占比</th><th>续约风险</th></tr></thead>
+      <tbody>
+        <tr><td nowrap><b>THE MONSTERS<br>(Labubu)</b></td><td>龙家升<br>Kasing Lung</td><td><span class="tag ok">已收购·永久自有</span></td><td>100% 归公司</td><td>永久所有 + 再授权（作者保留署名权与递减分成权）</td><td class="num">38.1%</td><td><span class="tag ok">无（已收购）</span></td></tr>
+        <tr><td nowrap><b>MOLLY</b></td><td>王信明<br>Kenny Wong</td><td><span class="tag ok">买断 + 股权</span></td><td>100% 归公司</td><td>永久所有 + 再授权</td><td class="num">7.8%</td><td><span class="tag ok">无</span></td></tr>
+        <tr><td nowrap><b>DIMOO</b></td><td>Ayan 邓瑞雪</td><td><span class="tag ok">买断</span></td><td>100% 归公司</td><td>永久所有</td><td class="num">7.5%</td><td><span class="tag ok">无</span></td></tr>
+        <tr><td nowrap><b>SKULLPANDA</b></td><td>熊喵</td><td><span class="tag ok">买断</span></td><td>100% 归公司</td><td>永久所有</td><td class="num">9.5%</td><td><span class="tag ok">无</span></td></tr>
+        <tr><td nowrap><b>HIRONO 小野</b></td><td>Lang</td><td><span class="tag ok">内部 PDC</span></td><td>100% 归公司</td><td>永久所有</td><td class="num">4.7%</td><td><span class="tag ok">无</span></td></tr>
+        <tr><td nowrap><b>星星人<br>Twinkle</b></td><td>—</td><td><span class="tag est">推测独占授权阶段</span></td><td>待披露</td><td>独家商业化（2024 签约）</td><td class="num">5.5%</td><td><span class="tag risk">早期，有</span></td></tr>
+        <tr><td nowrap><b>CRYBABY</b></td><td>泰国 Molly</td><td><span class="tag est">阶梯 → 趋于自有</span></td><td>趋于公司</td><td>独有</td><td class="num">7.9%</td><td><span class="tag ok">低</span></td></tr>
+        <tr><td nowrap><b>Zsiga 等</b></td><td>PDC 设计师</td><td><span class="tag ok">内部孵化</span></td><td>100% 归公司</td><td>永久所有</td><td class="num">—</td><td><span class="tag ok">无</span></td></tr>
+      </tbody>
+    </table>
+    <div class="mini">一句话：<b>早期头部（Molly/DIMOO/SKULLPANDA）已彻底"属于"泡泡玛特；最赚钱的 Labubu（THE MONSTERS）经收购后同样永久归公司（作者保留署名权与递减分成权，无续约风险）；内部 PDC（小野等）从出生就是公司的。</b>著作权与商业化经营权被刻意切割，是整道护城河的法律骨架。（注：Labubu 原被市场误传为"2030 到期的独占授权"，经王宁 2025 股东会"完全收购"表态与段永平 2026-08 核验，实为已收购自有，详见顶部更正声明。）</div>
+  </div>
+</section>
+
+<!-- 护城河机制 -->
+<section>
+  <div class="sec-head"><h2>四、护城河机制：段永平列进"四大壁垒"的艺术家共生网络</h2><span>为什么别人抄不走</span></div>
+  <div class="duo">
+    <div class="pane">
+      <h3>段永平总结的四大壁垒 <span class="chip ceo">段永平公开表述</span></h3>
+      <ul>
+        <li><b>① 品牌与用户心智</b>：钱能砸流量，砸不出粉丝情感认同。</li>
+        <li><b>② 艺术家共生网络</b>：签约/扶持全球艺术家，形成 IP 供给池；大厂能高薪雇设计师，却难复制"发掘+激励艺术家"的体系。</li>
+        <li><b>③ 全球线下渠道网络</b>：门店+机器人商店既是渠道也是广告，点位与运营需时间沉淀。</li>
+        <li><b>④ 创始人+团队组织能力</b>：产品、供应链、品质、全球运营整套能力。</li>
+      </ul>
+      <p style="margin-top:8px">原话："你可以复制其中某一个环节，但复制不了整套互相强化的系统。这些壁垒不能保证潮玩永远有人喜欢，但可以让喜欢潮玩的人持续关注泡泡玛特。"</p>
+    </div>
+    <div class="pane">
+      <h3>王宁的"唱片公司"比喻 <span class="chip inv">王宁</span></h3>
+      <p>王宁把泡泡玛特比作<b>唱片公司</b>：公司不发明歌手，而是<b>发掘有潜力的艺术家，深度绑定，共同运营 IP</b>。卖的不是塑料玩偶，是情绪 IP 的"全球发行+周边"。</p>
+      <p style="margin-top:6px">落到操作层，是一套<b>闭环操作系统</b>：</p>
+      <ul>
+        <li><b>发掘</b>：20+ 人团队，350+ 艺术家紧密联系，靠 BTS/PTS 潮玩展用销量与流量"赛马"。</li>
+        <li><b>孵化</b>：PDC 内部标准化产出（小野/Zsiga），把"个人"变"能力"。</li>
+        <li><b>工业化</b>：供应链+设计把形象快速做成可陈列、可挂、可换装的商品。</li>
+        <li><b>渠道+社群</b>：全球门店、会员（2025 超 1 亿）、复购 55.7% 形成反馈飞轮。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="insight alt" style="margin-top:12px">
+    <h4>关键判断：护城河防的是"人出走"，安顿的也是"人"</h4>
+    <p>头部作者一个留著作权+分成进账，一个靠买断拿财务自由+永久分成；PDC 设计师有工资、资源、爆款奖金；新人从低门槛试水起步。四种契约预防风险，安顿的却是创作热情——这才让"创意到货架"半年压完、别人难以复制。<b>壁垒保护城池，城池能建多大，取决于系统能不能持续孵化下一个 Labubu。</b></p>
+  </div>
+</section>
+
+<!-- 跳槽应对 -->
+<section>
+  <div class="sec-head"><h2>五、跳槽怎么办：三种情形推演</h2><span>极端情形下的真实边界</span></div>
+  <div class="trio">
+    <div class="fs">
+      <h4>A · 买断 / PDC 类艺术家离开</h4>
+      <ul>
+        <li><b>法律</b>：IP 100% 归公司，人无权带走，可换设计师续作。</li>
+        <li><b>先例</b>：Molly 王信明已不再量产新设计，Molly 仍稳定贡献（2025 收入 28.97 亿，+38.4%）。</li>
+        <li><b>商业风险</b>：失"灵魂"/设计水准，粉丝可能不买账——但 IP 资产不流失。</li>
+      </ul>
+    </div>
+    <div class="fs wait">
+      <h4>B · 外部授权类 IP（如星星人/CRYBABY 成长期）不续约</h4>
+      <ul>
+        <li><b>不能做</b>：用原始底稿开新模具、出"原版新形象"（仅限未买断的授权类 IP）。</li>
+        <li><b>仍能做</b>：卖库存（清货期约 6 月）、用商标、用已开发二次创作、用渠道库存、继续授权。</li>
+        <li><b>原作者也受限</b>：商标/外观专利在手，其本人无法在中国及全球大部分地区售原始形象。</li>
+        <li><b>Labubu 已不适用此情形</b>：其著作权已归公司（收购），不存在不续约风险。</li>
+      </ul>
+    </div>
+    <div class="fs ok">
+      <h4>C · 被竞品高薪挖角</h4>
+      <ul>
+        <li><b>头部已股权绑定</b>：王信明持约 1.49%（≈2000 万股，按市值约 46 亿港元），离场=放弃巨额增值。</li>
+        <li><b>新锐靠 PDC 员工制</b>：天然无解约风险。</li>
+        <li><b>深度利益共同体</b>：市场推测泡泡玛特持龙家升 how2work 工作室 25% 股权（"半买断"，待公司确认）。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="insight" style="margin-top:12px">
+    <h4>王宁在 2025 年股东会"锁死"风险（原话，含后续修正）</h4>
+    <p>"THE MONSTERS 是长期独家授权，已签到 2030，全球独家。我们和龙家升关系非常好，是深度伙伴、长期共建。<b>就算极端情况——他到期不续约，我们也能继续卖、继续做、继续授权 Labubu。商标、全球渠道、产品库存、用户基础全在我们手里。他自己在中国也卖不了，离开我们他也做不大。</b>不是他绑着我们，是互相深度绑定。"</p>
+    <p style="margin-top:8px;color:#ffd27a"><b>⚠️ 同一场股东会另一组在场股东记录显示，王宁更晚近的表述为"the monsters 我们现在已经完全收购了"</b>；段永平 2026-08-27 亦核验"labubu 版权已经属于泡泡玛特了，根本不存在续签问题"。即上段"签至 2030"为 2019 年<b>初始授权框架</b>，其后已被<b>收购</b>取代——"极端不续约"的边界情形对 Labubu 已不再适用，著作权风险实质性消除。</p>
+  </div>
+</section>
+
+<!-- 图表：归属结构 + 集中度 + 矩阵厚度 -->
+<section>
+  <div class="sec-head"><h2>六、用数据看"授权 vs 自有"的结构与风险</h2><span>2025 口径 · 归属拆分为测算</span></div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>2025 收入按合作模式归属（示意拆分）</h3>
+      <div class="cs">公司未披露按合作模式拆分，以下为基于公开 IP 归属的测算</div>
+      <div class="chart"><canvas id="c1"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>2025 头部 IP 营收占比（集中度）</h3>
+      <div class="cs">Labubu 占比最高，且经收购后已为自有 IP（无续约风险）</div>
+      <div class="chart"><canvas id="c2"></canvas></div>
+    </div>
+  </div>
+  <div class="chart-card">
+    <h3>IP 矩阵"厚度"持续生长（过亿 IP 数量）</h3>
+    <div class="cs">矩阵越厚，单 IP / 单艺术家风险越被稀释——护城河在变深</div>
+    <div class="chart" style="height:230px"><canvas id="c3"></canvas></div>
+  </div>
+  <div class="mini">说明：图 1 中"长期独占授权"含星星人、CRYBABY 等经营权锁定但著作权未完全买断的 IP（<b>Labubu/THE MONSTERS 经收购已不计入此类，归入"买断永久自有"</b>）；"买断永久自有"含 Molly/DIMOO/SKULLPANDA 及已收购的 THE MONSTERS；"内部 PDC 孵化"含小野、Zsiga 及部分"其他艺术家 IP"；"外部授权 IP"为迪士尼/环球等成熟 IP 授权。图 2 收入占比取自 2025 年报。图 3 过亿 IP 数量：2023 约 10 个 → 2025H1 13 个 → 2025 全年 17 个（2025 另有 6 个 IP 营收破 20 亿）。</div>
+</section>
+
+<!-- 投资含义 -->
+<section>
+  <div class="sec-head"><h2>七、对投资的含义与跟踪信号</h2><span>护城河 vs 必须盯住的风险</span></div>
+  <div class="duo">
+    <div class="pane">
+      <h3>正面：护城河真实且结构性 <span class="chip ok">支撑估值</span></h3>
+      <ul>
+        <li>不是靠单一爆款赌运气，是<b>持续产出 IP 的系统</b>；LABUBU 只是系统产物。</li>
+        <li><b>自有 / PDC 占比上升</b>稀释关键人风险：小野、星星人、Zsiga 多来自内部引擎。</li>
+        <li>"权利切割 + 商标在手"使<b>极端不续约情形可控而非灭顶</b>。</li>
+        <li>财务安全垫厚（净现金、无息负债），试错成本低。</li>
+      </ul>
+    </div>
+    <div class="pane">
+      <h3>风险：必须盯住的硬信号 <span class="chip risk">折价因子</span></h3>
+      <ul>
+        <li><b>Labubu 占 2025 营收 38.1%，但经收购后已为永久自有 IP，无续约风险</b>——原"2030 续约是估值最需打折的变量"已更正移除，属净正面修正。</li>
+        <li>"商品先行"IP <b>跨代际长青尚未被验证</b>（对比米老鼠/Hello Kitty 几十年）。</li>
+        <li>艺术家<b>流失率/签约数未披露</b>，外部难以实时量化人才护城河健康度。</li>
+        <li>设计/授权费率长期 1%–3%，若头部重谈跳升将侵蚀毛利。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="insight alt" style="margin-top:12px">
+    <h4>给持仓者的四个跟踪信号</h4>
+    <p>① <b>Labubu 收购后的整合与龙家升分成权条款</b>（确认永久自有、分成随创作递减）；② <b>PDC / 内部孵化 IP 收入占比</b>（上升=风险下降）；③ <b>非 Labubu IP 在欧美非华人市场的独立复购</b>（验证全球化非华人基本盘）；④ <b>艺术家年签约数 vs 流失数</b>及设计授权费率是否跳升。出现"核心艺术家跑光/费率跳升/外部授权 IP 占比异常扩大"任一，长期故事需打折。</p>
+  </div>
+</section>
+
+<!-- 注释与来源 -->
+<section>
+  <div class="notes">
+    <h3>数据口径与免责说明</h3>
+    <ul>
+      <li><b>归属与模式</b>：四类合作模式、Molly 买断+股权、<b>Labubu/THE MONSTERS 经王宁 2025 股东会"完全收购"表态及段永平 2026-08 核验已为永久自有（原"独占授权至 2030"为 2019 初始框架，已被收购取代）</b>、PDC 内部孵化等，综合招股书、华创/浙商/国金证券复盘、2025 年报及 2025 年股东会王宁原话；星星人/CRYBABY 具体归属公司未完全披露，报告中以"推测/趋于"标注。</li>
+      <li><b>分成与股权</b>：龙家升分成比例（8%–15% 阶梯）为第三方估算，公司从未披露精确合同数字；王信明约 1.49% 持股、how2work 25% 股权为公开报道/市场推测，非公司正式公告。</li>
+      <li><b>图 1 归属拆分</b>为基于公开 IP 归属的<b>测算示意</b>，公司不披露按合作模式的收入拆分，请勿当作精确财报数。</li>
+      <li><b>收入占比</b>取自泡泡玛特 2025 年报（艺术家 IP 占比 90.0%、THE MONSTERS 38.1% 等）与 2026 中报（THE MONSTERS H1 占比降至 26%、星星人 +580.6%）。</li>
+      <li>本页为投资研究调研，<b>不构成投资建议</b>；结论随新财报与官方 IP 归属披露持续迭代（2026-11-09 已就 Labubu 归属作重要更正）。</li>
+    </ul>
+    <div class="src">
+      <span>泡泡玛特 2025 年报 / 2026 中报</span><span>2025 年股东会王宁问答</span><span>华创证券·潮玩行业壁垒复盘</span><span>浙商证券·艺术家合作模式</span><span>国金证券·艺术家人才先发优势</span><span>开源证券·艺术家 IP 孵化</span><span>段永平雪球公开发言整理</span><span>多家媒体公开报道</span>
+    </div>
+  </div>
+</section>
+
+<footer>泡泡玛特 · 艺术家签约护城河与 IP 归属全景 · 2026-11-09 调研 · 数据核验自公开财报与研报</footer>
+
+</div>
+
+<script>
+Chart.defaults.font.family = '"PingFang SC","Microsoft YaHei",sans-serif';
+Chart.defaults.font.size = 12;
+const C = {pink:'#FF3D7F',purple:'#7C4DFF',teal:'#00B8A9',amber:'#FFB400',red:'#E5484D',mute:'#A6ABB6',sub:'#7A7F8C'};
+
+// 图1：归属结构 示意
+new Chart(document.getElementById('c1'), {
+  type:'doughnut',
+  data:{ labels:['买断永久自有（含 THE MONSTERS/Labubu、Molly、DIMOO、SKULLPANDA）','外部授权/成长期（星星人、CRYBABY 等）','内部 PDC 孵化（小野/Zsiga）','外部授权 IP（迪士尼等）'],
+    datasets:[{ data:[66,16,9,9], backgroundColor:[C.purple,C.pink,C.teal,C.amber], borderColor:'#fff', borderWidth:2 }]},
+  options:{ responsive:true, maintainAspectRatio:false, cutout:'58%',
+    plugins:{ legend:{position:'bottom', labels:{boxWidth:12, padding:10, font:{size:11}}},
+      tooltip:{ callbacks:{ label:(c)=>c.label+': '+c.parsed+'% （示意）' } } } }
+});
+
+// 图2：头部 IP 营收占比
+new Chart(document.getElementById('c2'), {
+  type:'bar',
+  data:{ labels:['THE MONSTERS','SKULLPANDA','CRYBABY','MOLLY','DIMOO','星星人','HIRONO','其他艺术家IP','授权IP'],
+    datasets:[{ label:'2025 营收占比 %', data:[38.1,9.5,7.9,7.8,7.5,5.5,4.7,6.7,9.1],
+      backgroundColor:['#FF3D7F','#7C4DFF','#7C4DFF','#7C4DFF','#7C4DFF','#FF3D7F','#00B8A9','#C9B8E8','#FFB400'], borderRadius:5 }]},
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false},
+      tooltip:{ callbacks:{ label:(c)=>c.parsed.y+'%' } },
+      title:{display:false} },
+    scales:{ y:{ beginAtZero:true, max:42, ticks:{callback:(v)=>v+'%'}, grid:{color:'#F1E9ED'} }, x:{grid:{display:false}, ticks:{font:{size:10.5}}} } }
+});
+
+// 图3：过亿 IP 数量增长
+new Chart(document.getElementById('c3'), {
+  type:'bar',
+  data:{ labels:['2023','2025H1','2025 全年'],
+    datasets:[{ label:'收入过亿艺术家 IP 数量（个）', data:[10,13,17],
+      backgroundColor:[C.purple,C.teal,C.pink], borderRadius:6, barThickness:46 }]},
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:(c)=>c.parsed.y+' 个 IP 过亿' } } },
+    scales:{ y:{ beginAtZero:true, max:20, ticks:{stepSize:5}, grid:{color:'#F1E9ED'} }, x:{grid:{display:false}} } }
+});
+</script>
+
+</body>
+</html>

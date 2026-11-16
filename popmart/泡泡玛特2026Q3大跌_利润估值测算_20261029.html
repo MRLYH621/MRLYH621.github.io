@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 2026Q3 大跌 · 利润 / 估值 / 2027 测算</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0e1116; --card:#161b22; --card2:#1c232c; --line:#2a323c;
+    --txt:#e6edf3; --sub:#9aa7b4; --accent:#ff5a5f; --green:#3fd17a; --blue:#5aa9ff; --amber:#ffc24b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;padding:24px 14px 60px}
+  .wrap{max-width:960px;margin:0 auto}
+  h1{font-size:24px;font-weight:700;margin-bottom:6px}
+  .sub{color:var(--sub);font-size:13px;margin-bottom:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;margin-bottom:16px}
+  .card h2{font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .tag{font-size:11px;background:var(--card2);border:1px solid var(--line);color:var(--sub);padding:2px 8px;border-radius:20px}
+  .red{color:var(--accent)} .grn{color:var(--green)} .blu{color:var(--blue)} .amb{color:var(--amber)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:right}
+  th{background:var(--card2);color:var(--sub);font-weight:600}
+  td:first-child,th:first-child{text-align:left}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:6px}
+  .kpi{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:12px 10px;text-align:center}
+  .kpi .v{font-size:20px;font-weight:700}
+  .kpi .l{font-size:11px;color:var(--sub);margin-top:3px}
+  .note{font-size:12px;color:var(--sub);margin-top:10px;line-height:1.5}
+  .hl{background:rgba(255,90,95,.12);border-left:3px solid var(--accent);padding:8px 12px;border-radius:6px;font-size:13px;margin:10px 0}
+  .chartbox{position:relative;height:300px;margin-top:8px}
+  ul{margin:8px 0 0 18px;font-size:13.5px;color:var(--sub)}
+  li{margin:3px 0}
+  .strong{color:var(--txt);font-weight:600}
+  @media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>泡泡玛特 2026Q3 业绩大跌 · 利润 / 估值 / 2027 测算</h1>
+  <div class="sub">数据基准日 2026-10-29｜公告：2026-10-27 披露 Q3 最新业务状况（未经审核）｜汇率 HKD→CNY 0.85628｜股本 13.32 亿股｜分析用「经调整净利」口径</div>
+
+  <div class="card">
+    <h2>一、Q3 大跌事实（已核实公告）<span class="tag">官方披露</span></h2>
+    <div class="hl">2026Q3 整体收益同比 <span class="red">−45% ~ −50%</span>。核心原因：2025Q3 是 LABUBU 全球爆火的历史峰值季度（当时营收 +245%~250%），高基数放大跌幅；海外（尤其线上）自年初持续回落，Q3 才趋稳。</div>
+    <table>
+      <tr><th>区域 / 渠道</th><th>Q3 2026 同比</th><th>备注</th></tr>
+      <tr><td>整体</td><td class="red">−45% ~ −50%</td><td>去年峰值季度</td></tr>
+      <tr><td>中国</td><td class="red">−25% ~ −30%</td><td>全年仍有望正增长（硬指引）</td></tr>
+      <tr><td>亚太（除中国）</td><td class="red">−65% ~ −70%</td><td>线上退潮</td></tr>
+      <tr><td>美洲</td><td class="red">−70% ~ −75%</td><td>降幅最大</td></tr>
+      <tr><td>欧洲及其他</td><td class="red">−50% ~ −55%</td><td></td></tr>
+      <tr><td>中国线下</td><td class="red">−5% ~ −10%</td><td>门店客流 / 抽盒机韧性</td></tr>
+      <tr><td>中国线上</td><td class="red">−45% ~ −50%</td><td>重灾区</td></tr>
+    </table>
+    <div class="note">管理层（COO 司德）：海外市场 7–9 月已趋平稳、10 月稳步向上；Q4 传统旺季努力把握；中国全年预计正增长。王宁此前定性 2026 为「经营调整年」，预警大概率完不成 +20% 目标。</div>
+  </div>
+
+  <div class="card">
+    <h2>二、2026 全年利润测算（重建基数 + H2 假设）</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="v red">≈319亿</div><div class="l">2026E 营收（−14%）</div></div>
+      <div class="kpi"><div class="v red">≈91亿</div><div class="l">2026E 经调整净利（−30%）</div></div>
+      <div class="kpi"><div class="v red">≈89亿</div><div class="l">2026E 归母净利</div></div>
+      <div class="kpi"><div class="v amb">28.5%</div><div class="l">2026E 经调整净利率</div></div>
+    </div>
+    <table>
+      <tr><th>项目</th><th>2025 实际</th><th>2026E</th><th>同比</th><th>假设说明</th></tr>
+      <tr><td>营收（亿）</td><td>371.2</td><td>≈319</td><td class="red">−14%</td><td>H1 171.7；Q3 取 −47.5% 中值≈67.9；Q4≈79（旺季稳中有升）</td></tr>
+      <tr><td>经调整净利（亿）</td><td>130.84</td><td>≈91</td><td class="red">−30%</td><td>H1 51.6；H2 毛利率/费用率承压（海外新店固定成本），净利率≈26.7%</td></tr>
+      <tr><td>归母净利（亿）</td><td>~127.8</td><td>≈89</td><td class="red">−30%</td><td>与经调整接近（少数差异）</td></tr>
+      <tr><td>经调整净利率</td><td>35.3%</td><td>28.5%</td><td class="red">−6.8pct</td><td>H1 30% → H2 约 26.7%（规模效应走弱 + 费用率被动抬升）</td></tr>
+    </table>
+    <div class="note">基数重建：2025H1 = 171.7÷1.238 ≈ 138.7；2025H2 ≈ 232.5。Q3 2025 峰值 ≈ 129.3（据 −47.5% 倒推 Q3 2026≈67.9），Q4 2025 ≈ 103.2。<br>外部交叉验证：雪球模型 2026E 经调整 90.9 亿 / 营收 318.6 亿；摩根大通 93.4 亿（−27%）。本测算取中值 <span class="strong">91 亿（区间 90–93）</span>。</div>
+  </div>
+
+  <div class="card">
+    <h2>三、合理估值（双透镜）</h2>
+    <div class="kpis">
+      <div class="kpi"><div class="v">132 HKD</div><div class="l">当前价（10/27 收）</div></div>
+      <div class="kpi"><div class="v">1758亿</div><div class="l">市值（HKD）</div></div>
+      <div class="kpi"><div class="v amb">16.5x</div><div class="l">前向 PE（2026E）</div></div>
+      <div class="kpi"><div class="v grn">12.2x</div><div class="l">前向 PE（2027E）</div></div>
+    </div>
+    <div class="hl">关键：当前 132 HKD 对应 <span class="amb">16.5x  depressed 2026E</span>，但仅 <span class="grn">12.2x 常态化 2027E</span>。若 2027 复苏兑现，当前价并不贵；若 2027 继续 flat，则 16.5x 对负增长偏贵。</div>
+    <table>
+      <tr><th>估值透镜</th><th>13x（保守）</th><th>15x（中性）</th><th>18x（乐观）</th></tr>
+      <tr><td>按 2026E 91亿（HKD/股）</td><td class="amb">≈105</td><td>≈121</td><td>≈145</td></tr>
+      <tr><td>按 2027E 107亿（HKD/股）</td><td>≈123</td><td class="blu">≈142</td><td>≈170</td></tr>
+    </table>
+    <div class="note">市值换算：1758 亿 HKD × 0.85628 ≈ 1505 亿 CNY。每股 = 市值(HKD) ÷ 13.32 亿股。雪球此前结论「13x 以下（<100 HKD）具配置价值」对应 2026E  depressed 口径；若切换到 2027E 常态化口径，中性 15x ≈ 142 HKD 与当前基本重合。</div>
+    <div class="chartbox"><canvas id="valChart"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>四、2027 年利润预测（复苏三情景）</h2>
+    <table>
+      <tr><th>情景</th><th>2027E 营收</th><th>同比</th><th>经调整净利率</th><th>2027E 经调整净利</th><th>逻辑</th></tr>
+      <tr><td>保守（停滞）</td><td>≈319亿</td><td>0%</td><td>28.5%</td><td class="amb">≈91亿</td><td>海外仅企稳不反弹，中国低个位数</td></tr>
+      <tr><td><span class="strong">中性（复苏）</span></td><td>≈344亿</td><td class="grn">+8%</td><td>31%</td><td class="grn"><span class="strong">≈107亿</span></td><td>海外恢复性增长 + 中国正增，费用率随收入杠杆回落</td></tr>
+      <tr><td>乐观（强修复）</td><td>≈367亿</td><td class="grn">+15%</td><td>32%</td><td class="grn">≈117亿</td><td>多 IP 均衡见效，美洲/亚太反弹</td></tr>
+    </table>
+    <div class="note">中性中枢 <span class="strong">≈107 亿（区间 91–117）</span>，即 2027 回到接近 2025 峰值的 82%，但结构更健康（去单 IP 爆款依赖、多 IP 均衡）。段永平举牌逻辑即「看十年平均利润」，非单季波动。</div>
+    <div class="chartbox"><canvas id="profitChart"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>五、结论与风险</h2>
+    <ul>
+      <li><span class="strong">今年（2026）利润：</span>经调整净利约 <span class="red">91 亿（−30%）</span>，营收约 319 亿（−14%），是「调整年」的 depressed 基数。</li>
+      <li><span class="strong">合理估值：</span>当前 132 HKD = 16.5x 2026E / 12.2x 2027E。若信 2027 复苏，当前价中性偏便宜；13x 安全边际对应 2026E ≈105 HKD、2027E ≈123 HKD。</li>
+      <li><span class="strong">明年（2027）利润：</span>中性约 <span class="grn">107 亿（+恢复）</span>，保守 flat 91 亿，乐观 117 亿。</li>
+      <li class="red">风险：Q3 跌幅（−45%~−50%）超出摩根大通此前 −37% 预测近 10pct，海外线上尚未证明反转；若 2027 海外继续走弱，估值锚要向 2026E 13x（≈105 HKD）甚至更低看。</li>
+      <li class="red">数据风险：公司仅披露 H1 财报 + Q3 同比区间，未给季度明细；2025Q3/Q4 为倒推估算，2026 全年为模型推算，非公司指引。</li>
+    </ul>
+    <div class="note">持仓提示：谷淑贤账户 200 股 × 132 HKD ≈ 2.64 万 HKD 市值，占组合极小；本测算为分析框架，非买卖建议。</div>
+  </div>
+</div>
+
+<script>
+const C={txt:'#e6edf3',sub:'#9aa7b4',red:'#ff5a5f',grn:'#3fd17a',blu:'#5aa9ff',amb:'#ffc24b',line:'#2a323c'};
+Chart.defaults.color=C.sub; Chart.defaults.font.size=12;
+
+new Chart(document.getElementById('profitChart'),{
+  type:'bar',
+  data:{labels:['2025实际','2026E','2027E 保守','2027E 中性','2027E 乐观'],
+    datasets:[
+      {label:'营收(亿CNY)',data:[371.2,319,319,344,367],backgroundColor:C.blu,yAxisID:'y'},
+      {label:'经调整净利(亿CNY)',data:[130.8,91,91,107,117],backgroundColor:C.grn,yAxisID:'y1'}
+    ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{y:{position:'left',title:{display:true,text:'营收'},grid:{color:C.line}},
+      y1:{position:'right',title:{display:true,text:'净利'},grid:{drawOnChartArea:false}}},
+    plugins:{legend:{labels:{color:C.txt}}}}
+});
+
+new Chart(document.getElementById('valChart'),{
+  type:'bar',
+  data:{labels:['当前价','2026E 13x','2026E 15x','2026E 18x','2027E 13x','2027E 15x','2027E 18x'],
+    datasets:[{label:'股价(HKD)',
+      data:[132,105,121,145,123,142,170],
+      backgroundColor:[C.red,C.amb,C.blu,'#7b6cff',C.amb,C.blu,'#7b6cff']}]},
+  options:{responsive:true,maintainAspectRatio:false,
+    scales:{y:{title:{display:true,text:'HKD/股'},grid:{color:C.line}}},
+    plugins:{legend:{display:false}}}
+});
+</script>
+</body>
+</html>

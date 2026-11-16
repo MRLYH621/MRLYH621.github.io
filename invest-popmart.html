@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特投资研究 · 体系化总报告 2026</title>
+<meta name="description" content="泡泡玛特体系化投资研究：IP 矩阵、全球化、集团化、护城河、估值与 2026 调整年。整合 30+ 份专题研究熔成一册，结论先行、图表支撑、可离线阅读。">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--card2:#f8f9fb;--line:#e3e6ea;--txt:#1a2028;--sub:#6b7480;--blue:#2563c9;--amber:#d98a00;--purple:#7c4dcc;--teal:#0d9488;--up:#d92b2b;--down:#1a9c5b;--red:#d1001f;--pink:#e0508a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:0 14px 60px;font-size:14px}
+.wrap{max-width:1040px;margin:0 auto}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(245,246,248,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin:0 -14px 0;padding:10px 14px}
+.topbar-in{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.topbar .logo{font-weight:800;font-size:15px;color:var(--red);letter-spacing:.5px;white-space:nowrap}
+.topbar .logo small{font-weight:500;color:var(--sub);font-size:11px;margin-left:6px;letter-spacing:0}
+.topbar nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.topbar nav a{font-size:11.5px;color:var(--sub);padding:4px 9px;border-radius:6px;text-decoration:none;white-space:nowrap}
+.topbar nav a:hover{background:#fdeef3;color:var(--pink)}
+.cover{background:linear-gradient(150deg,#2a0e14 0%,#5a1220 45%,#8a1633 78%,#b8821b 130%);border-radius:18px;padding:44px 38px 38px;color:#fff;margin:20px 0 18px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(240,190,60,.28),transparent 70%)}
+.cover .kicker{font-size:12px;letter-spacing:2px;color:#f3c8d8;font-weight:600;margin-bottom:14px}
+.cover h1{font-size:32px;font-weight:820;line-height:1.25;margin-bottom:10px;letter-spacing:.5px}
+.cover .lead{font-size:15px;color:#f0dce4;max-width:780px;line-height:1.75;margin-bottom:22px}
+.cover .lead b{color:#ffd873}
+.cover .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.cover .badge{font-size:11px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:4px 12px;color:#fbe9ef}
+.cover .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative;z-index:2}
+.cover .m{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:14px 12px}
+.cover .m .k{font-size:11px;color:#f0c4d2;margin-bottom:5px}
+.cover .m .v{font-size:22px;font-weight:820;letter-spacing:.3px}
+.cover .m .s{font-size:10.5px;color:#f0c4d2;margin-top:3px}
+.cover .m.hl .v{color:#ffd873}
+h1{font-size:22px;font-weight:780;margin-bottom:6px;line-height:1.35}
+.sub{color:var(--sub);font-size:12.5px;line-height:1.6}
+.warn{background:#fdeeee;border:1px solid #f0b8b8;color:#9c2b2b;border-radius:8px;padding:11px 14px;font-size:12.5px;margin:14px 0;line-height:1.72}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.card h2{font-size:18px;margin-bottom:6px;padding-left:12px;border-left:4px solid var(--pink);line-height:1.4}
+.card h2 .en{font-size:11px;color:var(--sub);font-weight:500;margin-left:8px;letter-spacing:1px}
+.card h3{font-size:14px;margin:18px 0 8px;color:var(--teal);font-weight:700}
+.card .sec-sub{color:var(--sub);font-size:12px;margin:2px 0 14px 16px}
+.tldr{background:linear-gradient(135deg,#fdf0f5,#fbf8f2);border:1px solid #f3d2df}
+.big{font-size:20px;font-weight:800;color:var(--pink);margin:10px 0;line-height:1.45}
+table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:right;vertical-align:top}
+th{background:var(--card2);color:var(--sub);font-weight:650}
+td:first-child,th:first-child{text-align:left}
+td.l,th.l{text-align:left}
+tr.total{background:#fdf0f5;font-weight:750}
+tr.hi{background:#f0f7f2}
+tr.fade{background:#fafbfc;color:var(--sub)}
+tr.err{background:#fdeeee}
+.up{color:var(--up)}.down{color:var(--down)}.blu{color:var(--blue)}.amb{color:var(--amber)}.pur{color:var(--purple)}.teal{color:var(--teal)}.mut{color:var(--sub)}.red{color:var(--red)}
+.strong{font-weight:750}
+.hl{background:#fdf0f5;border-left:3px solid var(--pink);padding:10px 13px;border-radius:6px;font-size:12.5px;margin:11px 0;line-height:1.72}
+.hl.g{background:#eaf7f0;border-left-color:var(--teal)}
+.hl.a{background:#fff8e8;border-left-color:var(--amber)}
+.hl.r{background:#fdeeee;border-left-color:var(--up)}
+.note{font-size:11px;color:var(--sub);margin-top:9px;line-height:1.65}
+ul{margin:6px 0 0 18px;font-size:12.5px}li{margin-bottom:6px;line-height:1.65}
+.chartbox{width:100%;height:400px;margin-top:14px}
+.chartbox.sm{height:340px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.box{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.box .t{font-size:12.5px;font-weight:700;margin-bottom:6px}
+.box .d{font-size:11.5px;color:var(--sub);line-height:1.6}
+.metric{background:var(--card2);border-radius:10px;padding:13px;text-align:center}
+.metric .lab{font-size:11px;color:var(--sub)}
+.metric .num{font-size:19px;font-weight:800;margin:4px 0}
+.metric .pct{font-size:11px;color:var(--sub)}
+.tag{font-size:10px;background:var(--card2);border:1px solid var(--line);border-radius:20px;padding:2px 9px;color:var(--sub);font-weight:400;vertical-align:middle}
+.toc{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.toc a{display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:10px 13px;text-decoration:none;color:var(--txt);transition:all .15s}
+.toc a:hover{border-color:var(--pink);background:#fdf0f5;transform:translateX(2px)}
+.toc a .n{font-size:16px;font-weight:820;color:var(--pink);min-width:24px}
+.toc a .tt{font-size:12.5px;font-weight:650}
+.toc a .dd{font-size:10.5px;color:var(--sub);margin-top:1px}
+.idx{font-size:11.5px}.idx td{padding:6px 8px}
+.src-tag{font-size:9.5px;padding:1px 7px;border-radius:10px;white-space:nowrap}
+.src-core{background:#fdeef3;color:#b02a55}
+.src-arch{background:#f5f5f5;color:#999}
+.foot{font-size:10.5px;color:var(--sub);margin-top:22px;padding:16px;border-top:1px solid var(--line);line-height:1.75}
+.backtop{display:inline-block;margin-left:8px;font-size:11px;color:var(--pink);text-decoration:none}
+@media(max-width:680px){.cover{padding:30px 22px}.cover h1{font-size:24px}.cover .metrics{grid-template-columns:1fr 1fr}.grid2,.grid3,.grid4,.toc{grid-template-columns:1fr}table{font-size:10.5px}.chartbox{height:340px}.topbar nav{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar-in">
+  <div class="logo">泡泡玛特 · 投资研究<small>体系化总报告 / 2026.11</small></div>
+  <nav>
+    <a href="#c0">结论</a><a href="#c1">商业模式</a><a href="#c2">IP矩阵</a><a href="#c3">全球化</a>
+    <a href="#c4">集团化</a><a href="#c5">护城河</a><a href="#c6">业绩估值</a><a href="#c7">前瞻</a><a href="#c8">体系索引</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+  <div class="cover">
+    <div class="kicker">POP MART · 09992.HK · 深度研究</div>
+    <h1>泡泡玛特：一台情绪机器<br>与一场关于"能否长青"的答卷</h1>
+    <div class="lead">把 30+ 份专题研究去粗取精，熔成一册。核心结论：<b>它的本质不是潮玩公司，而是"小众情绪设计的工业化平台"</b>——用唱片公司的方式发掘艺术家、用快消的方式铺渠道、用稀缺性机制制造溢价。2026 是主动降速的"调整年"：IP 从一超独大走向矩阵，海外从爆发切换到换挡，估值被压到 12×。真正的问题不是它会不会增长，而是<b>这轮情绪能不能跨代际留存</b>。</div>
+    <div class="badges">
+      <span class="badge">FY2025 年报基准</span>
+      <span class="badge">2026H1 中报 + Q3 更新</span>
+      <span class="badge">30+ 份研究精选</span>
+      <span class="badge">数据锚点已交叉核验</span>
+      <span class="badge">整理 2026-11-16</span>
+    </div>
+    <div class="metrics">
+      <div class="m"><div class="k">FY2025 营收</div><div class="v">371.2亿</div><div class="s">同比 +184.7%</div></div>
+      <div class="m"><div class="k">FY2025 经调整净利</div><div class="v">130.8亿</div><div class="s">净利率 35.3%</div></div>
+      <div class="m hl"><div class="k">2026H1 营收</div><div class="v">171.7亿</div><div class="s">+23.8%（净利 +9.5%）</div></div>
+      <div class="m"><div class="k">THE MONSTERS 占比</div><div class="v">38.1%→26%</div><div class="s">CR1 回落，走向矩阵</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>阅读目录 <span class="en">CONTENTS</span></h2>
+    <div class="sub" style="margin-left:16px">建议顺序阅读；也可点击顶部导航跳转。每章标注对应的原始专题报告，末尾附完整研究体系索引。</div>
+    <div class="toc">
+      <a href="#c0"><span class="n">00</span><span><span class="tt">结论先行</span><div class="dd">一页看懂投资逻辑与三条主线</div></span></a>
+      <a href="#c1"><span class="n">01</span><span><span class="tt">商业模式</span><div class="dd">情绪 Design × 工业化 × 稀缺性</div></span></a>
+      <a href="#c2"><span class="n">02</span><span><span class="tt">IP 矩阵</span><div class="dd">全 IP 数据 · 归属 · 厚度上限</div></span></a>
+      <a href="#c3"><span class="n">03</span><span><span class="tt">全球化</span><div class="dd">门店分布 · 渠道效率 · 货币敞口</div></span></a>
+      <a href="#c4"><span class="n">04</span><span><span class="tt">集团化</span><div class="dd">IP 产业化 · 利润影响 · 迪士尼对标</div></span></a>
+      <a href="#c5"><span class="n">05</span><span><span class="tt">护城河</span><div class="dd">艺术家签约 · IP 归属 · 审美底层</div></span></a>
+      <a href="#c6"><span class="n">06</span><span><span class="tt">业绩与估值</span><div class="dd">财务全景 · PE · 分红回购 · 情景价</div></span></a>
+      <a href="#c7"><span class="n">07</span><span><span class="tt">前瞻与验证</span><div class="dd">调整年 · Q3 冲击 · 跟踪清单</div></span></a>
+      <a href="#c8"><span class="n">08</span><span><span class="tt">研究体系索引</span><div class="dd">30+ 份报告如何取舍与归类</div></span></a>
+    </div>
+  </div>
+
+  <!-- 00 结论 -->
+  <div class="card tldr" id="c0">
+    <h2>00 · 结论先行 <span class="en">THE BOTTOM LINE</span></h2>
+    <div class="big">泡泡玛特 = 情绪设计工业化平台（DTC）+ 尚未定价的两张期权（集团化 / 对外授权）</div>
+    <ul>
+      <li><b>它不是"年轻人的茅台"，是一个物种。</b>茅台卖社交货币与心理认同（喝掉即消失、靠稀缺叙事）；泡泡玛特卖情绪与陪伴（"无用之用"，不消耗反而留存更久）。两者的库存逻辑、估值锚、生命周期都不同——用茅台的尺子量它会系统性误判。<span class="mut">（对应观点文章上/下篇）</span></li>
+      <li><b>2025 是峰值，2026 是主动降速的"调整年"。</b>营收 371.2 亿（+184.7%）后，2026H1 增速回落到 +23.8%、经调整净利 +9.5%；Q3 自愿更新同比 −45%~−50%。王宁明言"销售不是主要目标"，同时宣布 20–50 亿回购。这是管理层主动换挡，不是需求塌方。</li>
+      <li><b>结构在变健康，但要用对指标。</b>CR1 从 38.1%（2025）回落到 26%（H1）、星星人补位到 15.4%、6 个 IP 破 10 亿；海外下滑几乎全在线上（亚太 −39.8%/美洲 −45.6%/欧洲 −59%），线下三区全部正增长——是渠道换挡，不是 IP 失效。<span class="mut">（对应全 IP 数据报告）</span></li>
+      <li><b>护城河真实存在，且比想象中更硬。</b>四类签约模式（买断自有 / 内部 PDC / 外部独占 / 新锐阶梯）+ 350+ 艺术家 + 100+ PDC 团队。关键更正：<b>Labubu 著作权已永久归泡泡玛特</b>（王宁股东会 + 段永平 2026-08 亲核），原"2030 续约折价"风险应移除。"艺术家走了 IP 也不走"已被 Molly 验证。</li>
+      <li><b>估值：市场用"名创级出海折价"定价，但盈利能力是"三丽鸥级"。</b>净利率 35.2% 全场最高、PE 仅 ≈12× 几乎垫底。零增长已定价（130 亿 × 12× ≈ 现价）；中性情景成熟净利 333 亿、若 PE 修复到 20× 则股价 ≈584 HKD（4.1×）。</li>
+    </ul>
+    <div class="hl r"><b>一句话投资视角</b>：你买的是"IP 矩阵 + 全球化零售网络"的现金流，集团化（乐园/甜品/影视）和对外授权是被白送的看涨期权。要盯的四个结构性指标：<b>①全年口径过亿 IP 数 ②CR1/CR7 ③存货周转天数（201 天，恶化中）④会员复购率（51.6%，下滑中）</b>。最大的不确定性不是会不会增长，而是 LABUBU 之后能不能再复制一个全球级 IP。</div>
+    <a class="backtop" href="#c0">↑ 回到顶部</a>
+  </div>
+
+  <!-- 01 商业模式 -->
+  <div class="card" id="c1">
+    <h2>01 · 商业模式：情绪设计 × 工业化 × 稀缺性 <span class="en">BUSINESS MODEL</span></h2>
+    <div class="sec-sub">为什么一个"塑料小人"能有 72% 毛利、35% 净利——拆解三台发动机。</div>
+    <div class="grid3">
+      <div class="box"><div class="t">① 情绪价值：卖"无用之用"</div><div class="d">王宁："IP 是无用的东西，但能提升有用东西的价值"。消费者买的不是玩具功能，是陪伴、审美、身份与 Opening 那一刻的多巴胺。庄子"无用之用方为大用"——正因为不被消耗，才能长期留存。这是它区别于快消与茅台的根。</div></div>
+      <div class="box"><div class="t">② 工业化：唱片公司模型</div><div class="d">王宁自己最认可的比喻："我们不发明歌手，我们发掘歌手，帮他们把作品工业化、卖到全世界"。350+ 合作艺术家 → 90+ 运营 IP → 17 个过亿（2025）的漏斗；PDC 内部 100+ 人保证供给不依赖单个天才。这是"小众审美的工业化传播"。</div></div>
+      <div class="box"><div class="t">③ 稀缺性：盲盒 + 限量机制</div><div class="d">隐藏款、限量发售、系列化收集共享同一套稀缺逻辑（典藏艺术品的机制下沉到 59 元价位）。注意：稀缺是放大器不是护城河——可被复制；真正难复制的是前两台发动机。</div></div>
+    </div>
+    <h3> Consumers 为什么会觉得"好看"——审美底层的投资含义</h3>
+    <p style="font-size:12.5px;color:var(--txt)">艺术学研究发现（详见读书笔记）：底层偏好是"先于产品存在"的——婴儿图式（大眼圆脸）、对称与平均化、加工流畅性、峰移/超常刺激（LABUBU 的九颗尖牙属"良性冲突"）。设计不是发明偏好，是扫描并放大既有偏向。</p>
+    <div class="hl a"><b>投资含义（重要，别串线）</b>：① "大家都觉得好看"里含单纯曝光制造的熟悉感，必须和自发复购分离归因；② 底层红利可复制（竞品形式参数在收敛），<b>不构成护城河</b>；③ 跨市场判断要本地取样（WEIRD 警告：96% 心理学被试来自 12% 人口），不能用一个市场访谈推"全球通吃"；④ 代际更替要盯新客首购年龄，而非总会员数。</div>
+    <div class="hl"><b>和茅台的根本差异（一句话）</b>：茅台的尺子是"喝掉之后还剩什么"，泡泡玛特的尺子是"不消耗，还能被人喜欢多久"。所以茅台必须靠稀缺/年份/金融属性对冲被消费掉；泡泡玛特的存货是"被喜欢者的储备"，怕的是周转恶化而非"卖不掉就过期"（IP 无季节性过期，可跨区域再分配）。<span class="mut">对应文章：不是年轻人的茅台 上/下篇。</span></div>
+    <a class="backtop" href="#c1">↑ 回到顶部</a>
+  </div>
+
+  <!-- 02 IP矩阵 -->
+  <div class="card" id="c2">
+    <h2>02 · IP 矩阵：从一超独大到多强均衡 <span class="en">IP PORTFOLIO</span></h2>
+    <div class="sec-sub">IP 收入是全局最核心的口径。以下为官方财报单列数据（人民币亿元），交叉项已按统一口径处理。</div>
+    <table>
+      <tr><th>IP</th><th>2025 营收</th><th>占比25</th><th>2026H1</th><th>占比H1</th><th>H1同比</th></tr>
+      <tr><td><b>THE MONSTERS</b>（LABUBU）</td><td>141.61</td><td class="up">38.1%</td><td>44.54</td><td>26.0%</td><td class="down">−7.5%</td></tr>
+      <tr><td><b>星星人</b></td><td>20.56</td><td>5.5%</td><td>26.50</td><td class="up">15.4%</td><td class="up">+580.6%</td></tr>
+      <tr><td>CRYBABY</td><td>29.29</td><td>7.9%</td><td>16.33</td><td>9.5%</td><td class="up">+34.0%</td></tr>
+      <tr><td>DIMOO</td><td>27.77</td><td>7.5%</td><td>16.19</td><td>9.4%</td><td class="up">+46.5%</td></tr>
+      <tr><td>SKULLPANDA</td><td>35.40</td><td>9.5%</td><td>15.51</td><td>9.0%</td><td class="up">+27.1%</td></tr>
+      <tr><td>HIRONO（小野）</td><td>17.35</td><td>4.7%</td><td>10.09</td><td>5.9%</td><td class="up">+38.5%</td></tr>
+      <tr><td>MOLLY</td><td>28.97</td><td>7.8%</td><td>9.01</td><td>5.3%</td><td class="down">−33.6%</td></tr>
+      <tr><td>授权 IP</td><td>33.82</td><td>9.1%</td><td>17.71</td><td>10.3%</td><td class="up">+16.2%</td></tr>
+      <tr class="total"><td>合计（含其他艺术家 IP）</td><td>371.20</td><td>100%</td><td>171.73</td><td>100%</td><td class="up">+23.8%</td></tr>
+    </table>
+    <div class="note">⚠️ 口径坑：① "授权 IP 33.82 亿"= 把别人 IP 授权进来做商品的<b>商品收入</b>，与"自有 IP 授权出去收的 0.71 亿（计入其他收入、非营收）"方向相反，不可混用；② 每年单列 IP 会变（2024 单列 Zsiga/HACIPUPU，2025 改单列星星人），做趋势须把 Zsiga/HACIPUPU 并入"其他艺术家 IP"；③ 半年报 11 个过亿 ≠ 全年 17 个，不可直接比。</div>
+    <div class="chartbox sm" id="ch_ip"></div>
+    <h3>矩阵"厚度"的数量上限——为什么不会出现 300 个过亿 IP</h3>
+    <div class="grid2">
+      <div class="box"><div class="t">2025 漏斗（年报核验）</div><div class="d">350+ 艺术家 → 90+ 运营 IP → <b>17 个过亿</b> → 6 个 20 亿+ → 1 个百亿（THE MONSTERS 141.6 亿）。前 7 大 IP 合计 300.95 亿，占 81%。层间转化 26%/19%/35%/17%。</div></div>
+      <div class="box"><div class="t">行业反证</div><div class="d">三丽鸥 450+ 角色但中国区仅 26 个成熟角色；万代 400+ IP 财报只列 9 个主力；全行业 2025 年授权零售额破 10 亿美元的仅 41 家。<b>角色库可上千，赚钱的永远几十个。</b></div></div>
+    </div>
+    <div class="hl g"><b>三重约束</b>：① 需求侧"购买槽位"固定——加 IP 只是内部互啃（H1 星星人涨含老客从 LABUBU 迁移）；② 供给侧自营零售特有——多签一个 IP 要开模/备货/占货架/担滞销，存货周转已 102 天(2024)→123 天(2025)→<b>201 天(2026H1)</b>；③ 组织侧按 19% 漏斗，要 100 个过亿需 500+ 运营 IP、约 2000 名艺术家。<b>矩阵厚度的价值在"降低单 IP 塌房风险"，不是数量。</b></div>
+    <a class="backtop" href="#c2">↑ 回到顶部</a>
+  </div>
+
+  <!-- 03 全球化 -->
+  <div class="card" id="c3">
+    <h2>03 · 全球化：从爆发到换挡 <span class="en">GLOBALIZATION</span></h2>
+    <div class="sec-sub">IPO 两大战略之一；全球化 = 把已验证模式复制到新市场。2026 遭遇第一次真正意义上的压力测试。</div>
+    <div class="grid4">
+      <div class="metric"><div class="lab">全球门店（2026H1）</div><div class="num">676 家</div><div class="pct">中国 455 + 海外 221</div></div>
+      <div class="metric"><div class="lab">机器人商店</div><div class="num">2,827 台</div><div class="pct">轻资产触达</div></div>
+      <div class="metric"><div class="lab">2025 海外营收</div><div class="num">162.7 亿</div><div class="pct">+291.9%，占比 43.8%</div></div>
+      <div class="metric"><div class="lab">2026H1 海外</div><div class="num">49.7 亿</div><div class="pct down">−11.1%，占比 29%</div></div>
+    </div>
+    <h3>区域结构：中国回升为压舱石，海外集体退潮</h3>
+    <table>
+      <tr><th>区域</th><th>2025 营收</th><th>占比</th><th>2026H1</th><th>占比H1</th><th>H1同比</th></tr>
+      <tr><td>中国</td><td>208.52</td><td>56.2%</td><td>122.01</td><td class="up">71.0%</td><td class="up">+47.3%</td></tr>
+      <tr><td>亚太</td><td>80.11</td><td>21.6%</td><td>25.75</td><td>15.0%</td><td class="down">−9.7%</td></tr>
+      <tr><td>美洲</td><td>68.06</td><td>18.3%</td><td>18.92</td><td>11.0%</td><td class="down">−16.5%</td></tr>
+      <tr><td>欧洲及其他</td><td>14.51</td><td>3.9%</td><td>5.06</td><td>3.0%</td><td class="up">+5.9%</td></tr>
+    </table>
+    <div class="chartbox sm" id="ch_region"></div>
+    <div class="hl a"><b>关键诊断：渠道换挡，不是需求消失。</b>2026H1 海外三区线上分别 −39.8% / −45.6% / −59%，但线下 +14.9% / +22.5% / +48.1%。美洲门店半年净增 22 家（64→86）。爆发期靠跨境电商红利，调整期回归线下沉淀——这是"从流量到留量"的必经阵痛。</div>
+    <h3>门店网络与渠道效率</h3>
+    <p style="font-size:12.5px">区域布局：亚太最成熟（港澳台/韩/新/日/泰/印尼/越/马/菲/澳/新西兰）；美洲爆发强波动大（美冲刺 100+/加/墨/巴/哥）；欧洲最早期（英法德荷丹意西 + 中东卡塔尔/迪拜）。0→1 空白：印度（14 亿人口 0 直营）、中东其余、非洲、东欧。</p>
+    <div class="hl"><b>货币敞口（双刃剑）</b>：海外收入以当地货币计价、利润多留存当地再投资，形成多币种现金池——这是"世界泡泡玛特"的硬证据；但并表折算成 RMB 时人民币走强会吞噬利润。<b>2026H1 经营利润率 39.2%（−4.4pct）主因就是汇兑等"其他亏损净额"6.89 亿</b>，剔除后核心经营利润率 41.4% vs 41.8% 基本持平——<b>勿把利润率下滑归因于集团化烧钱</b>。</div>
+    <div class="note">成长天花板（中性成熟）：全球营收 1010 亿、市占 21%（海外 600–900 亿），成熟净利 333 亿（2.5× 2025）。增量 96% 来自海外；中性情景海外反超国内约 2028 年兑现。</div>
+    <a class="backtop" href="#c3">↑ 回到顶部</a>
+  </div>
+
+  <!-- 04 集团化 -->
+  <div class="card" id="c4">
+    <h2>04 · 集团化：以 IP 为核心的产业化 <span class="en">IP GROUP STRATEGY</span></h2>
+    <div class="sec-sub">IPO 两大战略之二。全球化是复制已验证模式，集团化是"增厚 IP 厚度 + 拓展适配品类"——前者做广度，后者做深度。</div>
+    <div class="grid2">
+      <div class="box"><div class="t">官方沿革</div><div class="d">2024 年报重组三板块：<b>消费品 / 服务与体验 / 数字娱乐</b>；2026 Q3 电话会收敛为两大方向。2026-03 文德一任 CGO 专管集团化创新，司德任唯一 COO 管全球运营。</div></div>
+      <div class="box"><div class="t">王宁的"军种"比喻</div><div class="d">陆军＝门店、海军＝甜品家电、空军＝电影游戏，自评"<b>目前只有陆军比较强</b>"。选品类标准：技术成熟、无需底层迭代、大赛道、IP 赋能增值。</div></div>
+    </div>
+    <h3>三类落地结果与收缩</h3>
+    <table>
+      <tr><th class="l">板块</th><th class="l">进展</th><th class="l">判断</th></tr>
+      <tr class="hi"><td class="l">主题乐园</td><td class="l">2023-09 开园约 4 万㎡，2024 首年盈利，2025 客流 +70%；票价 88→178（高峰 238）；二期 2027 开工，第二座上海首选</td><td class="l">成功，园内衍生品约 6 倍店效；收入从不单列（含在中国区"批发及其他"）</td></tr>
+      <tr class="hi"><td class="l">甜品 POP BAKERY</td><td class="l">2026-06 阿那亚首店（首月 &gt;6 万人次）、07 新加坡圣淘沙、10-31 北京合生汇；40+ 快闪/25+ 城市</td><td class="l">引流触点，不以开店数为目标</td></tr>
+      <tr class="err"><td class="l">电影 / 游戏</td><td class="l">手游《梦想家园》2026-08 停服；LABUBU 电影（索尼/保罗·金）至 2026-10 仍在剧本阶段</td><td class="l">"空军"尚未起飞，短期不增内容预算</td></tr>
+    </table>
+    <div class="hl r"><b>财务现实：损益表上近乎不可见。</b>2025 自主产品 367.88 亿（99.1%）、2026H1 170.61 亿（99.3%）。授权费及其他服务收入 2025 仅 0.706 亿、2026H1 0.606 亿（+135.2%）——<b>计入"其他收入"，不属于营业收入</b>。乐园收入从不单列。<b>2028 年前集团化难贡献 &gt;10% 经营利润</b>；估值重估需两个硬信号：①非商品收入单列且 &gt;5% ②IP 寿命被验证。集团化真实成本沉淀在资产负债表（H1 使用权资产 27.91→36.03 亿），不在利润表。</div>
+    <div class="hl g"><b>对标迪士尼 FY2025</b>：收入 944 亿美元（体验占 38%、运营利润占 57%），2026 财年 capex 90 亿美元。泡泡玛特走的是"先 DTC 零售、后产业化"的反向路径——迪士尼从内容起家，泡泡玛特从商品起家往体验走。<b>授权费对标三丽鸥（34 亿）有约 48 倍空间，但目前仍是授权费的净付出方</b>（2026H1 支出 3.76 亿 &gt; 收入 0.61 亿）。</div>
+    <a class="backtop" href="#c4">↑ 回到顶部</a>
+  </div>
+
+  <!-- 05 护城河 -->
+  <div class="card" id="c5">
+    <h2>05 · 护城河：艺术家签约与 IP 归属 <span class="en">MOAT</span></h2>
+    <div class="sec-sub">段永平四大壁垒之一即"艺术家共生网络"。这一章回答三个问题：护城河怎么筑、设计师跳槽怎么办、IP 到底归谁。</div>
+    <h3>四类合作模式（权利切割是核心）</h3>
+    <table>
+      <tr><th class="l">模式</th><th class="l">代表 IP</th><th class="l">著作权归属</th><th class="l">关键含义</th></tr>
+      <tr class="hi"><td class="l">① 买断永久自有</td><td class="l">Molly / DIMOO / SKULLPANDA / <b>THE MONSTERS</b></td><td class="l">100% 归公司</td><td class="l">可换设计师续作，Molly 已验证（王信明 2019 买断 + 授约 2% 股权）</td></tr>
+      <tr><td class="l">② 内部 PDC 孵化</td><td class="l">小野 / Zsiga</td><td class="l">出生即公司</td><td class="l">2021 成立，团队 100+ 人，员工制，供给不依赖外部天才</td></tr>
+      <tr><td class="l">③ 外部独占授权</td><td class="l">CRYBABY 成长期等</td><td class="l">可归作者</td><td class="l">公司拿全球独家商业化 + 商标 + 渠道；极端不续约仍握商标/库存/用户</td></tr>
+      <tr><td class="l">④ 新锐阶梯合作</td><td class="l">PEACH RIOT 等</td><td class="l">试水→买断/收编</td><td class="l">低成本筛选天才的漏斗入口</td></tr>
+    </table>
+    <div class="warn"><b>重要更正（2026-11-09 核验）：Labubu 著作权已永久归泡泡玛特。</b>原报告"独占授权至 2030、著作权仍属龙家升"为过时信息。三重证据：① 王宁 2025-05 股东会现场："the monsters 我们现在已经完全收购了"；② 证券时报访谈："Labubu 版权永久属于泡泡玛特"；③ 段永平 2026-08-27 雪球亲核："labubu 版权已经属于泡泡玛特了，根本不存在续签问题……作者还保留分成权"。龙家升保留署名权与随创作递减的分成权。<b>→ 原"2030 续约 = 首要折价变量"应移除，属净正面修正。</b></div>
+    <h3>设计师跳槽怎么办</h3>
+    <div class="grid2">
+      <div class="box"><div class="t">买断 / PDC 类（占大头）</div><div class="d">IP 100% 归公司，人走 IP 不走，可换设计师续作。<b>Molly 已验证</b>：王信明持有约 1.49% 股权（约 2000 万股，市值约 46 亿港元）但 IP 归公司。 artist 激励通过股权与分成绑定，而非"IP 控制权"。</div></div>
+      <div class="box"><div class="t">外部授权类（极端情形）</div><div class="d">即便原作者不续约，公司仍握<b>商标 + 渠道 + 库存 + 用户</b>，可继续销售并做二创授权；原作者因商标在公司手里，也无法售卖原形象。王宁 2025 股东会原话称这种风险"锁死"。</div></div>
+    </div>
+    <div class="hl"><b>王宁"唱片公司"比喻的深意</b>：不发明歌手，而是发掘 + 深度绑定艺术家。护城河不在某个 IP，而在<b>"能持续发掘并工业化天才的系统"</b>——350+ 艺术家网络、PDC 孵化管线、利益绑定机制，三者叠加才是真壁垒。跟踪信号：PDC 收入占比、艺术家流失率、非华人市场独立复购。</div>
+    <a class="backtop" href="#c5">↑ 回到顶部</a>
+  </div>
+
+  <!-- 06 业绩估值 -->
+  <div class="card" id="c6">
+    <h2>06 · 业绩与估值：零增长已定价 <span class="en">FINANCIALS & VALUATION</span></h2>
+    <div class="sec-sub">所有数字统一口径：经调整净利（Non-IFRS）；价格锚 142 HKD（2026-10 前后），汇率 1 HKD=0.85628 CNY，股本 13.32 亿股。</div>
+    <div class="grid4">
+      <div class="metric"><div class="lab">2025 营收</div><div class="num">371.2亿</div><div class="pct up">+184.7%</div></div>
+      <div class="metric"><div class="lab">2025 经调整净利</div><div class="num">130.8亿</div><div class="pct up">+284.5%</div></div>
+      <div class="metric"><div class="lab">2025 毛利率</div><div class="num">72.1%</div><div class="pct">2026H1 69.7%</div></div>
+      <div class="metric"><div class="lab">当前 PE（TTM）</div><div class="num">≈12×</div><div class="pct">可比中垫底</div></div>
+    </div>
+    <h3>业绩快照</h3>
+    <table>
+      <tr><th class="l">项目</th><th>数值</th><th class="l">锚点 / 说明</th></tr>
+      <tr><td class="l">2025 归母净利</td><td>127.76 亿（+308.8%）</td><td class="l">经调整 130.84 亿（+284.5%）</td></tr>
+      <tr><td class="l">2026H1 营收 / 经调整净利</td><td>171.73 亿 / 51.6 亿</td><td class="l">+23.8% / +9.5%；净利率 30%</td></tr>
+      <tr><td class="l">2026H1 经营利润率</td><td>39.2%（−4.4pct）</td><td class="l">剔除汇兑后核心 41.4% vs 41.8% 持平</td></tr>
+      <tr><td class="l">会员 / 复购率</td><td>超 1 亿 / 51.6%</td><td class="l">复购从 55.7% 下滑，需警惕</td></tr>
+      <tr><td class="l">经营现金流 / capex</td><td>108.65 亿 / ≈11.7 亿</td><td class="l">自由现金流 ≈97 亿，极轻资产</td></tr>
+      <tr><td class="l">净现金 / 有息负债</td><td>≈175 亿 / 0</td><td class="l">零负债</td></tr>
+      <tr><td class="l">股东回报率</td><td>≈3.7–3.8%</td><td class="l">股息 1.8% + 回购 ≈2%；未来 6 月 20–50 亿回购</td></tr>
+    </table>
+    <h3>可比公司：净利率最高，PE 最低</h3>
+    <table>
+      <tr><th class="l">公司</th><th>净利率</th><th>PE(TTM)</th><th class="l">类比</th></tr>
+      <tr class="hi"><td class="l"><b>泡泡玛特</b></td><td class="up">35.2%</td><td>≈12×</td><td class="l">被研究标的</td></tr>
+      <tr><td class="l">三丽鸥</td><td>27.6%</td><td>26×</td><td class="l">单一 IP 长青 · 出海验证</td></tr>
+      <tr><td class="l">万代南梦宫</td><td>10.4%</td><td>25×</td><td class="l">多 IP 矩阵 · 玩具平台</td></tr>
+      <tr><td class="l">名创优品</td><td>10.6%</td><td>7–8×</td><td class="l">模式最像 · 风险镜鉴</td></tr>
+      <tr><td class="l">迪士尼</td><td>8.7%</td><td>22.9×</td><td class="l">终极天花板</td></tr>
+    </table>
+    <div class="hl a"><b>估值错配</b>：市场拿"名创的尺子"（出海折价 7–8×）量它，而非"三丽鸥的尺子"（平台溢价 26×）。中间的差就是超额收益来源——前提是证明自己走万代/三丽鸥路径而非名创路径。⚠️ 130 亿 × 12× ≈ 137 HKD ≈ 现价，说明零增长已定价；若 2026 利润降到 120 亿且 PE 压到 10×，股价 → 105 HKD，这就是"越跌越买"要警惕的价值陷阱边界。</div>
+    <h3>情景目标价（HKD）</h3>
+    <table>
+      <tr><th class="l">情景 + 估值</th><th>2026E 净利</th><th>目标价</th><th>vs 现价 142</th><th>年化</th></tr>
+      <tr><td class="l">中性 · 维持 12×</td><td>130 亿</td><td>137</td><td>0.96×</td><td>~0%</td></tr>
+      <tr class="hi"><td class="l"><b>中性 · 回到 20×</b></td><td>130 亿</td><td>228</td><td class="up">1.60×</td><td class="up">+10%</td></tr>
+      <tr><td class="l">2027 复苏 · 20×</td><td>160 亿</td><td>280</td><td class="up">1.97×</td><td class="up">+15%</td></tr>
+      <tr><td class="l">成熟期中性（333 亿）· 20×</td><td>333 亿</td><td>584</td><td class="up">4.11×</td><td class="up">长周期</td></tr>
+    </table>
+    <div class="note">⚠️ 全部为情景推演，非公司指引。行情锚点会随时间变化，使用前请刷新现价与汇率。</div>
+    <a class="backtop" href="#c6">↑ 回到顶部</a>
+  </div>
+
+  <!-- 07 前瞻 -->
+  <div class="card" id="c7">
+    <h2>07 · 前瞻与验证：调整年的跟踪清单 <span class="en">OUTLOOK & CHECKLIST</span></h2>
+    <div class="sec-sub">从"是否增长"的争论，转为"结构是否健康"的验证。以下为可证伪的观察指标。</div>
+    <h3>2026 全年推演（Q3 大跌之后）</h3>
+    <div class="hl r"><b>Q3 数据边界（别再找精确值）</b>：2026-10-27 自愿性更新只有同比区间——整体 −45%~−50%、中国 −25%~−30%、亚太 −65%~−70%、美洲 −70%~−75%，无绝对额/无利润/无按 IP 拆分，未经审核。券商估算 Q3 约 63 亿，2026E 全年约 310 亿（−16.5%，华福）。本报告份额法推演中性全年 312.73 亿（−15.8%），与券商吻合。</div>
+    <table>
+      <tr><th class="l">指标</th><th class="l">当前值</th><th class="l">方向 / 阈值</th><th class="l">解读</th></tr>
+      <tr><td class="l">全年过亿 IP 数（官方口径）</td><td class="l">2025: 17 个；H1: 11 个</td><td class="l">看全年口径，上升为佳</td><td class="l">矩阵厚度核心指标；半年与全年不可混比</td></tr>
+      <tr><td class="l">CR1 / CR7</td><td class="l">38.1% → 26% / 81%</td><td class="l">CR1 降、CR7 稳</td><td class="l">⚠️ 若 CR1 降是因绝对额退坡（LABUBU −7.5%），不能读成矩阵变厚</td></tr>
+      <tr class="err"><td class="l">存货周转天数</td><td class="l">201 天（2026H1）</td><td class="l">102→123→201，恶化中</td><td class="l">存货 61.02 亿；若过亿 IP 数升而周转同步恶化 = 铺货式增长，应扣分</td></tr>
+      <tr class="err"><td class="l">会员复购率</td><td class="l">51.6%</td><td class="l">从 55.7% 下滑</td><td class="l">需求侧健康度，与会员总数增长分开看</td></tr>
+      <tr><td class="l">海外线下 vs 线上</td><td class="l">线下三区 +14.9%/+22.5%/+48.1%</td><td class="l">线下占比回升</td><td class="l">渠道换挡成功与否的关键验证</td></tr>
+      <tr><td class="l">新客首购年龄</td><td class="l">未披露</td><td class="l">需在新青春期 cohort 重新植入</td><td class="l">代际更替的领先指标，比总会员数更重要</td></tr>
+      <tr><td class="l">集团化硬信号</td><td class="l">非商品收入 ≈0.2%（量级）</td><td class="l">单列且 &gt;5%</td><td class="l">达到才触发估值范式重估</td></tr>
+    </table>
+    <h3>三大多空分歧（当前时点）</h3>
+    <div class="grid3">
+      <div class="box"><div class="t">🟢 多方</div><div class="d">结构主动健康化（IP 矩阵化 + 渠道线下化 + 回购 20–50 亿）；净利率 35% 全场最高却只给 12×；集团化与授权是被白送的期权。</div></div>
+      <div class="box"><div class="t">🔴 空方</div><div class="d">LABUBU 绝对额已 −7.5%，星星人补位能否持续存疑；存货周转 201 天恶化、复购率下滑；Q3 −45~50% 说明高基数脆弱。</div></div>
+      <div class="box"><div class="t">⚖️ 裁决点</div><div class="d">2027 年：海外能否恢复正增长 + 是否出现第二个全球级 IP。两点都满足 → 走三丽鸥/万代路径，估值修复；否则按名创级折价，8–10× 也合理。</div></div>
+    </div>
+    <a class="backtop" href="#c7">↑ 回到顶部</a>
+  </div>
+
+  <!-- 08 体系索引 -->
+  <div class="card" id="c8">
+    <h2>08 · 研究体系索引：30+ 份报告如何取舍 <span class="en">RESEARCH INDEX</span></h2>
+    <div class="sec-sub">本报告为"熔炼版"，原始专题报告保留在「泡泡玛特_调研报告总汇_20261116」文件夹，按下列结构归类。核心报告已纳入正文，其余作纵深阅读与脉络追溯。</div>
+    <h3>✅ 核心报告（已熔炼进正文）</h3>
+    <table class="idx">
+      <tr><th class="l">章节</th><th class="l">原始专题报告</th><th class="l">日期</th></tr>
+      <tr><td class="l">01 商业模式</td><td class="l">泡泡玛特不是年轻人的茅台（上/下）、因为独特·分章节解析</td><td class="l">08-21</td></tr>
+      <tr><td class="l">02 IP 矩阵</td><td class="l"><span class="src-tag src-core">核心</span> 全IP销售数据与国内外拆分、艺术家签约护城河与IP归属、vs迪士尼三丽鸥对比、整体业务结构占比全景</td><td class="l">10-16 ~ 11-10</td></tr>
+      <tr><td class="l">03 全球化</td><td class="l"><span class="src-tag src-core">核心</span> 全球化门店分布与效率全景、海外国家布局与货币敞口、本土与海外业务拆解</td><td class="l">10-20 ~ 11-02</td></tr>
+      <tr><td class="l">04 集团化</td><td class="l"><span class="src-tag src-core">核心</span> IP集团化战略全景与利润影响</td><td class="l">11-09</td></tr>
+      <tr><td class="l">05 护城河</td><td class="l"><span class="src-tag src-core">核心</span> 艺术家签约护城河与IP归属全景 + 艺术学研究 3 份（审美趋同/美的产生/课程路线）</td><td class="l">11-09 ~ 11-10</td></tr>
+      <tr><td class="l">06 业绩估值</td><td class="l"><span class="src-tag src-core">核心</span> 2025年报至2026中报业绩估值快照、10年利润与估值情景、全球市占与成熟期推演、五年利润与估值、分红与回购回报率、回报率测算</td><td class="l">09-07 ~ 10-20</td></tr>
+      <tr><td class="l">07 前瞻</td><td class="l"><span class="src-tag src-core">核心</span> 2026Q3大跌利润估值测算、管理层降速推演与成熟期复投模型、可参照公司对标</td><td class="l">10-20 ~ 10-29</td></tr>
+    </table>
+    <h3>📦 内容作品（观点/读书，非数据研究）</h3>
+    <p style="font-size:12.5px">公众号文章 6 篇（不是年轻人的茅台 上/下 + 公众号版、中报增速放缓）、读书笔记 3 份（因为独特 ×2、结构性改革 ×1）、艺术学研究 3 份、配图素材清单 1 份。</p>
+    <h3>🗃 已剔除的重复 / 过期版本（原文件保留，未纳入总汇）</h3>
+    <table class="idx">
+      <tr><td class="l"><span class="src-tag src-arch">重复</span></td><td class="l">全球业务门店分布地图_20261102、全球业务门店分布与渠道效率分析_20261102</td><td class="l">被"效率全景分析"完整覆盖</td></tr>
+      <tr><td class="l"><span class="src-tag src-arch">过期</span></td><td class="l">投资拆解_20260715、盈利趋势预测_20260715、2026中期与全年利润预测</td><td class="l">数据被 2026-10 后专题刷新</td></tr>
+    </table>
+    <div class="note">⚠️ 统一口径：经调整净利为主；汇率 1 HKD=0.85628 CNY；股本 13.32 亿股；财务数据来自港交所 2025 年报（2026-03-25）、2026 中期公告（2026-08-20）、2026Q3 自愿更新（2026-10-27）。所有预测为情景推演非公司指引。本报告为个人投资学习笔记，不构成投资建议。</div>
+    <a class="backtop" href="#c8">↑ 回到顶部</a>
+  </div>
+
+  <div class="foot">数据来源：泡泡玛特 2025 年报、2026 中期业绩公告、2026Q3 业务更新（港交所）；招银国际/华福/浦银/长江等券商研报；三丽鸥/万代/迪士尼/名创优品公开披露；央行 HKD/CNY 中间价。<br>整理：2026-11-16 · 30+ 份专题研究熔炼 · 仅供个人投资学习，非投资建议。</div>
+
+</div>
+
+<script>
+(function(){
+  if(typeof echarts==='undefined'){return}
+  var pink='#e0508a',blue='#2563c9',amber='#d98a00',teal='#0d9488';
+  var axis={axisLine:{lineStyle:{color:'#ccc'}},axisLabel:{color:'#6b7480',fontSize:10}};
+  // IP 占比对比
+  var el=document.getElementById('ch_ip');
+  if(el){var c=echarts.init(el);c.setOption({
+    title:{text:'头部 IP 收入占比：2025 全年 vs 2026H1',left:'center',textStyle:{fontSize:13,color:'#1a2028'}},
+    tooltip:{trigger:'axis',valueFormatter:function(v){return v+'%'}},
+    legend:{data:['2025','2026H1'],bottom:0,textStyle:{fontSize:11}},
+    grid:{left:90,right:24,top:40,bottom:36},
+    xAxis:Object.assign({type:'value',max:45},axis),
+    yAxis:Object.assign({type:'category',data:['授权IP','MOLLY','HIRONO','SKULLPANDA','DIMOO','CRYBABY','星星人','THE MONSTERS'],inverse:true},axis),
+    series:[
+      {name:'2025',type:'bar',data:[9.1,7.8,4.7,9.5,7.5,7.9,5.5,38.1],itemStyle:{color:'#c8ced6'},barGap:'10%'},
+      {name:'2026H1',type:'bar',data:[10.3,5.3,5.9,9.0,9.4,9.5,15.4,26.0],itemStyle:{color:pink}}
+    ]
+  });window.addEventListener('resize',function(){c.resize()})}
+  // 区域结构
+  var el2=document.getElementById('ch_region');
+  if(el2){var c2=echarts.init(el2);c2.setOption({
+    title:{text:'区域营收：2025 全年 vs 2026H1（亿元）',left:'center',textStyle:{fontSize:13,color:'#1a2028'}},
+    tooltip:{trigger:'axis',valueFormatter:function(v){return v+' 亿'}},
+    legend:{data:['2025','2026H1'],bottom:0,textStyle:{fontSize:11}},
+    grid:{left:50,right:24,top:40,bottom:36},
+    xAxis:Object.assign({type:'category',data:['中国','亚太','美洲','欧洲及其他']},axis),
+    yAxis:Object.assign({type:'value'},axis),
+    series:[
+      {name:'2025',type:'bar',data:[208.52,80.11,68.06,14.51],itemStyle:{color:'#c8ced6'}},
+      {name:'2026H1',type:'bar',data:[122.01,25.75,18.92,5.06],itemStyle:{color:blue}}
+    ]
+  });window.addEventListener('resize',function(){c2.resize()})}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>泡泡玛特 · 整体业务结构占比全景（2025全年 vs 2026H1）</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; padding:0; background:#f5f3ef; color:#3a2f2a; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; line-height:1.7; }
+  .wrap { max-width:820px; margin:0 auto; padding:0 16px 70px; }
+  .hero { background:linear-gradient(135deg,#5a0d12,#7a1119 55%,#b8860b 135%); color:#fff; padding:46px 26px 38px; text-align:center; border-radius:0 0 22px 22px; margin-bottom:22px; }
+  .hero h1 { margin:0 0 10px; font-size:25px; line-height:1.45; }
+  .hero p { margin:0 auto; font-size:13.5px; opacity:.9; max-width:660px; line-height:1.7; }
+  .hero .meta { font-size:12px; opacity:.6; margin-top:16px; }
+  .card { background:#fff; border-radius:14px; padding:20px 18px; margin-bottom:20px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+  .sec-title { display:flex; align-items:center; gap:8px; font-size:19px; font-weight:bold; color:#7a1119; margin:0 0 6px; padding-left:10px; border-left:4px solid #b8860b; line-height:1.4; }
+  .sub { font-size:13px; color:#9a8c80; margin:0 0 14px; line-height:1.65; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin:12px 0 4px; }
+  th, td { padding:8px 7px; text-align:center; border-bottom:1px solid #eee; }
+  th { background:#faf6ef; color:#7a6a60; font-weight:600; }
+  td.l, th.l { text-align:left; }
+  tr:nth-child(even) td { background:#fcfbfa; }
+  .up { color:#c0392b; font-weight:bold; }
+  .down { color:#1e8e4e; font-weight:bold; }
+  .kpis { display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 4px; }
+  .kpi { flex:1 1 30%; background:#faf6ef; border:1px solid #efe6da; border-radius:10px; padding:12px 10px; text-align:center; }
+  .kpi .n { font-size:19px; font-weight:bold; color:#7a1119; }
+  .kpi .t { font-size:12px; color:#8a7d70; margin-top:3px; }
+  .charts2 { display:flex; gap:14px; flex-wrap:wrap; }
+  .charts2 > div { flex:1 1 44%; }
+  .chart-box { width:100%; height:240px; margin:6px 0; }
+  .chart-box.tall { height:300px; }
+  .note { font-size:12px; color:#aaa; line-height:1.65; margin-top:10px; }
+  .quote { background:#fbf4ec; border-left:4px solid #b8860b; padding:13px 15px; border-radius:6px; color:#5a4a3a; font-size:13.5px; line-height:1.85; margin:14px 0; }
+  .insight { background:#7a1119; color:#fff; border-radius:12px; padding:18px 20px; margin:14px 0; font-size:14px; line-height:1.9; }
+  .insight b { color:#f0d9a0; }
+  .pill { display:inline-block; font-size:11px; padding:2px 9px; border-radius:10px; margin:1px 2px; }
+  .pill.r { background:#7a1119; color:#fff; }
+  .pill.g { background:#1e8e4e; color:#fff; }
+  .bar-row { display:flex; align-items:center; gap:8px; font-size:12px; margin:5px 0; }
+  .bar-row .lbl { width:88px; text-align:right; color:#6a5a50; flex-shrink:0; }
+  .bar-row .track { flex:1; background:#f0eae4; border-radius:6px; height:16px; position:relative; overflow:hidden; }
+  .bar-row .fill { height:100%; border-radius:6px; }
+  .bar-row .val { width:46px; text-align:left; font-weight:bold; color:#7a1119; }
+  footer { font-size:11.5px; color:#b0a294; text-align:center; line-height:1.8; margin-top:26px; border-top:1px solid #e8e0d6; padding-top:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <h1>泡泡玛特 · 整体业务结构占比全景</h1>
+    <p>把"地区 / IP / 品类 / 渠道"四张结构图拼成一张全景图：看清 2025 爆发年与 2026 调整年之间，钱到底从哪里来、靠谁赚、卖什么、走哪条路。数据基准：2025 年报 + 2026 中期业绩公告（截至 2026-08-20 披露），金额单位人民币亿元。</p>
+    <div class="meta">分析日期 2026-10-16 · 延续「本土与海外业务拆解 / 投资拆解 / 中报降速」研究脉络 · 仅供投资学习参考</div>
+  </div>
+
+  <!-- 摘要结论 -->
+  <div class="card">
+    <p class="sec-title">〇、结论先行：四张结构图，一个核心信号</p>
+    <div class="kpis">
+      <div class="kpi"><div class="n">38.1%→26.0%</div><div class="t">THE MONSTERS 占比（一超→均衡）</div></div>
+      <div class="kpi"><div class="n">50.4%→57.2%</div><div class="t">毛绒品类占比（稳居第一）</div></div>
+      <div class="kpi"><div class="n">43.8%→29.0%</div><div class="t">海外营收占比（爆发→调整）</div></div>
+      <div class="kpi"><div class="n">+580.6%</div><div class="t">星星人增速（新IP接棒验证）</div></div>
+      <div class="kpi"><div class="n">+62.7%</div><div class="t">中国线上增速（反超线下）</div></div>
+      <div class="kpi"><div class="n">6个</div><div class="t">破10亿IP数（2026H1，2025为6个≥20亿）</div></div>
+    </div>
+    <div class="insight">
+      <b>一句话定性：</b>泡泡玛特正在从「单核爆发」切换为「矩阵平台」。IP 端 Labubu 占比从 38% 降到 26%、星星人冲到第二（15.4%），单 IP 依赖实质下降；品类端毛绒彻底压倒手办（57% vs 30%）；地区端海外退潮、中国回升到 71%；渠道端海外线上流量退潮、线下门店稳健扩张。四个维度同时指向同一结论——<b>这是一次主动的"结构健康化"，不是被动失速</b>（与你 8 月「中报降速」研究的判断一致）。
+    </div>
+  </div>
+
+  <!-- 一、地区 -->
+  <div class="card">
+    <p class="sec-title">一、地区结构：海外退潮，中国重新成为压舱石</p>
+    <p class="sub">2025 是海外爆发年（占 43.8%），2026H1 海外阶段性回落（占 29.0%），中国占比回升至 71%。这是之前「本土与海外业务拆解」已深做过的维度，此处仅作全景对齐。</p>
+    <div class="charts2">
+      <div><div class="chart-box"><canvas id="region2025"></canvas></div><p class="note" style="text-align:center;">2025 全年地区结构</p></div>
+      <div><div class="chart-box"><canvas id="regionH1"></canvas></div><p class="note" style="text-align:center;">2026H1 地区结构</p></div>
+    </div>
+    <table>
+      <tr><th class="l">区域</th><th>2025 营收</th><th>占比</th><th>2026H1 营收</th><th>占比H1</th><th>H1同比</th></tr>
+      <tr><td class="l">中国（内地）</td><td>208.52</td><td>56.2%</td><td>122.01</td><td class="up">71.0%</td><td class="up">+47.3%</td></tr>
+      <tr><td class="l">亚太（含港澳台）</td><td>80.11</td><td>21.6%</td><td>25.75</td><td>15.0%</td><td class="down">−9.7%</td></tr>
+      <tr><td class="l">美洲</td><td>68.06</td><td>18.3%</td><td>18.92</td><td>11.0%</td><td class="down">−16.5%</td></tr>
+      <tr><td class="l">欧洲及其他</td><td>14.51</td><td>3.9%</td><td>5.06</td><td>3.0%</td><td class="up">+5.9%</td></tr>
+      <tr style="font-weight:bold;"><td class="l">全球合计</td><td>371.20</td><td>100%</td><td>171.73</td><td>100%</td><td class="up">+23.8%</td></tr>
+    </table>
+    <div class="quote">关键转折：海外回落并非需求消失，而是「线上流量退潮 + 线下沉淀」的渠道换挡（详见第四节）。2026 管理层定义"调整年"，中国区以 +47.3% 成为增长主引擎。</div>
+  </div>
+
+  <!-- 二、IP -->
+  <div class="card">
+    <p class="sec-title">二、IP 结构：从"一超独大"走向"多强均衡"</p>
+    <p class="sub">此前仅在投资拆解 / 中报里散落提及，本全景首次把 IP 占比做成「2025 vs 2026H1」对比。Labubu 占比下降、星星人接力，是结构健康化最硬的证据。</p>
+    <div class="chart-box tall"><canvas id="ipBar"></canvas></div>
+    <p class="note" style="text-align:center;">各 IP 收入占比对比（%，按 2026H1 规模排序）</p>
+    <table>
+      <tr><th class="l">IP</th><th>2025 营收</th><th>占比25</th><th>2026H1 营收</th><th>占比H1</th><th>H1同比</th></tr>
+      <tr><td class="l"><b>THE MONSTERS</b>(Labubu)</td><td>141.61</td><td class="up">38.1%</td><td>44.54</td><td class="down">26.0%</td><td class="down">−7.5%</td></tr>
+      <tr><td class="l"><b>星星人</b></td><td>20.56</td><td>5.5%</td><td>26.50</td><td class="up">15.4%</td><td class="up">+580.6%</td></tr>
+      <tr><td class="l">CRYBABY</td><td>29.29</td><td>7.9%</td><td>16.33</td><td>9.5%</td><td class="up">+34.0%</td></tr>
+      <tr><td class="l">DIMOO</td><td>27.77</td><td>7.5%</td><td>16.19</td><td>9.4%</td><td class="up">+46.5%</td></tr>
+      <tr><td class="l">SKULLPANDA</td><td>35.40</td><td>9.5%</td><td>15.51</td><td>9.0%</td><td class="up">+27.1%</td></tr>
+      <tr><td class="l">HIRONO</td><td>17.35</td><td>4.7%</td><td>10.09</td><td>5.9%</td><td class="up">+38.5%</td></tr>
+      <tr><td class="l">MOLLY</td><td>28.97</td><td>7.8%</td><td>9.01</td><td>5.3%</td><td class="down">−33.6%</td></tr>
+      <tr><td class="l">授权IP</td><td>33.82</td><td>9.1%</td><td>17.71</td><td>10.3%</td><td class="up">+16.2%</td></tr>
+      <tr><td class="l">其他艺术家IP</td><td>≈36.43</td><td>9.8%</td><td>13.86*</td><td>8.5%</td><td>—</td></tr>
+    </table>
+    <p class="note">*2026H1 其他艺术家IP = 艺术家IP合计 152.89 − 前7大 139.03 = 13.86。2025 其他艺术家IP按艺术家IP合计(337.38)−前7大(300.95)=36.43 推算。2026H1 艺术家IP合计占比 89.0%，11个IP破亿、6个破10亿。</p>
+    <div class="quote">最硬信号：THE MONSTERS 占比从 38.1% 降到 26.0%，而腰部 IP（星星人/CRYBABY/DIMOO/SKULLPANDA/HIRONO）集体站上 9%–15% 区间。这是"押注一个IP"变成"运营一个矩阵"的真实落地，也是反驳"Funko式单IP陷阱"的核心证据。</div>
+  </div>
+
+  <!-- 三、品类 -->
+  <div class="card">
+    <p class="sec-title">三、品类结构：毛绒彻底压倒手办，MEGA 退出单列</p>
+    <p class="sub">这是此前研究的<b>真正空白</b>。2025 年报首次披露完整品类占比，2026 中报将品类调整为毛绒/手办/衍生品三类（MEGA 不再单独披露）。</p>
+    <div class="charts2">
+      <div><div class="chart-box"><canvas id="cat2025"></canvas></div><p class="note" style="text-align:center;">2025 全年品类结构</p></div>
+      <div><div class="chart-box"><canvas id="catH1"></canvas></div><p class="note" style="text-align:center;">2026H1 品类结构</p></div>
+    </div>
+    <table>
+      <tr><th class="l">品类</th><th>2025 营收</th><th>占比25</th><th>2026H1 营收</th><th>占比H1</th><th>H1同比</th></tr>
+      <tr><td class="l">毛绒</td><td>187.08</td><td class="up">50.4%</td><td>98.25</td><td class="up">57.2%</td><td class="up">+60.0%</td></tr>
+      <tr><td class="l">手办</td><td>120.23</td><td>32.4%</td><td>51.92</td><td>30.2%</td><td class="up">+0.3%</td></tr>
+      <tr><td class="l">MEGA</td><td>19.16</td><td>5.2%</td><td colspan="2" style="color:#bbb;">不再单独披露</td><td class="down">—</td></tr>
+      <tr><td class="l">衍生品及其他</td><td>44.73</td><td>12.0%</td><td>21.55</td><td>12.6%</td><td class="down">−15.8%</td></tr>
+      <tr style="font-weight:bold;"><td class="l">合计</td><td>371.20</td><td>100%</td><td>171.73</td><td>100%</td><td class="up">+23.8%</td></tr>
+    </table>
+    <div class="quote">品类迁移的本质：毛绒（搪胶毛绒挂件）凭借"社交货币 + 展示性 + 可搭配"成为现象级载体，从 2024 年 21.7% 一路飙到 57.2%，彻底改写泡泡玛特"盲盒手办公司"的标签。手办近乎零增长（H1 +0.3%），传统盲盒红利边际递减已在行业层面显现（见经济参考报 2026 年中观察）。</div>
+  </div>
+
+  <!-- 四、渠道 -->
+  <div class="card">
+    <p class="sec-title">四、渠道结构：海外线上退潮，线下门店稳健扩张</p>
+    <p class="sub">此前研究只有定性描述"线上塌缩、线下增长"，本全景首次给出 2025 各区域渠道占比基数，并叠加 2026H1 趋势。海外渠道仅披露趋势、未披露精确占比，故以区域结构表呈现。</p>
+    <table>
+      <tr><th class="l">区域 / 渠道</th><th>线下</th><th>其中零售店</th><th>线上</th><th>批发及其他</th></tr>
+      <tr><td class="l"><b>中国 2025</b></td><td>54.8%</td><td>48.3%</td><td>40.9%</td><td>4.3%</td></tr>
+      <tr><td class="l">亚太 2025</td><td>55.1%</td><td>53.9%</td><td>38.1%</td><td>6.8%</td></tr>
+      <tr><td class="l">美洲 2025</td><td>32.8%</td><td>29.4%</td><td>64.0%</td><td>3.2%</td></tr>
+      <tr><td class="l">欧洲 2025</td><td>60.1%</td><td>59.0%</td><td>34.8%</td><td>5.1%</td></tr>
+    </table>
+    <p class="sub" style="margin-top:10px;">中国线上细分（2025）：抽盒机 16.4% / 天猫 8.6% / 抖音 7.6% / 其他 8.3%。美洲线上高度依赖自营 APP（42.2%）+ TikTok（15.3%）。</p>
+    <div class="chart-box"><canvas id="chChina"></canvas></div>
+    <p class="note" style="text-align:center;">中国区渠道结构（2025 全年 vs 2026H1，占中国区收入%）</p>
+    <p class="note">2025 中国：线下 54.8% / 线上 40.9% / 批发 4.3%；2026H1 中国：线下 56.3% / 线上 39.2%（占总营收 27.8%），线上增速 +62.7% 反超线下 +35.1%。</p>
+    <div class="quote">海外渠道换挡最剧烈：2026H1 亚太/美洲/欧洲线上分别 −39.8% / −45.6% / −59%，但线下门店收入分别 +14.9% / +22.5% / +48.1%。这是"从线上流量红利转向线下沉淀"的标志——不是需求消失，是渠道结构再平衡。美洲门店半年净增 22 家（64→86），欧洲净增 9 家，仍在高速铺线下基本盘。</div>
+  </div>
+
+  <!-- 五、交叉洞察 -->
+  <div class="card">
+    <p class="sec-title">五、四维交叉：结构正在变健康，但三处仍需盯</p>
+    <div class="insight">
+      <b>① IP × 品类 协同：</b>毛绒成为第一大品类，恰是 Labubu/星星人等"搪胶毛绒"IP 的表达载体。IP 矩阵化 + 品类毛绒化是同一件事的两面——IP 靠毛绒放大商业价值，毛绒靠 IP 维持溢价。<br><br>
+      <b>② 地区 × 渠道 协同：</b>海外回落集中在"线上"，而中国线上仍在高增。说明问题不在需求端总量，而在海外线上流量（TikTok/自营APP）的"新鲜感退潮"，线下门店健康。这与"调整年"定性与 20–50 亿回购相互印证。<br><br>
+      <b>③ 仍需盯的三个信号：</b>
+      <span class="pill r">Labubu 4.0 / 世界杯联名</span> 能否止住 H1 −7.5%；
+      <span class="pill r">星星人之后</span> 有无第三个、第四个"十亿级"接班 IP；
+      <span class="pill r">海外线上</span> 能否靠自建流量（自营APP/Shopee）接住退潮，而非永久失速。
+    </div>
+    <div class="quote">最终判断（延续你的框架）：泡泡玛特不是"不行了"，是"主动换挡"。四个维度的占比变化同时指向结构健康化——这正是它区别于 Funko 式单 IP 陷阱、支撑"平台溢价而非爆款溢价"估值逻辑的关键。但 2026 是验证年：新 IP 接力与海外线上企稳，决定"调整年"成色。</div>
+  </div>
+
+  <footer>
+    数据来源：泡泡玛特 2025 年报（港交所 2026-03-25）、2026 中期业绩公告（2026-08-20）及官方 PDF；券商整理（华西/华泰/格隆汇/华丽志/新浪财经等）。
+    口径说明：金额单位人民币亿元；海外含港澳台；2026H1 品类口径由年报四类调整为三类（MEGA 并入衍生品及其他）；海外渠道 2026H1 仅披露趋势未披露精确占比。
+    本报告仅为个人投资学习笔记，不构成投资建议。
+  </footer>
+
+</div>
+
+<script>
+const C = { red:'#7a1119', gold:'#b8860b', green:'#1e8e4e', orange:'#d98a3a', blue:'#3a5a8a', gray:'#9a8c80', pink:'#c0392b', cream:'#e8c98a' };
+const doughnut = (ctx, labels, data, colors, ttl) => new Chart(ctx, {
+  type:'doughnut',
+  data:{ labels, datasets:[{ data, backgroundColor:colors, borderColor:'#fff', borderWidth:2 }] },
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{ title:{ display:!!ttl, text:ttl, font:{size:13}, color:'#7a1119' },
+      legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+      tooltip:{ callbacks:{ label:c=>` ${c.label}: ${c.parsed.toFixed(1)}%` } } } }
+});
+
+// 地区
+doughnut(document.getElementById('region2025'), ['中国','亚太','美洲','欧洲及其他'], [56.2,21.6,18.3,3.9], [C.red,C.gold,C.orange,C.gray]);
+doughnut(document.getElementById('regionH1'),   ['中国','亚太','美洲','欧洲及其他'], [71.0,15.0,11.0,3.0], [C.red,C.gold,C.orange,C.gray]);
+
+// 品类
+doughnut(document.getElementById('cat2025'), ['毛绒','手办','MEGA','衍生品及其他'], [50.4,32.4,5.2,12.0], [C.red,C.gold,C.orange,C.gray]);
+doughnut(document.getElementById('catH1'),   ['毛绒','手办','衍生品及其他'],        [57.2,30.2,12.6],       [C.red,C.gold,C.gray]);
+
+// IP 横向条形对比
+new Chart(document.getElementById('ipBar'), {
+  type:'bar',
+  data:{ labels:['THE MONSTERS','星星人','CRYBABY','DIMOO','SKULLPANDA','HIRONO','MOLLY','授权IP','其他艺术家IP'],
+    datasets:[
+      { label:'2025 占比%', data:[38.1,5.5,7.9,7.5,9.5,4.7,7.8,9.1,9.8], backgroundColor:C.gray },
+      { label:'2026H1 占比%', data:[26.0,15.4,9.5,9.4,9.0,5.9,5.3,10.3,8.5], backgroundColor:C.red }
+    ] },
+  options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+      tooltip:{ callbacks:{ label:c=>` ${c.dataset.label}: ${c.parsed.x.toFixed(1)}%` } } },
+    scales:{ x:{ title:{display:true,text:'收入占比 %'}, ticks:{ callback:v=>v+'%' } } } }
+});
+
+// 中国渠道 2025 vs H1
+new Chart(document.getElementById('chChina'), {
+  type:'bar',
+  data:{ labels:['线下','线上','批发及其他'],
+    datasets:[
+      { label:'2025 占中国区%', data:[54.8,40.9,4.3], backgroundColor:C.gray },
+      { label:'2026H1 占中国区%', data:[56.3,39.2,4.5], backgroundColor:C.red }
+    ] },
+  options:{ responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+      tooltip:{ callbacks:{ label:c=>` ${c.dataset.label}: ${c.parsed.y.toFixed(1)}%` } } },
+    scales:{ y:{ title:{display:true,text:'占中国区收入 %'}, ticks:{ callback:v=>v+'%' } } } }
+});
+</script>
+</body>
+</html>

@@ -11,9 +11,10 @@ const SITE = {
   topN: 3,
   sections: [
     {
-      key: "invest", file: "invest.html", zh: "投资", en: "INVESTING",
+      key: "invest", file: "invest.html", zh: "投资", en: "VALUE INVESTING",
+      headline: "慢就是快",
       short: "公司研究、持有、复利，与判断失误的记录。",
-      intro: "把判断写下来，比记住结果更有用。这里收着一份体系化的公司研究，以及关于持有、复利，和什么时候该承认自己想错了的笔记。",
+      intro: "价值投资理念：买股票就是买公司。价格是你付出的，价值是你得到的；市场短期是投票机，长期是称重机。守住能力圈，留足安全边际，耐心持有——慢就是快。",
       items: [
         { t: "腾讯控股 · 体系化投资研究", d: "35 份研究去粗取精熔成一册：4 大分部、微信与游戏两台印钞机、2596 亿利润拆解、AI 投入真相与 SOTP 估值。8 章 5 图，可离线阅读。", tag: "公司研究", views: 9800, u: "invest-tencent.html", chapters: ["财务全景","游戏板块","微信生态","估值总表"] },
         { t: "复利真正难的地方", d: "不是收益率，是时间和不中断。", tag: "复利", views: 1740 },
@@ -131,8 +132,8 @@ function renderDetail(key) {
   const s = SITE.sections[idx];
   const tone = TONES[idx % TONES.length];
 
-  document.title = `${s.zh} · ${SITE.name}`;
-  $('#h1Text').textContent = s.zh;
+  document.title = `${s.headline || s.zh} · ${SITE.name}`;
+  $('#h1Text').textContent = s.headline || s.zh;
   $('#brand').textContent = `${SITE.name} / ${s.en}`;
   $('#intro').textContent = s.intro;
   $('#intro').style.setProperty('--c', tone.c);

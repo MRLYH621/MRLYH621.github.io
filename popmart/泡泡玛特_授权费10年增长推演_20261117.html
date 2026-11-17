@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 · 授权费 10 年推演：大涨的期权，有限的利润</title>
+<meta name="description" content="辨析三种授权口径，以三丽鸥/迪士尼为对标，推演泡泡玛特2035年对外授权费的克制/中性/乐观三情景，及其对600亿净利与投资回报的真实影响。">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--card2:#f8f9fb;--line:#e3e6ea;--txt:#1a2028;--sub:#6b7480;--blue:#2563c9;--amber:#d98a00;--teal:#0d9488;--up:#d92b2b;--down:#1a9c5b;--red:#d1001f;--pink:#e0508a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:0 14px 60px;font-size:14px}
+.wrap{max-width:1040px;margin:0 auto}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(245,246,248,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin:0 -14px 0;padding:10px 14px}
+.topbar-in{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.topbar .logo{font-weight:800;font-size:15px;color:var(--red);letter-spacing:.5px;white-space:nowrap}
+.topbar .logo small{font-weight:500;color:var(--sub);font-size:11px;margin-left:6px;letter-spacing:0}
+.topbar nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.topbar nav a{font-size:11.5px;color:var(--sub);padding:4px 9px;border-radius:6px;text-decoration:none;white-space:nowrap}
+.topbar nav a:hover{background:#fdeef3;color:var(--pink)}
+.cover{background:linear-gradient(150deg,#2a0e14 0%,#5a1220 45%,#8a1633 78%,#b8821b 130%);border-radius:18px;padding:44px 38px 38px;color:#fff;margin:20px 0 18px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(240,190,60,.28),transparent 70%)}
+.cover .kicker{font-size:12px;letter-spacing:2px;color:#f3c8d8;font-weight:600;margin-bottom:14px}
+.cover h1{font-size:29px;font-weight:820;line-height:1.25;margin-bottom:10px;letter-spacing:.5px}
+.cover .lead{font-size:14.5px;color:#f0dce4;max-width:820px;line-height:1.75;margin-bottom:22px}
+.cover .lead b{color:#ffd873}
+.cover .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.cover .badge{font-size:11px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:4px 12px;color:#fbe9ef}
+.cover .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative;z-index:2}
+.cover .m{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:14px 12px}
+.cover .m .k{font-size:11px;color:#f0c4d2;margin-bottom:5px}
+.cover .m .v{font-size:21px;font-weight:820;letter-spacing:.3px}
+.cover .m .s{font-size:10.5px;color:#f0c4d2;margin-top:3px}
+.cover .m.hl .v{color:#ffd873}
+h1{font-size:22px;font-weight:780;margin-bottom:6px;line-height:1.35}
+.sub{color:var(--sub);font-size:12.5px;line-height:1.6}
+.warn{background:#fdeeee;border:1px solid #f0b8b8;color:#9c2b2b;border-radius:8px;padding:11px 14px;font-size:12.5px;margin:14px 0;line-height:1.72}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.card h2{font-size:18px;margin-bottom:6px;padding-left:12px;border-left:4px solid var(--pink);line-height:1.4}
+.card h2 .en{font-size:11px;color:var(--sub);font-weight:500;margin-left:8px;letter-spacing:1px}
+.card h3{font-size:14px;margin:18px 0 8px;color:var(--teal);font-weight:700}
+.card .sec-sub{color:var(--sub);font-size:12px;margin:2px 0 14px 16px}
+.tldr{background:linear-gradient(135deg,#fdf0f5,#fbf8f2);border:1px solid #f3d2df}
+.big{font-size:19px;font-weight:800;color:var(--pink);margin:10px 0;line-height:1.5}
+table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:right;vertical-align:top}
+th{background:var(--card2);color:var(--sub);font-weight:650}
+td:first-child,th:first-child{text-align:left}
+td.l,th.l{text-align:left}
+tr.total{background:#fdf0f5;font-weight:750}
+tr.hi{background:#f0f7f2}
+tr.fade{background:#fafbfc;color:var(--sub)}
+tr.err{background:#fdeeee}
+.up{color:var(--up)}.down{color:var(--down)}.blu{color:var(--blue)}.amb{color:var(--amber)}.teal{color:var(--teal)}.mut{color:var(--sub)}.red{color:var(--red)}
+.strong{font-weight:750}
+.hl{background:#fdf0f5;border-left:3px solid var(--pink);padding:10px 13px;border-radius:6px;font-size:12.5px;margin:11px 0;line-height:1.72}
+.hl.g{background:#eaf7f0;border-left-color:var(--teal)}
+.hl.a{background:#fff8e8;border-left-color:var(--amber)}
+.hl.r{background:#fdeeee;border-left-color:var(--up)}
+.note{font-size:11px;color:var(--sub);margin-top:9px;line-height:1.65}
+ul{margin:6px 0 0 18px;font-size:12.5px}li{margin-bottom:6px;line-height:1.65}
+.chartbox{width:100%;height:380px;margin-top:14px}
+.chartbox.sm{height:330px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.box{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.box .t{font-size:12.5px;font-weight:700;margin-bottom:6px}
+.box .d{font-size:11.5px;color:var(--sub);line-height:1.6}
+.metric{background:var(--card2);border-radius:10px;padding:13px;text-align:center}
+.metric .lab{font-size:11px;color:var(--sub)}
+.metric .num{font-size:19px;font-weight:800;margin:4px 0}
+.metric .pct{font-size:11px;color:var(--sub)}
+.tag{font-size:10px;background:var(--card2);border:1px solid var(--line);border-radius:20px;padding:2px 9px;color:var(--sub);font-weight:400;vertical-align:middle}
+.foot{font-size:10.5px;color:var(--sub);margin-top:22px;padding:16px;border-top:1px solid var(--line);line-height:1.75}
+.backtop{display:inline-block;margin-left:8px;font-size:11px;color:var(--pink);text-decoration:none}
+.src{font-size:10px;color:var(--sub);margin-top:4px}
+@media(max-width:680px){.cover{padding:30px 22px}.cover h1{font-size:23px}.cover .metrics{grid-template-columns:1fr 1fr}.grid2,.grid3,.grid4{grid-template-columns:1fr}table{font-size:10.5px}.chartbox{height:340px}.topbar nav{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar-in">
+  <div class="logo">泡泡玛特研究 <small>授权费专题 · 2026-11-17</small></div>
+  <nav>
+    <a href="#tldr">结论</a><a href="#c1">口径辨析</a><a href="#c2">现状</a><a href="#c3">三情景</a><a href="#c4">对标</a><a href="#c5">回报影响</a><a href="#c6">反面</a><a href="#c7">跟踪</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+<div class="cover">
+  <div class="kicker">POP MART · ROYALTY BACKCAST</div>
+  <h1>授权费 10 年推演：<br>大涨的期权，有限的利润</h1>
+  <div class="lead">"这么多 IP 授权，就算克制点，授权费也会大涨"——这个直觉<b>在倍数上完全成立</b>：克制情景 10 年 17 倍，中性 46 倍，乐观 115 倍。但换一个口径看，答案就变了：授权费对 600 亿净利的贡献只有 <b>1.5%–10%</b>，而且泡泡玛特到 2035 年<b>仍是授权费净付出方</b>。真正的价值不在利润表，在估值叙事。</div>
+  <div class="badges">
+    <span class="badge">三重口径辨析</span><span class="badge">市场天花板约束</span><span class="badge">三丽鸥 / 迪士尼对标</span><span class="badge">对 12.5× 回报的量化影响</span>
+  </div>
+  <div class="metrics">
+    <div class="m"><div class="k">2025 对外授权实收</div><div class="v">0.706 亿</div><div class="s">计入其他收入 · 非营收</div></div>
+    <div class="m"><div class="k">2035 克制情景</div><div class="v">12 亿</div><div class="s">17× · 占净利约 1.5%</div></div>
+    <div class="m hl"><div class="k">2035 中性情景</div><div class="v">32 亿</div><div class="s">46× · 占净利约 4%</div></div>
+    <div class="m"><div class="k">2035 乐观情景</div><div class="v">82 亿</div><div class="s">115× · 占净利约 10%</div></div>
+  </div>
+</div>
+
+<!-- TLDR -->
+<div class="card tldr" id="tldr">
+  <h2>结论先行 <span class="en">TL;DR</span></h2>
+  <div class="big">你的直觉对了一半：授权费确实会"大涨"，但涨的是倍数，不是利润权重。</div>
+  <div class="grid2">
+    <div class="box"><div class="t">✅ 成立的部分</div><div class="d">2025 实收 0.706 亿是极低的起点。2026H1 已 0.606 亿（+135.2%）。按市场天花板约束，2035 克制 12 亿 / 中性 32 亿 / 乐观 82 亿——对应 <b>17× / 46× / 115×</b>。"大涨"毫无疑问。</div></div>
+    <div class="box"><div class="t">⚠️ 被忽略的部分</div><div class="d">授权费计入损益表「其他收入」，<b>不属于营收</b>。即使涨到 32 亿，占 600 亿净利也仅 4%。总回报从基准 12.5× 提升到 13.0×——<b>不足以改变投资决策</b>。</div></div>
+  </div>
+  <div class="hl r"><b>最反直觉的发现</b>：泡泡玛特在授权链条上是<b>净付钱方</b>。2025 收 0.706 亿、付 8.33 亿（收支比 8.5%）；即使按克制情景推到 2035，收 12.0 亿、付 48.8 亿，收支比 24.6%，<b>仍是净付出</b>。它买授权是为了卖货（授权 IP 产品 2026H1 收入 17.71 亿），不是做授权平台。</div>
+  <div class="hl g"><b>真正的价值在 PE，不在 E</b>：三丽鸥授权事业贡献利益率 <b>88.8%</b>，商品销售仅 19.7%。如果授权费规模化让市场按"IP 平台"而非"潮玩零售商"重估，PE 从 25× 到 28–30×，回报从 12.5× 升至 14.0–14.9×——<b>这个效应比授权费本身贡献的利润大 3 倍</b>。</div>
+  <div class="note">测算基于公司公告与对标公司财报，见各章来源标注。所有推演为情景假设，非盈利预测。</div>
+</div>
+
+<!-- 01 口径辨析 -->
+<div class="card" id="c1">
+  <h2>01 · 三种"授权"完全不是一回事 <span class="en">DEFINITIONS</span></h2>
+  <div class="sec-sub">这是整件事最容易算错的地方——把三个方向相反、会计位置不同的数字混成一笔账。</div>
+  <table>
+    <tr><th class="l">口径</th><th class="l">业务实质</th><th>2025 全年</th><th>2026H1</th><th class="l">财报位置</th></tr>
+    <tr class="hi"><td class="l"><b>① 对外授权收入</b></td><td class="l">把自有 IP 租给第三方品牌，收保底 + 分成</td><td>0.706 亿</td><td>0.606 亿<br><span class="up">+135.2%</span></td><td class="l"><b>其他收入</b>（非营收）</td></tr>
+    <tr><td class="l"><b>② 授权 IP 产品销售</b></td><td class="l">买入外部 IP（凡人修仙传 / aespa / 海绵宝宝）做成潮玩卖</td><td>33.82 亿<br><span class="up">+111.3%</span></td><td>17.71 亿<br><span class="up">+16.2%</span></td><td class="l">营业收入（产品维度）</td></tr>
+    <tr class="err"><td class="l"><b>③ 授权费支出</b></td><td class="l">为取得外部授权付出的成本</td><td>8.33 亿<br><span class="up">+111.8%</span></td><td>3.76 亿</td><td class="l">成本 / 费用</td></tr>
+  </table>
+  <div class="src">来源：泡泡玛特 2025 年报（2026-03-25）、2026 中期业绩公告及附注（2026-08-20）；媒体交叉核验（雷报 / 网易，2026-08-20）。</div>
+  <div class="hl a"><b>口径警示</b>：常说的"授权费占营收 0.19%"，严格讲不成立——0.706 亿根本不在营收里，0.19% 只是与 371.2 亿营收做的<b>量级类比</b>。它出现在损益表下方的「其他收入」科目（与授权费及其他服务合并列示）。这意味着这条线即使高增长，也<b>不会体现在营收增速上</b>。</div>
+  <div class="hl"><b>商业模式的方向</b>：泡泡玛特 99.3% 收入来自自有产品销售（2026H1），对外授权是"把形象租出去"的轻资产生意，两者毛利结构完全不同。前者要承担设计、供应链、库存、渠道；后者只投入形象文件与监修改稿，边际成本接近零。</div>
+</div>
+
+<!-- 02 现状 -->
+<div class="card" id="c2">
+  <h2>02 · 起点：0.7 亿，以及 6.2 倍的净付出 <span class="en">BASELINE</span></h2>
+  <div class="grid4">
+    <div class="metric"><div class="lab">2025 对外授权</div><div class="num">0.706 亿</div><div class="pct">+24.6% yoy</div></div>
+    <div class="metric"><div class="lab">2026H1 对外授权</div><div class="num up">0.606 亿</div><div class="pct">+135.2% yoy</div></div>
+    <div class="metric"><div class="lab">2026H1 授权项目</div><div class="num">≥19 次</div><div class="pct">2025 全年约 24 次</div></div>
+    <div class="metric"><div class="lab">收支比</div><div class="num amb">16.1%</div><div class="pct">收 0.6 / 付 3.76</div></div>
+  </div>
+  <div class="src">来源：泡泡玛特 2026 中期业绩公告（2026-08-20）；授权项目次数为雷报不完全统计（2026-08-20），非公司披露口径。</div>
+  <h3>授权条款：保底 + 8%–15% 分成</h3>
+  <p class="sub">市场分析给出的典型条款是单次保底百万级人民币，超出部分按零售价 8%–15% 抽成。合作方横跨荣耀手机、优衣库、麦当劳、瑞幸、SK-II、喜茶、周生生、萧邦、杜卡迪、巴黎水、FIFA 等。这类合作的战略意义不只是收钱——高频低客单的联名负责破圈拉新，高溢价合作负责把潮玩从"玩具"改写为"生活方式符号"，本质是<b>负成本获客</b>。</p>
+  <div class="hl r"><b>但密度是双向的</b>：联名过多会稀释 IP 稀缺感，而稀缺感正是 IP 能反复"收租"的本金。管理层已明确"克制的生意"取向，2026 年初主动放缓部分 LABUBU 新品与外部合作——这正是我们采用"克制情景"作为基准的现实依据。</div>
+</div>
+
+<!-- 03 三情景 -->
+<div class="card" id="c3">
+  <h2>03 · 2035 三情景推演：先排除一个指数陷阱 <span class="en">BACKCAST</span></h2>
+  <div class="sec-sub">授权是"存量生意"：每年新增项目会叠加，容易用指数外推得出惊人数字。但市场容量是硬约束。</div>
+
+  <h3>❌ 先看一个失真的算法（自下而上纯指数外推）</h3>
+  <p class="sub">假设 2026 年约 30 个授权项目、单项目 royalty 400 万，按"项目数 + 单项目价值"双增长、3 年存量累积外推到 2035：克制 34 亿 / 中性 160 亿 / 乐观 1005 亿。乐观值已经<b>相当于全球角色授权 royalty 市场的 80%</b>——显然不可能。这个模型的问题是把"增速"当成了可以无限复利的变量，忽略了授权本质是<b>信用生意</b>，品牌方愿意付费的前提是 IP 寿命被长期验证。</p>
+
+  <h3>✅ 改用双重天花板约束（本报告采用）</h3>
+  <div class="grid2">
+    <div class="box"><div class="t">天花板 A · 全球 royalty 池</div><div class="d">全球角色授权权利金收入 2025 年 99 亿美元（≈705 亿 CNY），2034 年 164 亿美元（≈1168 亿 CNY），CAGR 5.8%；2035E ≈ <b>1235 亿 CNY</b>。对照：三丽鸥 46 亿占 6.5%，迪士尼 276 亿占 39%。来源：Growth Market Reports（2025–2034 预测），非一手来源需核实原文。</div></div>
+    <div class="box"><div class="t">天花板 B · 中国授权零售盘子</div><div class="d">中国 IP 授权商品零售总额 1798.5 亿元（2025，+15.9%）；2026H1 国内 IP 授权合作项目同比 +27%。按 8% 增速推 2035 ≈ <b>3883 亿 CNY</b>；按 6% 有效 royalty rate 折算权利金池约 233 亿。来源：中国玩具和婴童用品协会 / CLE 中国授权展监测（2026）。</div></div>
+  </div>
+
+  <table style="margin-top:16px">
+    <tr><th class="l">情景</th><th class="l">核心假设</th><th>2035 授权费</th><th>较 2025</th><th class="l">份额校验</th></tr>
+    <tr class="hi"><td class="l"><b>克制</b>（基准）</td><td class="l">中国授权零售份额 5%，海外加成 3%；项目数慢增、单项目价值缓升</td><td><b>12 亿</b></td><td class="up">17×</td><td class="l">占全球池 1.0%，低于三丽鸥 1/6</td></tr>
+    <tr><td class="l"><b>中性</b></td><td class="l">中国份额 12%，海外加成 15%；IP 寿命获验证，品类扩至服饰 / 家居 / 食品</td><td><b>32 亿</b></td><td class="up">46×</td><td class="l">占全球池 2.6%，约为三丽鸥一半</td></tr>
+    <tr class="total"><td class="l"><b>乐观</b></td><td class="l">中国份额 25%，海外加成 40%；成为"中国版三丽鸥"，跨品类分发网络成型</td><td><b>82 亿</b></td><td class="up">115×</td><td class="l">占全球池 6.6%，略超三丽鸥当前份额</td></tr>
+  </table>
+  <div class="src">测算方法：取"中国零售额 × 份额 × 6% royalty × 海外加成"与"全球池 × 份额"两者较低值。有效 royalty rate 参照迪士尼 6.2%（38.79 亿美元 / 630 亿美元）与三丽鸥 5.5%（964 亿日元 / 117 亿美元零售额）。</div>
+
+  <div class="chartbox" id="chart1"></div>
+  <div class="note">图表：三情景授权费收入路径（亿元 CNY）。2025 为实际值，2026E 为线性外推，其后为情景假设。</div>
+</div>
+
+<!-- 04 对标 -->
+<div class="card" id="c4">
+  <h2>04 · 对标：三丽鸥是可及的中间态，迪士尼是遥不可及的终点 <span class="en">PEERS</span></h2>
+  <table>
+    <tr><th class="l">维度</th><th class="l">泡泡玛特 09992.HK</th><th class="l">三丽鸥 8136.T</th><th class="l">迪士尼 DIS.US</th></tr>
+    <tr><td class="l"><b>对外授权收入</b></td><td>0.706 亿（2025）<br><span class="mut">占营收量级 0.19%</span></td><td><b>964 亿日元 ≈ 46 亿</b><br><span class="mut">FY2026，+36.3%，占营收 49.7%</span></td><td><b>38.79 亿美元 ≈ 276 亿</b><br><span class="mut">FY2025，占营收 4.1%</span></td></tr>
+    <tr><td class="l"><b>授权零售额</b></td><td class="mut">未披露</td><td>约 117 亿美元</td><td><b>630 亿美元</b>（全球第 1）</td></tr>
+    <tr><td class="l"><b>IP 储备</b></td><td>17 个破亿 IP<br>6 个破 10 亿</td><td><b>450+ 角色</b><br>Hello Kitty 毛利占比降至 37.3%</td><td>数千角色 + 15+ 主流 franchise</td></tr>
+    <tr class="hi"><td class="l"><b>授权利润率</b></td><td class="mut">接近纯毛利<br>（保底 + 分成）</td><td><b>贡献利益率 88.8%</b><br>商品销售仅 19.7%</td><td class="mut">计入体验分部（营业利润率约 28%）</td></tr>
+    <tr><td class="l"><b>积累时间</b></td><td>授权业务约 3 年</td><td><b>约 60 年</b></td><td><b>约 100 年</b></td></tr>
+    <tr><td class="l"><b>组织能力</b></td><td>以 DTC 零售为核心<br>授权体系刚起步</td><td>阿里鱼独家代理中国 26 个角色<br>300+ 品牌接入</td><td>180+ 国家 / 100+ 品类<br>提前 18 个月同步内容时间表</td></tr>
+  </table>
+  <div class="src">来源：三丽鸥 FY2026 决算说明资料（2026-06，TDNet）、License Global《The Top Global Licensors 2026》、迪士尼 FY2025 10-K；泡泡玛特数据见前章。跨公司币种未做统一换算，请勿直接相加。</div>
+  <div class="hl g"><b>三丽鸥给出的关键启示</b>：Hello Kitty 在总毛利中占比从 FY2016 的 60.6% 降到 FY2026 的 37.3%，其他角色升至 46.5%——公司业绩反而在多角色化后创新高。这证明<b>"IP 矩阵 + 授权网络"可以对冲单一爆款衰退</b>。泡泡玛特目前 6 个破 10 亿 IP、星星人接棒 LABUBU，走的正是这条路；但它缺的是把形象铺进日常消费场景的分发网络。</div>
+  <div class="hl r"><b>反向对照</b>：迪士尼 630 亿美元授权零售额是"放大器"，但自己只拿 38.79 亿美元权利金（占营收 4.1%），真正的利润核心是体验分部——以 38% 收入贡献 57% 分部利润。泡泡玛特若只学"收授权费"，学的是迪士尼最不赚钱的那一环；它自己下场做乐园、甜品、珠宝，反而更接近迪士尼的利润结构。</div>
+</div>
+
+<!-- 05 回报 -->
+<div class="card" id="c5">
+  <h2>05 · 对 600 亿净利与 12.5× 回报的真实影响 <span class="en">IMPACT</span></h2>
+  <div class="sec-sub">把授权费放进上一轮的 600 亿净利 / PE 25× / 140 港元买入模型中，看它到底改变什么。</div>
+  <h3>利润贡献：乐观情景也只占 10%</h3>
+  <table>
+    <tr><th class="l">情景</th><th>2035 授权费</th><th>净贡献（扣 25% 税）</th><th>2035 总净利</th><th>对应股价</th><th>总回报</th><th>较基准</th></tr>
+    <tr class="fade"><td class="l">基准（不含授权费）</td><td>—</td><td>—</td><td>600 亿</td><td>1315 HKD</td><td>12.5×</td><td>—</td></tr>
+    <tr><td class="l">克制</td><td>12 亿</td><td>9 亿</td><td>609 亿</td><td>1335 HKD</td><td>12.7×</td><td class="up">+0.2×</td></tr>
+    <tr><td class="l">中性</td><td>32 亿</td><td>24 亿</td><td>624 亿</td><td>1368 HKD</td><td>13.0×</td><td class="up">+0.5×</td></tr>
+    <tr class="hi"><td class="l"><b>乐观</b></td><td>82 亿</td><td>62 亿</td><td>662 亿</td><td>1451 HKD</td><td>13.8×</td><td class="up">+1.3×</td></tr>
+  </table>
+  <div class="src">测算沿用上一轮模型：2035 净利 × PE 25× ÷ 汇率 0.85628 ÷ 13.32 亿股 = 股价；9 年持有、5% 股东回报、40% 复投。授权费边际成本极低，按 25% 税率折算净贡献。</div>
+
+  <h3>估值贡献：比利润本身大 3 倍</h3>
+  <table>
+    <tr><th class="l">2035 PE</th><th>对应股价</th><th>总回报</th><th class="l">触发条件</th></tr>
+    <tr><td>20×</td><td>1052 HKD</td><td>10.1×</td><td class="l">爆款退潮，回归潮玩零售商估值</td></tr>
+    <tr class="total"><td><b>25×（基准）</b></td><td>1315 HKD</td><td><b>12.5×</b></td><td class="l">维持当前假设</td></tr>
+    <tr><td>28×</td><td>1473 HKD</td><td>14.0×</td><td class="l">授权费规模化，市场开始按 IP 平台估值</td></tr>
+    <tr class="hi"><td>30×</td><td>1578 HKD</td><td>14.9×</td><td class="l">多 IP 寿命验证 + 授权 / 集团化收入单列</td></tr>
+  </table>
+  <div class="hl"><b>结论</b>：授权费对回报的直接贡献是 <b>+0.2× 到 +1.3×</b>；但若它改变了市场对公司的定性（从"卖盲盒的"到"拥有 17 个可收租 IP 的平台"），PE 从 25× 到 28–30× 带来的贡献是 <b>+1.5× 到 +2.4×</b>。<b>授权费是一张估值期权，不是一台利润机器。</b></div>
+  <div class="chartbox sm" id="chart2"></div>
+  <div class="note">图表：授权费净贡献 vs PE 重估对总回报的边际影响（倍数）。</div>
+</div>
+
+<!-- 06 反面 -->
+<div class="card" id="c6">
+  <h2>06 · 反面：为什么不能把"大涨"直接当成买入理由 <span class="en">BEAR CASE</span></h2>
+  <div class="grid2">
+    <div class="box"><div class="t">① 净付出方身份 10 年内难反转</div><div class="d">按克制情景推演，授权费收支比从 2025 年 8.5% 升至 2035 年 24.6%，但<b>净额始终为负</b>（2035 年收 12.0 亿 / 付 48.8 亿）。这说明公司的核心仍是"买 IP 卖货"，不是"收租平台"。收支比突破 100% 才是模式切换的硬信号。</div></div>
+    <div class="box"><div class="t">② 全球池子不大，且高度集中</div><div class="d">2035 年全球角色授权 royalty 池约 1235 亿 CNY，迪士尼一家占 39%。三丽鸥用 450 个角色、60 年做到 46 亿。泡泡玛特若做到 82 亿（乐观），份额就要超过今天的三丽鸥——需要的不只是 IP 热度，而是几十年的场景沉淀。</div></div>
+    <div class="box"><div class="t">③ 授权是信用生意，一次踩雷伤整条链</div><div class="d">三丽鸥 2026 年 10 月因日剧《VIVANT》涉华争议终止全部联名并双渠道致歉，即是例证。联名密度过高还会稀释稀缺感——而稀缺感正是 IP 资产的本金。管理层说"克制"，既是主动选择，也是被动约束。</div></div>
+    <div class="box"><div class="t">④ 会计位置决定了它"看不见"</div><div class="d">授权费在其他收入科目，不与营收合并披露。即便做到 32 亿，营收增速图上依然看不到它；而市场给 PE 看的是 Overall，不是分部。<b>这是一张需要主动挖掘、且可能长期不被定价的期权。</b></div></div>
+  </div>
+  <div class="hl a"><b>最该警惕的逻辑跳跃</b>：从"IP 多 → 授权会大涨"推到"所以估值该重估"，中间缺了两个验证——<b>IP 寿命</b>（爆款退潮后还能不能收到钱）和<b>授权常态化</b>（是短期联名营销，还是品牌方愿意长期付费使用）。这两个信号没出现之前，授权费只是故事，不是现金流。</div>
+</div>
+
+<!-- 07 跟踪 -->
+<div class="card" id="c7">
+  <h2>07 · 跟踪清单：哪些信号出现，才该把这张期权计入估值 <span class="en">MONITOR</span></h2>
+  <table>
+    <tr><th class="l">信号</th><th class="l">当前状态</th><th class="l">验证方式</th><th class="l">意义</th></tr>
+    <tr><td class="l"><b>授权费收入单列披露</b></td><td class="l">与"其他服务收入"合并，未单列</td><td class="l">年报 / 中报损益表附注</td><td class="l">从"看不见"变成"可定价"</td></tr>
+    <tr><td class="l"><b>收支比突破 50% → 100%</b></td><td class="l">8.5%（2025）→ 16.1%（2026H1）</td><td class="l">授权费收入 ÷ 授权费支出</td><td class="l">从净付出转向净收取的模式切换点</td></tr>
+    <tr><td class="l"><b>非联名类长期授权占比</b></td><td class="l">以联名 / 快闪为主</td><td class="l">公司披露或第三方统计的授权类型拆分</td><td class="l">区分"营销活动"与"可收租资产"</td></tr>
+    <tr><td class="l"><b>头部 IP 衰退期授权收入</b></td><td class="l">LABUBU 2026H1 −7.5%，尚无数据</td><td class="l">观察 MOLLY（−33.6%）等老 IP 是否有授权收入</td><td class="l">验证 IP 寿命，是估值重估的前提</td></tr>
+    <tr><td class="l"><b>授权品类宽度</b></td><td class="l">3C / 服饰 / 餐饮 / 珠宝 / 美妆</td><td class="l">年度授权项目统计（雷报 / CLE）</td><td class="l">向三丽鸥"日常场景"模式靠近的程度</td></tr>
+  </table>
+  <div class="hl g"><b>最终判断</b>：把授权费当成<b>免费赠送的看涨期权</b>——它不应该是买入的理由，但可以是"如果兑现，回报上限能再抬一档"的理由。按克制情景，它给 12.5× 的基准回报加 0.2×；按乐观情景加 1.3×；真正的大奖在 PE 重估（+1.5× 到 +2.4×）。<b>裁决时点：2027 年报，看授权费是否单列 + 收支比能否站上 30%。</b></div>
+  <a class="backtop" href="#tldr">↑ 回到顶部</a>
+</div>
+
+<div class="foot">
+  <b>数据来源</b>：泡泡玛特 2025 年报（2026-03-25）、2026 中期业绩公告及附注（2026-08-20）；三丽鸥 FY2026 决算说明资料（TDNet，2026-06）；迪士尼 FY2025 10-K 及 Q3 FY2026 10-Q；License Global《The Top Global Licensors 2026》；Growth Market Reports 角色授权市场预测（2025–2034，非一手来源需核实原文）；中国玩具和婴童用品协会 / CLE 中国授权展（2026）；雷报 / 网易 / 腾讯新闻等媒体交叉核验（2026-08 至 2026-11，非一手来源）。<br>
+  <b>口径声明</b>：泡泡玛特「授权费及其他服务收入」计入损益表其他收入，不属于营业收入；文中"占营收比"仅为量级类比。三丽鸥财年为 4 月至次年 3 月，迪士尼 FY2025 截至 2025-09-27；跨公司币种未统一换算，请勿直接相加。所有 2035 年数字为情景假设，非盈利预测。<br>
+  整理：2026-11-17 · 配套报告《2035 年 600 亿利润路径与回报推演》《IP 数量与授权费对比》· 仅供个人投资学习，非投资建议。<br>
+  <b>免责声明</b>：以上内容基于公开数据和量化分析，仅供参考，不构成投资建议。市场有风险，投资需谨慎。任何投资决策应结合个人风险承受能力、资金状况和投资目标独立判断，必要时咨询持牌专业机构。过往表现不预示未来收益。
+</div>
+
+</div>
+
+<script>
+var c1 = echarts.init(document.getElementById('chart1'));
+c1.setOption({
+  tooltip: { trigger: 'axis', valueFormatter: function(v){ return v + ' 亿 CNY'; } },
+  legend: { data: ['克制', '中性', '乐观'], top: 6 },
+  grid: { left: 48, right: 20, top: 48, bottom: 36 },
+  xAxis: { type: 'category', data: ['2025','2026E','2027','2028','2029','2030','2031','2032','2033','2034','2035'] },
+  yAxis: { type: 'value', name: '授权费收入（亿元）' },
+  series: [
+    { name: '克制', type: 'line', smooth: true, symbolSize: 6, data: [0.706,1.4,1.7,2.2,2.8,3.6,4.5,5.8,7.4,9.4,12], lineStyle: { width: 3 }, itemStyle: { color: '#2563c9' } },
+    { name: '中性', type: 'line', smooth: true, symbolSize: 6, data: [0.706,1.4,1.9,2.7,3.9,5.5,7.8,11.1,15.8,22.5,32], lineStyle: { width: 3 }, itemStyle: { color: '#d98a00' } },
+    { name: '乐观', type: 'line', smooth: true, symbolSize: 6, data: [0.706,1.4,2.1,3.4,5.3,8.4,13.2,20.9,32.9,52,82], lineStyle: { width: 3 }, itemStyle: { color: '#d92b2b' } }
+  ]
+});
+
+var c2 = echarts.init(document.getElementById('chart2'));
+c2.setOption({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  legend: { data: ['授权费净贡献', 'PE 重估贡献'], top: 6 },
+  grid: { left: 48, right: 20, top: 48, bottom: 36 },
+  xAxis: { type: 'category', data: ['克制情景', '中性情景', '乐观情景'] },
+  yAxis: { type: 'value', name: '总回报增量（×）' },
+  series: [
+    { name: '授权费净贡献', type: 'bar', barWidth: 30, data: [0.2, 0.5, 1.3], itemStyle: { color: '#2563c9' }, label: { show: true, position: 'top', formatter: '+{c}×' } },
+    { name: 'PE 重估贡献', type: 'bar', barWidth: 30, data: [0.5, 1.5, 2.4], itemStyle: { color: '#e0508a' }, label: { show: true, position: 'top', formatter: '+{c}×' } }
+  ]
+});
+
+window.addEventListener('resize', function(){ c1.resize(); c2.resize(); });
+</script>
+</body>
+</html>

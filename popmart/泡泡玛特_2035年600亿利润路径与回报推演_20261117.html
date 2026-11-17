@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>泡泡玛特 · 2035 年 600 亿利润路径与回报推演</title>
+<meta name="description" content="以 2025 为异常点、按上市后内生增速推演 2035 年 600 亿利润所需的 IP、国际化、集团化前置条件，并测算 140 港元买入的长期回报。">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--card2:#f8f9fb;--line:#e3e6ea;--txt:#1a2028;--sub:#6b7480;--blue:#2563c9;--amber:#d98a00;--teal:#0d9488;--up:#d92b2b;--down:#1a9c5b;--red:#d1001f;--pink:#e0508a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:0 14px 60px;font-size:14px}
+.wrap{max-width:1040px;margin:0 auto}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(245,246,248,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin:0 -14px 0;padding:10px 14px}
+.topbar-in{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.topbar .logo{font-weight:800;font-size:15px;color:var(--red);letter-spacing:.5px;white-space:nowrap}
+.topbar .logo small{font-weight:500;color:var(--sub);font-size:11px;margin-left:6px;letter-spacing:0}
+.topbar nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.topbar nav a{font-size:11.5px;color:var(--sub);padding:4px 9px;border-radius:6px;text-decoration:none;white-space:nowrap}
+.topbar nav a:hover{background:#fdeef3;color:var(--pink)}
+.cover{background:linear-gradient(150deg,#2a0e14 0%,#5a1220 45%,#8a1633 78%,#b8821b 130%);border-radius:18px;padding:44px 38px 38px;color:#fff;margin:20px 0 18px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(240,190,60,.28),transparent 70%)}
+.cover .kicker{font-size:12px;letter-spacing:2px;color:#f3c8d8;font-weight:600;margin-bottom:14px}
+.cover h1{font-size:30px;font-weight:820;line-height:1.25;margin-bottom:10px;letter-spacing:.5px}
+.cover .lead{font-size:14.5px;color:#f0dce4;max-width:800px;line-height:1.75;margin-bottom:22px}
+.cover .lead b{color:#ffd873}
+.cover .badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.cover .badge{font-size:11px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:4px 12px;color:#fbe9ef}
+.cover .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative;z-index:2}
+.cover .m{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:11px;padding:14px 12px}
+.cover .m .k{font-size:11px;color:#f0c4d2;margin-bottom:5px}
+.cover .m .v{font-size:21px;font-weight:820;letter-spacing:.3px}
+.cover .m .s{font-size:10.5px;color:#f0c4d2;margin-top:3px}
+.cover .m.hl .v{color:#ffd873}
+h1{font-size:22px;font-weight:780;margin-bottom:6px;line-height:1.35}
+.sub{color:var(--sub);font-size:12.5px;line-height:1.6}
+.warn{background:#fdeeee;border:1px solid #f0b8b8;color:#9c2b2b;border-radius:8px;padding:11px 14px;font-size:12.5px;margin:14px 0;line-height:1.72}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.card h2{font-size:18px;margin-bottom:6px;padding-left:12px;border-left:4px solid var(--pink);line-height:1.4}
+.card h2 .en{font-size:11px;color:var(--sub);font-weight:500;margin-left:8px;letter-spacing:1px}
+.card h3{font-size:14px;margin:18px 0 8px;color:var(--teal);font-weight:700}
+.card .sec-sub{color:var(--sub);font-size:12px;margin:2px 0 14px 16px}
+.tldr{background:linear-gradient(135deg,#fdf0f5,#fbf8f2);border:1px solid #f3d2df}
+.big{font-size:20px;font-weight:800;color:var(--pink);margin:10px 0;line-height:1.45}
+table{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:right;vertical-align:top}
+th{background:var(--card2);color:var(--sub);font-weight:650}
+td:first-child,th:first-child{text-align:left}
+td.l,th.l{text-align:left}
+tr.total{background:#fdf0f5;font-weight:750}
+tr.hi{background:#f0f7f2}
+tr.fade{background:#fafbfc;color:var(--sub)}
+tr.err{background:#fdeeee}
+.up{color:var(--up)}.down{color:var(--down)}.blu{color:var(--blue)}.amb{color:var(--amber)}.pur{color:var(--purple)}.teal{color:var(--teal)}.mut{color:var(--sub)}.red{color:var(--red)}
+.strong{font-weight:750}
+.hl{background:#fdf0f5;border-left:3px solid var(--pink);padding:10px 13px;border-radius:6px;font-size:12.5px;margin:11px 0;line-height:1.72}
+.hl.g{background:#eaf7f0;border-left-color:var(--teal)}
+.hl.a{background:#fff8e8;border-left-color:var(--amber)}
+.hl.r{background:#fdeeee;border-left-color:var(--up)}
+.note{font-size:11px;color:var(--sub);margin-top:9px;line-height:1.65}
+ul{margin:6px 0 0 18px;font-size:12.5px}li{margin-bottom:6px;line-height:1.65}
+.chartbox{width:100%;height:380px;margin-top:14px}
+.chartbox.sm{height:330px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.box{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:14px}
+.box .t{font-size:12.5px;font-weight:700;margin-bottom:6px}
+.box .d{font-size:11.5px;color:var(--sub);line-height:1.6}
+.metric{background:var(--card2);border-radius:10px;padding:13px;text-align:center}
+.metric .lab{font-size:11px;color:var(--sub)}
+.metric .num{font-size:19px;font-weight:800;margin:4px 0}
+.metric .pct{font-size:11px;color:var(--sub)}
+.tag{font-size:10px;background:var(--card2);border:1px solid var(--line);border-radius:20px;padding:2px 9px;color:var(--sub);font-weight:400;vertical-align:middle}
+.toc{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.toc a{display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:10px 13px;text-decoration:none;color:var(--txt);transition:all .15s}
+.toc a:hover{border-color:var(--pink);background:#fdf0f5;transform:translateX(2px)}
+.toc a .n{font-size:16px;font-weight:820;color:var(--pink);min-width:24px}
+.toc a .tt{font-size:12.5px;font-weight:650}
+.toc a .dd{font-size:10.5px;color:var(--sub);margin-top:1px}
+.foot{font-size:10.5px;color:var(--sub);margin-top:22px;padding:16px;border-top:1px solid var(--line);line-height:1.75}
+.backtop{display:inline-block;margin-left:8px;font-size:11px;color:var(--pink);text-decoration:none}
+.src{font-size:10px;color:var(--sub);margin-top:4px}
+@media(max-width:680px){.cover{padding:30px 22px}.cover h1{font-size:24px}.cover .metrics{grid-template-columns:1fr 1fr}.grid2,.grid3,.grid4,.toc{grid-template-columns:1fr}table{font-size:10.5px}.chartbox{height:340px}.topbar nav{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar-in">
+  <div class="logo">泡泡玛特 · 长周期推演<small>2035 目标反推 / 2026.11.17</small></div>
+  <nav><a href="#s0">结论</a><a href="#s1">口径</a><a href="#s2">IP</a><a href="#s3">国际化</a><a href="#s4">集团化</a><a href="#s5">路径</a><a href="#s6">回报</a><a href="#s7">风险</a></nav>
+</div></div>
+
+<div class="wrap">
+
+  <div class="cover">
+    <div class="kicker">POP MART · 09992.HK · 长周期目标反推</div>
+    <h1>2035 年 600 亿利润，<br>需要哪三件事同时发生？</h1>
+    <div class="lead">2025 是异常点，不能直接外推。本报告以<b>上市后内生增速（2020—2023 归母 CAGR 27.3%）</b>为锚，反推 2035 年 600 亿经调整净利所需的<b>IP 矩阵、国际化、集团化</b>前置条件，并测算 140 港元买入、5% 股东回报、40% 复投的长期回报：基准情景 <b>12.5 倍 / 年化 34.7%</b>。关键不是"能不能增长 30%"，而是<b>泡沫消化后能否维持 17—20% 的十年复合</b>。</div>
+    <div class="badges">
+      <span class="badge">2020—2025 全历史核验</span>
+      <span class="badge">前置条件可证伪</span>
+      <span class="badge">8 章 · 3 图</span>
+      <span class="badge">数据锚点已交叉核验</span>
+      <span class="badge">整理 2026-11-17</span>
+    </div>
+    <div class="metrics">
+      <div class="m"><div class="k">内生锚（20—23 归母 CAGR）</div><div class="v">27.3%</div><div class="s">营收 35.9%</div></div>
+      <div class="m"><div class="k">600 亿隐含 CAGR</div><div class="v">16.5%</div><div class="s">以 2025 实际 130.8 亿起</div></div>
+      <div class="m hl"><div class="k">2035 目标股价</div><div class="v">1315 HKD</div><div class="s">600 亿 × 25× / 13.32 亿股</div></div>
+      <div class="m"><div class="k">总回报 / IRR</div><div class="v">12.5×</div><div class="s">年化 34.7%</div></div>
+    </div>
+  </div>
+
+  <div class="card tldr" id="s0">
+    <h2>结论先行 <span class="en">TL;DR</span></h2>
+    <div class="big">600 亿不是激进目标——它隐含 16.5% 的十年复合，低于公司上市后内生增速。但它要求"三件事同时成立"，而 2026Q3 已经证明其中两件正在承压。</div>
+    <div class="grid4">
+      <div class="metric"><div class="lab">条件一 · IP 矩阵</div><div class="num teal">3—4 个</div><div class="pct">百亿级 IP（现 1 个）</div></div>
+      <div class="metric"><div class="lab">条件二 · 国际化</div><div class="num blu">55—65%</div><div class="pct">海外收入占比（现 43.8%）</div></div>
+      <div class="metric"><div class="lab">条件三 · 集团化</div><div class="num amb">5—10%</div><div class="pct">利润贡献（现 &lt;1%）</div></div>
+      <div class="metric"><div class="lab">估值假设</div><div class="num pur">25×</div><div class="pct">2035 PE（现 ≈12×）</div></div>
+    </div>
+    <div class="hl"><b>关键判断一：增速口径要对齐。</b>2020—2023 年（LABUBU 爆发前）归母净利 CAGR 27.3%、营收 CAGR 35.9%，这才是"内生增速"。以 2025 实际 130.84 亿起算，到 600 亿只需 <b>16.5%</b> 年化——比内生增速低 11 个百分点。换言之，600 亿目标<b>已经隐含了 2025 异常高点被部分消化</b>，并非要求再复制一次爆发。</div>
+    <div class="hl a"><b>关键判断二：利润结构比总量更重要。</b>600 亿利润中，IP 商品仍是绝对主体（85—90%）。集团化的作用不是"贡献利润"，而是<b>延长 IP 生命周期、支撑 25× PE</b>。若 2035 非商品收入仍不单列、授权仍是净付出方，即便利润达标，PE 也给不到 25×——回报会从 12.5× 掉到 7.6×。</div>
+    <div class="hl r"><b>关键判断三：最大风险在 2027，不在 2035。</b>2026Q3 整体收益 −45%~−50%（亚太 −65%~−70%、美洲 −70%~−75%）。若海外在 2027 不能恢复正增长、星星人不能站稳 60 亿+，则"海外 55% + 多 IP 矩阵"两个前置条件同时落空，600 亿路径应下修到成熟期 333 亿（见总报告 03 章）。</div>
+    <div class="note">口径：全文利润为经调整净利（Non-IFRS）；汇率 1 HKD = 0.85628 CNY；股本 13.32 亿股（未计回购缩股）。数据源见文末。所有预测为情景推演，非公司指引。</div>
+  </div>
+
+  <div class="card" id="s1">
+    <h2>01 · 口径校准：2025 是异常点，30% 从哪来 <span class="en">BASELINE</span></h2>
+    <div class="sec-sub">先把"内生增速"和"爆款增速"分开，否则所有推演都会失真。</div>
+    <table>
+      <tr><th class="l">期间</th><th>营收（亿元）</th><th>营收 CAGR</th><th>归母净利（亿元）</th><th>利润 CAGR</th><th class="l">性质</th></tr>
+      <tr><td class="l">2020</td><td>25.13</td><td class="mut">—</td><td>5.24</td><td class="mut">—</td><td class="l">上市元年</td></tr>
+      <tr><td class="l">2023</td><td>63.01</td><td class="up">35.9%</td><td>10.82</td><td class="up">27.3%</td><td class="l"><b>内生基准期</b>（爆发前）</td></tr>
+      <tr><td class="l">2024</td><td>130.38</td><td class="up">50.9%</td><td>31.25</td><td class="up">56.3%</td><td class="l">THE MONSTERS +726.6% 起步</td></tr>
+      <tr class="hi"><td class="l">2025</td><td>371.20</td><td class="up">184.7%</td><td>127.76</td><td class="up">308.8%</td><td class="l">LABUBU 全球爆发（异常点）</td></tr>
+      <tr class="fade"><td class="l">2026Q3</td><td class="mut">未披露</td><td class="down">整体 −45%~−50%</td><td class="mut">未披露</td><td class="mut">—</td><td class="l">高基数消化，上市来首降</td></tr>
+    </table>
+    <div class="src">来源：公司 2020—2025 年报（港交所，2021-03 至 2026-03 发布）；2026Q3 自愿性业务更新（2026-10-27）。2025 经调整净利 130.84 亿、归母 127.76 亿，口径不可混用。</div>
+    <h3>三种起算口径下的 600 亿</h3>
+    <table>
+      <tr><th class="l">起算基数</th><th>到 600 亿所需年化</th><th class="l">含义</th></tr>
+      <tr class="hi"><td class="l">2025 实际 130.84 亿 → 2035（10 年）</td><td class="strong">16.5%</td><td class="l"><b>本文基准</b>：假设 2025 高点部分留存，十年复合低于内生增速</td></tr>
+      <tr><td class="l">正常化 100 亿（剔除爆款溢价）→ 2035</td><td>19.6%</td><td class="l">更审慎：承认 2025 有 30 亿左右一次性溢价</td></tr>
+      <tr><td class="l">2024 基数 34 亿 → 2035（11 年）</td><td>29.8%</td><td class="l">上一轮对话的"30% 复合"口径，起点是爆发前夜</td></tr>
+    </table>
+    <div class="hl"><b>纠偏：</b>"按 30% 增长到 600 亿"这句话里的 30%，来自 <b>2024 年 34 亿的爆发前基数</b>；而今天的起点是 2025 年 130.84 亿的爆发后高点。两者混用会高估难度。从今天起算，600 亿只需 16.5%——<b>真正要回答的问题不是"能否维持 30%"，而是"泡沫消化后能否稳住 17—20% 十年"</b>。</div>
+  </div>
+
+  <div class="card" id="s2">
+    <h2>02 · 前置条件一：IP 数量与分布 <span class="en">IP MATRIX</span></h2>
+    <div class="sec-sub">从"一超独大"到"多极矩阵"——600 亿利润的第一块地基。</div>
+    <div class="grid3">
+      <div class="box"><div class="t">2025 现状</div><div class="d">17 个 IP 破亿、7 个破 10 亿、6 个破 20 亿；THE MONSTERS 141.61 亿，占 38.1%。CR1 是历史峰值。</div></div>
+      <div class="box"><div class="t">2035 需要</div><div class="d">3—4 个百亿级 IP、10—12 个 10 亿+、30—40 个破亿；CR1 降到 20—25%，单一 IP 波动不再决定公司命运。</div></div>
+      <div class="box"><div class="t">缺口</div><div class="d">需新增 2—3 个全球级 IP。星星人 2025 年 20.56 亿（+1602%）、2026H1 26.5 亿是最有希望的接棒者。</div></div>
+    </div>
+    <h3>IP 梯队目标 vs 现状（亿元）</h3>
+    <table>
+      <tr><th class="l">IP</th><th>2025 收入</th><th>2035 中性目标</th><th class="l">关键假设</th></tr>
+      <tr><td class="l">THE MONSTERS（LABUBU）</td><td>141.6</td><td>200—250</td><td class="l">从爆款回落为长青超级 IP，占收入 12—14%</td></tr>
+      <tr><td class="l">星星人</td><td>20.6</td><td>80—120</td><td class="l">接棒全球级 IP，需验证跨区域复购</td></tr>
+      <tr><td class="l">CRYBABY</td><td>29.3</td><td>60—90</td><td class="l">东南亚+北美双引擎</td></tr>
+      <tr><td class="l">SKULLPANDA / MOLLY / DIMOO</td><td>35.4 / 29.0 / 27.8</td><td>各 50—80</td><td class="l">经典 IP 靠迭代与品类扩张维持中速增长</td></tr>
+      <tr class="total"><td class="l">Top6 合计 / 占总收入</td><td>283.7 / 76.5%</td><td>500—660 / 28—37%</td><td class="l"><b>集中度大幅下降 = 抗周期能力上升</b></td></tr>
+    </table>
+    <div class="hl g"><b>孵化能力已被验证：</b>公司运营 93 个 IP（2023 年底口径：12 自有 / 25 独家 / 56 非独家），与 350+ 艺术家保持联系，PDC 内部孵化管线成熟。星星人首个完整财年即 20.6 亿、CRYBABY 从 0 到 29.3 亿（2024 年 +1537%），证明"从 0 到 10 亿"的能力可复制。缺口不在孵化，在<b>把 10 亿级 IP 推到 100 亿级的全球运营能力</b>。</div>
+    <div class="hl a"><b>可证伪指标：</b>每年新增 2—3 个破亿 IP；新 IP（近 3 年推出）收入占比 ≥20%；CR1 逐年下降；非 LABUBU 的 Top5 IP 合计增速 ≥25%。若 2028 年 CR1 仍 &gt;30%，此条件判定失败。</div>
+  </div>
+
+  <div class="card" id="s3">
+    <h2>03 · 前置条件二：国际化程度 <span class="en">GLOBALIZATION</span></h2>
+    <div class="sec-sub">600 亿利润的增量主体在海外——这既是机会，也是 2026Q3 最大的失血点。</div>
+    <table>
+      <tr><th class="l">区域</th><th>2025 收入</th><th>2025 占比</th><th>2035 目标区间</th><th class="l">前置条件</th></tr>
+      <tr><td class="l">中国内地</td><td>208.5</td><td>56.2%</td><td>630—810</td><td class="l">从渠道扩张转向同店+会员复购，占比降至 35—45%</td></tr>
+      <tr><td class="l">亚太</td><td>80.1</td><td>21.6%</td><td>360—540</td><td class="l">门店 85 → 250—350 家；本地化 IP 与供应链</td></tr>
+      <tr><td class="l">美洲</td><td>68.1</td><td>18.3%</td><td>360—540</td><td class="l">门店 64 → 250—350 家；降低对单一爆款依赖</td></tr>
+      <tr><td class="l">欧洲及其他</td><td>14.5</td><td>3.9%</td><td>180—270</td><td class="l">门店 36 → 150—220 家；从 0 到 1 的品牌建设</td></tr>
+      <tr class="total"><td class="l">海外合计</td><td>162.7</td><td>43.8%</td><td>900—1350</td><td class="l"><b>占比 55—65%，十年 5.5—8.3 倍</b></td></tr>
+    </table>
+    <div class="src">来源：公司 2025 年报（2026-03-25），海外口径自 2025 年起不含港澳台，与 2024 年"港澳台及海外"非完全同口径。2025 海外门店 185 家（亚太 85 / 美洲 64 / 欧洲及其他 36）。</div>
+    <div class="grid2">
+      <div class="box"><div class="t">为什么必须国际化</div><div class="d">2025 海外毛利率 71.3% 高于内地 63.9%，是净利率冲到 35.2% 的主因。600 亿利润若靠国内实现，需国内收入 1700 亿+——以中国潮玩市场体量几乎不可能。<b>海外是数学上的必要条件。</b></div></div>
+      <div class="box"><div class="t">最大裂缝</div><div class="d">2026Q3 亚太 −65%~−70%、美洲 −70%~−75%，远超中国 −25%~−30%。这说明海外高增长中爆款成分远高于渠道能力，<b>本地化护城河尚未建立</b>。2027 能否恢复正增长是整条路径的成败手。</div></div>
+    </div>
+    <div class="hl r"><b>可证伪指标：</b>2027 海外恢复正增长；海外门店数持续净增且单店收入不腰斩；海外本地艺术家签约 IP 收入占比 ≥10%；欧美市场非华人客群复购率可被验证。若 2027 海外仍负增长，600 亿目标应直接下修。</div>
+  </div>
+
+  <div class="card" id="s4">
+    <h2>04 · 前置条件三：集团化——哪些会孵化成功 <span class="en">GROUP STRATEGY</span></h2>
+    <div class="sec-sub">按"已验证程度 × 天花板 × 对 PE 的贡献"分级，而非按故事好听程度。</div>
+    <table>
+      <tr><th class="l">业务</th><th class="l">现状（2025—2026）</th><th class="l">2035 成功概率</th><th class="l">判断依据</th></tr>
+      <tr class="hi"><td class="l"><b>城市乐园</b></td><td class="l">2023 底开业，2024 首年盈利；2025 客流 +70%、二次消费占比 &gt;72%；1.5 期 2026 暑期、二期 2027 动工</td><td class="l"><b>高（75%）</b></td><td class="l">唯一已验证盈利的集团化业务；重资产但 IP 体验闭环成立</td></tr>
+      <tr class="hi"><td class="l"><b>IP 授权 / 联名</b></td><td class="l">2025 授权费及其他服务收入 0.706 亿（计入"其他收入"）；授权费支出 3.76 亿（2026H1），仍为净付出方</td><td class="l"><b>高（70%）</b></td><td class="l">对标三丽鸥 34 亿有 48 倍空间；关键在会计单列与收支反转</td></tr>
+      <tr><td class="l">珠宝 popop</td><td class="l">2025 首店，已开 7 家</td><td class="l">中（45%）</td><td class="l">品类适配度高，但需验证高客单与复购</td></tr>
+      <tr><td class="l">甜品 POP BAKERY</td><td class="l">2025 阿那亚首店 + 10 余场快闪；2026 城市首店</td><td class="l">中低（35%）</td><td class="l">流量场景成立，独立门店盈利模型未验证</td></tr>
+      <tr><td class="l">影视 / 内容</td><td class="l">2026-03 与索尼影业官宣 LABUBU 真人动画电影，剧本阶段</td><td class="l">低（25%），期权价值高</td><td class="l">成功则 IP 寿命延长 5—10 年；直接利润贡献小</td></tr>
+      <tr><td class="l">小家电 / 游戏</td><td class="l">2026 小家电首发；手游内测中</td><td class="l">低（15—20%）</td><td class="l">王宁自评"海军空军弱"，资源与能力尚未匹配</td></tr>
+    </table>
+    <div class="hl"><b>集团化对 600 亿的真实贡献：</b>中性情景下，2035 年乐园 + 授权 + 新业态合计贡献利润 <b>30—60 亿（5—10%）</b>，不是利润主角。它的价值在于：①把 IP 从"三年一波的商品周期"变成"十年以上的内容资产"；②给 25× PE 提供叙事支撑。<b>没有集团化，600 亿利润可能仍能达到，但估值大概率只有 12—15×。</b></div>
+    <div class="warn"><b>口径提醒：</b>授权费及其他服务收入计入损益表"其他收入"，<b>不属于营业收入</b>。2025 年 0.706 亿、2026H1 0.606 亿（+135.2%），对比授权费支出 3.76 亿（2026H1）——收支比回升至 16.1%，但仍是净付出。乐园收入从不单列（含在中国区"批发及其他"）。<b>"非商品收入单列且 &gt;5%"是估值重估的硬信号</b>。</div>
+    <div class="hl a"><b>可证伪指标：</b>乐园二期按期 2027 动工且持续盈利；授权收入连续 4 个季度 &gt;100% 增长且收支比 &gt;50%；非商品收入在年报中单列。三项全不满足则集团化判定失败。</div>
+  </div>
+
+  <div class="card" id="s5">
+    <h2>05 · 财务路径：从 2025 到 2035 的里程碑 <span class="en">MILESTONES</span></h2>
+    <div class="sec-sub">中性路径：营收十年 17.1% 复合、利润 16.5% 复合、净利率维持 33—36%。</div>
+    <div id="chart1" class="chartbox"></div>
+    <table>
+      <tr><th class="l">年份</th><th>营收（亿）</th><th>同比</th><th>经调整净利（亿）</th><th>净利率</th><th class="l">阶段特征</th></tr>
+      <tr><td class="l">2025（实际）</td><td>371.2</td><td class="up">+184.7%</td><td>130.8</td><td>35.2%</td><td class="l">LABUBU 爆发顶点</td></tr>
+      <tr class="fade"><td class="l">2026E</td><td>310</td><td class="down">−16.5%</td><td>105</td><td>33.9%</td><td class="l">调整年，高基数消化（券商/份额法一致）</td></tr>
+      <tr><td class="l">2027E</td><td>400</td><td class="up">+29%</td><td>140</td><td>35.0%</td><td class="l">海外恢复验证年；<b>成败手</b></td></tr>
+      <tr><td class="l">2028E</td><td>510</td><td class="up">+27.5%</td><td>185</td><td>36.3%</td><td class="l">IP 矩阵化成型，乐园 1.5 期</td></tr>
+      <tr><td class="l">2030E</td><td>850</td><td class="up">+29%</td><td>300</td><td>35.3%</td><td class="l">海外占比过半，非商品收入单列</td></tr>
+      <tr><td class="l">2033E</td><td>1400</td><td class="up">+18%</td><td>470</td><td>33.6%</td><td class="l">增速自然回落，集团化贡献 8%</td></tr>
+      <tr class="total"><td class="l">2035E</td><td>1800</td><td class="up">+13%</td><td><b>600</b></td><td>33.3%</td><td class="l"><b>目标达成</b></td></tr>
+    </table>
+    <div class="note">⚠️ 2026E 营收 310 亿来自华福证券预测与本报告份额法推演（312.73 亿）交叉验证；2027 年后为情景推演，非公司指引。净利率假设 33—36%，略低于 2025 峰值，反映集团化前期投入与海外本地化成本。</div>
+  </div>
+
+  <div class="card" id="s6">
+    <h2>06 · 投资回报测算：140 港元买入，持有到 2035 <span class="en">RETURN MODEL</span></h2>
+    <div class="sec-sub">假设：2026 年初以 140 HKD 买入 1 股；2035 年末净利 600 亿、PE 25×；股东回报率 5%（分红+回购），其中 40% 按市价复投、60% 现金落袋。</div>
+    <div class="grid4">
+      <div class="metric"><div class="lab">2035 目标股价</div><div class="num">1315 HKD</div><div class="pct">资本增值 9.4×</div></div>
+      <div class="metric"><div class="lab">资本年化</div><div class="num">28.3%</div><div class="pct">9 年</div></div>
+      <div class="metric"><div class="lab">含回报总 IRR</div><div class="num up">34.7%</div><div class="pct">(1+g)×(1+5%)−1</div></div>
+      <div class="metric"><div class="lab">期末总财富</div><div class="num up">1750 HKD</div><div class="pct">12.5×（股票 1572 + 现金 179）</div></div>
+    </div>
+    <div class="hl"><b>计算链：</b>2035 市值 = 600 亿 CNY × 25 = 1.5 万亿 CNY ≈ 1.75 万亿 HKD；÷13.32 亿股 = <b>1315 HKD/股</b>。9 年资本增值 9.39×（年化 28.3%）；叠加 5% 股东回报并按 40% 复投 → 期末持股 1.195 股、市值 1572 HKD，累计现金 179 HKD，合计 <b>1750 HKD = 12.5×</b>。</div>
+    <div id="chart2" class="chartbox"></div>
+    <h3>逐年财富路径</h3>
+    <table>
+      <tr><th class="l">年份</th><th>股价（HKD）</th><th>持股数</th><th>股票市值</th><th>当年现金</th></tr>
+      <tr><td class="l">2026 买入</td><td>140</td><td>1.000</td><td>140</td><td>—</td></tr>
+      <tr><td class="l">2027</td><td>180</td><td>1.020</td><td>183</td><td>5</td></tr>
+      <tr><td class="l">2028</td><td>230</td><td>1.040</td><td>240</td><td>7</td></tr>
+      <tr><td class="l">2029</td><td>295</td><td>1.061</td><td>313</td><td>9</td></tr>
+      <tr><td class="l">2030</td><td>379</td><td>1.082</td><td>410</td><td>12</td></tr>
+      <tr><td class="l">2031</td><td>486</td><td>1.104</td><td>537</td><td>16</td></tr>
+      <tr><td class="l">2032</td><td>623</td><td>1.126</td><td>702</td><td>21</td></tr>
+      <tr><td class="l">2033</td><td>799</td><td>1.149</td><td>918</td><td>27</td></tr>
+      <tr><td class="l">2034</td><td>1025</td><td>1.172</td><td>1201</td><td>35</td></tr>
+      <tr class="total"><td class="l">2035</td><td>1315</td><td>1.195</td><td>1572</td><td>46</td></tr>
+    </table>
+    <h3>敏感性：回报对哪个变量最敏感</h3>
+    <table>
+      <tr><th class="l">变量</th><th class="l">悲观</th><th class="l">基准</th><th class="l">乐观</th></tr>
+      <tr><td class="l">2035 PE</td><td class="l">15× → 7.6×（股价 789）</td><td class="l"><b>25× → 12.5×（股价 1315）</b></td><td class="l">35× → 17.4×（股价 1841）</td></tr>
+      <tr><td class="l">2035 净利</td><td class="l">400 亿 → 8.4×</td><td class="l"><b>600 亿 → 12.5×</b></td><td class="l">800 亿 → 16.6×</td></tr>
+      <tr><td class="l">股东回报率</td><td class="l">3% → 11.2×</td><td class="l"><b>5% → 12.5×</b></td><td class="l">10% → 16.2×</td></tr>
+      <tr><td class="l">复投比例</td><td class="l">0% → 11.3×</td><td class="l"><b>40% → 12.5×</b></td><td class="l">100% → 14.6×</td></tr>
+      <tr class="err"><td class="l">双杀情景</td><td class="l" colspan="3">净利 400 亿 + PE 15× → 股价 526 HKD，总回报仅 <b>5.2×</b>（年化 ≈19%）</td></tr>
+    </table>
+    <div class="hl r"><b>最敏感的变量是 PE，不是利润。</b>PE 从 25× 掉到 15×，回报从 12.5× 砍到 7.6×（−39%）；而利润从 600 亿掉到 400 亿（−33%）只砍到 8.4×。这意味着<b>决定回报的关键是"市场是否承认它是平台型 IP 公司"</b>——也就是前面三条前置条件能否兑现为可见的结构信号。若集团化业务始终不单列、CR1 居高不下，市场会继续给"名创的尺子"7—8×，而非"三丽鸥的尺子"26×。</div>
+    <div class="note">⚠️ 未计回购缩股：若 5% 回报中 3% 为回购并注销，2035 股本降至约 10.13 亿股，股价升至 1730 HKD、总回报约 13.9×（略高于基准）。汇率、股本变动会显著影响绝对股价，使用前请刷新。</div>
+  </div>
+
+  <div class="card" id="s7">
+    <h2>07 · 风险与证伪清单 <span class="en">FALSIFICATION</span></h2>
+    <div class="sec-sub">不讲泛风险，只列会让 600 亿路径作废的具体信号。</div>
+    <table>
+      <tr><th class="l">失效路径</th><th class="l">触发信号</th><th class="l">应下修到</th></tr>
+      <tr class="err"><td class="l"><b>① 海外本地化失败</b></td><td class="l">2027 海外仍负增长；亚太/美洲单店收入腰斩后不恢复</td><td class="l">利润 300—350 亿，PE 12—15×，股价 350—520 HKD</td></tr>
+      <tr class="err"><td class="l"><b>② 单一 IP 周期见顶</b></td><td class="l">2028 年 CR1 仍 &gt;30%；星星人未能站上 60 亿</td><td class="l">按周期股定价，PE 8—10×</td></tr>
+      <tr><td class="l"><b>③ 集团化变成烧钱</b></td><td class="l">2030 非商品收入仍不单列；授权持续净付出；乐园二期延期</td><td class="l">利润或达标，但 PE 封顶 15×</td></tr>
+      <tr><td class="l"><b>④ 汇率与股本</b></td><td class="l">人民币大幅升值（压缩并表利润）；回购停滞</td><td class="l">绝对股价下修 5—15%</td></tr>
+    </table>
+    <div class="hl g"><b>裁决时点：2027 年报。</b>只看两件事：①海外是否恢复正增长；②是否出现第二个 60 亿+ 的全球级 IP。两点都满足 → 600 亿路径成立，估值向 25× 修复；只满足一个 → 利润目标勉强、PE 给 18×；都不满足 → 切回成熟期 333 亿情景。<b>不必等到 2035 才知道答案。</b></div>
+    <div class="hl a"><b>反向声音：</b>本报告整体沿着"公司能长青"的框架展开。反面观点同样有力——潮玩是时尚品而非必需品，IP 生命周期天然短于迪士尼/三丽鸥；2026Q3 的 −45%~−50% 可能不是高基数问题，而是 LABUBU 热度不可逆衰退的第一声。若如此，140 HKD 的买入价对应的不是 12× 便宜，而是"周期顶部后的合理定价"。<b>真正的仓位决策应等待 2027 年报的两个信号，而非现在的推测。</b></div>
+    <div class="note">⚠️ 本文为个人投资学习笔记，所有预测为情景推演非公司指引，不构成投资建议。市场有风险，投资需谨慎。</div>
+    <a class="backtop" href="#s0">↑ 回到顶部</a>
+  </div>
+
+  <div class="foot">数据来源：泡泡玛特 2020—2025 年报、2026 中期业绩公告、2026Q3 自愿更新（港交所）；新华网/上证报/央广网 2025-03-26 报道（2024 业绩）；券商研报（华福、招银国际等，非一手来源需核实原文）；公司业绩会公开表述。财务口径人民币，经调整净利为 Non-IFRS；汇率 1 HKD=0.85628 CNY，股本 13.32 亿股。整理：2026-11-17。<br>关联阅读：<a href="invest-popmart.html" style="color:var(--pink)">泡泡玛特体系化投资研究报告（总纲）</a> · 本地归档「泡泡玛特_调研报告总汇_20261116」。</div>
+
+</div>
+
+<script>
+var c1 = echarts.init(document.getElementById('chart1'));
+c1.setOption({
+  tooltip: { trigger: 'axis' },
+  legend: { data: ['营收(亿元)', '经调整净利(亿元)', '净利率(%)'] },
+  grid: { left: 55, right: 55, top: 40, bottom: 40 },
+  xAxis: { type: 'category', data: ['2025','2026E','2027E','2028E','2030E','2033E','2035E'] },
+  yAxis: [
+    { type: 'value', name: '亿元' },
+    { type: 'value', name: '%', min: 0, max: 40 }
+  ],
+  series: [
+    { name: '营收(亿元)', type: 'bar', data: [371,310,400,510,850,1400,1800], itemStyle: { color: '#7f9fd0' } },
+    { name: '经调整净利(亿元)', type: 'bar', data: [131,105,140,185,300,470,600], itemStyle: { color: '#e0508a' } },
+    { name: '净利率(%)', type: 'line', yAxisIndex: 1, data: [35.2,33.9,35.0,36.3,35.3,33.6,33.3], itemStyle: { color: '#d98a00' }, smooth: true }
+  ]
+});
+
+var c2 = echarts.init(document.getElementById('chart2'));
+c2.setOption({
+  tooltip: { trigger: 'axis' },
+  legend: { data: ['股价(HKD)', '总财富(HKD)'] },
+  grid: { left: 60, right: 30, top: 40, bottom: 40 },
+  xAxis: { type: 'category', data: ['2026','2027','2028','2029','2030','2031','2032','2033','2034','2035'] },
+  yAxis: { type: 'value', name: 'HKD' },
+  series: [
+    { name: '股价(HKD)', type: 'line', data: [140,180,230,295,379,486,623,799,1025,1315], itemStyle: { color: '#2563c9' }, smooth: true },
+    { name: '总财富(HKD)', type: 'line', data: [140,188,252,334,443,586,772,1015,1333,1750], itemStyle: { color: '#e0508a' }, smooth: true }
+  ]
+});
+
+window.addEventListener('resize', function () { c1.resize(); c2.resize(); });
+</script>
+</body>
+</html>

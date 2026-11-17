@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>投资研究 · LYH</title>
-<meta name="description" content="不荐股、不预测股价：把一家公司拆成生意、账本、价格三件事，按历史、现在、未来读完。">
+<title>投资日记 · LYH</title>
+<meta name="description" content="投资日记：只看三件事——商业模式能不能长期赚高毛利、价格有没有离价值太远、管理层把钱和话放在了哪里。">
 <meta name="theme-color" content="#fffaf3">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23d1001f'/%3E%3Ctext x='32' y='46' font-size='38' font-family='Arial,sans-serif' font-weight='bold' text-anchor='middle' fill='%23ffffff'%3EL%3C/text%3E%3Crect x='42' y='8' width='15' height='5' rx='2.5' fill='%2357cf95'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
 <style>
-/* ---------- 投资页：说明 + 维度 + 目录 ---------- */
+/* ---------- 投资日记：说明 + 三件事 + 目录 ---------- */
 .tiers{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:11.5px;color:var(--muted)}
 .tiers b{color:var(--ink);font-weight:750;margin-right:4px}
 
@@ -18,13 +18,17 @@
 .sh::after{content:"";flex:1;height:1px;background:var(--line)}
 
 .dims{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.dim{padding:15px 16px 16px;background:var(--paper);border:1.5px solid var(--line);
-  border-radius:18px;box-shadow:var(--shadow);transition:border-color .22s,transform .22s}
+.dim{padding:16px 17px 17px;background:var(--paper);border:1.5px solid var(--line);
+  border-radius:18px;box-shadow:var(--shadow);transition:border-color .22s,transform .22s;
+  display:flex;flex-direction:column}
 .dim:hover{border-color:var(--red);transform:translateY(-2px)}
 .dim i{display:block;font-family:var(--mono);font-size:9px;font-style:normal;
   letter-spacing:.14em;color:var(--muted);margin-bottom:7px}
-.dim b{display:block;font-size:14px;font-weight:800;margin-bottom:5px;letter-spacing:-.01em}
-.dim span{display:block;font-size:11.5px;line-height:1.65;color:var(--muted)}
+.dim b{display:block;font-size:15px;font-weight:800;margin-bottom:6px;letter-spacing:-.01em;line-height:1.35}
+.dim span{display:block;font-size:12px;line-height:1.7;color:var(--muted)}
+.dim-k{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:11px;line-height:1.65}
+.dim-k em{font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.12em;
+  color:var(--red);margin-right:6px;vertical-align:1px}
 
 /* 目录：一条目 = 一卷 */
 .catalog{display:grid;gap:14px}
@@ -55,7 +59,7 @@
 a.chip:hover{border-color:var(--red);color:var(--red);background:var(--paper)}
 
 @media(max-width:640px){
-  .dims{grid-template-columns:1fr 1fr}
+  .dims{grid-template-columns:1fr}
   .sh{margin:28px 0 12px}
   .vol{padding:16px 16px 13px;border-radius:18px}
   .vol-t{font-size:16px}
@@ -70,16 +74,16 @@ a.chip:hover{border-color:var(--red);color:var(--red);background:var(--paper)}
 <div class="wrap">
   <header>
     <a class="back" href="index.html">← 返回索引</a>
-    <span class="brand" id="brand">LYH / VALUE INVESTING</span>
+    <span class="brand" id="brand">LYH / INVESTING NOTES</span>
     <button class="theme" id="themeBtn" aria-label="切换深浅主题">DARK</button>
   </header>
 
   <main>
-    <h1><span id="h1Text">投资研究</span><span class="cursor" aria-hidden="true"></span></h1>
+    <h1><span id="h1Text">投资日记</span><span class="cursor" aria-hidden="true"></span></h1>
     <p class="intro" id="intro"></p>
     <div class="tiers" id="tiers"></div>
 
-    <div class="sh">研究什么 / Dimensions</div>
+    <div class="sh">只做三件事 / Three things</div>
     <div class="dims" id="dims"></div>
 
     <div class="sh">目录 / Catalog</div>

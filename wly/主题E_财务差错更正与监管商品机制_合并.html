@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>五粮液 · 财务差错更正与监管商品机制（合并总览）</title>
+<style>
+  :root{--bg:#0e1318;--card:#161d25;--line:#2a3340;--gold:#e0b973;--green:#4ec9a5;--red:#e06b6b;--purple:#b06ba6;--txt:#e6edf3;--mut:#9aa7b5}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65;padding:24px;max-width:960px;margin:0 auto}
+  h1{font-size:23px;color:var(--gold);margin-bottom:4px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+  h2{font-size:17px;color:var(--gold);margin-bottom:10px;border-left:3px solid var(--gold);padding-left:8px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+  th{background:#1d2630;color:var(--mut);font-weight:600}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  .ok{color:var(--green);font-weight:700}
+  .bad{color:var(--red);font-weight:700}
+  .warn{color:var(--gold);font-weight:700}
+  .keybox{background:#1a2330;border-left:4px solid var(--green);padding:12px 14px;border-radius:6px;font-size:14px;margin:10px 0}
+  .caveat{background:#2a1d22;border-left:4px solid var(--red);padding:12px 14px;border-radius:6px;font-size:14px;margin:10px 0}
+  .note{background:#1a2330;border-left:4px solid var(--mut);padding:10px 12px;border-radius:6px;font-size:13px;color:var(--mut);margin:10px 0}
+  .pill{display:inline-block;background:#2a3340;color:var(--gold);border-radius:4px;padding:1px 7px;font-size:12px;margin-right:4px}
+  ul{margin:8px 0 8px 20px;font-size:14px}
+  li{margin:4px 0}
+  .src{font-size:12px;color:var(--mut);margin-top:8px}
+</style>
+<script>/*sharecode-auto*/ (function(){try{var p=new URLSearchParams(location.search);var sc=p.get("sharecode");if(!sc)return;var ls=document.querySelectorAll("a[href]");for(var i=0;i<ls.length;i++){var a=ls[i];var h=a.getAttribute("href");if(!h)continue;if(/^(https?:)?\/\//.test(h))continue;if(h.charAt(0)==="#")continue;if(h.indexOf("sharecode=")>-1)continue;a.href=h+(h.indexOf("?")>-1?"&":"?")+"sharecode="+encodeURIComponent(sc);}}catch(e){}})();</script>
+</head>
+<body>
+
+<h1>五粮液 · 财务差错更正与监管商品机制（合并总览）</h1>
+<div class="sub">整合自：2025异常与财务差错更正解析(11-02) / 监管商品科目解密与财报查看路径(11-02) / 生产逻辑vs会计逻辑对账(11-02) / 2025监管商品vs2026存货与收入确认规则(11-02) · 基准 2025 年报</div>
+
+<div class="card">
+  <h2>一、2025 为什么"不正常"——财务差错更正真相</h2>
+  <table>
+    <thead><tr><th>科目</th><th>2025 年报</th><th>同比</th></tr></thead>
+    <tbody>
+      <tr><td>营业收入</td><td class="num">405.29 亿</td><td class="bad">−54.55%</td></tr>
+      <tr><td>归母净利润</td><td class="num">89.54 亿</td><td class="bad">−71.89%</td></tr>
+      <tr><td>追溯调减（Q1–Q3 差错更正）</td><td class="num">营收 −303.07 / 净利 −150.36 亿</td><td>—</td></tr>
+      <tr><td>经营现金流净额</td><td class="num">+297.06 亿</td><td>净现比 331.76%</td></tr>
+    </tbody>
+  </table>
+  <div class="keybox">2025 的低点 = <b>《前期会计差错更正》挤出压货水分 + 公司主动出清</b>，不是生意垮了一半。<b>现金流一分没少</b>：更正前后经营现金流都是 +297 亿、税金及附加分文未动（货已发、已开票、已缴消费税，真实出货）——利润是<b>递延确认，不是损毁</b>。320 亿（2024 正常年）与 90 亿（2025）的差是 <b>229 亿</b>，其中 150.36 亿是已披露的会计搬家、余下是真实需求走弱 + 2024 基线虚高。</div>
+</div>
+
+<div class="card">
+  <h2>二、"监管商品"藏在哪——财报查看路径</h2>
+  <p style="font-size:14px">"监管商品 312 亿"不是单一科目，是<b>资产端 + 负债端两个附注明细</b>的合计（早期报告曾误写成单一科目，已纠正）：</p>
+  <table>
+    <thead><tr><th>位置</th><th>科目</th><th>金额</th><th>含义</th></tr></thead>
+    <tbody>
+      <tr><td>其他流动资产（附注）</td><td>监管商品</td><td class="num">49.07 亿（期初 0）</td><td>已发货、公司仍拥有控制权的存货成本</td></tr>
+      <tr><td>其他流动负债（附注）</td><td>监管商品款项</td><td class="num">263.15 亿（期初 0）</td><td>已收款、但货未真卖给消费者、不能确认收入</td></tr>
+      <tr><td>其他流动负债（总额）</td><td>含待转销项税 7.14 亿</td><td class="num">270.29 亿</td><td>2024 末才 10.57 亿，暴涨即信号</td></tr>
+    </tbody>
+  </table>
+  <div class="note">三个"坑"导致你找不到：① 它不是一级科目，是"其他流动资产/其他流动负债"的<b>附注明细</b>；② <b>只有 2025 年报才有</b>（2024 及更早期初全 0，是差错更正新设）；③ 在附注章节不在主表。合计 312.22 亿 ≈ 追溯调减的 303.07 亿营收——那批"发到经销商平台（四川五钧/五浚）但终端没卖出"的货，暂挂在资产负债表两端。简便查法：F10 看"其他流动负债 270.29 亿"一眼可见，但"监管商品款项"明细仍要年报附注。</div>
+</div>
+
+<div class="card">
+  <h2>三、生产逻辑 vs 会计逻辑 对账</h2>
+  <ul>
+    <li><b>物理去向（货没消失，是搬了家）：</b>2025 高端期末库存 25,118 吨（期初 6,173 吨，<span class="bad">+306.9%</span>）；合计期末库存 47,616 吨（+45.18%）——高端只卖了 19,455 吨、却生产 38,400 吨，<b>一半产能直接堆进自家库房</b>；另有 312 亿监管商品躺在平台仓库。</li>
+    <li><b>利润去向（从利润表搬到资产负债表）：</b>被调减的 303 亿营收 / 150 亿净利没蒸发，挂在存货 +18.32 亿、监管商品 312 亿、其他流动负债 270 亿、合同负债 +17.7 亿。</li>
+    <li><b>319 ≈ 2024 验证：</b>产能×出厂价算的 ~319 亿 ≈ 2024 年报归母 318.53 亿——<b>年度产能变现能力本来就 ~300 亿</b>，低点是会计把"发货"和"卖出"拆开的错位，不是赚钱机器坏了。</li>
+  </ul>
+  <div class="caveat">限定：2024 用的也是旧"发货即确认"政策、含部分压货（把 25/26 需求前移）。所以"正常"指"年度产能变现能力正常"，非"每分都对应开瓶"。2024 的 319 + 2025 的 89.5 ≈ 408 亿；若 2025 不更正用旧政策约 240 亿，两年合计 ~559 亿 ≈ 2×280——<b>两年真实赚钱能力仍 ~290 亿/年</b>。</div>
+</div>
+
+<div class="card">
+  <h2>四、2025（监管商品）vs 2026（存货）—— 产出囤到哪</h2>
+  <ul>
+    <li><b>2025：藏进"监管商品"（312 亿）。</b> 已发货、已打款、但终端没卖出，挂在资产负债表两端——一次性承认历史压货。</li>
+    <li><b>2026：囤进"存货"（241.97 亿，+41.32 亿）。</b> 公司主动控货挺价（不往渠道多发货），多酿的酒留在自己仓库——2026 没有新差错更正，但生产 > 真实消费，多产部分按新政策（控制权转移才确认）不能确认收入，继续进存货（基酒 163.91 亿占 68%、同比 +26.66%）。监管商品几乎没动（6 月末 240 → 9 月末 238 亿，前三季仅净减 ~25 亿）。</li>
+    <li><b>本质区别：</b>2025 = 把货发到渠道平台挂监管商品（一次性承认）；2026 = 控货不发货、多产的酒留厂里挂存货（当期继续囤）。都是"货没最终卖给消费者"，科目不同。</li>
+  </ul>
+  <div class="note">⚠️ 库存数据边界：券商/第三方渠道调研称渠道库存已降到 1–3 个月（非财报数，且在三季报有分歧，部分分析师认为去库尚未完全完成）；财报存货 242 亿是酒厂仓库的基酒+成品，二者不在一处。</div>
+</div>
+
+<div class="src">整合来源：五粮液 2025 年报 / 2026 中报 / 差错更正公告 / 附注明细；本页为合并汇编，非投资建议。</div>
+</body>
+</html>

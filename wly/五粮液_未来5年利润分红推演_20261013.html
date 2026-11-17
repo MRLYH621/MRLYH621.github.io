@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五粮液 未来5年(2026-2030)利润与分红推演</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0e1116; --card:#161b22; --card2:#1c2230; --line:#2a3140;
+    --txt:#e6edf3; --sub:#9aa7b5; --gold:#e0b973; --green:#4ec9a5;
+    --red:#f06a6a; --blue:#5aa9e6; --accent:#e0b973;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.6;padding:24px;max-width:1080px;margin:0 auto}
+  h1{font-size:24px;color:var(--gold);margin-bottom:4px}
+  .meta{color:var(--sub);font-size:13px;margin-bottom:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:18px}
+  .card h2{font-size:16px;color:var(--accent);margin-bottom:12px;border-left:3px solid var(--gold);padding-left:10px}
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .mgr{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .mgr .name{font-weight:700;color:var(--txt);font-size:15px}
+  .mgr .tag{display:inline-block;background:#2a3140;color:var(--gold);font-size:11px;padding:2px 8px;border-radius:20px;margin:6px 0}
+  .mgr .desc{font-size:12px;color:var(--sub)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:center}
+  th{background:var(--card2);color:var(--gold);font-weight:600}
+  td.year{color:var(--accent);font-weight:700}
+  input.cell{width:88px;background:#0d1117;border:1px solid var(--line);color:var(--txt);border-radius:6px;padding:5px;text-align:center;font-size:14px}
+  input.cell:focus{outline:none;border-color:var(--gold)}
+  .ctrl{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:10px 0}
+  .ctrl label{font-size:13px;color:var(--sub);margin-right:6px}
+  select,input[type=range]{accent-color:var(--gold)}
+  select{background:#0d1117;color:var(--txt);border:1px solid var(--line);border-radius:6px;padding:5px 8px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:10px}
+  .kpi{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}
+  .kpi .v{font-size:22px;font-weight:800;color:var(--gold)}
+  .kpi .l{font-size:12px;color:var(--sub);margin-top:4px}
+  .note{font-size:12px;color:var(--sub);margin-top:10px;line-height:1.7}
+  .hl{color:var(--green)}
+  .warn{color:var(--red)}
+  canvas{max-height:340px}
+  .btn{background:var(--gold);color:#1a1a1a;border:none;border-radius:8px;padding:8px 16px;font-weight:700;cursor:pointer;font-size:13px}
+  .btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px}
+</style>
+<script>/*sharecode-auto*/ (function(){try{var p=new URLSearchParams(location.search);var sc=p.get("sharecode");if(!sc)return;var ls=document.querySelectorAll("a[href]");for(var i=0;i<ls.length;i++){var a=ls[i];var h=a.getAttribute("href");if(!h)continue;if(/^(https?:)?\/\//.test(h))continue;if(h.charAt(0)==="#")continue;if(h.indexOf("sharecode=")>-1)continue;a.href=h+(h.indexOf("?")>-1?"&":"?")+"sharecode="+encodeURIComponent(sc);}}catch(e){}})();</script>
+</head>
+<body>
+<h1>五粮液 未来5年（2026–2030）利润与分红推演</h1>
+<div class="meta">数据更新 2026-10-13 ｜ 净利基准：2025A 实际 89.54 亿（追溯调整后）｜ 2026–2028 = 18家券商一致预期（东方财富/Wind，2026-08 后下调后）｜ 2029–2030 = 增速外推，仅供参考</div>
+
+<div class="card" style="border-color:var(--red)">
+  <h2 style="color:var(--red);border-left-color:var(--red)">⚠️ 数据失真警告：2025A 的 89.54 亿是"会计洗澡"，不是真亏</h2>
+  <div class="note">
+    • <b>事件</b>：2026-04-30 发布 2025 年报，同时做"前期会计差错更正"，把已披露的 2025 前三季度（609 亿营收/215 亿净利）<b>追溯重述</b>为 306 亿/64.75 亿——约 <b>303 亿营收、150 亿利润从报表划出</b>，转入"监管商品款项"263 亿（经销商已打款但商品控制权未转移，谨慎性不确认收入）。<br>
+    • <b>本质</b>：收入跨期 + 财务洗澡，<b>不是经营崩盘</b>。证据：2026Q1 单季净利就 <b>80.63 亿</b>（接近 2025 全年），2026H1 经营现金流 311 亿（+131%）。<br>
+    • <b>真实利润中枢</b>：雪球测算剔除渠道压货水分后十年年均 <b>~180 亿</b>；多家认为 2025 真实利润 <b>200 亿+</b>、2027 回 <b>250 亿+</b>。<br>
+    • <b>对本页推演的影响</b>：下方 2026–2030E 是基于<b>重述后低基数</b>的券商共识，其"+70% 修复"叙事是和失真值比出来的<b>假高增长</b>。若 2025 真实经营约 200 亿，则 2026E 152.6 亿实为<b>下滑 ~24%</b>。2030E 223 亿（重述口径）仅为巅峰 318 亿的 70%；但还原真实中枢后，2030 有望回到 250–320 亿。<b>请用"真实中枢 ~180–200 亿"作锚，而非 89.54 亿。</b>
+  </div>
+</div>
+
+<div class="card">
+  <h2>一、谁最懂五粮液？——标杆来源</h2>
+  <div class="grid3">
+    <div class="mgr"><div class="name">萧楠</div><div class="tag">易方达消费行业</div><div class="desc">2026Q1 逆势加仓五粮液 +43%（+319.88万股），大幅减茅台/老窖。最坚定的公募多头。</div></div>
+    <div class="mgr"><div class="name">张坤</div><div class="tag">易方达蓝筹精选</div><div class="desc">2014 年起重仓，持有最久最重；五粮液长期居前三大重仓。2026Q1 因赎回被动微减仍核心持仓。</div></div>
+    <div class="mgr"><div class="name">刘彦春</div><div class="tag">景顺长城新兴成长</div><div class="desc">长期白酒底仓，2021 后熊市仍保留五粮液/茅台/汾酒。看好内需修复。</div></div>
+    <div class="mgr"><div class="name">林园</div><div class="tag">私募</div><div class="desc">2003 年起重仓五粮液持有至今，经典"死多头"。逻辑：成瘾消费+品牌护城河+永续。</div></div>
+    <div class="mgr"><div class="name">18家券商一致预期</div><div class="tag">预测数据来源</div><div class="desc">东方财富/Wind 摘录。代表机构：国海、华福、申万、国信、华鑫、野村东方。给具体年度净利预测。</div></div>
+    <div class="mgr"><div class="name">⚠️ 说明</div><div class="tag">无准确度排名</div><div class="desc">主动基金经理不公开年度盈利预测，以持仓表达观点；具体数字预测看券商一致预期。</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>二、净利润推演（可编辑，自动重算）</h2>
+  <div class="note">⚠️ 默认 2025A=89.54 为<b>重述失真值</b>（真实经营中枢约 180–200 亿，见上方警告卡）。2026E–2028E 为 18 家券商共识（基于重述口径，+"修复"增速含基数失真）；2029E–2030E 为 ~8.5% 外推。点单元格可改，建议把 2025A 改为 ~200 再观察真实趋势。</div>
+  <table id="profitTable">
+    <thead><tr><th>年份</th><th>2026E</th><th>2027E</th><th>2028E</th><th>2029E</th><th>2030E</th></tr></thead>
+    <tbody><tr>
+      <td class="year">归母净利(亿)</td>
+      <td><input class="cell" data-y="2026" value="152.6"></td>
+      <td><input class="cell" data-y="2027" value="170.1"></td>
+      <td><input class="cell" data-y="2028" value="188.8"></td>
+      <td><input class="cell" data-y="2029" value="205.0"></td>
+      <td><input class="cell" data-y="2030" value="223.0"></td>
+    </tr></tbody>
+  </table>
+  <div class="row">
+    <button class="btn" id="saveBtn">保存本地</button>
+    <button class="btn ghost" id="resetBtn">恢复默认</button>
+    <span class="note" id="saveState"></span>
+  </div>
+</div>
+
+<div class="card">
+  <h2>三、分红假设与输出</h2>
+  <div class="ctrl">
+    <div><label>2026 年分红</label><span class="hl">200 亿（规划强制：2024–2026 每年≥200亿且分红率≥70%）</span></div>
+  </div>
+  <div class="ctrl">
+    <div><label>分红率（2027–2030）</label><input type="range" id="rate" min="50" max="100" value="70" step="5"><b id="rateV" style="color:var(--gold)">70%</b></div>
+    <div><label>2027–2030 模式</label>
+      <select id="mode">
+        <option value="floor">延续保底 ≥200亿</option>
+        <option value="rate">纯按分红率计算</option>
+      </select>
+    </div>
+    <div><label>参考总市值(亿)</label>
+      <input class="cell" id="mcap" value="2740" style="width:80px">
+      <button class="btn ghost" id="mNow" style="padding:5px 10px">当前2740</button>
+      <button class="btn ghost" id="mAdj" style="padding:5px 10px">除权后2460</button>
+      <span class="note" id="mcapNote"></span>
+    </div>
+  </div>
+
+  <table id="outTable">
+    <thead><tr><th>年份</th><th>2026E</th><th>2027E</th><th>2028E</th><th>2029E</th><th>2030E</th></tr></thead>
+    <tbody>
+      <tr><td class="year">分红(亿)</td><td id="d0">-</td><td id="d1">-</td><td id="d2">-</td><td id="d3">-</td><td id="d4">-</td></tr>
+      <tr><td class="year">分红率</td><td id="r0">-</td><td id="r1">-</td><td id="r2">-</td><td id="r3">-</td><td id="r4">-</td></tr>
+      <tr><td class="year">股息率(对所选市值)</td><td id="y0">-</td><td id="y1">-</td><td id="y2">-</td><td id="y3">-</td><td id="y4">-</td></tr>
+    </tbody>
+  </table>
+
+  <div class="kpis">
+    <div class="kpi"><div class="v" id="kCum">-</div><div class="l">5年累计分红(亿)</div></div>
+    <div class="kpi"><div class="v" id="kYield">-</div><div class="l" id="kYieldL">累计股息率(对所选市值)</div></div>
+    <div class="kpi"><div class="v" id="kY26">-</div><div class="l">2026静态股息率</div></div>
+    <div class="kpi"><div class="v" id="kProf">-</div><div class="l">2030净利 vs 2025(+%)</div></div>
+    <div class="kpi"><div class="v" id="kCagr">-</div><div class="l">2025→2030净利CAGR</div></div>
+  </div>
+  <div class="note" id="modeNote"></div>
+</div>
+
+<div class="card">
+  <h2>四、可视化：净利 vs 分红</h2>
+  <canvas id="chart"></canvas>
+</div>
+
+<div class="card">
+  <h2>五、关键假设与提醒</h2>
+  <div class="note">
+    • <b>利润基准</b>：2025A 89.54 亿为追溯调整后异常低基数（营收−54.55%/净利−71.89%）；2026 起为修复年，券商共识 152.6 亿（同比约 +70%）。<br>
+    • <b>2029–2030 外推</b>：共识仅到 2028，此处按约 8.5% 增速外推，非机构一致预期，仅供参考。<br>
+    • <b>分红"保200亿"的可持续性</b>：2024–2026 规划保 200 亿，但 2026 预估净利仅 ~153 亿，分红率 >100%，靠账上 785 亿未分配利润硬扛。2027–2029 新三年规划尚未发布（公司称"适时编制"），能否续保 200 亿未知。<br>
+    • <b>增持 30 亿不计入</b>：为大股东自有护盘资金，不影响上市公司分红/利润。<br>
+    • <b>风险</b>：消费复苏不及预期、批价下滑、禁酒令扰动、行业库存周期。本页为推演模型，非投资建议。
+  </div>
+</div>
+
+<script>
+const DEFAULTS=[152.6,170.1,188.8,205.0,223.0];
+const YEARS=[2026,2027,2028,2029,2030];
+const KEY="wly_5y_profit_v1";
+
+const cells=[...document.querySelectorAll('.cell[data-y]')];
+const rate=document.getElementById('rate');
+const rateV=document.getElementById('rateV');
+const mode=document.getElementById('mode');
+const mcap=document.getElementById('mcap');
+
+// load saved
+try{const s=JSON.parse(localStorage.getItem(KEY));if(s){s.forEach((v,i)=>cells[i].value=v);}}catch(e){}
+
+function getProfits(){return cells.map(c=>parseFloat(c.value)||0);}
+
+function compute(){
+  const p=getProfits();
+  const r=parseFloat(rate.value)/100;
+  const m=mcap.value?parseFloat(mcap.value):2740;
+  const div=[];
+  p.forEach((v,i)=>{
+    if(i===0){div.push(200);} // 2026 规划强制
+    else{
+      if(mode.value==='floor') div.push(Math.max(200, v*r));
+      else div.push(v*r);
+    }
+  });
+  // fill table
+  for(let i=0;i<5;i++){
+    document.getElementById('d'+i).textContent=div[i].toFixed(1);
+    const rr=div[i]/p[i]*100;
+    document.getElementById('r'+i).textContent=rr.toFixed(1)+'%';
+    const yy=div[i]/m*100;
+    document.getElementById('y'+i).textContent=yy.toFixed(2)+'%';
+  }
+  const cum=div.reduce((a,b)=>a+b,0);
+  document.getElementById('kCum').textContent=cum.toFixed(0);
+  document.getElementById('kYield').textContent=(cum/m*100).toFixed(1)+'%';
+  document.getElementById('kYieldL').textContent='累计股息率(对'+m+'亿市值)';
+  document.getElementById('kY26').textContent=(div[0]/m*100).toFixed(2)+'%';
+  const grow=(p[4]/89.54-1)*100;
+  document.getElementById('kProf').textContent='+'+grow.toFixed(0)+'%';
+  const cagr=Math.pow(p[4]/89.54,1/5)-1;
+  document.getElementById('kCagr').textContent=(cagr*100).toFixed(1)+'%';
+  document.getElementById('modeNote').innerHTML = mode.value==='floor'
+    ? '当前模式：<span class="hl">2027–2030 延续保底 ≥200亿</span>（假设新三年规划续保，靠未分配利润支撑）。'
+    : '当前模式：<span class="hl">2027–2030 纯按分红率 '+rate.value+'% 计算</span>（不再硬保200亿，分红随净利增长）。';
+  drawChart(p,div);
+}
+
+let chart;
+function drawChart(p,div){
+  const ctx=document.getElementById('chart');
+  if(chart)chart.destroy();
+  chart=new Chart(ctx,{
+    type:'bar',
+    data:{labels:YEARS.map(y=>y+'E'),
+      datasets:[
+        {label:'归母净利(亿)',data:p,backgroundColor:'#e0b973'},
+        {label:'分红(亿)',data:div,backgroundColor:'#4ec9a5'}
+      ]},
+    options:{responsive:true,plugins:{legend:{labels:{color:'#e6edf3'}}},
+      scales:{x:{ticks:{color:'#9aa7b5'},grid:{color:'#2a3140'}},
+              y:{ticks:{color:'#9aa7b5'},grid:{color:'#2a3140'},title:{display:true,text:'亿元',color:'#9aa7b5'}}}}
+  });
+}
+
+rate.addEventListener('input',()=>{rateV.textContent=rate.value+'%';compute();});
+mode.addEventListener('change',compute);
+mcap.addEventListener('input',compute);
+document.getElementById('mNow').onclick=()=>{mcap.value=2740;mcapNote();compute();};
+document.getElementById('mAdj').onclick=()=>{mcap.value=2460;mcapNote();compute();};
+function mcapNote(){
+  const v=parseFloat(mcap.value);
+  const el=document.getElementById('mcapNote');
+  el.innerHTML = v===2460
+    ? '<span class="note">口径：已分掉200亿分红+80亿回购注销后的基础市值 ≈2460亿（业务本身价值，不含账上现金）</span>'
+    : '<span class="note">口径：当前含现金总市值 ≈2740亿（70.6元×38.82亿股）</span>';
+}
+cells.forEach(c=>c.addEventListener('input',compute));
+
+document.getElementById('saveBtn').onclick=()=>{
+  localStorage.setItem(KEY,JSON.stringify(getProfits()));
+  document.getElementById('saveState').textContent='已保存到本机浏览器 ✓';
+};
+document.getElementById('resetBtn').onclick=()=>{
+  cells.forEach((c,i)=>c.value=DEFAULTS[i]);
+  rate.value=70;rateV.textContent='70%';mode.value='floor';mcap.value=2740;
+  localStorage.removeItem(KEY);
+  mcapNote();
+  compute();
+  document.getElementById('saveState').textContent='已恢复默认';
+};
+
+mcapNote();
+compute();
+</script>
+</body>
+</html>

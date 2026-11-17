@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>五粮液 · 估值框架与自由现金（合并总览）</title>
+<style>
+  :root{--bg:#0e1318;--card:#161d25;--line:#2a3340;--gold:#e0b973;--green:#4ec9a5;--red:#e06b6b;--purple:#b06ba6;--txt:#e6edf3;--mut:#9aa7b5}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65;padding:24px;max-width:960px;margin:0 auto}
+  h1{font-size:23px;color:var(--gold);margin-bottom:4px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px}
+  h2{font-size:17px;color:var(--gold);margin-bottom:10px;border-left:3px solid var(--gold);padding-left:8px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+  th{background:#1d2630;color:var(--mut);font-weight:600}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  .ok{color:var(--green);font-weight:700}
+  .bad{color:var(--red);font-weight:700}
+  .keybox{background:#1a2330;border-left:4px solid var(--green);padding:12px 14px;border-radius:6px;font-size:14px;margin:10px 0}
+  .caveat{background:#2a1d22;border-left:4px solid var(--red);padding:12px 14px;border-radius:6px;font-size:14px;margin:10px 0}
+  .note{background:#1a2330;border-left:4px solid var(--mut);padding:10px 12px;border-radius:6px;font-size:13px;color:var(--mut);margin:10px 0}
+  .pill{display:inline-block;background:#2a3340;color:var(--gold);border-radius:4px;padding:1px 7px;font-size:12px;margin-right:4px}
+  ul{margin:8px 0 8px 20px;font-size:14px}
+  li{margin:4px 0}
+  .src{font-size:12px;color:var(--mut);margin-top:8px}
+</style>
+<script>/*sharecode-auto*/ (function(){try{var p=new URLSearchParams(location.search);var sc=p.get("sharecode");if(!sc)return;var ls=document.querySelectorAll("a[href]");for(var i=0;i<ls.length;i++){var a=ls[i];var h=a.getAttribute("href");if(!h)continue;if(/^(https?:)?\/\//.test(h))continue;if(h.charAt(0)==="#")continue;if(h.indexOf("sharecode=")>-1)continue;a.href=h+(h.indexOf("?")>-1?"&":"?")+"sharecode="+encodeURIComponent(sc);}}catch(e){}})();</script>
+</head>
+<body>
+
+<h1>五粮液 · 估值框架与自由现金（合并总览）</h1>
+<div class="sub">整合自：市值拆解_过剩现金与永续运营资产(11-02) / 最低运营现金与自由现金测算(11-02) · 数据基准 2025年报 / 2026Q1 / 2026 回购进度</div>
+
+<div class="card">
+  <h2>一、市值拆解：过剩现金 + 永续运营资产</h2>
+  <p style="font-size:14px">把市值拆成"多余现金"与"经营资产"是标准估值框架。按用户更新口径（大股东 56% / 公众 44% = 1,276 亿 / 总市值反推 2,900 亿）：</p>
+  <table>
+    <thead><tr><th>科目</th><th>除权前(2900)</th><th>分红200+回购80 流出后(2620)</th></tr></thead>
+    <tbody>
+      <tr><td>市值</td><td class="num">2,900 亿</td><td class="num">2,620 亿</td></tr>
+      <tr><td>账上现金</td><td class="num">1,240 亿</td><td class="num">960 亿</td></tr>
+      <tr><td>减：保守运营储备</td><td class="num">—</td><td class="num">250 亿</td></tr>
+      <tr><td><b>过剩自由现金</b></td><td class="num">—</td><td class="num ok">710 亿</td></tr>
+      <tr><td><b>运营资产价值</b></td><td class="num">—</td><td class="num ok">1,910 亿</td></tr>
+      <tr><td>运营年利润（保守归一化下限）</td><td class="num">—</td><td class="num">≈ 200 亿</td></tr>
+      <tr><td>运营年利润（正常产能口径）</td><td class="num">—</td><td class="num ok">≈ 319 亿（2024 已实现）</td></tr>
+      <tr><td>运营年利润（名义出厂价弹性上限）</td><td class="num">—</td><td class="num">≈ 419 亿</td></tr>
+    </tbody>
+  </table>
+  <div class="keybox">运营资产 <b>1,910 亿</b> 的 PE 随利润口径分层：<b>保守 200 亿 → 9.5×</b>（收益率 10.5%）；<b>正常产能 319 亿 → 6.0×</b>；<b>价格弹性上限 419 亿 → 4.6×</b>。注意这三者都是"同一座工厂"的不同利润视角——<b>从生产端看，五粮液本就是年产出 319–419 亿利润的产能</b>，当前 200 亿仅是去库存谷值下的保守取值。而且你付 2,620 亿买的是"1,910 运营 + 710 现金"，710 亿是实打实现金未来返还 = 运营资产只花了 1,910 亿（约 73 折）。若按正常产能 319 亿、要求回报 8%、永续增长 2%，合理运营价值 = 319/(8%−2%) = <b>5,317 亿</b>，远高于现 1,910 亿。</div>
+</div>
+
+<div class="card">
+  <h2>二、最低运营现金与可动用自由现金</h2>
+  <p style="font-size:14px">白酒"先打款后发货"，营运资本本质负向，日常周转几乎不靠现金垫支。维持正常运转，最低只需：</p>
+  <table>
+    <thead><tr><th>项目</th><th>Lean 地板</th><th>Prudent 审慎</th></tr></thead>
+    <tbody>
+      <tr><td>营运资金缓冲</td><td class="num">30</td><td class="num">50</td></tr>
+      <tr><td>税金浮动（消费税+所得税季缴）</td><td class="num">35</td><td class="num">75</td></tr>
+      <tr><td>维护性 capex（1 年）</td><td class="num">20</td><td class="num">25</td></tr>
+      <tr><td>安全垫（2–3 月流出）</td><td class="num">30</td><td class="num">100</td></tr>
+      <tr><td><b>合计</b></td><td class="num bad">≈115</td><td class="num bad">≈250</td></tr>
+    </tbody>
+  </table>
+  <div class="note">账上 1,240 亿里真正"运营用不到"的自由现金：Lean 1,125 亿 / Prudent 990 亿 / 保守（再预留 1 年分红 200）790 亿。<b>现金流铁证</b>：2025 经营现金流 +297.1 亿、2024 +339.4 亿，远超 capex（~20 亿），分红 284 亿后现金仍稳在 ~1,240 亿——<b>现金堆是"自维持"的，本质是股东可分配盈余，不是运营血液</b>。正常年（2024 净利 318.5 亿）运营 PE 仅 ≈6×。</div>
+</div>
+
+<div class="card">
+<h2>三、对"2000 亿永续资产"的闭环验证（含产能口径）</h2>
+<ul>
+  <li><b>成立且是强价值信号。</b> 运营 PE 在 9.5×→6×→4.6× 之间（对应 200/319/419 亿利润），在千年品牌 + 定价权 + 零负债的垄断资产上，远超无风险利率（2–3%）数倍。</li>
+  <li><b>"200 亿"是保守归一化值，非工厂常态。</b> 介于 2026E 152.6 亿与 2024 正常 318.5 亿之间；Q1 2026 已 80.6 亿（+82.6%）显复苏。从生产端看，五粮液<b>满产满销本就年赚 319 亿（2024 已实现）、名义出厂价下约 419 亿</b>——当前 120–200 亿是去库存+批价倒挂的确认谷值，是"暂挂"而非"产能塌方"。</li>
+  <li><b>隐藏 kicker：</b> 710 亿现金未来通过分红/回购返还，等于运营资产打折；即便 0 增长已 10.5% 收益率，任何增长都是纯上行。</li>
+</ul>
+  <div class="caveat">⚠️ 前提校准：① "股价不涨"只服务于回购买盘模型，本拆解是"读当前价格"视角，不依赖回购；② 2025 净利 89.54 亿为追溯重述谷值，建模正常年利润请取 200–300 亿，别当常态；③ 80–100 亿回购截至 2026-09 仅执行 ~12 亿，远未拉满。</div>
+</div>
+
+<div class="card">
+  <h2>四、结论</h2>
+  <p style="font-size:14px">五粮液估值被"高现金 + 低 PE"双重压低：2,620 亿市值里，<b>710 亿是实打实现金、1,910 亿是永续运营资产</b>。这座工厂从生产端看<b>年产出利润 319–419 亿</b>（2024 已实现 318.5 亿）；当前仅按去库存谷值保守取 200 亿 → 运营 PE ≈9.5×，回到正常产能 319 亿 → PE 仅 ≈6×。扣除最低运营现金后仍有 ~800–1,100 亿自由现金可回报股东。这是支撑"低估 + 高安全边际"结论的估值底座。</p>
+  <div class="note">配套工具：<span class="pill">交互模型</span>《五粮液_未来5年利润分红推演_20261013.html》——可编辑参数（净利 2026E 152.6→2030E 223 亿、分红保底 ≥200 亿），含失真警告，建议保留单独使用。</div>
+</div>
+
+<div class="src">整合来源：五粮液 2025 年报 / 2026Q1 / 现金流量表 / 回购进展公告；本页为合并汇编，非投资建议。</div>
+</body>
+</html>

@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>投资研究 · LYH</title>
-<meta name="description" content="不荐股、不预测股价：把一家公司拆成生意、账本、价格三件事，按历史、现在、未来归档。">
+<meta name="description" content="不荐股、不预测股价：把一家公司拆成生意、账本、价格三件事，按历史、现在、未来读完。">
 <meta name="theme-color" content="#fffaf3">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23d1001f'/%3E%3Ctext x='32' y='46' font-size='38' font-family='Arial,sans-serif' font-weight='bold' text-anchor='middle' fill='%23ffffff'%3EL%3C/text%3E%3Crect x='42' y='8' width='15' height='5' rx='2.5' fill='%2357cf95'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
 <style>
-/* ---------- 投资页：研究说明 + 时间目录 ---------- */
+/* ---------- 投资页：说明 + 维度 + 目录 ---------- */
 .tiers{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:11.5px;color:var(--muted)}
-.tiers span{position:relative}
 .tiers b{color:var(--ink);font-weight:750;margin-right:4px}
 
 .sh{display:flex;align-items:center;gap:12px;margin:34px 0 14px;
@@ -27,48 +26,43 @@
 .dim b{display:block;font-size:14px;font-weight:800;margin-bottom:5px;letter-spacing:-.01em}
 .dim span{display:block;font-size:11.5px;line-height:1.65;color:var(--muted)}
 
-.vols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.vol{display:flex;flex-direction:column;gap:5px;padding:16px;background:var(--paper);
-  border:1.5px solid var(--line);border-radius:18px;box-shadow:var(--shadow);
-  transition:transform .22s,border-color .22s,box-shadow .22s}
-.vol:hover{transform:translateY(-3px);border-color:var(--red);box-shadow:var(--shadow-hi)}
-.v-t{font-size:13.5px;font-weight:800;line-height:1.45;letter-spacing:-.01em}
-.v-m{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted)}
-.v-a{align-self:flex-end;font-size:12px;color:var(--muted);margin-top:4px;transition:color .2s}
-.vol:hover .v-a{color:var(--red)}
-
-.zone{margin-bottom:26px}
-.zhd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
-  border-bottom:2px solid var(--ink);padding-bottom:9px}
-.z-t{font-size:19px;font-weight:800;letter-spacing:-.01em}
-.z-en{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--muted)}
-.z-r{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink);
-  border:1.5px solid var(--line);border-radius:999px;padding:2px 9px;background:var(--soft)}
-.z-d{margin-left:auto;font-size:11px;color:var(--muted)}
-.toc{display:grid}
-.row{display:grid;grid-template-columns:38px 1fr auto 16px;gap:14px;align-items:start;
-  padding:13px 6px 13px 0;border-bottom:1px dashed var(--line);
-  transition:background .2s,padding .2s,color .2s}
-.row:hover{background:var(--soft);padding-left:10px;padding-right:8px;border-radius:2px}
-.no{font-family:var(--mono);font-size:10px;color:var(--muted);padding-top:3px;letter-spacing:.06em}
-.body{display:flex;flex-direction:column;gap:3px;min-width:0}
-.tt{font-size:14px;font-weight:750;line-height:1.45;letter-spacing:-.005em;overflow-wrap:anywhere}
-.dd{font-size:11.5px;line-height:1.62;color:var(--muted);overflow-wrap:anywhere}
-.src{font-size:10px;padding:3px 9px;border-radius:999px;background:var(--soft);
-  color:var(--muted);white-space:nowrap;margin-top:2px;border:1px solid var(--line)}
-.ar{font-size:11px;color:var(--muted);padding-top:3px;transition:transform .2s,color .2s}
-.row:hover .ar{color:var(--red);transform:translateX(2px)}
-.row:hover .tt{color:var(--red)}
+/* 目录：一条目 = 一卷 */
+.catalog{display:grid;gap:14px}
+.vol{padding:20px 22px 16px;background:var(--paper);border:1.5px solid var(--line);
+  border-radius:22px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  transition:border-color .22s,box-shadow .22s,transform .22s}
+.vol::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:var(--red);transform:scaleY(0);transform-origin:center;transition:transform .3s}
+.vol:hover{border-color:var(--red);box-shadow:var(--shadow-hi);transform:translateY(-2px)}
+.vol:hover::before{transform:scaleY(1)}
+.vol-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.vol-no{font-family:var(--serif);font-size:12px;font-weight:700;color:var(--muted);flex:none}
+.vol-t{font-size:18px;font-weight:800;letter-spacing:-.015em;line-height:1.4;
+  display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+.vol-t:hover{color:var(--red)}
+.vol-t .ar{font-size:12px;color:var(--muted);transition:transform .2s,color .2s}
+.vol-t:hover .ar{color:var(--red);transform:translate(2px,-2px)}
+.vol-tag{margin-left:auto;font-size:10.5px;font-weight:800;padding:3px 10px;border-radius:999px;
+  background:var(--soft);color:var(--muted);border:1px solid var(--line);white-space:nowrap}
+.vol-d{margin:8px 0 0 26px;font-size:12.5px;line-height:1.75;color:var(--muted);max-width:64ch}
+.vol-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  margin:12px 0 0 26px;padding-top:11px;border-top:1px dashed var(--line)}
+.vol-m{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:10.5px;line-height:1;padding:6px 10px;border-radius:999px;
+  border:1px solid var(--line);background:var(--bg);color:var(--muted);
+  transition:border-color .18s,color .18s,background .18s}
+a.chip:hover{border-color:var(--red);color:var(--red);background:var(--paper)}
 
 @media(max-width:640px){
   .dims{grid-template-columns:1fr 1fr}
-  .vols{grid-template-columns:1fr}
   .sh{margin:28px 0 12px}
-  .z-d{margin-left:0;width:100%;font-size:10.5px;line-height:1.5}
-  .row{grid-template-columns:26px 1fr 14px;gap:10px}
-  .src{display:none}
-  .tt{font-size:13.5px}
-  .dd{font-size:11px}
+  .vol{padding:16px 16px 13px;border-radius:18px}
+  .vol-t{font-size:16px}
+  .vol-d{margin-left:0;font-size:12px}
+  .vol-foot{margin-left:0;gap:9px}
+  .vol-tag{margin-left:0}
+  .chip{font-size:10px;padding:5px 9px}
 }
 </style>
 </head>
@@ -88,11 +82,8 @@
     <div class="sh">研究什么 / Dimensions</div>
     <div class="dims" id="dims"></div>
 
-    <div class="sh">整卷 / Volumes</div>
-    <div class="vols" id="vols"></div>
-
-    <div class="sh">目录 · 按时间归档 / Archive</div>
-    <div id="zones"></div>
+    <div class="sh">目录 / Catalog</div>
+    <div class="catalog" id="catalog"></div>
   </main>
 
   <footer>

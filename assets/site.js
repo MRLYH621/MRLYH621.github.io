@@ -3,10 +3,12 @@
    items[].views 是「访问量」排序依据：目前为示例值，
    接真实统计时把 views 换成接口返回的数字即可，其余逻辑不用动。
    items[].u 有值时，卡片变成可点链接（新窗口打开）。
-   invest 段落额外支持 dims / vols / zones：
-     dims = 研究维度（答什么问题）
-     vols = 整卷入口
-     zones = 按时间归档（历史 / 现在 / 未来），now 区年限自动取「去年–今年」
+   invest 段落额外支持：
+     tiers = 数据三档标注（事实 / 推算 / 假设）
+     dims  = 研究维度（这家研究回答什么问题）
+     items[].m      = 体量（章节数 / 图表数）
+     items[].chips  = 分区跳转标签，有 u 就跳锚点，没 u 只是文字
+   首页只做「说明 + 目录」；历史 / 现在 / 未来 的分区在各卷内部。
    ======================================================== */
 const SITE = {
   name: "LYH",
@@ -17,8 +19,8 @@ const SITE = {
     {
       key: "invest", file: "invest.html", zh: "投资", en: "VALUE INVESTING",
       headline: "投资研究",
-      short: "把公司拆成生意、账本、价格三件事，按历史、现在、未来归档。",
-      intro: "这里不荐股，也不预测股价。只做一件事：把一家公司拆到能回答三个问题——它靠什么赚钱、赚到的钱是不是真的、现在这个价格已经隐含了什么假设。答案按时间归档：历史只做核对，现在只做定价，未来只写能被推翻的条件。",
+      short: "把公司拆成生意、账本、价格三件事，按历史、现在、未来读完。",
+      intro: "这里不荐股，也不预测股价。只做一件事：把一家公司拆到能回答三个问题——它靠什么赚钱、赚到的钱是不是真的、现在这个价格已经隐含了什么假设。每家都按同一套顺序读：先核对历史，再给当下定价，最后写下能被推翻的前提。",
       tiers: [
         "<b>事实</b> 原始披露，可回溯",
         "<b>推算</b> 可复算的算术",
@@ -32,54 +34,37 @@ const SITE = {
         { en: "CYCLE",    t: "周期", q: "现在站在哪一段，什么信号说明看错了" },
         { en: "TIME",     t: "时间", q: "三年、十年，每种情景各自需要什么前提" }
       ],
-      vols: [
-        { t: "投资理论与方法 · 一册通", m: "9 章 · 7 图 · 11 份研究", u: "invest-theory.html" },
-        { t: "腾讯控股 · 体系化投资研究", m: "12 节 · 5 图 · 35 份研究", u: "invest-tencent.html" },
-        { t: "泡泡玛特 · 体系化投资研究", m: "9 章 · 30+ 份专题", u: "invest-popmart.html" }
-      ],
-      zones: [
+      items: [
         {
-          key: "history", t: "历史", en: "HISTORY", range: "2014–2024",
-          note: "只做核对：当年到底发生了什么，钱是怎么长出来的",
-          items: [
-            { t: "十二年财务轨迹：一条不断加速的曲线", d: "收入 789 亿 → 6,600 亿，净利 238 亿 → 2,596 亿，11 年 10.5 倍、年化约 24%。先确认这条曲线的形状，再谈它能不能延续。", src: "腾讯 H1", u: "invest-tencent.html#h1" },
-            { t: "七个关键节点：一条年份时间线", d: "3Q 大战、微信、投资帝国、反垄断、视频号、AI——每一次转折都发生在利润表之前。", src: "腾讯 H2", u: "invest-tencent.html#h2" },
-            { t: "历史的三条规律（和一条教训）", d: "把十二年的增速、毛利、费用放到同一张表上，看哪些东西从来没变过。", src: "腾讯 H3", u: "invest-tencent.html#h3" },
-            { t: "第一原理：格雷厄姆 1934 年的 7 部 52 章", d: "内在价值、安全边际、投资与投机的分野、市场先生——后面所有估值方法的源头。", src: "方法论 01", u: "invest-theory.html#m1" },
-            { t: "周期与泡沫：创业板 2015 vs 科创板 2024", d: "两轮科技牛逐项对照，得出泡沫的三个判据：估值、ROE、亏损面。涨幅会骗人，ROE 不会。", src: "方法论 06", u: "invest-theory.html#m6" },
-            { t: "低波红利 90 年实证", d: "MSCI 低波红利 8.68% vs 基准 7.44%，夏普 0.78 vs 0.50；代价是四次牛市明确踏空。", src: "方法论 05", u: "invest-theory.html#m5" }
+          t: "腾讯控股 · 体系化投资研究",
+          d: "35 份研究熔成一册：四分部与 2,596 亿利润拆解、微信与游戏两台印钞机、投资资产的三层剥离、AI 投入的真实成本与三阶段路径。卷内按「历史 → 现在 → 未来」排。",
+          m: "12 节 · 5 图",
+          tag: "公司研究", views: 9800, u: "invest-tencent.html",
+          chips: [
+            { t: "历史 H1–H3", u: "invest-tencent.html#h" },
+            { t: "现在 N1–N6 · 2025–2026", u: "invest-tencent.html#n" },
+            { t: "未来 F1–F3", u: "invest-tencent.html#f" }
           ]
         },
         {
-          key: "now", t: "现在", en: "NOW", autoRange: true,
-          note: "去年 + 今年：最新财报与当期定价，只回答「现在贵不贵」",
-          items: [
-            { t: "四分部与 2,596 亿利润拆解", d: "利润表拆到四个分部，看哪一块在赚钱、哪一块在花钱，以及拐点具体出现在哪一季。", src: "腾讯 N1", u: "invest-tencent.html#n1" },
-            { t: "游戏：850 亿从哪来", d: "本土与海外、老产品与新产品的收入结构，以及流水到收入的确认节奏。", src: "腾讯 N2", u: "invest-tencent.html#n2" },
-            { t: "微信生态：1,080 亿的三口印钞", d: "广告、支付与商业、小程序，三条变现通道各自的增速与天花板。", src: "腾讯 N3", u: "invest-tencent.html#n3" },
-            { t: "其他业务与 AI 的真实成本", d: "把 AI 从故事里拉出来：算力、折旧、人力各自吃掉多少利润。", src: "腾讯 N4", u: "invest-tencent.html#n4" },
-            { t: "当前定价：13 倍整体 PE，7.8 倍核心 PE", d: "三层剥离：剔投资资产、再剔联营收益，看核心平台业务到底卖几倍。", src: "腾讯 N5", u: "invest-tencent.html#n5" },
-            { t: "2026 这一年：已发生的与全年点估计", d: "中报实数 + 剩余季度外推，给出全年利润的点估计与区间，不留模糊。", src: "腾讯 N6", u: "invest-tencent.html#n6" },
-            { t: "调整年：Q3 收益 −45%~50% 与 16.5 倍定价", d: "高基数 + 海外线上退潮，2026 收入与利润双降；此时 16.5 倍 2026E 是贵还是便宜。", src: "泡泡玛特", u: "invest-popmart.html" },
-            { t: "收益的数学：三个因子相乘", d: "利润增长 × 估值变化 × 分红复投，10 年 8.45 倍的每一块分别来自哪里。", src: "方法论 02", u: "invest-theory.html#m2" }
-          ]
+          t: "泡泡玛特 · 体系化投资研究",
+          d: "30+ 份专题熔成一册：情绪设计工业化、IP 矩阵与艺术家归属、全球化换挡、集团化与护城河，以及调整年的估值与跟踪清单。",
+          m: "9 章 · 30+ 份专题",
+          tag: "公司研究", views: 9200, u: "invest-popmart.html",
+          chips: [{ t: "商业模式" }, { t: "IP 矩阵" }, { t: "全球化" }, { t: "估值与跟踪" }]
         },
         {
-          key: "future", t: "未来", en: "FUTURE", range: "2027 →",
-          note: "不写数字预测，只写能被推翻的条件",
-          items: [
-            { t: "三阶段时间线：投入 → 验证 → 兑现", d: "把巨额 AI 投入拆成三个阶段，标出每阶段的观察指标与时间窗。", src: "腾讯 F1", u: "invest-tencent.html#f1" },
-            { t: "三条路径：乐观 / 中性 / 悲观", d: "同一套假设下的三种结局，以及各自需要的增速与利润率前提。", src: "腾讯 F2", u: "invest-tencent.html#f2" },
-            { t: "验证清单与反证条件", d: "什么信号出现说明看对了、什么信号出现必须认错——先写下来，再持有。", src: "腾讯 F3", u: "invest-tencent.html#f3" },
-            { t: "调整年的跟踪清单与 10 年三级情景", d: "主动控速还是被动回落；成熟期利润的悲观 / 中性 / 乐观三档与对应估值。", src: "泡泡玛特 07", u: "invest-popmart.html" },
-            { t: "宏观到估值：利率是那个旋钮", d: "PE ≈ 1/(r_f + ERP − g)；利率每上行 100bp，长久期资产被压多少。", src: "方法论 08", u: "invest-theory.html#m8" }
+          t: "投资理论与方法 · 一册通",
+          d: "11 份研究熔成一册：格雷厄姆第一原理、三因子收益分解、分红与复投、4% 法则与现金贬值、低波红利 90 年实证、泡沫判据、收益率结构与利率久期。卷内方法论，供上面两家公司共用。",
+          m: "9 章 · 7 图",
+          tag: "方法论", views: 12000, u: "invest-theory.html",
+          chips: [
+            { t: "第一原理", u: "invest-theory.html#m1" },
+            { t: "收益数学", u: "invest-theory.html#m2" },
+            { t: "周期与泡沫", u: "invest-theory.html#m6" },
+            { t: "宏观到估值", u: "invest-theory.html#m8" }
           ]
         }
-      ],
-      items: [
-        { t: "投资理论与方法 · 一册通", d: "11 份研究熔成一册：格雷厄姆第一原理、三因子收益分解、分红与复投、4% 法则与现金贬值、低波红利 90 年实证、泡沫判据、收益率结构与利率久期。9 章 7 图，可离线阅读。", tag: "方法论", views: 12000, u: "invest-theory.html", chapters: ["第一原理","收益数学","因子","周期","宏观"] },
-        { t: "腾讯控股 · 体系化投资研究", d: "35 份研究去粗取精熔成一册：4 大分部、微信与游戏两台印钞机、2596 亿利润拆解、AI 投入真相与 SOTP 估值。12 节 5 图，可离线阅读。", tag: "公司研究", views: 9800, u: "invest-tencent.html", chapters: ["财务全景","游戏板块","微信生态","估值总表"] },
-        { t: "泡泡玛特 · 体系化投资研究", d: "30+ 份专题熔成一册：情绪设计工业化、IP 矩阵、全球化与集团化、艺术家护城河与 IP 归属、估值与调整年跟踪清单。9 章 2 图，持续更新。", tag: "公司研究", views: 9200, u: "invest-popmart.html", chapters: ["商业模式","IP矩阵","全球化","护城河","估值"] }
       ]
     },
     {
@@ -115,6 +100,8 @@ const TONES = [
   { c: 'var(--yellow)', on: '#2b2320' },
   { c: 'var(--mint)',   on: '#12301f' }
 ];
+/* 目录条目一律新窗口打开：读完能退回来继续看目录 */
+const linkAttrs = () => ' target="_blank" rel="noopener"';
 
 /* ---------- 公共：标题 / 页脚 / 主题 ---------- */
 function initCommon() {
@@ -191,8 +178,8 @@ function renderDetail(key) {
   const s = SITE.sections[idx];
   const tone = TONES[idx % TONES.length];
 
-  /* 有 zones 的段落渲染成「研究说明 + 时间目录」 */
-  if (s.zones && $('#zones')) { renderMap(s, tone); return; }
+  /* 投资页：说明 + 维度 + 目录（分区在各卷内部） */
+  if (s.dims && $('#catalog')) { renderOverview(s, tone); return; }
 
   document.title = `${s.headline || s.zh} · ${SITE.name}`;
   $('#h1Text').textContent = s.headline || s.zh;
@@ -233,11 +220,8 @@ function renderDetail(key) {
   }
 }
 
-/* ---------- 投资页：研究维度 + 整卷 + 历史/现在/未来 目录 ---------- */
-/* 目录条目一律新窗口打开：读完能退回来继续看目录 */
-const linkAttrs = () => ' target="_blank" rel="noopener"';
-
-function renderMap(s, tone) {
+/* ---------- 投资页：这份研究干什么 + 六个维度 + 目录 ---------- */
+function renderOverview(s, tone) {
   document.title = `${s.headline || s.zh} · ${SITE.name}`;
   $('#h1Text').textContent = s.headline || s.zh;
   $('#brand').textContent = `${SITE.name} / ${s.en}`;
@@ -257,41 +241,23 @@ function renderMap(s, tone) {
       </div>`).join('');
   }
 
-  if ($('#vols')) {
-    $('#vols').innerHTML = (s.vols || []).map(v => `
-      <a class="vol" href="${esc(resolve(v.u))}"${linkAttrs(v.u)}>
-        <span class="v-t">${esc(v.t)}</span>
-        <span class="v-m">${esc(v.m)}</span>
-        <span class="v-a" aria-hidden="true">↗</span>
-      </a>`).join('');
-  }
-
-  if ($('#zones')) {
-    const Y = new Date().getFullYear();
-    let n = 0;
-    $('#zones').innerHTML = (s.zones || []).map(z => {
-      const range = z.autoRange ? `${Y - 1}–${Y}` : (z.range || "");
-      const rows = (z.items || []).map(it => {
-        n++;
-        return `<a class="row" href="${esc(resolve(it.u))}"${linkAttrs(it.u)}>
-          <span class="no">${pad(n)}</span>
-          <span class="body">
-            <span class="tt">${esc(it.t)}</span>
-            <span class="dd">${esc(it.d)}</span>
-          </span>
-          <span class="src">${esc(it.src)}</span>
-          <span class="ar" aria-hidden="true">↗</span>
-        </a>`;
-      }).join('');
-      return `<section class="zone" id="z-${esc(z.key)}">
-        <div class="zhd">
-          <span class="z-t">${esc(z.t)}</span>
-          <span class="z-en">${esc(z.en)}</span>
-          <span class="z-r">${esc(range)}</span>
-          <span class="z-d">${esc(z.note)}</span>
+  if ($('#catalog')) {
+    $('#catalog').innerHTML = (s.items || []).map((it, i) => {
+      const chips = (it.chips || []).map(c => c.u
+        ? `<a class="chip" href="${esc(resolve(c.u))}"${linkAttrs()}>${esc(c.t)}</a>`
+        : `<span class="chip">${esc(c.t)}</span>`).join('');
+      return `<article class="vol">
+        <div class="vol-head">
+          <span class="vol-no">${pad(i + 1)}</span>
+          <a class="vol-t" href="${esc(resolve(it.u))}"${linkAttrs()}>${esc(it.t)}<span class="ar" aria-hidden="true">↗</span></a>
+          ${it.tag ? `<span class="vol-tag">${esc(it.tag)}</span>` : ""}
         </div>
-        <div class="toc">${rows}</div>
-      </section>`;
+        <p class="vol-d">${esc(it.d)}</p>
+        <div class="vol-foot">
+          <span class="vol-m">${esc(it.m || "")}</span>
+          <div class="chips">${chips}</div>
+        </div>
+      </article>`;
     }).join('');
   }
 }

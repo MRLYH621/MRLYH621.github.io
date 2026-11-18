@@ -40,13 +40,14 @@ const SITE = {
       items: [
         {
           t: "腾讯控股 · 体系化投资研究",
-          d: "35 份研究熔成一册：四分部与 2,596 亿利润拆解、微信与游戏两台印钞机、投资资产的三层剥离、AI 投入的真实成本与三阶段路径。卷内按「历史 → 现在 → 未来」排。",
-          m: "12 节 · 5 图",
+          d: "35 份研究熔成一册：四分部与 2,596 亿利润拆解、微信与游戏两台印钞机、投资资产的三层剥离、AI 投入的真实成本与三阶段路径，末章新增三大追问（市场恐惧 / AI 颠覆 / 下一块屏幕）。卷内按「历史 → 现在 → 未来」排。",
+          m: "13 节 · 6 图",
           tag: "公司研究", views: 9800, u: "invest-tencent.html",
           chips: [
             { t: "历史 H1–H3", u: "invest-tencent.html#h" },
             { t: "现在 N1–N6 · 2025–2026", u: "invest-tencent.html#n" },
-            { t: "未来 F1–F3", u: "invest-tencent.html#f" }
+            { t: "未来 F1–F5", u: "invest-tencent.html#f" },
+            { t: "三大追问 · 独立专题", u: "invest-tencent-future.html" }
           ]
         },
         {

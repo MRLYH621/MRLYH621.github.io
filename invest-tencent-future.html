@@ -142,6 +142,21 @@ tbody tr:hover{background:rgba(91,156,255,.045)}
 .ans .row{flex-direction:column;gap:3px}.ans .row .k{flex:auto}
 table{min-width:520px}
 }
+
+.anx{background:rgba(167,139,250,.05);border:1px solid var(--bd);border-left:3px solid var(--pur);border-radius:12px;padding:18px 20px;margin:16px 0}
+.anx.b{border-left-color:var(--blu);background:rgba(91,156,255,.05)}
+.anx-h{display:flex;align-items:center;gap:11px;margin-bottom:9px}
+.anx-n{flex:0 0 auto;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-weight:900;font-size:15px;background:var(--pur);color:#1a1030}
+.anx.b .anx-n{background:var(--blu);color:#08182e}
+.anx-h h3{font-size:16.5px;margin:0}
+.anx-lead{font-size:13px;color:var(--sub);margin-bottom:12px;line-height:1.75}
+.quote{border-left:3px solid var(--amb);background:rgba(245,181,68,.07);padding:10px 14px;margin:12px 0;border-radius:0 9px 9px 0;font-size:13px;line-height:1.8}
+.quote .qby{display:block;color:var(--amb);font-size:11px;margin-top:5px;font-weight:700}
+.formula{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;background:rgba(47,212,167,.06);border:1px dashed var(--teal);border-radius:11px;padding:16px;margin:14px 0;text-align:center}
+.formula .f{font-size:16px;font-weight:800;color:var(--teal)}
+.formula .op{font-size:18px;color:var(--sub)}
+.anx h4{color:var(--teal)}
+.anx.b h4{color:var(--blu)}
 </style>
 </head>
 <body>
@@ -150,6 +165,7 @@ table{min-width:520px}
 <a href="#q1">① 恐惧什么</a><a href="#q2">② 哪里被颠覆</a>
 <span class="navsep"></span><a href="#q3a">③ AI社交</a><a href="#q3b">硬件替代</a>
 <span class="navsep"></span><a href="#q4">④ 路线之辨</a><a href="#ans">一句话回答</a>
+<span class="navsep"></span><a href="#th">理论附注</a>
 </div></nav>
 
 <div class="wrap">
@@ -168,7 +184,7 @@ table{min-width:520px}
 
 <div class="card" style="margin-top:18px">
   <h3>怎么读这份报告 <span class="en">HOW TO READ</span></h3>
-  <div class="note">全文每个关键数字都带来源标签。<b class="teal">事实</b>＝财报/官方/权威机构已披露；<b class="blu">估算</b>＝基于事实的量化推算；<b class="amb">推演</b>＝尚未发生的假设，集中放在虚线框内，<b>不当作结论</b>。跨公司对比（豆包/拼多多/字节）只作量级标尺，不构成"腾讯必然如此"的证据。</div>
+  <div class="note">全文每个关键数字都带来源标签。<b class="teal">事实</b>＝财报/官方/权威机构已披露；<b class="blu">估算</b>＝基于事实的量化推算；<b class="amb">推演</b>＝尚未发生的假设，集中放在虚线框内，<b>不当作结论</b>。跨公司对比（豆包/拼多多/字节）只作量级标尺，不构成"腾讯必然如此"的证据。<br><b class="pur">文末理论附注</b>单列了两个推理骨架——<a href="#thA" style="color:var(--blu)">网络效应归属</a>与<a href="#thB" style="color:var(--blu)">俞军公式（迁移成本）</a>，它们是第四问的底层模型，可独立阅读。</div>
 </div>
 
 <!-- Q1 -->
@@ -422,7 +438,7 @@ table{min-width:520px}
 
   <div class="spec"><div class="sh"><span class="ic">推演 · 非事实</span> 未来会长成什么样</div>
     <div>纯 AI-first 独立社交网络<b>大概率长不成微信级</b>——网络效应和迁移成本的铁律摆在那里。更可能的四条演化路径：<b>① 融合</b>：AI-first 的能力（分身、长期记忆、主动服务）被 Social-first 平台吸收，Elys 改版成 Personal Agent 就是在往这边靠。<b>② 通讯录 Agent 化</b>：小微 AI 社交＝你的 AI 找好友的 AI，这是"社交做 AI"的最高形态，却用 AI-first 的技术。<b>③ 垂直情感陪伴</b>：不追求做大网络，做可持续的情感消费品，前提是把推理成本压下来或转向 B 端（心理、老人陪伴）。<b>④ 新硬件上的在场感</b>：AI 眼镜/吊坠让 AI"始终在场"，社交从"打开 App"变成"随时有人听"——这最可能催生真正的 AI-first 社交，但与第三问的硬件线汇合，短期受制于续航与"必须配手机"。<b>最可能的终局不是谁替代谁，而是"关系链 × Agent 能力"的组合</b>：腾讯握着不可复制的关系链，要补的是 Agent；创业公司握着 Agent，缺的是关系链——所以 Elys 们最终会回头做社交，与微信正面相遇，但迁移成本是微信的护城河。</div>
-    <div class="dim">性质：以上为路径推演，非事实。跨公司对比（Character.AI / Elys / Muse）只作量级标尺。</div>
+    <div class="dim">性质：以上为路径推演，非事实。跨公司对比（Character.AI / Elys / Muse）只作量级标尺。判断依据见文末<a href="#th" style="color:var(--blu)">理论附注</a>。</div>
   </div>
 </div>
 
@@ -433,10 +449,109 @@ table{min-width:520px}
   <div class="row"><div class="k">③ AI 社交与硬件</div><div class="v">微信短板在"永远在线的焦虑 + 关系池混杂"，AI 能补协调性事务、补不了情感温度；AI 社交的终局大概率是<b>通讯录 Agent 化</b>而非新 App。手机短期不会被完全颠覆，但正被逐场景剥离；<b>"无感充电"的现实解法是用形态换续航，而非电池突破</b>——身体舒适度才是护城河。</div></div>
   <div class="row"><div class="k">④ 两句话的顺序</div><div class="v">"围绕社交做 AI"＝AI 是关系的工具，网络效应沉淀在真人关系链，迁移成本极高（微信）；"围绕 AI 做社交"＝AI 是关系的目的，用户之间不连接、网络效应≈0、且聊越久亏越多——<b>Character.AI 破产就是这条路的单位经济判决</b>。世界上有尝试（Elys／Muse／陪伴类），但没有一个跑成真社交网络。<b>终局不是谁替代谁，而是"关系链 × Agent"的组合</b>：腾讯握关系链补 Agent，创业公司握 Agent 补关系链。</div></div>
   <div class="row"><div class="k">投资含义</div><div class="v">当前 12–13x 定价的是"AI 投入的成本"，没有为"Agent 变现的期权"付费。<b>这是便宜，但不是无风险</b>——重估需要四盏灯依次亮：美债利率回落、南向资金持续净流入、capex 环比见顶、剔除预付款 FCF 连续转正 + 云 AI 收入单独披露。前两盏解决"不跌"，后两盏解决"重估"。</div></div>
+
+<div class="sec" id="th">
+  <div class="qhead"><div class="qn teal">附</div><div>
+    <h2>理论附注：两个决定答案的底层模型 <span class="en">THEORY APPENDIX</span></h2>
+    <div class="sub">第四问不是靠直觉，而是靠两个成熟理论推出来的。<b>归属</b>回答"价值沉淀在谁身上"，<b>迁移成本</b>回答"用户为什么不搬"。这两节可独立于正文阅读——它们是判断任何社交/平台生意的通用尺子。<b class="amb">附注只解释推理工具，不改变正文的事实结论。</b></div>
+  </div></div>
+
+  <div class="anx" id="thA">
+    <div class="anx-h"><div class="anx-n">A</div><div><h3>网络效应归属：价值最终沉淀在谁身上</h3></div></div>
+    <div class="anx-lead">"网络效应"人人都听过，但真正决定胜负的不是"有没有网络效应"，而是<b>它附着在哪一层</b>——是关系链、算法、数据，还是某个 AI 人格。附着点变了，护城河就完全不同。这是分析微信与 AI-first 社交最关键的一把刀。</div>
+
+    <h4>A.1 定义：用户越多，每个用户越值钱</h4>
+    <div class="note">网络效应（Network Effect）指一个产品对用户的价值，取决于使用它的人有多少——用户越多，每个用户获得的价值越高。于是形成正反馈：<b>用户多 → 价值高 → 吸引更多用户 → 价值更高</b>。这就是互联网容易"赢家通吃"的根本原因。1990 年代以来的研究已识别出 5 大类 13 种网络效应（NFX, 2018），下面三条定律是它的数学骨架。</div>
+
+    <h4>A.2 三条定律与一次修正</h4>
+    <div class="tblwrap"><table>
+      <tr><th class="l">定律 / 模型</th><th class="l">主张</th><th class="l">提出者与年份</th><th class="l">含义</th></tr>
+      <tr><td class="l">梅特卡夫定律</td><td class="l">价值 ∝ n²</td><td class="l">以太网之父 Robert Metcalfe，1980</td><td class="l">用户翻倍价值约翻四倍。100 万 vs 90 万用户只差 1.23 倍；但若一方停滞在 90 万、另一方涨到 200 万，差距立刻拉到 4.9 倍——"强者愈强"</td></tr>
+      <tr><td class="l">里德定律</td><td class="l">价值 ∝ 2ⁿ</td><td class="l">David Reed，2001</td><td class="l">允许形成群组的网络价值按指数增长。解释微信为何不止是"两两通话"——群聊、公众号、小程序等多个群体叠加，价值远超简单连接</td></tr>
+      <tr><td class="l">关键修正：n·log n</td><td class="l">价值 ∝ n·log n</td><td class="l">Briscoe / Odlyzko / Tilly，IEEE Spectrum 2006</td><td class="l"><b>《Metcalfe's Law is Wrong》</b>：n² 假设所有连接同等有价值，但你不会和十亿微信用户互动，只在乎几十到几百段真实关系。用户从 10 万到 20 万，梅特卡夫预测价值×4，n·log n 只预测×2.1</td></tr>
+      <tr><td class="l">现实：S 曲线</td><td class="l">先慢后快再饱和</td><td class="l">后续实证研究</td><td class="l">跨过临界点前价值几乎为零（所以要烧钱补贴），跨过后自我强化，但超过某点后边际节点价值下降——微信在亚洲新增一千万用户，对美国用户的价值很有限</td></tr>
+    </table></div>
+    <div class="chartbox sm" id="ch_neffect"></div>
+    <div class="note">上图说明：<b class="amb">梅特卡夫曲线过于乐观</b>，真实网络更接近 n·log n 与 S 曲线。这解释了为什么"用户数×估值"的故事在 dot-com 泡沫后崩塌——也会在下面解释 AI-first 社交为什么算不过账。</div>
+
+    <h4>A.3 五种网络效应，五种"归属"</h4>
+    <div class="tblwrap"><table>
+      <tr><th class="l">类型</th><th class="l">价值附着在哪</th><th class="l">代表</th><th class="l">迁移难度</th></tr>
+      <tr><td class="l">直接网络效应（同侧）</td><td class="l">真人关系链本身</td><td class="l">微信、WhatsApp、电话</td><td class="l"><b class="teal">极高</b>——关系搬不走</td></tr>
+      <tr><td class="l">间接 / 双边（跨侧）</td><td class="l">平台规则 + 双边流动性</td><td class="l">Visa、淘宝、滴滴、App Store</td><td class="l">高——两边要一起搬</td></tr>
+      <tr><td class="l">数据网络效应</td><td class="l">算法模型（越用越聪明）</td><td class="l">Google 搜索、TikTok 推荐</td><td class="l">中高——数据飞轮难复制</td></tr>
+      <tr><td class="l">社会 / 身份网络效应</td><td class="l">身份符号与圈层认同</td><td class="l">iMessage 蓝绿气泡、LinkedIn、iPhone 生态</td><td class="l">高——换产品等于脱离圈子</td></tr>
+      <tr><td class="l">技术性能 / 协议 / 物理</td><td class="l">标准与兼容网络</td><td class="l">以太网、5G 设备</td><td class="l">高——生态锁定</td></tr>
+    </table></div>
+    <div class="hl g"><b>"归属"就是问：价值沉淀在哪一层？</b> 谁拥有那个附着点，谁就拥有护城河。<br>
+    · <b>微信</b>的归属＝真人关系链（直接）＋社会身份（蓝绿气泡）＋双边（商家与支付）。关键：<b class="teal">价值沉淀在"你认识的那几百个人"身上，而不是沉淀在微信这个 App 或某个 AI 上。</b><br>
+    · <b>Character.AI</b> 的归属＝<b class="red">几乎没有</b>。用户之间不连接，用户 A 的存在对用户 B 毫无价值，所以它只有很弱的数据网络效应——模型并未因为用户多而显著领先，推理成本却随聊天时长线性上升。归属≈0 → 没有护城河 → 破产。<br>
+    · <b>TikTok / 抖音</b>的归属＝数据＋推荐算法，这是它抢走时长的真正武器。<b>Meta AI</b> 的归属＝FB / IG / WhatsApp 的社交图谱（Social-first 的胜利），所以它一出生就近 10 亿 MAU。</div>
+
+    <h4>A.4 三个推论</h4>
+    <div class="note">
+      <b>① 归属决定迁移成本。</b>归属在"关系链"的生意，用户搬不走（要搬几百个人）；归属在"模型 / AI 人格"的生意，换个 AI 几乎没有代价。<br>
+      <b>② AI-first 有个"死亡交叉"。</b>想建立网络效应，就必须让用户彼此连接——可那等于回头做社交网络，你做不过微信；若不连接，就没有网络效应，只能靠模型能力硬撑，而模型没有独占性。两头堵死。<br>
+      <b>③ 数据网络效应是 AI 时代唯一的新归属点。</b>谁掌握真实场景的长程任务数据，谁的模型越用越聪明。这正是"社交做 AI"的隐含优势——微信的任务数据（小微）＋云上的企业数据（WorkBuddy）。但注意：它能加固社交，不能替代社交。
+    </div>
+    <div class="warn"><b>负向网络效应</b>：连接过度反而毁价值——拥塞、信息过载、社交表演化。<b>朋友圈发布量较 2021 峰值下降约 37%</b>，就是微信自己的负网络效应信号（关系池混杂、人人设包袱）。这也是第四问里"永远在线的焦虑"的理论根源。</div>
+  </div>
+
+  <div class="anx b" id="thB">
+    <div class="anx-h"><div class="anx-n">B</div><div><h3>迁移成本：俞军公式为什么是社交的"铁律"</h3></div></div>
+    <div class="anx-lead">如果说网络效应解释了"微信为什么值钱"，俞军公式就解释了"用户为什么搬不走"。它看似简单，却是理解所有产品迁移的底层模型——也是第四问里"关系链是护城河"的公式化表达。</div>
+
+    <h4>B.1 公式原文与使用边界</h4>
+    <div class="formula"><span class="f">用户价值</span><span class="op">＝</span><span class="f">新体验</span><span class="op">−</span><span class="f">旧体验</span><span class="op">−</span><span class="f">替换成本</span></div>
+    <div class="quote">"用户价值 ＝ 新体验 − 旧体验 − 替换成本。这个公式是一个主观价值判断的辅助工具，<b>不是一个真的可以用加减法运算的公式</b>。"<span class="qby">—— 俞军《俞军产品方法论》· 原书明确标注使用边界 <span class="tag t-fact">事实</span></span></div>
+    <div class="note">俞军（百度贴吧、百度搜索、滴滴产品负责人）在百度把早期"产品经理十二条"简化成这一条公式，2016 年加入滴滴时公开讲过；36 氪早期报道写作"用户净收益＝（新体验 − 旧体验）− 切换成本"，<b>替换成本＝切换成本</b>，同一回事。<b class="amb">本报告严格按原书边界：只用它做定性判断，不代入数字算"精确净收益"。</b></div>
+
+    <h4>B.2 三条提升路径 + 替换成本到底是什么</h4>
+    <div class="grid2">
+      <div class="hl g"><b>提升用户价值三条路</b><br>① 新体验最大化 ② 旧体验最小化 ③ 替换成本降低。三者互相影响，要在约束条件下做资源最优配置，而不是单点击穿。</div>
+      <div class="hl"><b>俞军对替换成本的原话</b><br>"最常见的替换成本是<b>认知成本、获取成本、使用成本</b>，广义来说，价格和所有交易成本也都是替换成本。" <span class="tag t-fact">事实</span></div>
+    </div>
+    <div class="tblwrap"><table>
+      <tr><th class="l">替换成本</th><th class="l">是什么</th><th class="l">社交场景下的分量</th></tr>
+      <tr><td class="l">认知成本</td><td class="l">知道有这个产品、理解它是干嘛的</td><td class="l">低——AI 社交概念并不难懂</td></tr>
+      <tr><td class="l">获取成本</td><td class="l">下载、注册、付费、拿准入（如邀请码）</td><td class="l">低</td></tr>
+      <tr><td class="l">使用成本</td><td class="l">学新界面、养新习惯、迁数据</td><td class="l">中</td></tr>
+      <tr><td class="l">关系链成本 <span class="tag t-est">本报告补充</span></td><td class="l">放弃旧关系网，重新加一遍好友</td><td class="l"><b class="red">极高——社交产品的替换成本大头</b></td></tr>
+      <tr><td class="l">社会 / 身份成本</td><td class="l">圈子里别人用什么（蓝绿气泡效应）</td><td class="l">高——换产品等于脱离圈子</td></tr>
+      <tr><td class="l">沉没成本</td><td class="l">历史记录、等级、资产、肌肉记忆</td><td class="l">中高——越久越重</td></tr>
+    </table></div>
+    <div class="chartbox sm" id="ch_migrate"></div>
+    <div class="note">上图为<b class="amb">定性示意（5 分制），非精确测算</b>：迁移到 AI-first 社交，用户要放弃的替换成本几乎全面更高，尤以"关系链"最突出；留在"微信＋小微"则几乎不用搬家。这是"Social-first 赢"的公式化表达。</div>
+
+    <h4>B.3 "旧体验为零"的新场景为什么最关键</h4>
+    <div class="note">公式里<b>旧体验是被减项</b>。如果用户在某场景从来没有旧体验（＝0），新产品只要新体验足够大，就容易被接受。早期搜索引擎、微信、智能手机、滴滴，都是在特定场景创造了"旧体验≈0"或巨大体验差。<br><br>
+    这正好戳中 AI-first 社交的困境：它面对的"旧体验"是微信——一个占据十几亿人十几年的强旧体验。要让人迁移，新体验必须大到覆盖"巨大旧体验 ＋ 巨大替换成本"，几乎不可能。<b class="teal">反过来，如果它找一个微信没覆盖的新场景（如情感陪伴，旧体验≈0），就能起来——但那不是社交网络的替代，而是新品类，天花板受限于"无网络效应"。</b></div>
+
+    <h4>B.4 把公式套回第四问（定性推演 <span class="tag t-spec">推演</span>）</h4>
+    <div class="tblwrap"><table>
+      <tr><th class="l">场景</th><th class="l">新体验</th><th class="l">旧体验</th><th class="l">替换成本</th><th class="l">净判断</th></tr>
+      <tr><td class="l">迁去 AI-first 社交</td><td class="l">中（新鲜感）</td><td class="l"><b class="red">极高</b>（微信十几年关系与习惯）</td><td class="l"><b class="red">极高</b>（关系链搬不走）</td><td class="l"><b class="red">大幅为负 → 不搬</b></td></tr>
+      <tr><td class="l">留在微信＋小微</td><td class="l">中高（AI 帮忙做事）</td><td class="l">低（还是同一个微信）</td><td class="l"><b class="teal">≈0</b>（无需搬家）</td><td class="l"><b class="teal">明显为正 → 接受</b></td></tr>
+    </table></div>
+    <div class="hl g"><b>关键洞察</b>：Social-first 赢，<b>不是因为它的 AI 更强，而是因为替换成本接近零</b>。同样的 AI 能力装进微信，用户不用搬；装进新 App，用户要连根拔起。迁移成本才是那条看不见的护城河。</div>
+
+    <h4>B.5 方法论的演进：从公式到交易模型</h4>
+    <div class="note">俞军的方法论经历了三次升级：<b>① 用户价值公式</b>（解释单个用户为什么搬）→ <b>② 产品是约束条件下的效用组合</b>（多个效用如何权衡）→ <b>③ 完整交易模型理论</b>（引入经济学，解释多边市场怎么运转）。<br><br>
+    这个演进本身就说明：<b class="teal">公式擅长解释"用户为什么搬"，但不擅长解释"平台怎么运转"——后者要靠附注 A 的网络效应理论。</b>两个附注正好互补：A 讲价值沉淀在哪里，B 讲用户为什么搬不动，合起来就是社交护城河的完整答案。</div>
+
+    <div class="spec"><div class="sh"><span class="ic">推演 · 非事实</span> 附注的适用边界</div>
+      <div>两个理论都是<b>分析框架</b>，不是预测公式：① 网络效应的量化（n² / n·log n / S 曲线）学界至今无定论，本报告用它做定性比较，不代入估值；② 俞军公式按原书边界只做主观价值判断，不做加减运算；③ "归属"与"迁移成本六类"是本报告在经典理论上针对社交场景的<b>结构化延伸</b>，属于分析视角，不是理论原创者的原始表述。</div>
+      <div class="dim">性质：以上为方法论说明，非投资结论；所有推演均已在正文对应位置列示。</div>
+    </div>
+  </div>
   <a class="back" href="#q1">↑ 回到第一问</a>
 </div>
 
-<div class="foot">数据截至 2026-11-18 · 四问版（含追加一问）· 事实/估算/推演三档标注 · 跨公司对比仅作量级标尺<br>本文为研究讨论，不构成投资建议</div>
+
+<div class="foot-placeholder"></div>
+</div>
+
+<div class="foot">数据截至 2026-11-18 · 四问 + 理论附注版 · 事实/估算/推演三档标注 · 跨公司对比仅作量级标尺<br>本文为研究讨论，不构成投资建议</div>
 
 </div>
 
@@ -580,6 +695,37 @@ mk('ch_route',{
     itemStyle:{color:function(p){var x=p.data[0],y=p.data[1];return (x>7&&y<2)?RED:(x<3&&y>8?TEAL:(y>5?BLU:AMB))},opacity:.85},
     label:{show:true,position:'right',color:TX,fontSize:10,formatter:function(p){return p.data[3]}}
   }]
+});
+
+// 附注A：网络价值三条曲线的对比（定性归一化 0-100）
+mk('ch_neffect',{
+  backgroundColor:'transparent',
+  title:{text:'网络价值三条曲线：梅特卡夫过于乐观',left:0,top:0,textStyle:{color:TX,fontSize:13}},
+  tooltip:{trigger:'axis'},
+  legend:{data:['梅特卡夫 n²','里德 2ⁿ(压缩显示)','修正 n·log n','现实 S 曲线'],top:24,textStyle:{color:SUB,fontSize:10}},
+  grid:{left:48,right:24,top:56,bottom:34},
+  xAxis:Object.assign({type:'category',name:'用户规模 →',nameLocation:'middle',nameGap:24,nameTextStyle:{color:SUB},data:['1','2','3','4','5','6','7','8','9','10']},axisBase,{splitLine:{show:false}}),
+  yAxis:Object.assign({type:'value',name:'相对价值',max:100,nameTextStyle:{color:SUB}},axisBase),
+  series:[
+    {name:'梅特卡夫 n²',type:'line',smooth:true,data:[1,4,9,16,25,36,49,64,81,100],lineStyle:{color:AMB,width:2},itemStyle:{color:AMB},symbol:'none'},
+    {name:'里德 2ⁿ(压缩显示)',type:'line',smooth:true,data:[0,0,1,3,7,15,30,55,78,100],lineStyle:{color:PUR,width:2,type:'dashed'},itemStyle:{color:PUR},symbol:'none'},
+    {name:'修正 n·log n',type:'line',smooth:true,data:[0,6,14,24,35,47,59,72,86,100],lineStyle:{color:BLU,width:2},itemStyle:{color:BLU},symbol:'none'},
+    {name:'现实 S 曲线',type:'line',smooth:true,data:[2,5,12,27,50,73,88,95,98,100],lineStyle:{color:TEAL,width:3},itemStyle:{color:TEAL},symbol:'none',areaStyle:{color:'rgba(47,212,167,.08)'}}
+  ]
+});
+// 附注B：迁移成本六类对比（定性5分制）
+mk('ch_migrate',{
+  backgroundColor:'transparent',
+  title:{text:'迁移成本六类对比（定性示意·5分制）',left:0,top:0,textStyle:{color:TX,fontSize:13}},
+  tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
+  legend:{data:['迁去 AI-first 社交','留在微信＋小微'],top:24,textStyle:{color:SUB,fontSize:10}},
+  grid:{left:92,right:34,top:56,bottom:28},
+  xAxis:Object.assign({type:'value',min:0,max:5},axisBase),
+  yAxis:Object.assign({type:'category',data:['沉没成本','社会/身份成本','关系链成本','使用成本','获取成本','认知成本']},axisBase,{splitLine:{show:false}}),
+  series:[
+    {name:'迁去 AI-first 社交',type:'bar',data:[4,4,5,3,2,3],itemStyle:{color:RED},barWidth:'32%',label:{show:true,position:'right',color:TX,fontSize:10}},
+    {name:'留在微信＋小微',type:'bar',data:[0,0,0,1,1,2],itemStyle:{color:TEAL},barWidth:'32%',label:{show:true,position:'right',color:TX,fontSize:10}}
+  ]
 });
 // BUSINESS_JS_END
 </script>

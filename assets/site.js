@@ -51,6 +51,20 @@ const SITE = {
           ]
         },
         {
+          t: "阿里巴巴 · 十个问题：从利润还原到 AI 赌局",
+          d: "九个真问题串起阿里：不补贴能赚多少、4 年回本是不是幻觉、全买下来几年回本、AI 到底在赌什么、赢面和输的代价。附 FY2025 事实底稿与核心 PE。",
+          m: "9 问 · 问题驱动",
+          tag: "问题探索", views: 9400, u: "invest-alibaba.html",
+          chips: [
+            { t: "事实底稿", u: "invest-alibaba.html#base" },
+            { t: "正常利润", u: "invest-alibaba.html#q1" },
+            { t: "4年回本", u: "invest-alibaba.html#q3" },
+            { t: "全买下来", u: "invest-alibaba.html#q6" },
+            { t: "AI赌局", u: "invest-alibaba.html#q7" },
+            { t: "赢面与代价", u: "invest-alibaba.html#q8" }
+          ]
+        },
+        {
           t: "泡泡玛特 · 体系化投资研究",
           d: "30+ 份专题熔成一册：情绪设计工业化、IP 矩阵与艺术家归属、全球化换挡、集团化与护城河，以及调整年的估值与跟踪清单。",
           m: "9 章 · 30+ 份专题",

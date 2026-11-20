@@ -84,6 +84,8 @@ footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:v
 .card .feel{display:inline-flex;align-items:center;background:transparent;border:1px solid var(--line);color:var(--dim);border-radius:7px;padding:3px 9px;font-size:11px;margin-top:9px;cursor:pointer;transition:.15s;max-width:100%}
 .card .feel:hover{border-color:var(--accent);color:var(--accent)}
 .card .feel.has{background:#3a2f17;border-color:#8a6d2f;color:#f0c96b}
+.card .feel.bible{text-decoration:none;border-color:#7a5c2e;color:#d4a94e;background:rgba(212,169,78,.08)}
+.card .feel.bible:hover{background:#d4a94e;color:#1a1305;border-color:#d4a94e}
 .mask{position:fixed;inset:0;background:rgba(6,9,14,.74);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
 .mask.show{display:flex}
 .modal{background:var(--panel);border:1px solid var(--line);border-radius:16px;width:min(660px,100%);max-height:88vh;overflow:auto;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.55)}
@@ -183,6 +185,16 @@ TABS.forEach(t=>{
   try{done[t.id]=new Set(JSON.parse(localStorage.getItem(t.key)||'[]'))}catch(e){done[t.id]=new Set()}
   try{notes[t.id]=JSON.parse(localStorage.getItem(t.key+'_notes')||'{}')}catch(e){notes[t.id]={}}
 });
+/* 圣经在线：哥大书单中与和合本 16 卷对应的书（作者|原文书名 -> 卷名） */
+const BIBLE_BOOKS={
+  'Bible|GENESIS':'创世记','Bible|EXODUS':'出埃及记','Bible|JOB':'约伯记',
+  'Bible|PROVERBS':'箴言','Bible|ECCLESIASTES':'传道书','Bible|SONG OF SONGS':'雅歌',
+  'Bible|ISAIAH':'以赛亚书','Bible|HOSEA':'何西阿书','Bible|AMOS':'阿摩司书',
+  'Bible|JONAH':'约拿书','Bible|MATTHEW':'马太福音','Bible|LUKE':'路加福音',
+  'Bible|JOHN':'约翰福音','Bible|ROMANS':'罗马书','Bible|I CORINTHIANS':'哥林多前书',
+  'Bible|REVELATION':'启示录'
+};
+const bibleVol=d=>BIBLE_BOOKS[d[0]+'|'+d[2]];
 const $=s=>document.querySelector(s);
 const noteKey=d=>cur+'|'+d[0]+'|'+d[2];
 function saveNotes(){localStorage.setItem(curTab().key+'_notes',JSON.stringify(notes[cur]))}
@@ -205,7 +217,7 @@ function renderTabs(){
 function renderDesc(){
   const t=curTab();
   $('#desc').innerHTML=t.desc;
-  $('#footer').innerHTML=t.footer+'<br>进度与阅读感受按 tab 分别保存在本浏览器 localStorage，换设备不同步。点击卡片标记已读，点卡片里的「写阅读感受」记录想法（自动保存）。';
+  $('#footer').innerHTML=t.footer+'<br>进度与阅读感受按 tab 分别保存在本浏览器 localStorage，换设备不同步。点击卡片标记已读，点「写阅读感受」记录想法（自动保存）。带「📖 读原文」的书可在站内直接读和合本全文（覆盖书单 16 卷圣经篇目，经文来自公开和合本资源）。';
 }
 function renderCats(){
   const t=curTab(),box=$('#eras');box.innerHTML='';
@@ -240,6 +252,7 @@ function render(){
       '<span class="tag" style="background:'+catColor(t,d[4])+'">'+esc(d[4])+'</span>'+
       (d[5]?'<span class="yr">'+esc(d[5])+'</span>':'')+'</div>'+
       (d[6]?'<div class="note">'+esc(d[6])+'</div>':'')+
+      (bibleVol(d)?'<a class="feel bible" data-bible="1" href="bible.html?b='+encodeURIComponent(bibleVol(d))+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 读原文 · 和合本</a>':'')+
       '<button class="feel'+(hasNote(d)?' has':'')+'" data-note="1">'+(hasNote(d)?'✎ 查看/编辑感受':'＋ 写阅读感受')+'</button>'+
       '</div><div class="box"></div></div>';
     el.querySelector('[data-note]').onclick=ev=>{ev.stopPropagation();openNote(d)};

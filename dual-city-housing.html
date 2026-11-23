@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>双城购房生活安排决策 · 金台里 + 燕郊（五个问题）</title>
+<style>
+:root{
+  --bg:#f5f6f8; --card:#ffffff; --card2:#f0f2f5; --line:#e3e7ec;
+  --txt:#1f2733; --sub:#5b6775; --acc:#e03137; --acc2:#0e9fb8;
+  --gold:#d98a06; --teal:#1a9e77; --red:#d92d32; --blue:#2563c9; --purple:#8257c7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7;padding:0 0 60px}
+.wrap{max-width:1040px;margin:0 auto;padding:18px 18px 60px}
+h1{font-size:27px;letter-spacing:.5px;margin-bottom:8px;line-height:1.4;color:#fff}
+h2{font-size:19px;margin:36px 0 14px;padding-left:13px;border-left:4px solid var(--acc);color:#1f2733}
+h3{font-size:15px;margin:20px 0 10px;color:var(--acc2)}
+p{color:var(--sub);font-size:14px;margin-bottom:10px}
+.hero{background:linear-gradient(135deg,#8d1620,#b81e2b 52%,#d98a06 140%);border:none;border-radius:16px;padding:32px 28px 26px;margin:0 0 20px;box-shadow:0 10px 30px rgba(160,30,40,.18)}
+.hero .lead{color:#fff4ea}
+.hero .meta{color:rgba(255,255,255,.85)}
+.lead{font-size:14px;color:var(--sub);margin:14px 0 14px}
+.qa-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:18px}
+.qa-nav a{display:block;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.35);border-radius:12px;padding:12px 14px;text-decoration:none;color:#fff;font-size:13.5px;transition:.18s}
+.qa-nav a:hover{background:rgba(255,255,255,.26);border-color:#ffe08a;transform:translateY(-2px)}
+.qa-nav a>b{display:inline-flex;align-items:center;justify-content:center;background:#ffe08a;color:#5a1405;width:22px;height:22px;border-radius:50%;font-size:12px;margin-right:8px;font-weight:800;flex-shrink:0;vertical-align:middle}
+.qa-nav i{display:block;font-style:normal;color:#fff;font-size:12px;margin-top:9px;line-height:1.6}
+.qa-nav i b{display:inline;color:#ffe08a;font-weight:800;width:auto;height:auto;background:none;border-radius:0;margin:0;font-size:inherit}
+.meta{color:#7b8794;font-size:12px;margin-top:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0;box-shadow:0 2px 12px rgba(20,30,45,.05)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.num{font-size:28px;font-weight:800;color:var(--gold);line-height:1.2}
+.num.t{color:var(--teal)} .num.r{color:var(--red)} .num.b{color:var(--acc2)}
+.lbl{font-size:12px;color:var(--sub);margin-top:4px}
+.big-answer{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.ans{border-radius:14px;padding:20px;border:1px solid var(--line);position:relative;overflow:hidden;background:var(--card)}
+.ans:before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
+.ans.a{background:linear-gradient(135deg,#fff8ea,#fff 62%);border-color:#f0d49b}
+.ans.a:before{background:linear-gradient(90deg,var(--gold),#e08a2e)}
+.ans.b{background:linear-gradient(135deg,#eaf8fb,#fff 62%);border-color:#a8dfe9}
+.ans.b:before{background:linear-gradient(90deg,var(--acc2),#3a7bd5)}
+.ans .city{font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:600}
+.ans .price{font-size:31px;font-weight:800;color:var(--gold)}
+.ans.b .price{color:var(--acc2)}
+.ans .cap{font-size:12.5px;color:var(--sub);margin-top:8px;line-height:1.65}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#eef3f6;color:#0b6b80;text-align:left;padding:10px 12px;font-weight:700;border-bottom:2px solid #cddbe2;font-size:12.5px}
+td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--txt)}
+tr:hover td{background:#f4fafb}
+tr:last-child td{border-bottom:none}
+.hl{color:#b56d00;font-weight:700}
+.good{color:#138463} .bad{color:#c6282d}
+.scroll{overflow-x:auto}
+.bar-row{display:flex;align-items:center;gap:12px;margin:9px 0;font-size:13px}
+.bar-name{width:170px;flex-shrink:0;color:var(--sub)}
+.bar-track{flex:1;background:#e8ecf0;border-radius:6px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:700;color:#fff}
+.bar-val{width:70px;text-align:right;color:var(--txt);font-size:12px;flex-shrink:0}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:14px 0}
+.day{background:var(--card2);border:1px solid var(--line);border-radius:9px;padding:10px 4px;text-align:center;font-size:12px}
+.day .d{font-size:11px;color:var(--sub)}
+.day .loc{font-weight:700;margin-top:5px;font-size:12px}
+.day.j .loc{color:var(--gold)} .day.y .loc{color:var(--teal)}
+.day.j{border-color:rgba(245,193,92,.4)} .day.y{border-color:rgba(63,209,160,.4)}
+ul{margin:8px 0 8px 20px;font-size:14px;color:var(--sub)}
+li{margin-bottom:6px}
+.note{background:#f6f3fc;border:1px solid #e4daf5;border-left:3px solid var(--purple);padding:12px 16px;border-radius:0 10px 10px 0;font-size:13px;color:#4a5563;margin:12px 0}
+.note.warn{background:#fef1f1;border-color:#f6d5d5;border-left-color:var(--red);color:#7a3a3d}
+.note.key{background:#eef9f5;border-color:#cfeadd;border-left-color:var(--teal);color:#31695a}
+.note.gold{background:#fdf7e8;border-color:#f2e3bd;border-left-color:#c98a09;color:#785d24}
+.step{display:flex;gap:12px;align-items:flex-start;margin:12px 0}
+.step .n{background:linear-gradient(135deg,var(--acc),#b81e2b);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+.step div{font-size:13px;color:var(--sub)}
+.step b{color:var(--txt)}
+.foot{font-size:11px;color:#8a95a3;margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}
+.kpi .box{background:#fafbfc;border:1px solid var(--line);border-top:2px solid var(--gold);border-radius:11px;padding:14px}
+.kpi .box .v{font-size:21px;font-weight:800;color:#b56d00;line-height:1.3}
+.kpi .box .k{font-size:12px;color:var(--txt);margin-top:5px;font-weight:700}
+.kpi .box .s{font-size:11px;color:#7c8896;margin-top:6px;line-height:1.5}
+.tabs{display:flex;gap:8px;margin:16px 0 12px}
+.tab-btn{background:#fff;color:var(--sub);border:1px solid #ccd4dd;border-radius:8px;padding:8px 20px;font-size:13px;cursor:pointer;font-family:inherit}
+.tab-btn:hover{border-color:var(--acc2);color:var(--acc2)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.mpay{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+.mpay .m{background:#fafbfc;border:1px solid var(--line);border-top:2px solid var(--acc2);border-radius:11px;padding:14px;text-align:center}
+.mpay .m .t{font-size:12px;color:var(--sub)}
+.mpay .m .amt{font-size:23px;font-weight:800;margin:6px 0;color:var(--txt)}
+.term-radio{display:none}
+#t30:checked ~ .kpi-head label[for=t30],
+#t5:checked ~ .kpi-head label[for=t5]{background:linear-gradient(135deg,#d92d32,#e08a2e);color:#fff;font-weight:800;border-color:#d92d32}
+#t30:checked ~ .kpi .only5,#t30:checked ~ .kpi-mort .only5{display:none}
+#t5:checked ~ .kpi .only30,#t5:checked ~ .kpi-mort .only30{display:none}
+.kpi .box .v small{font-size:12px;font-weight:600;color:var(--sub)}
+.kpi-head{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
+.kpi-head h3{margin:0}
+.kpi-head .tabs{margin:0}
+@media(max-width:700px){
+  .grid2,.grid3,.big-answer{grid-template-columns:1fr}
+  .kpi{grid-template-columns:1fr 1fr}
+  .mpay{grid-template-columns:1fr}
+  h1{font-size:20px}
+  .bar-name{width:110px;font-size:11px}
+  table{font-size:12px} th,td{padding:8px 6px}
+  .week{grid-template-columns:repeat(4,1fr)}
+  .num{font-size:24px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <h1>双城购房生活安排决策<br>金台里（工作日）+ 燕郊（周末/寒暑假）</h1>
+  <p class="lead">这份报告只回答 <b class="hl">5 个问题</b>，按决策顺序展开。先看结论，再看每一问的算式：</p>
+  <div class="qa-nav">
+    <a href="#q1"><b>1</b><span>各花多少钱、每月还多少？<i><b>首付 111.2 万</b> · 贷款 250 万<br>月供 <b>10,416 元/月</b>（可切燕郊 5 年档）</i></span></a>
+    <a href="#q2"><b>2</b><span>怎么买最省？<i>买入税费精算<br>电车通勤 <b>约 300 元/年</b></i></span></a>
+    <a href="#q3"><b>3</b><span>两套分别买哪套？<i>金台里 <b>三居 vs 两居</b><br>燕郊 <b>三湘 / 御系四代宅</b></i></span></a>
+    <a href="#q4"><b>4</b><span>住得成吗、后悔了怎么办？<i>住 <b>162 天</b> + 全款房收租托底<br>出租退出 / 四代宅纯出租测算</i></span></a>
+    <a href="#q5"><b>5</b><span>下一步做什么？<i><b>9 条执行清单</b><br>+ 最终结论</i></span></a>
+  </div>
+  <p class="meta">一句话：金台里解决工作日上学，燕郊解决周末改善；全款房收租是让这套方案扛得住的关键。</p>
+</div>
+
+<h2 id="q1">问题 1 · 各花多少钱、每月还多少？（先给答案）</h2>
+
+<div class="card" style="border-top:3px solid var(--acc)">
+  <h3 style="color:var(--acc);margin:0 0 12px">两套房总计 · 一眼看懂</h3>
+  <div class="kpi">
+    <div class="box"><div class="v">≈360 万</div><div class="k">两套房总价</div><div class="s">金台里 225 + 燕郊 135 左右</div></div>
+    <div class="box"><div class="v" style="color:var(--blue)">111–125 万</div><div class="k">需备首付</div><div class="s">金台里 60 + 燕郊 51–65</div></div>
+    <div class="box"><div class="v" style="color:var(--teal)">10,416</div><div class="k">每月还贷</div><div class="s">商贷 7,213 + 公积金 3,203</div></div>
+    <div class="box"><div class="v" style="color:var(--gold)">5,916</div><div class="k">收租后实际自付</div><div class="s">全款房 4,500/月打底</div></div>
+  </div>
+  <div class="note key" style="margin-bottom:0">一句话：贷款 <b>250 万</b>（公积金 80 万封顶 + 商贷 170 万），两套月供 <b>10,416</b>；有全款房收租 4,500 打底，实际每月只掏 <b class="hl">5,916</b>——这是整个双城方案的底。</div>
+</div>
+
+<div class="big-answer">
+  <div class="ans b">
+    <div class="city">燕郊 · 大三居（周末改善）</div>
+    <div class="price">125–142 万</div>
+    <div class="cap"><b class="hl">新房进入射程</b>：尚璟 95㎡三居 123 万、109㎡三居 129 万、118㎡四居 139 万；三湘 136㎡三居 140 万。<br>硬顶 145 万；公积金顶格 80 万，首付 45–62 万。</div>
+  </div>
+  <div class="ans a">
+    <div class="city">金台里 · 62㎡ 顶楼三居（工作日+学区）</div>
+    <div class="price">225 万</div>
+    <div class="cap">买入成本 <b class="hl">229.5 万</b>（+契税 2.25 +中介 2.25 +登记 80）。<br><b class="good">另有 3 层两居 230 万可选</b>（同为 62㎡、实地认可价），楼层优先更匹配，详见问题 3。</div>
+  </div>
+</div>
+
+<div class="card">
+  <input type="radio" name="term" id="t30" class="term-radio" checked>
+  <input type="radio" name="term" id="t5" class="term-radio">
+
+  <div class="kpi-head">
+    <h3 style="border:none;padding:0;margin:0;color:var(--gold)">两套总账 · 首付 / 总额 / 贷款 / 月供</h3>
+    <div class="tabs">
+      <label for="t30" class="tab-btn">30 年期（基准）</label>
+      <label for="t5" class="tab-btn">燕郊公积金 5 年</label>
+    </div>
+  </div>
+
+  <div class="kpi">
+    <div class="box"><div class="v">111.2 万</div><div class="k">需备首付（合计）</div><div class="s">金台里 60 万 + 燕郊尚璟 51.2 万</div></div>
+    <div class="box"><div class="v" style="color:var(--blue)">360.7 万</div><div class="k">两套买入成本总额</div><div class="s">成交价口径 354 万；成本含契税/中介/维修基金</div></div>
+    <div class="box"><div class="v" style="color:var(--purple)">250 万</div><div class="k">贷款总额</div><div class="s">金台里商贷 170 万 + 公积金 80 万</div></div>
+    <div class="box"><div class="v only30" style="color:var(--teal)">10,416 <small>元/月</small></div><div class="v only5" style="color:var(--red)">21,270 <small>元/月</small></div><div class="k">每月还贷（合计）</div><div class="s only30">公积金 30 年 2.6% · 商贷 30 年 3.05%</div><div class="s only5">燕郊公积金 5 年 2.1% · 金台里商贷仍 30 年</div></div>
+  </div>
+  <h3 style="margin:20px 0 6px;font-size:14px">全款房怎么摆？三种情景总账</h3>
+  <div class="scroll"><table>
+    <tr><th>情景</th><th>月供总额</th><th>全款房 → 现金流入</th><th>每月实际自付*</th><th>判断</th></tr>
+    <tr><td>无全款房（基准）</td><td>10,416</td><td>—</td><td class="bad">10,416 元</td><td>双城方案的原始压力</td></tr>
+    <tr><td><b class="good">A 持有收租 4,500/月</b></td><td>10,416</td><td class="good">收租 4,500（房子还在）</td><td class="good">5,916 元</td><td class="good">少掏 4,500/月，<b>推荐</b></td></tr>
+    <tr><td>B 卖房 → 全额还商贷</td><td class="good">3,755</td><td class="bad">卖 157 万还贷，无租金</td><td>3,755 元</td><td class="bad">月供更低，但<b>房子没了</b></td></tr>
+  </table></div>
+  <p class="meta">* 每月实际自付＝两套房月供 − 全款房租金。基准 10,416 − 0；A 10,416 − 4,500 = <b class="hl">5,916</b>；B 卖房 157 万全额还金台里商贷（170 万→13 万），月供 10,416 → <b class="hl">3,755</b>，但失去 4,500 租金和整套房。</p>
+  <div class="note warn" style="margin-top:10px"><b>为什么 B 月供更低却不选？</b>B 比 A 每月少掏 2,161 元（2.59 万/年），代价是<b class="bad">永久失去一套价值 157 万、年租 5.4 万的房子，还先亏 3.2 万交易摩擦</b>——等于用 157 万本金换 2.59 万/年现金流（1.65%），比这套房自己的租金回报 3.4% 还低。<b class="hl">持有收租，别卖。</b>但若真要卖，<b>优先全额还商贷（3.05%）而非留着理财</b>，比"卖房付首付 + 理财"每月再省约 4,700 元。完整拆解见问题 4。</div>
+
+  <div class="kpi-mort">
+    <div class="mpay only30">
+      <div class="m"><div class="t">金台里 · 商贷 170 万 @3.05%</div><div class="amt" style="color:var(--gold)">7,213</div><div class="t">30 年总利息约 89.7 万</div></div>
+      <div class="m"><div class="t">燕郊 · 公积金 80 万 @2.6%</div><div class="amt" style="color:var(--teal)">3,203</div><div class="t">30 年总利息约 35.3 万</div></div>
+      <div class="m"><div class="t">合计月供</div><div class="amt" style="color:var(--blue)">10,416</div><div class="t">现金流可承受</div></div>
+    </div>
+    <div class="mpay only5">
+      <div class="m"><div class="t">金台里 · 商贷 170 万 @3.05%</div><div class="amt" style="color:var(--gold)">7,213</div><div class="t">商贷不变，仍为 30 年</div></div>
+      <div class="m"><div class="t">燕郊 · 公积金 80 万 @2.1%</div><div class="amt bad">14,057</div><div class="t">5 年总利息约 4.3 万</div></div>
+      <div class="m"><div class="t">合计月供</div><div class="amt bad">21,270</div><div class="t">比基准多 10,854/月，不建议</div></div>
+    </div>
+    <p class="meta">口径：金台里 225 万成交、首付 60 万（55 万房款 + 5 万税费）、贷款 170 万；燕郊尚璟 109㎡/129 万、买入成本 131.2 万、首付 51.2 万、公积金顶格 80 万。<b class="hl">公积金 80 万是天花板——燕郊买 129 万还是 140 万，月供都是 3,203，差价全在首付。</b>电车自驾约 25 元/月（每周 2 单程、无高速费）。</p>
+  </div>
+
+  <div class="note" style="margin-bottom:0"><b>增量口径：</b>两套房月供 10,416 + 物业取暖 688 − 本来就要付的房租 6,300 = 4,804 元/月；再加电车自驾 25 元/月即 <b class="hl">4,829 元/月（5.79 万/年）</b>，燕郊 162 天均摊 <b>276 元/天</b>。这是判断"值不值"的基准。</div>
+</div>
+
+<h2 id="q2">问题 2 · 钱怎么借、怎么买最省？（买入成本精算）</h2>
+
+<div class="card">
+  <h3>金台里 225 万 · 62㎡ · 首套 · 满五唯一</h3>
+  <div class="scroll"><table>
+    <tr><th>项目</th><th>金额</th><th>说明</th></tr>
+    <tr><td>房屋成交价</td><td>225.00 万</td><td>3.63 万/㎡，低于小区挂牌均价 5.16 万约 30%</td></tr>
+    <tr><td>契税</td><td>2.25 万</td><td>首套 ≤90㎡ 按 1%（你的"契税一个点"口径正确）</td></tr>
+    <tr><td>中介/手续费</td><td>2.25 万</td><td>1 个点，可谈到 0.5–0.8 点</td></tr>
+    <tr><td>权属登记费</td><td>80 元</td><td>住宅 80 元/件；印花税住宅免征</td></tr>
+    <tr><td>维修基金</td><td>0（存量）</td><td>二手房随房转移，原业主已缴，一般不重交</td></tr>
+    <tr><td><b>买入成本合计</b></td><td class="hl">229.51 万</td><td>与你说的 230 万吻合</td></tr>
+  </table></div>
+  <div class="note" style="margin-bottom:0"><b>贷款口径纠偏：</b>若首付 60 万按<b>成交价</b> 225 万算，贷款 = 165 万 → 月供 <b class="good">7,001</b>（3.05%/30 年）。你之前说的"贷款 170 万、月供 7,213"是按<b>成本 230 万</b>倒推的——等于把 5 万税费也融资了。两种都可以，但<b>首付 60 万如果不含税费，实际还差 4.5 万现金</b>。签约前把这一项定死。</div>
+</div>
+
+<div class="card">
+  <h3>燕郊新房 · 河北首套 140㎡ 及以下契税 1% + 维修基金 80 元/㎡</h3>
+  <div class="scroll"><table>
+    <tr><th>项目</th><th>房价</th><th>契税 1%</th><th>维修基金</th><th>买入成本</th><th>首付（贷 80 万后）</th></tr>
+    <tr><td>尚璟 95㎡ 三居两卫</td><td>123 万</td><td>1.23 万</td><td>0.76 万</td><td class="hl">124.99 万</td><td>45.0 万</td></tr>
+    <tr><td>尚璟 109㎡ 三居</td><td>129 万</td><td>1.29 万</td><td>0.87 万</td><td class="hl">131.16 万</td><td>51.2 万</td></tr>
+    <tr><td>尚璟 118㎡ 四居</td><td>139 万</td><td>1.39 万</td><td>0.94 万</td><td class="hl">141.33 万</td><td>61.3 万</td></tr>
+    <tr><td>三湘 136㎡ 三居</td><td>140 万</td><td>1.40 万</td><td>1.09 万</td><td class="hl">142.49 万</td><td>62.5 万</td></tr>
+  </table></div>
+  <p>新房<b>无中介费</b>，这是相对二手房最大的成本优势（二手 1–3 个点 = 1.3–4 万）。你看到的"130–140 万"基本落在尚璟 109㎡/118㎡ 与三湘 136㎡ 上。</p>
+  <div class="note gold" style="margin-bottom:0"><b>契税套数认定要注意：</b>河北契税"家庭唯一住房"通常按当地查询认定，你在北京有房一般不影响燕郊首套 1%。但银行/税务口径可能有差异，签约前让售楼处书面确认"按 1% 契税 + 首套公积金"。</div>
+</div>
+
+<h2>问题 2（续）· 自驾通勤（电车，成本几乎可忽略）</h2>
+
+<div class="card">
+  <ul>
+    <li>燕郊→<b>通州运河公园约 20 多分钟</b>；进国贸约 31 公里、顺畅 30 分钟</li>
+    <li>电车 <b class="good">1 公里 1 毛</b>，周五/周末走<b class="good">基本无高速费</b>；京牌无需进京证</li>
+    <li>单程约 <b>3.1 元</b>；每周 2 单程 ≈ 6 元，<b class="hl">年约 300 元</b>（油车口径的 1/8）</li>
+  </ul>
+  <div class="note key" style="margin-bottom:0"><b>通勤成本从决策里消失了。</b>电车 + 周末错峰，往返一趟也就几块钱，22 号线通不通对你自住几乎没影响。真正的停车摩擦在金台里老小区（车位紧张，朝阳区 2026 年在推错时共享车位，需实地问物业），不在燕郊。</div>
+</div>
+
+<h2 id="q3">问题 3 · 两套分别买哪套？（上：金台里三居 vs 两居 + 老楼出路）</h2>
+
+<div class="card">
+  <h3>两套都是 62㎡：按实地认可价直接对比</h3>
+  <p>3 层两居与顶楼三居<b>同为 62㎡、都是你可成交的真实价</b>，租金也都能到 6,000–6,500（顶层略高）。直接算账：</p>
+  <div class="scroll"><table>
+    <tr><th>房源</th><th>楼层</th><th>单价</th><th>首付 / 贷款</th><th>月供</th><th>其中：利息 / 本金*</th></tr>
+    <tr><td>顶楼三居 <b class="good">225 万</b></td><td>6 层顶 · 东西向</td><td class="good">36,290 元/㎡</td><td>60 / 165 万</td><td class="good">7,001</td><td>4,154 / 2,847</td></tr>
+    <tr><td><b>3 层两居 230 万</b></td><td>3 层 · 东西向</td><td>37,097 元/㎡</td><td>60 / 170 万</td><td>7,213</td><td>4,280 / 2,933</td></tr>
+  </table></div>
+  <p class="meta">* 利息/本金＝首年等额本息月供拆分（商贷 3.05%、30 年）。利息逐月递减、本金逐月递增；首年口径足够说明结构。</p>
+</div>
+
+<div class="card">
+  <h3>自住真相：月供 = 真租金（利息）+ 定投（本金）</h3>
+  <div class="grid3">
+    <div><div class="num t" style="font-size:23px">4,154–4,280<span style="font-size:13px"> 元/月</span></div><div class="lbl"><b>利息＝真正的"租金"</b><br>付给银行，消费掉、拿不回</div></div>
+    <div><div class="num" style="font-size:23px">2,847–2,933<span style="font-size:13px"> 元/月</span></div><div class="lbl"><b>本金＝强制定投</b><br>左手倒右手，变成你的净资产</div></div>
+    <div><div class="num b" style="font-size:23px">6,000–6,500<span style="font-size:13px"> 元/月</span></div><div class="lbl"><b>市场租金（本来就要付）</b><br>100% 消费，0 积累</div></div>
+  </div>
+  <div class="note key" style="margin-top:14px;margin-bottom:0"><b>你的直觉对，只需精确一点：</b>不是"租金就是定投"，而是<b class="hl">月供里的利息才是消费（相当于真租金），本金才是定投</b>。自住时你真正花掉的"住房消费"只有利息 4,154–4,280，<b class="good">比市场租金 6,000–6,500 还低 1,700–2,200/月</b>，同时每月白拿 2,847–2,933 的强制储蓄。<b>60 万首付不是全款买断，是撬动 230 万资产（约 26%）——居住权和增值权从过户那刻就是你的，尾款靠 30 年月供逐步买断。</b>这笔住房消费你本来就省不掉，买房只是把它从"纯花掉"改成了"花掉 + 攒资产"。</div>
+</div>
+
+<div class="card">
+  <h3>那 5 万差价买到了什么</h3>
+  <p>两套同为 62㎡、租金同档，所以已不是"面积 vs 楼层"，而是纯粹多花 <b class="hl">5 万 / 212 元每月</b>换楼层：</p>
+  <ul>
+    <li><b>选 3 层两居（230 万）</b>：老楼黄金层，爬 2 层 vs 顶楼爬 5 层，避开顶楼防水/西晒/冬冷夏热。对每周扛行李、孩子上下学，这 212 元/月大概率值。</li>
+    <li><b>选顶楼三居（225 万）</b>：省 5 万、月供少 212，多一间房（三居），单价低 2%。但顶楼风险要靠现场查屋顶防水 + 供暖管线来排掉。</li>
+  </ul>
+  <div class="note gold" style="margin-bottom:0"><b>结论：</b>按你"大客厅、三居、周末改善"的取向，金台里这套主要是工作日落脚 + 占学位，<b>楼层体验优先</b>——<b class="hl">3 层两居 230 万更匹配</b>，每月 212 元买"少爬三层"不贵。顶楼三居只有在确认防水/管线都没问题、且你更看重多一间房时才选。</div>
+</div>
+
+<div class="card">
+  <h3>老楼的出路是什么（诚实版）</h3>
+  <div class="grid2">
+    <div>
+      <h3>政策上有的四条路</h3>
+      <table>
+        <tr><th>路径</th><th>2026 政策</th><th>对金台里的现实概率</th></tr>
+        <tr><td>加装电梯</td><td>北京 2026 目标 800 台+，超长期国债支持</td><td class="hl">15–55%：央产房 15–25%，市属产权 40–55%</td></tr>
+        <tr><td>老旧小区改造</td><td>节能/抗震/管线，市住建委持续推进</td><td class="good">较高：但只改善外观管线，不解决 6 层爬楼</td></tr>
+        <tr><td>自主更新/原拆原建</td><td>2026 计划报告明确"支持居民自主更新、原拆原建"</td><td class="bad">极低：金台里非 D 级危房，容积率 1.2 无重建动力</td></tr>
+        <tr><td>拆迁</td><td>北京已进入存量更新时代</td><td class="bad">接近 0：别把拆迁当预期</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>真实结论</h3>
+      <ul>
+        <li><b>出路 = 使用价值维持，不是资产升值。</b>加梯是唯一能实质改变顶楼价值的变量，但概率不高、周期长、低层反对是常态。</li>
+        <li>2026-02 北京城市更新首批 1,321 个项目、投资 1,049.5 亿；朝阳在推管线更新和加梯，但金台里是否在项目清单里<b>要去街道问</b>。</li>
+        <li>1980 年砖混，若未做抗震加固，未来交易和贷款年限都会受影响（公积金按 50−46−3 已贷不出）。</li>
+        <li><b class="bad">买入时必须假设"永远不加梯、永远不拆迁"</b>，仍然愿意住，才买。加梯当彩票，不计入决策。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>问题 3（续）· 燕郊买哪个盘？（尚璟 / 三湘 / 御系四代宅）</h2>
+
+<div class="card">
+  <div class="scroll"><table>
+    <tr><th>项目</th><th>产品/户型</th><th>买入成本*</th><th>位置与交付</th><th>评价</th></tr>
+    <tr><td><b>尚璟花园</b><br>（尚景）</td><td>21 栋 7–11 层洋房，容积率 1.499，得房率约 82.5%<br>95/109/118/140㎡</td><td>109㎡三居 <b>131 万</b><br>首付 51 万</td><td>永旺梦乐城北 200–300m；潮白大街站约 800m；毛坯，2026-12 交付</td><td class="good">低密+商场楼下；毛坯要自装，客厅偏小，无电梯入户</td></tr>
+    <tr><td><b>三湘印象·森林海尚城</b></td><td>百万方大盘 6,500 户，容积率 2.5；100–145㎡，精装现房</td><td>136㎡三居 <b>142.5 万</b><br>首付 62.5 万</td><td>北部科学城，高横一路×燕高北路；高楼站口径 380m–1.2km（须现场实测）；现房即住</td><td class="hl">精装现房省装修、客厅大；但高层大盘密度高，非一梯一户</td></tr>
+    <tr><td><b class="hl">御东君曜</b>（御系四代宅）<br>你看的"三湘对面、外立面好"</td><td>10 层洋房 926 户，容积率 1.5，得房率约 95%（含赠送）<br><b>一梯一户</b>电梯入户、空中花园、层高 3.15m、铝板+low-e 外立面</td><td>109㎡三居 <b>143.3 万</b>（首付 63.3 万）<br>121㎡ 159.5 万（超 14.5 万）<br>146㎡大横厅 193.1 万（超 48 万）</td><td>北部科学城福兴路东侧，高楼站约 1km；一期 2026-07 起收房，毛坯</td><td class="good">四代宅+一梯一户+大客厅，产品力最强；<b class="bad">但一二手倒挂约 35%</b>（109㎡新房 141–150 万 vs 二手精装 93 万），毛坯需自装</td></tr>
+    <tr><td><b>御东星耀</b>（御系四代宅）</td><td>16 层 224 户小体量，一梯一户+6㎡入户门厅，层高 3.25m，得房率约 90%</td><td>112㎡三居 <b>235 万</b>（毛坯）<br>超预算 90 万</td><td>神威大街站约 400m；2026-08 已提前交付，实景现房</td><td class="bad">产品力同样强、地铁更近，但单价 2.08 万、总价远超预算，直接出局</td></tr>
+  </table></div>
+  <p class="meta">* 买入成本＝房价 + 契税 1%（河北首套）+ 维修基金 80 元/㎡；均按公积金顶格 80 万，月供都是 3,203，差价全落在首付。以上为公开平台 11 月报价，一房一价以现场公示为准。</p>
+  <div class="note gold"><b>你的筛选标准（地铁降权）：</b>22 号线通车只对<b>出租</b>有价值；周末自住你要的是 <b class="hl">大客厅 + 一梯一户 + 装修省心 + 自驾可达公园</b>。按这四条，四代宅（御系）产品力最强，但要过"预算"和"倒挂"两关。</div>
+  <div class="grid2">
+    <div>
+      <h3>选谁：看你把"一梯一户"排第几</h3>
+      <ul>
+        <li><b class="hl">产品力首选：御东君曜 109㎡</b>（买入 143.3 万，首付 63.3 万，<b>正好在预算内</b>）：四代宅空中花园 + 一梯一户电梯入户 + 3.15m 层高 + 铝板外立面，你看了外立面觉得好就是它。<b class="bad">代价</b>：毛坯要自装 10–15 万；且二手 109㎡ 只挂 93 万，一二手倒挂 35%——自住无所谓，但未来转手要接受这个折价。</li>
+        <li><b>省心首选：三湘 136㎡</b>（买入 142.5 万）：精装现房即住、大客厅、真三居，省 10–15 万装修；<b class="bad">但没有一梯一户</b>，6,500 户大盘密度高。</li>
+        <li><b>尚璟 109㎡</b>（买入 131 万）：商场楼下最方便、最便宜，但无电梯入户、客厅小、毛坯——在你这次的偏好里排最后。</li>
+      </ul>
+    </div>
+    <div>
+      <h3>四代宅怎么选（一梯一户 + 大客厅）</h3>
+      <ul>
+        <li>要真<b>大横厅</b>（客厅面宽 5.7m、146㎡四居）得买入 193 万，<b class="bad">超预算 48 万</b>——公积金封顶 80 万，多出的全砸首付，月供不变但现金压力大。</li>
+        <li>121㎡ 中间档 159.5 万，超 14.5 万，餐客一体大方厅，是"够一够"的选择。</li>
+        <li><b class="hl">109㎡ 是唯一进预算的四代宅</b>：南向面宽 10.9m、赠送 24–33㎡，客厅够用但不是"大横厅"级别。要一梯一户就得接受这个面积。</li>
+        <li>星耀一梯一户+地铁 400m 更完美，但 235 万直接出局，不用再想。</li>
+      </ul>
+      <div class="note key" style="margin-bottom:0"><b>一句话给你定：</b>把"一梯一户 + 四代宅产品力"排第一 → <b class="hl">御东君曜 109㎡</b>（预算内、你已看中）；把"精装省心 + 大客厅 + 少折腾"排第一 → <b>三湘 136㎡</b>。两者买入价几乎一样（143.3 vs 142.5 万），<b>差别就是"电梯入户的仪式感 + 空中花园"换"精装现房 + 更大客厅"</b>。</div>
+    </div>
+  </div>
+</div>
+
+<h2 id="q4">问题 4 · 住得成吗？（一周 162 天安排 + 月供总账）</h2>
+
+<div class="card">
+  <div class="week">
+    <div class="day j"><div class="d">周一</div><div class="loc">金台里</div></div>
+    <div class="day j"><div class="d">周二</div><div class="loc">金台里</div></div>
+    <div class="day j"><div class="d">周三</div><div class="loc">金台里</div></div>
+    <div class="day j"><div class="d">周四</div><div class="loc">金台里</div></div>
+    <div class="day y"><div class="d">周五晚</div><div class="loc">自驾→燕郊</div></div>
+    <div class="day y"><div class="d">周六</div><div class="loc">燕郊</div></div>
+    <div class="day y"><div class="d">周日</div><div class="loc">燕郊</div></div>
+  </div>
+  <p>周一早上自驾回金台里。寒暑假 90 天 + 周末 72 天 = <b class="hl">162 天</b>住燕郊；金台里约 198 天。电车通勤年成本约 300 元，几乎可忽略。</p>
+  <div class="scroll"><table>
+    <tr><th>组合</th><th>首付合计</th><th>月供合计</th><th>年现金支出</th></tr>
+    <tr><td>金 225 万 + 燕 尚璟 95㎡ 124.99 万</td><td class="good">60 + 46.8 = 106.8 万</td><td class="good">7,213 + 3,203 = 10,416</td><td>12.50 万 + 自驾 0.03 = 12.53 万</td></tr>
+    <tr><td>金 225 万 + 燕 尚璟 109㎡ 131.16 万</td><td>60 + 51 = 111 万</td><td>10,416</td><td>12.50 万 + 0.03 = 12.53 万</td></tr>
+    <tr><td>金 225 万 + 燕 三湘 136㎡ 142.49 万</td><td>60 + 62.5 = 122.5 万</td><td>10,416</td><td>12.50 万 + 0.03 = 12.53 万</td></tr>
+  </table></div>
+  <div class="note key" style="margin-bottom:0"><b>为什么三档月供一样？</b>因为公积金顶格 80 万不变，总价差异全部落在首付上——多付的首付是存量资金，不产生月供，但产生机会成本（按 3% 理财，多付 17.5 万 = 每年少赚 5,250 元）。<b class="hl">所以从纯现金流看，买 95㎡ 和 142㎡ 的月供一样，差别只在首付和未来的房价波动敞口。</b></div>
+</div>
+
+<h2>问题 4（续）· 后悔了怎么办？（全款房托底 + 燕郊退出测试）</h2>
+
+<div class="card">
+  <h3>结论：坚决不卖，持有收租。它把双城方案从"每年多花 6 万"变成"几乎白住"。</h3>
+  <p>你有一套全款房，可卖 <b class="hl">160 万</b>，出租 <b class="hl">4,500/月</b>。这套房是整个决策里现金流权重最大的变量——用它做两件事的比较：</p>
+  <div class="scroll"><table>
+    <tr><th>方案</th><th>全款房怎么处理</th><th>两套房月供</th><th>每月实际自付*</th><th>评价</th></tr>
+    <tr><td><b>无全款房（原基准）</b></td><td>—</td><td>10,416 元</td><td class="bad">10,416 元</td><td>双城方案的原始压力</td></tr>
+    <tr><td><b class="good">A 持有收租 4,500/月</b></td><td class="good">房子留着收租</td><td>10,416 元</td><td class="good">5,916 元</td><td class="good">少掏 4,500/月，房子还在，<b>推荐</b></td></tr>
+    <tr><td>B 卖掉 → 全额还商贷</td><td class="bad">卖 157 万，商贷 170→13 万</td><td class="good">3,755 元</td><td>3,755 元</td><td class="bad">月供更低，但失去整套房 + 亏 3.2 万摩擦</td></tr>
+  </table></div>
+  <p class="meta">* 每月实际自付＝两套房月供 − 全款房租金。A：10,416 − 4,500 = <b class="hl">5,916</b>；B：卖房 157 万全额还金台里商贷（3.05% 高于公积金 2.6%，优先还），月供 10,416 → <b class="hl">3,755</b>，但失去 4,500 租金和整套房。若按"经济增量"口径（再扣本来就要付的房租 6,300），A 仅 329 元/月——那是相对租房的增量，不是实际账单。</p>
+  <div class="note gold"><b>为什么 A 完胜 B：</b>这套房出租回报 <b class="hl">3.38%</b>（4,500×12÷160 万，租售比 1:29.6），扣 15% 空置维修后净 2.87%。B 卖房后月供虽降到 3,755、比 A 每月少掏 2,161 元（2.59 万/年），但代价是<b class="bad">永久失去一套 157 万、年租 5.4 万的房子，还先亏 3.2 万交易摩擦</b>——等于用 157 万本金换 2.59 万/年（1.65%），比房子自身租金回报 3.4% 还低。<b>如果真决定卖，也要全额还商贷（省息最多），别留着理财。</b>除非有硬伤（无电梯、租金不可持续、急用 160 万现金），否则卖出是双输。</div>
+</div>
+
+<div class="card">
+  <h3>燕郊退出测试：万一周末去的效果不好，出租划不划算？</h3>
+  <p>燕郊 109㎡ 三居全年整租市场约 <b class="hl">2,800–4,200/月</b>（到手扣 200 中介）。燕郊自持成本＝月供 3,203 + 物业取暖 502 = <b>3,705/月</b>。</p>
+  <div class="scroll"><table>
+    <tr><th>燕郊月租（毛）</th><th>到手</th><th>覆盖燕郊自持成本</th><th>缺口</th><th>两套房仍要自付*</th></tr>
+    <tr><td>2,800</td><td>2,600</td><td class="bad">70%</td><td class="bad">−1,105</td><td>4,028</td></tr>
+    <tr><td>3,000</td><td>2,800</td><td class="bad">76%</td><td class="bad">−905</td><td>3,829</td></tr>
+    <tr><td>3,300</td><td>3,100</td><td>84%</td><td>−605</td><td>3,529</td></tr>
+    <tr><td>3,500</td><td>3,300</td><td>89%</td><td>−405</td><td>3,329</td></tr>
+    <tr><td><b>4,200</b></td><td>4,000</td><td class="good">108%</td><td class="good">+295</td><td class="good">2,629</td></tr>
+  </table></div>
+  <p class="meta">* 已扣全款房租 4,500 和原本要付的房租 6,300，含电车自驾。即使燕郊完全租不出去，两套房真实增量也只有 4,829/月（5.79 万/年）——这就是全款房给的容错空间。</p>
+  <div class="note key"><b>退出结论：</b>燕郊出租<b>只能覆盖 70–108% 的自持成本</b>，多数情况仍倒贴 400–1,100/月，但因为有全款房租 4,500 打底，两套房整体自付压到 <b class="hl">2,629–4,028/月</b>，远低于没有全款房时的 4,829–6,000。<b>所以"周末效果不好"不是灾难——最坏情况是每年多花 3.2–5 万，而不是现金流断裂。</b>要注意：燕郊 140㎡ 大三居全年整租需求薄（租客多是本地上班族，偏好小户型），4,200/月是可遇不可求的上限，按 3,000–3,300 规划更稳。</div>
+</div>
+
+<h2>问题 4（续 2）· 四代宅纯出租专项（御系列：完全不住、只为出租）</h2>
+
+<div class="card">
+  <h3>先说结论：四代宅是"自住改善品"，不是"出租品"。完全不住、纯出租，它是所有选项里最差的一档。</h3>
+  <p>你问的"御系列"是本地房企<b class="hl">众诚易达</b>的"御系"产品线，主打<b>第四代住宅</b>（每户空中花园、高赠送、低密洋房）。三个在售项目：御东君曜（北部科学城）、御东星耀（神威大街站 400m）、御东君泰（神威大街 TOD）。这类产品的溢价全部来自"<b>住起来舒服</b>"——而租客不为空中花园多付钱，只按地段和面积出价。<b class="bad">这是四代宅做不出租金回报的根本原因。</b></p>
+  <div class="scroll"><table>
+    <tr><th>项目</th><th>产品 / 户型</th><th>参考售价</th><th>关键指标</th><th>注意</th></tr>
+    <tr><td><b>御东君曜</b></td><td>10 层洋房，109/121㎡三居、146㎡四居</td><td class="hl">1.35–1.45 万/㎡<br>109㎡约 141–150 万</td><td>容积率 1.5–2.37（口径不一）、得房率约 95% 含赠送、物业费 2.46 元/㎡、高楼站约 1km</td><td class="bad">安居客二手挂牌 109㎡ 精装仅 <b>93 万（8,533 元/㎡）</b>——比新房低 35%</td></tr>
+    <tr><td><b>御东星耀</b></td><td>16 层小高层，112–141㎡三/四居</td><td class="bad">毛坯约 2.08 万/㎡<br>总价 232 万起</td><td>神威大街站 400m、容积率 1.98、精装约 2.43 万/㎡、实景现房</td><td class="bad">价格是君曜的 1.5 倍，纯粹买地铁溢价</td></tr>
+    <tr><td><b>御东君泰</b></td><td>15–17 层，四代生态庭院住宅</td><td>未公开统一报价</td><td>容积率 2.0、仅 400 户、3.15m 层高、无回迁无小户型</td><td>定位高改圈层，租金端更无支撑</td></tr>
+  </table></div>
+  <p class="meta">数据来源：网易房产各项目公示（2026-09 至 11）、58 同城新房库、克而瑞好房点评、安居客二手挂牌。价格口径分歧大（容积率 1.5 vs 2.37、单价 1.35 万 vs 二手 8,533），以现场一房一价为准。</p>
+  <div class="note warn"><b>最刺眼的信号——一二手倒挂 35%：</b>御东君曜新房 109㎡ 报 141–150 万，但安居客上同小区 109㎡ 精装二手挂牌 <b class="bad">93 万</b>。即便二手挂牌还要再砍，这也说明<b>四代宅的"赠送面积+空中花园"溢价在转手时几乎全部消失</b>。纯出租买入价越高，租金回报越差——新房买入是三重惩罚：溢价买 + 租金不认 + 折旧照吃。</div>
+</div>
+
+<div class="card">
+  <h3>纯出租账：公积金顶格 80 万，按市场租金 3,000–4,200/月测算</h3>
+  <p>四代宅 109㎡ 三居市场租金参考同板块洋房实盘（东方夏威夷 140㎡ 3,300–3,800、福成禧悦里 136㎡ 3,400，多含物业取暖）——<b class="hl">140㎡ 大三居也只租 3,300–3,800，109㎡ 按 3,000–3,300 已属乐观</b>。到手扣 200 中介，物业+取暖另扣 495–663/月。</p>
+  <div class="scroll"><table>
+    <tr><th>买入场景</th><th>月租（毛）</th><th>首付 / 月供</th><th>租售比</th><th>到手年回报</th><th>月现金流*</th><th>年经济利润**</th></tr>
+    <tr><td>御东君曜 <b>109㎡ 新房 141 万</b></td><td>3,000</td><td>61 万 / 3,203</td><td class="bad">1:39.2</td><td class="bad">2.38%</td><td class="bad">−898</td><td class="bad">−11,231</td></tr>
+    <tr><td>御东君曜 109㎡ 新房 141 万</td><td>3,300</td><td>61 万 / 3,203</td><td class="bad">1:35.6</td><td class="bad">2.64%</td><td class="bad">−598</td><td class="bad">−7,631</td></tr>
+    <tr><td>御东君曜 121㎡ 新房 157 万</td><td>3,600</td><td>77 万 / 3,203</td><td class="bad">1:36.3</td><td class="bad">2.60%</td><td class="bad">−352</td><td class="bad">−9,485</td></tr>
+    <tr><td>御东君曜 146㎡ 四居 190 万</td><td>4,200</td><td>110 万 / 3,203</td><td class="bad">1:37.7</td><td class="bad">2.53%</td><td>+134</td><td class="bad">−13,548</td></tr>
+    <tr><td class="good">御东君曜 109㎡ <b>二手 93 万</b></td><td>3,300</td><td>13 万 / 3,203</td><td class="good">1:23.5</td><td class="good">4.00%</td><td class="bad">−598</td><td class="good">+6,769</td></tr>
+  </table></div>
+  <p class="meta">* 月现金流＝到手租金 − 月供 − 物业取暖（未扣空置，未计装修）。** 年经济利润＝到手年租 − 物业取暖 − 首年利息 − 首付×3% 机会成本。<br>关键：月供按公积金顶格 80 万固定，所以新房买得越贵，只是多付首付（61 万→110 万），机会成本吃掉了全部租金优势。</p>
+  <div class="note key"><b>为什么新房月现金流差、但"经济利润"更差：</b>月现金流只差 600–900，是因为月供被 80 万公积金锁死；但新房多付的 48 万首付按 3% 机会成本就是 <b class="bad">1.44 万/年</b>，直接把租金回报吃光。<b>唯一还能看的是"二手 93 万"——到手回报 4%、年经济利润 +6,769，但那是接盘别人的折旧，且房源稀少、能否成交存疑。</b></div>
+</div>
+
+<div class="card">
+  <h3>横向对比：每 1 万元买入，每月能收到多少租金</h3>
+  <div class="scroll"><table>
+    <tr><th>标的</th><th>买入价</th><th>月租</th><th>每万元月租</th><th>年毛回报</th><th>评价</th></tr>
+    <tr><td>四代宅 109㎡ 新房</td><td>141 万</td><td>3,150</td><td class="bad">22.3 元</td><td class="bad">2.68%</td><td class="bad">最差：溢价买入、租金不认</td></tr>
+    <tr><td>四代宅 146㎡ 新房</td><td>190 万</td><td>4,000</td><td class="bad">21.1 元</td><td class="bad">2.53%</td><td class="bad">大面积更难租</td></tr>
+    <tr><td class="good">普通 140㎡ 二手老盘</td><td>100 万</td><td>3,500</td><td class="good">35.0 元</td><td class="good">4.20%</td><td class="good">最优：租金按面积给，不认溢价</td></tr>
+    <tr><td class="good">四代宅 109㎡ 二手</td><td>93 万</td><td>3,150</td><td class="good">33.9 元</td><td class="good">4.06%</td><td>接近最优，但房源少、接盘依赖</td></tr>
+    <tr><td>燕郊 60㎡ 小两居</td><td>60 万</td><td>1,700</td><td>28.3 元</td><td>3.40%</td><td>好租、空置低，绝对现金流小</td></tr>
+    <tr><td>金台里 62㎡ 顶楼三居</td><td>225 万</td><td>6,200</td><td>27.6 元</td><td>3.31%</td><td>北京身份，但纯出租回报一般</td></tr>
+  </table></div>
+  <div class="note gold"><b>四代宅纯出租的最终建议：</b><br>
+  ① <b class="bad">不要新房买入做纯出租</b>——2.5–2.7% 回报跑不赢你的资金成本，还额外承担一二手倒挂 35% 的折旧风险。<br>
+  ② 真要赚租金，<b class="good">买普通二手 100 万级 140㎡ 老盘</b>（4.2%）或 60 万小两居（3.4%，最好租），租客不认四代宅溢价。<br>
+  ③ 四代宅的正确打开方式是<b>自己住</b>——空中花园、95% 得房率、低密洋房只有自住者能兑现价值。你的场景是"周末改善 + 有概率自住"，那就把它当消费品买，<b>不要拿租金回报给自己找理由</b>。<br>
+  ④ 租客画像：燕郊整租客多是本地上班族，偏好小户型、低总价、地铁近；140㎡ 四居/大平层的客群薄、空置期长，4,200/月是可遇不可求的上限。</div>
+</div>
+
+<h2 id="q5">问题 5 · 下一步做什么？（执行清单 + 最终结论）</h2>
+
+<div class="card">
+  <div class="step"><div class="n">1</div><div><b>确认贷款口径</b>：金台里首付 60 万是否含 4.5 万税费？定死后决定贷款 165 万（月供 7,001）还是 170 万（7,213）。</div></div>
+  <div class="step"><div class="n">2</div><div><b>公积金资格</b>：致电廊坊公积金三河管理部 0316-3210699——北京缴存异地贷能否线上办、你缴存年限是否够 80 万、账户余额是否达 30 倍。<b>坚持贷 30 年 2.6%，不要贷 5 年 2.1%</b>。</div></div>
+  <div class="step"><div class="n">3</div><div><b>燕郊三选一（按你看重什么）</b>：<b class="hl">要一梯一户 + 四代宅 → 御东君曜 109㎡</b>（买入 143.3 万，预算内、你已看中外立面；代价是毛坯自装 + 二手倒挂 35%）；<b>要精装省心 + 大客厅 → 三湘 136㎡</b>（142.5 万，现房即住但无电梯入户）；尚璟 109㎡（131 万）商场楼下最方便但客厅小、无电梯入户，排最后。真要大横厅（君曜 146㎡）超预算 48 万，不建议。地铁 22 号线通车只影响出租，不为自住等它。</div></div>
+  <div class="step"><div class="n">4</div><div><b>金台里 3 层两居 230 万</b>：与顶楼三居同为 62㎡、月供只多 212 元，楼层体验优先，选这套。签约前现场确认面积确为 62㎡；若选顶楼三居则必查屋顶防水 + 供暖管线 + 房本产权性质。</div></div>
+  <div class="step"><div class="n">5</div><div><b class="good">全款房不要卖</b>：160 万全款房持有收租 4,500/月，比卖掉付首付每年省约 4 万 + 一次交易摩擦 3.2 万。核实当前租约剩余期限和租金可持续性（租售比 1:29.6，净回报 2.87%）；只要租金能稳定收到，双城真实增量压到 329 元/月。</div></div>
+  <div class="step"><div class="n">6</div><div><b>燕郊退出预案</b>：若周末使用率低，燕郊按 3,000–3,300/月挂租（全年整租需求薄，别按 4,200 规划）；自持成本 3,705/月，出租仅覆盖 76–84%，加上全款房租后两套房自付 3,529–3,829/月，可承受。<b>不要用"以后能出租"作为买入理由，只当安全垫。</b></div></div>
+  <div class="step"><div class="n">7</div><div><b>自驾验证</b>：实际开一遍燕郊→通州运河公园（20 多分钟）和燕郊→金台里，确认电车充电与周末路线；问金台里物业停车位和错时共享车位怎么申请。</div></div>
+  <div class="step"><div class="n">8</div><div><b>签约节奏</b>：两套间隔 1–2 个月过户，避免首付和贷款审批撞车。新房确认交付日期写进合同。</div></div>
+  <div class="step"><div class="n">9</div><div><b class="bad">四代宅不要为出租而买</b>：御东君曜 109㎡ 新房 141 万，纯出租到手回报仅 2.4–2.6%、月倒贴 600–900、年经济利润为负；同小区二手 93 万才 4%。<b>四代宅是"自住改善品"——真要纯收租，买普通 100 万级二手 140㎡（4.2%）或 60 万小两居（3.4%）。</b>若最终选了四代宅自住，不要拿租金回报当理由。</div></div>
+</div>
+
+<div class="note key">
+  <b>五个问题的答案，一句话收口：</b><br>
+  <b>① 花多少：</b>首付 111.2 万、两套成本 360.7 万、贷款 250 万，月供 <b>10,416/月</b>（30 年）；<br>
+  <b>② 怎么借：</b>公积金贷满 30 年 2.6%（月供 3,203），金台里商贷 170 万 3.05%（7,213）；电车通勤年约 300 元，通勤成本可忽略；<br>
+  <b>③ 买哪套：</b>金台里两套同为 62㎡、月供只差 212 元，楼层优先选 <b>3 层两居 230 万</b>——自住月供里利息是消费（4,154–4,280，比租金还低）、本金是定投（2,847–2,933），60 万首付撬动全部产权，这笔住房消费本就省不掉；燕郊<b>要一梯一户+四代宅选御东君曜 109㎡（143.3 万，预算内、你看中的外立面），要精装省心+大客厅选三湘 136㎡（142.5 万）</b>，两者买入价几乎一样，看你把"电梯入户仪式感"还是"现房省心"排第一；地铁只为出租服务；<br>
+  <b>④ 扛得住：</b><b class="hl">160 万全款房坚决不卖、收租 4,500/月——真实增量从 5.79 万/年压到 0.39 万/年（329 元/月）；燕郊出租只覆盖自持成本 76–84%，但有两套房自付仅 3,529–3,829/月的托底，不是现金流断裂。</b><br>
+  <b>④ 补·四代宅：</b>御系列（御东君曜/星耀/君泰）是<b class="hl">自住改善品，不是出租品</b>——109㎡ 新房 141 万纯出租回报 2.4–2.6%、月倒贴 600–900、一二手倒挂 35%（二手同户型仅 93 万）；<b>纯收租应买普通 100 万级二手 140㎡（4.2%）或 60 万小两居（3.4%）</b>。<br>
+  <b>⑤ 下一步：</b>先核贷款口径和公积金资格，再量两居面积，全款房租约别断，签约间隔 1–2 个月。<b>结论：从"要不要买"变成"买了扛得住"。</b>
+</div>
+
+<div class="foot">
+数据来源：北京市政府/北京住房公积金网（利率 2.1%/2.6%、额度与套数认定）、廊坊市住房公积金管理委员会（2026-05-15 新政）、河北省契税税率公告（140㎡ 及以下首套 1%）、链家/我爱我家/房天下/58 同城（金台里实盘与成交）、燕郊楼盘网/网易/58 爱房（尚璟花园、三湘印象森林海尚城报价，2026-11）、网易房产/58 同城新房库/克而瑞好房点评/安居客（御东君曜·御东星耀·御东君泰四代宅报价与二手挂牌，2026-11）、乐居财经/今日头条（自驾通勤实测）、北京市 2026 计划报告与城市更新项目清单。<br>
+口径说明：商贷 3.05%、公积金 2.6%（5 年以上）；首付 60 万的两种口径已并列；房价跌幅假设未计入买入成本。所有测算基于用户给定参数。<br>
+关联文件：金台里房源/金台里_顶楼三居出租与加梯专项测算_20261123.html · 燕郊/燕郊二手房与新房调研_20261123.html
+</div>
+
+</div>
+</body>
+</html>
